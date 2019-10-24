@@ -1,0 +1,7 @@
+If you want to build your own executable, it's pretty straightforward :
+- Install your Python 3.3 environment (on Windows I use Anaconda)
+- Launch python prompt (Anaconda prompt on Windows)
+- Install pyinstaller with this command : `pip install pyinstaller`
+- Go into the script dir and type : `pyinstaller -F BestArcade.py`
+- Your exe will be generated into a `dist` subDirectory
+- Just copy conf.conf, README.md, build.txt and data and GUI directories alongside the BestArcade exe and you're good to go

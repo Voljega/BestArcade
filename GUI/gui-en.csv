@@ -1,0 +1,29 @@
+id;label;help
+exportDir;Output directory;Path where your sets will be created (original sets will be left untouched)
+fba_libretro;Fba_libretro set folder;Path to your fba_libretro set, leave empty if you do not have it
+mame2010;Mame2010 set folder;Path to your mame2010 set, leave empty if you do not have it
+mame2003;Mame2003 set folder;Path to your mame2003 set, leave empty if you do not have it
+images;Images folder;Paths to your images set, leave empty if you do not have it. Separate paths by | they will be used in consecutive order
+imgNameFormat;Image filename format;Format of the image filename
+dryRun;Dry run;Set this to 1 to generate only dat and CSV files, no roms will be copied
+keepLevel;Keep level;Roms with working state superior or equals to keepLevel will be kept#n3=WORKING, 2=MOSTLY WORKING, 1=BADLY WORKING, 0=NON WORKING
+keepNotTested;Keep not tested roms;Untested roms will be kept (1=Yes, 0=False) even in STRICT mode
+exclusionType;Exclusion Type;Determine how roms are kept if they are in different sets#nSTRICT (only keep the best working one), EQUAL (keep in several sets if equals in both), NONE (keep in all sets)
+preferedSet;Prefered set;General prefered set in STRICT mode if rom is in same working level in several sets. Value can be fba_libretro, mame2003 or mame2010
+usePreferedSetForGenre;Use prefered set for genre;Use prefered set for genres (1=Yes, 0=False) in STRICT mode and define them. Takes precedence over general prefered set if activated
+BeatEmUpPreferedSet;BeatEmUp prefered set;
+GunPreferedSet;Gun prefered set;
+MiscPreferedSet;Misc prefered set;
+PlatformPreferedSet;Platform prefered set;
+PuzzlePreferedSet;Puzzle prefered set;
+RacePreferedSet;Race prefered set;
+RunNGunPreferedSet;RunNGun prefered set;
+ShootEmUpPreferedSet;Shmup prefered set;
+SportPreferedSet;Sport prefered set;
+VsFightingPreferedSet;VsFighting prefered set;
+genreSubFolders;User genre subfolders;Use genre subfolders for roms (1=Yes, 0=False)
+useImages;Scrape images;Use images folder for gamelist (1=Yes, 0=False)
+verify;Verify;Check your paths are okay
+save;Save;Save your configuration
+proceed;Proceed;Create your romsets
+confirm;Confirm;Your output dir is {outputDir}#nIts content will be erased.#nIf you don't want to proceed, close this window, or click Cancel
