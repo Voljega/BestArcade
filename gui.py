@@ -368,7 +368,7 @@ class GUI():
     def clickVerify(self) :
         self.logger.log('\n<--------- Verify Parameters --------->')
         error = False
-        for key in ['exportDir','fba_libretro','mame2010','mame2003','Images folder #1','Images folder #2'] :
+        for key in ['exportDir','fbneo','mame2010','mame2003','Images folder #1','Images folder #2'] :
             if not os.path.exists(self.guiVars[key].get()) :
                 error = True
                 self.logger.log(key +' folder does not exist')

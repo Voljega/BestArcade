@@ -2,17 +2,17 @@
 
 Use this tool to generate sorted romsets keeping only the games referenced in the [BestArcade4Recalbox list](https://docs.google.com/spreadsheets/d/1F5tBguhRxpj1AQcnDWF6AVSx4av_Gm3cDQedQB7IECk/edit?usp=sharing), above and equal to the working state level you choose.
 
-FBA_Libretro version currently handled is 0.2.97.44 (temp version)
+Fbneo version currently handled is October 10th, 2019
 
 ### WHAT THIS TOOL DOESN'T DO :
-- It's not clrmamepro and will not check that your romsets are in the right version number
+- It's not clrmamepro and will not check that your romsets files are in the right version number
 - It only works with non-merged sets, split and merged sets are not supported, use clrmamepro to generate non-merged sets if needed
 - It doesn't handle CHD
-- It only works on Windows
+- It only works on Windows, well it should work on Linux by launching it manually with Python 3.7, but it needs testing to be sure.
 
 ### WHAT THIS TOOL DO :
-- Generate BestArcade romsets by using your fba_libretro, mame2003 and mame2010 non-merged sets, your original sets will be kept intact
-- Generate basic gamelist for your sets, with optional images. Genre images were generated with the awesome site [Game-icons.net](https://game-icons.net/)
+- Generate BestArcade romsets by using your fbneo, mame2003 and mame2010 non-merged sets, your original sets will be kept intact
+- Generate basic gamelist (Recalbox format but should work for other distribs) for your sets, with optional images. Genre images were generated with the awesome site [Game-icons.net](https://game-icons.net/)
 - Generate csv files documenting the generated sets
 - Generate a scoresheet comparing working level in generated sets
 - Generate dat files for the generated romsets
@@ -20,7 +20,7 @@ FBA_Libretro version currently handled is 0.2.97.44 (temp version)
 ### USAGE :
 First modify the `conf.conf` file with your own parameters :
 - `exportDir` : the target directory for generation, warning its whole content will be erased (you will be prompted) at the begining of the script
-- `fba_libretro`, `mame2003`, `mame2010` : the path to your original sets, this will be left untouched by the script
+- `fbneo`, `mame2003`, `mame2010` : the path to your original sets, this will be left untouched by the script
 - `images`: Paths to your images folder (flyers, screenshot, etc) separated by ';', will be checked in consecutive order
 - `imgNameFormat` : the image name format in your images folder, '{rom}' part will be replaced by each rom name
 - `dryRun` : If put to 1, will do a dry run, generating only csv and dat files without copying roms and bios, good for testing

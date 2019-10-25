@@ -8,10 +8,10 @@ import fav, test, dat
 
 class Sorter :
     
-    fbaKey = "fba_libretro"
+    fbneoKey = "fbneo"
     mame2010Key = "mame2010"
     mame2003Key = "mame2003"
-    setKeys = [fbaKey,mame2003Key,mame2010Key]
+    setKeys = [fbneoKey,mame2003Key,mame2010Key]
     dataDir = r"data"
     
     bioses = ['acpsx','atarisy1','cpzn1','cpzn2','cvs2gd','cvsgd','decocass','konamigv','konamigx','megaplay',
@@ -41,8 +41,8 @@ class Sorter :
         self.logger.log('\n<--------- Load Favorites Ini Files --------->')
         self.favorites = fav.loadFavs(self.scriptDir,Sorter.bioses,self.logger)
         # parse dat files
-        self.logger.log('\n<--------- Load FBA & Mame Dats --------->')
-        datsDict = dict(zip(self.setKeys,['FBNeov0.2.97.44.dat','mame2003.dat','mame2010.dat']))
+        self.logger.log('\n<--------- Load FBNeo & Mame Dats --------->')        
+        datsDict = dict(zip(self.setKeys,[self.fbneoKey+'.dat',self.mame2003Key+'.dat',self.mame2010Key+'.dat']))
         self.dats = dat.parseDats(self.scriptDir,self.dataDir,datsDict,self.usingSystems,self.logger)
         # parse test files
         self.logger.log('\n<--------- Load Tests Files --------->')        
@@ -102,7 +102,7 @@ class Sorter :
             if scores[key] == maxScore :
                 if key == self.configuration['preferedSet'] :                
                     return scores[key] >= keepLevel
-                elif self.fbaKey not in keep and self.mame2010Key not in keep:  # check not already in keep
+                elif self.fbneoKey not in keep and self.mame2010Key not in keep:  # check not already in keep
                     return scores[key] >= keepLevel
                     
     def writeCSV(self,csvFile,game,score,genre,dat,test,setKey) :
@@ -218,7 +218,7 @@ class Sorter :
         scrapeImages = True if self.configuration['useImages'] == '1' and self.configuration['images'] else False
         
         scoreSheet = open(os.path.join(self.configuration['exportDir'],"scoreSheet.csv"),"w",encoding="utf-8")
-        scoreSheet.write('rom;fbaScore;mame2003Score;mame2010Score\n')
+        scoreSheet.write('rom;fbneoScore;mame2003Score;mame2010Score\n')
         
         CSVs, gamelists, roots = dict(), dict(), dict()
         header="Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comments;Notes\n"
@@ -259,8 +259,8 @@ class Sorter :
                 for setKey in self.setKeys :    
                     scores[setKey] = self.computeScore(setKey,self.configuration[setKey],game,testForGame) if setKey in self.usingSystems else -2                
                 
-                audit = audit + " SCORES: "+ str(scores[self.fbaKey]) + " " + str(scores[self.mame2003Key]) + " " + str(scores[self.mame2010Key]) + " ,"                                    
-                scoreSheet.write('%s;%i;%i;%i\n' %(game,scores[self.fbaKey], scores[self.mame2003Key], scores[self.mame2010Key]))
+                audit = audit + " SCORES: "+ str(scores[self.fbneoKey]) + " " + str(scores[self.mame2003Key]) + " " + str(scores[self.mame2010Key]) + " ,"                                    
+                scoreSheet.write('%s;%i;%i;%i\n' %(game,scores[self.fbneoKey], scores[self.mame2003Key], scores[self.mame2010Key]))
                 
                 selected = []
                 for setKey in self.usingSystems :
