@@ -1,6 +1,6 @@
 ## Best Arcade Tool
 
-Use this tool to generate sorted romsets keeping only the games referenced in the [BestArcade4Recalbox list](https://docs.google.com/spreadsheets/d/1F5tBguhRxpj1AQcnDWF6AVSx4av_Gm3cDQedQB7IECk/edit?usp=sharing), above and equal to the working state level you choose.
+Use this tool to generate sorted romsets keeping only the games referenced in the [BestArcade list](https://docs.google.com/spreadsheets/d/1S5qAI-TEl7wfqg6w9VNEwKciMGUtw40n9PS4xslkG3s/edit?usp=sharing), above and equal to the working state level you choose.
 
 Fbneo version currently handled is October 10th, 2019
 
