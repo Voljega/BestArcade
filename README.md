@@ -11,7 +11,7 @@ Fbneo version currently handled is October 10th, 2019
 - It only works on Windows, well it should work on Linux by launching it manually with Python 3.7, but it needs testing to be sure.
 
 ### WHAT THIS TOOL DO :
-- Generate BestArcade romsets by using your fbneo, mame2003 and mame2010 non-merged sets, your original sets will be kept intact
+- Generate BestArcade romsets by using your fbneo, mame2003, mame2003plus and mame2010 non-merged sets, your original sets will be kept intact
 - Generate basic gamelist (Recalbox format but should work for other distribs) for your sets, with optional images. Genre images were generated with the awesome site [Game-icons.net](https://game-icons.net/)
 - Generate csv files documenting the generated sets
 - Generate a scoresheet comparing working level in generated sets
@@ -20,7 +20,7 @@ Fbneo version currently handled is October 10th, 2019
 ### USAGE :
 First modify the `conf.conf` file with your own parameters :
 - `exportDir` : the target directory for generation, warning its whole content will be erased (you will be prompted) at the begining of the script
-- `fbneo`, `mame2003`, `mame2010` : the path to your original sets, this will be left untouched by the script
+- `fbneo`, `mame2003`, `mame2003plus`, `mame2010` : the path to your original sets, this will be left untouched by the script
 - `images`: Paths to your images folder (flyers, screenshot, etc) separated by ';', will be checked in consecutive order
 - `imgNameFormat` : the image name format in your images folder, '{rom}' part will be replaced by each rom name
 - `dryRun` : If put to 1, will do a dry run, generating only csv and dat files without copying roms and bios, good for testing
