@@ -11,7 +11,8 @@ class Sorter :
     fbneoKey = "fbneo"
     mame2010Key = "mame2010"
     mame2003Key = "mame2003"
-    setKeys = [fbneoKey,mame2003Key,mame2010Key]
+    mame2003plusKey = "mame2003plus"
+    setKeys = [fbneoKey,mame2003Key,mame2003plusKey,mame2010Key]
     dataDir = r"data"
     
     bioses = ['acpsx','atarisy1','cpzn1','cpzn2','cvs2gd','cvsgd','decocass','konamigv','konamigx','megaplay',
@@ -42,7 +43,7 @@ class Sorter :
         self.favorites = fav.loadFavs(self.scriptDir,Sorter.bioses,self.logger)
         # parse dat files
         self.logger.log('\n<--------- Load FBNeo & Mame Dats --------->')        
-        datsDict = dict(zip(self.setKeys,[self.fbneoKey+'.dat',self.mame2003Key+'.dat',self.mame2010Key+'.dat']))
+        datsDict = dict(zip(self.setKeys,[self.fbneoKey+'.dat',self.mame2003Key+'.dat',self.mame2003plusKey+'.dat',self.mame2010Key+'.dat']))
         self.dats = dat.parseDats(self.scriptDir,self.dataDir,datsDict,self.usingSystems,self.logger)
         # parse test files
         self.logger.log('\n<--------- Load Tests Files --------->')        
@@ -218,7 +219,7 @@ class Sorter :
         scrapeImages = True if self.configuration['useImages'] == '1' and self.configuration['images'] else False
         
         scoreSheet = open(os.path.join(self.configuration['exportDir'],"scoreSheet.csv"),"w",encoding="utf-8")
-        scoreSheet.write('rom;fbneoScore;mame2003Score;mame2010Score\n')
+        scoreSheet.write('rom;fbneoScore;mame2003Score;mame2003PlusScore;mame2010Score\n')
         
         CSVs, gamelists, roots = dict(), dict(), dict()
         header="Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comments;Notes\n"
@@ -259,8 +260,8 @@ class Sorter :
                 for setKey in self.setKeys :    
                     scores[setKey] = self.computeScore(setKey,self.configuration[setKey],game,testForGame) if setKey in self.usingSystems else -2                
                 
-                audit = audit + " SCORES: "+ str(scores[self.fbneoKey]) + " " + str(scores[self.mame2003Key]) + " " + str(scores[self.mame2010Key]) + " ,"                                    
-                scoreSheet.write('%s;%i;%i;%i\n' %(game,scores[self.fbneoKey], scores[self.mame2003Key], scores[self.mame2010Key]))
+                audit = audit + " SCORES: "+ str(scores[self.fbneoKey]) + " " + str(scores[self.mame2003Key]) + " " + str(scores[self.mame2003plusKey]) + " " + str(scores[self.mame2010Key]) + " ,"                                    
+                scoreSheet.write('%s;%i;%i;%i;%i\n' %(game,scores[self.fbneoKey], scores[self.mame2003Key], scores[self.mame2003plusKey], scores[self.mame2010Key]))
                 
                 selected = []
                 for setKey in self.usingSystems :

@@ -277,6 +277,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Misc;Meikyu Jima (Japan);kikcubic;1988;Irem;Miscellaneous;;
 3;Misc;Metro-Cross (set 1);metrocrs;1985;Namco;Miscellaneous;;
 3;Misc;Mighty! Pang (Euro 001010);mpang;2000;Mitchell (Capcom license);CPS2;;
+3;Misc;Minky Monkey;mmonkey;1982;Technos Japan / Roller Tron;;;
 3;Misc;Monsters World (bootleg of Super Pang);mstworld;1994;bootleg (TCH);Miscellaneous;;
 3;Misc;More More;moremore;1999;SemiCom / Exit;Kaneko Pandora;;
 3;Misc;More More Plus;moremorp;1999;SemiCom / Exit;Kaneko Pandora;;
@@ -331,7 +332,6 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Misc;Super Pang (World 900914);spang;1990;Mitchell;Miscellaneous;;
 1;Misc;Susume! Mile Smile / Go Go! Mile Smile (newer);gogomile;1995;Fuuki;;lags a lot;
 3;Misc;Tapper (Budweiser, 1/27/84);tapper;1983;Bally Midway;;;
-3;Misc;Tempest (rev 3, Revised Hardware);tempest;1980;Atari;;;
 3;Misc;The Electric Yo-Yo (set 1);elecyoyo;1982;Taito America Corporation;;Needs to rest game;
 3;Misc;The Irritating Maze / Ultra Denryu Iraira Bou;irrmaze;1997;SNK / Saurus;Neo Geo MVS;;
 3;Misc;The Pit;thepit;1982;Zilec Electronics;;;
@@ -509,7 +509,6 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Puzzle;Magical Drop III;magdrop3;1997;Data East Corporation;Neo Geo MVS;;
 3;Puzzle;Mang-Chi;mangchi;2000;Afega;NMK16;;
 3;Puzzle;Maniac Square (protected, Version 1.0, Checksum DEEE);maniacsq;1996;Gaelco;;;
-3;Puzzle;Minky Monkey;mmonkey;1982;Technos Japan / Roller Tron;;;
 1;Puzzle;Monster Slider (Japan);mslider;1997;Visco / Datt Japan;;lags a lot;
 3;Puzzle;Mosaic;mosaic;1990;Space;;;
 3;Puzzle;Naname de Magic! (Japan);naname;1994;Atlus;Miscellaneous;;
@@ -557,7 +556,6 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 1;Puzzle;Tetris the Absolute The Grand Master 2 Plus;tgm2p;2000;Arika;;lags a lot;
 3;Puzzle;Three Wonders (World 910520);3wonders;1991;Capcom;CPS1;;
 3;Puzzle;Toryumon;toryumon;1994;Sega;System 16B;;
-3;Puzzle;Tube-It [Bootleg];tubeit;1993;bootleg;;;
 1;Puzzle;Twin Qix (Ver 1.0A 1995/01/17, prototype);twinqix;1995;Taito America Corporation;;lags a lot;
 3;Puzzle;Twinkle Star Sprites;twinspri;1996;ADK / SNK;Neo Geo MVS;hardware lag;
 3;Puzzle;Volfied (World, revision 1);volfied;1989;Taito Corporation Japan;Taito Misc;;
@@ -1108,6 +1106,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;ShootEmUp;Tank Force (US, 2 Players);tankfrce;1991;Namco;;;
 3;ShootEmUp;Task Force Harrier;tharrier;1989;UPL;NMK16;;
 3;ShootEmUp;Tazz-Mania (set 1);tazmania;1982;Stern;;;
+3;ShootEmUp;Tempest (rev 3, Revised Hardware);tempest;1980;Atari;;;
 3;ShootEmUp;Tengai (World);tengai;1996;Psikyo;Psikyo 68EC020;;
 3;ShootEmUp;Terra Cresta (YM3526 set 1);terracre;1985;Nichibutsu;Miscellaneous;;
 3;ShootEmUp;Terra Force;terraf;1987;Nichibutsu;Miscellaneous;;
