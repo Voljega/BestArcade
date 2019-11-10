@@ -18,7 +18,20 @@ Fbneo version currently handled is October 10th, 2019
 - Generate dat files for the generated romsets
 
 ### USAGE :
-First modify the `conf.conf` file with your own parameters :
+Just execute `BestArcade.exe`
+After execution your will find your generated romsets in your `exportDir`
+See next part for configuration explanation
+
+`Verify` will check the validity of the various folders
+
+`Save` will save you configuration to both the `conf.conf` file (making a copy of the previous `conf.conf` file to  `conf.bak`) and in memory
+
+`Proceed` will save you configuration in memory only, leaving your `conf.conf` file intact and launch the whole process
+
+You can build your own version with the instructions found in `build.txt`
+
+### CONFIGURATION :
+You can modify your configuration by editing the `conf.conf` file either directly or from the UI with your own parameters :
 - `exportDir` : the target directory for generation, warning its whole content will be erased (you will be prompted) at the begining of the script
 - `fbneo`, `mame2003`, `mame2003plus`, `mame2010` : the path to your original sets, this will be left untouched by the script
 - `images`: Paths to your images folder (flyers, screenshot, etc) separated by ';', will be checked in consecutive order
@@ -32,8 +45,3 @@ First modify the `conf.conf` file with your own parameters :
 - `BeatEmUpPreferedSet`,`GunPreferedSet`,`MiscPreferedSet`,`PlatformPreferedSet`,`PuzzlePreferedSet`,`RacePreferedSet`,`RunNGunPreferedSet`,`ShootEmUpPreferedSet`,`SportPreferedSet`,`VsFightingPreferedSet` list of settings for prefered set for genre
 - `genreSubFolders`: determines if your romset will use sub folders for genre or not
 - `useImages`: determines if images will be used for gamelist
-
-Then just execute `BestArcade.exe`
-After execution your will find your generated romsets in your `exportDir`
-
-Build instructions are in `build.txt`
