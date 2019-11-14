@@ -3,7 +3,6 @@
 import os.path
 
 dataDir = r"data"
-smallSetFile = r"SmallSet.ini"
 bigSetFile = r"BigSet.ini"
 
 def parseSetFile(setFile, favorites) :
@@ -23,8 +22,7 @@ def parseSetFile(setFile, favorites) :
     file.close()
 
 def loadFavs(scriptDir, bioses, logger) :    
-    favorites = dict()
-    parseSetFile(os.path.join(scriptDir,dataDir,smallSetFile),favorites)    
+    favorites = dict()    
     parseSetFile(os.path.join(scriptDir,dataDir,bigSetFile),favorites)
     
     logger.log('Nb Genre : '+ str(len(favorites)))    
