@@ -6,7 +6,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;BeatEmUp;Asterix (ver EAD);asterix;1992;Konami;;;
 3;BeatEmUp;Bad Dudes vs. Dragonninja (US);baddudes;1988;Data East USA;;;
 3;BeatEmUp;Batman;batman;1991;Atari Games;;;
-0;BeatEmUp;Batman Forever;batmanfr;1996;Acclaim;;mame warning;
+0;BeatEmUp;Batman Forever;batmanfr;1996;Acclaim;;mame warning;*
 3;BeatEmUp;Battle Circuit (Euro 970319);batcir;1997;Capcom;;;
 3;BeatEmUp;Battle Toads;btoads;1994;Rare;;;
 3;BeatEmUp;Battlecry;battlcry;1991;Home Data;;;
@@ -44,7 +44,6 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;BeatEmUp;Kung-Fu Master (World);kungfum;1984;Irem;;;
 3;BeatEmUp;Legend of Hero Tonma;loht;1989;Irem;;;
 0;BeatEmUp;Legionnaire;legionna;;;;protected;
-0;BeatEmUp;Light Bringer (Ver 2.2O 1994/04/08);lightbr;1993;Taito Corporation Japan;;doesn't launch;
 3;BeatEmUp;Magic Sword: Heroic Fantasy (World 900725);msword;1990;Capcom;;;
 3;BeatEmUp;Metamorphic Force (ver EAA);metamrph;1993;Konami;;;
 3;BeatEmUp;Midnight Resistance (World);midres;1989;Data East Corporation;;;
@@ -125,7 +124,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Misc;Crossed Swords (ALM-002)(ALH-002);crsword;1991;Alpha Denshi Co.;;;
 2;Misc;Dig Dug (rev 2);digdug;1982;Namco;;wrong ratio;
 2;Misc;Dig Dug II (New Ver.);digdug2;1985;Namco;;wrong ratio;
-0;Misc;Discs of Tron (Upright);dotron;1983;Bally Midway;;freezes recalbox !!;
+0;Misc;Discs of Tron (Upright);dotron;1983;Bally Midway;;freezes the rapsberry pi;
 1;Misc;Elevator Action Returns (Ver 2.2O 1995/02/20);elvactr;1994;Taito Corporation Japan;;Laging (sound problem);
 3;Misc;Exterminator;exterm;1989;Gottlieb / Premier Technology;;lags in menu;
 3;Misc;Exvania (World);exvania;1992;Namco;;;
@@ -205,7 +204,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Platform;Vs. Mighty Bomb Jack (Japan);mightybj;1986;Tecmo;;music seems awkward;
 3;Platform;Vs. Super Mario Bros. (set SM4-4 E);suprmrio;1986;Nintendo;;;
 3;Platform;Wardner (World);wardner;1987;Toaplan / Taito Corporation Japan;;;
-3;Platform;Wonder Boy Deluxe;wbdeluxe;1986;Escape (Sega license);;needs parent rom wboy.zip;
+3;Platform;Wonder Boy Deluxe;wbdeluxe;1986;Escape (Sega license);;;
 3;Platform;Wonder Boy III - Monster Lair (set 6, World, System 16B, 8751 317-0098);wb3;1988;Sega / Westone;;;
 3;Puzzle;Ataxx (set 1);ataxx;1990;Leland Corp.;;;
 3;Puzzle;BeatHead (prototype);beathead;1993;Atari Games;;;
@@ -254,7 +253,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Race;Bad Lands;badlands;1989;Atari Games;;;
 0;Race;Big Run (11th Rallye version);bigrun;1989;Jaleco;;goes to menu;
 3;Race;Chase H.Q. (World);chasehq;1988;Taito Corporation Japan;;;
-0;Race;Cisco Heat;cischeat;1990;Jaleco;;freezes recalbox;
+0;Race;Cisco Heat;cischeat;1990;Jaleco;;freezes the rapsberry pi;
 3;Race;Danny Sullivan's Indy Heat;indyheat;1991;Leland Corp.;;;
 2;Race;Double Axle (US);dblaxle;1991;Taito America Corporation;;bad sound;
 0;Race;F1 Super Lap (World);f1lap;1993;Sega;;;
@@ -274,10 +273,10 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 0;Race;Rad Rally;radr;1991;Sega;;stuck on networking check;
 2;Race;Riding Hero (set 1);ridhero;1990;SNK;;bad sound;
 1;Race;Road Riot 4WD;roadriot;1991;Atari Games;;no directional controls;
-3;Race;Roller Jammer;rjammer;1984;Nichibutsu + Alice;;;
+3;Sport;Roller Jammer;rjammer;1984;Nichibutsu + Alice;;;
 0;Race;S.T.U.N. Runner (rev 6);stunrun;1989;Atari Games;;lags a lot + control problems;
 3;Race;Seicross;seicross;1984;Nichibutsu + Alice;;;
-0;Race;Special Criminal Investigation;sci;1989;Taito America Corporation;;doesn't launch;
+0;Race;Special Criminal Investigation (US);sci;1989;Taito America Corporation;;doesn't launch;
 0;Race;Spy Hunter;spyhunt;1983;Bally Midway;;doesn't launch;
 0;Race;Spy Hunter 2 (rev 2);spyhunt2;1987;Bally Midway;;doesn't launch;
 0;Race;Stadium Cross (World);scross;1992;Sega;;small image, slow;
@@ -285,7 +284,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Race;Super Cross 2 (Japan);sprcros2;1986;GM Shoji;;;
 3;Race;Super Hang-On;shangon;1987;Sega;;only this clone works;
 3;Race;Thrash Rally;trally;1991;Alpha Denshi Co.;;;
-0;Race;Toobin' (rev 3);toobin;1988;Atari Games;;bad ratio + controls don't work;
+0;Sport;Toobin' (rev 3);toobin;1988;Atari Games;;bad ratio + controls don't work;
 3;Race;Vs. Excitebike (set EB4-4 A);excitebk;1984;Nintendo;;sound not so good;
 3;Race;WEC Le Mans 24 (set 1);wecleman;1986;Konami;;;
 0;Race;World Rally (set 1);wrally;1993;Gaelco;;;
@@ -301,11 +300,11 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;RunNGun;Rolling Thunder 2;rthun2;1990;Namco;;;
 3;RunNGun;Shadow Dancer (World);shdancer;1989;Sega;;;
 3;RunNGun;Shinobi (set 6, System 16A, unprotected);shinobi;1987;Sega;;;
-3;RunNGun;Smash T.V. (rev 8.00);smashtv;1990;Williams;;;
+3;ShootEmUp;Smash T.V. (rev 8.00);smashtv;1990;Williams;;;
 3;RunNGun;Sunset Riders (4 Players ver EAC);ssriders;1991;Konami;;;
 1;RunNGun;TH Strikes Back;thoop2;1994;Gaelco;;slow and protected;
-1;RunNGun;Thunder Zone (World);thndzone;1991;Data East Corporation;;a tester;
-3;RunNGun;Total Carnage (rev LA1 03/10/92);totcarn;1992;Midway;;;
+1;ShootEmUp;Thunder Zone (World);thndzone;1991;Data East Corporation;;a tester;
+3;ShootEmUp;Total Carnage (rev LA1 03/10/92);totcarn;1992;Midway;;;
 3;ShootEmUp;After Burner II;aburner2;1987;Sega;;;
 3;ShootEmUp;Asteroids (rev 4);asteroid;1979;Atari;;;
 1;ShootEmUp;Black Heart;blkheart;1991;UPL;;no sound;

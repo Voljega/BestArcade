@@ -38,7 +38,12 @@ def loadTests(setKeys,sourceDir,usingSystems,logger) :
     for setKey in setKeys :
         if setKey in usingSystems :
             setTests = loadTest(os.path.join(sourceDir,setKey+'.csv'), setKey, allTests)
-            logger.log('    Found '+str(len(setTests))+' '+setKey+' tests')            
+            logger.log('    Found '+str(len(setTests))+' '+setKey+' tests')
+            logger.log('      WORKING {0:.2f} %'.format(len(list(filter(lambda x: setTests[x].status == 3, setTests.keys()))) * 100 / len(setTests)))
+            logger.log('      MOSTLY WORKING {0:.2f} %'.format(len(list(filter(lambda x: setTests[x].status == 2, setTests.keys()))) * 100 / len(setTests)))
+            logger.log('      BADLY WORKING {0:.2f} %'.format(len(list(filter(lambda x: setTests[x].status == 1, setTests.keys()))) * 100 / len(setTests)))
+            logger.log('      NON WORKING {0:.2f} %'.format(len(list(filter(lambda x: setTests[x].status == 0, setTests.keys()))) * 100 / len(setTests)))
+            logger.log('      UNTESTED {0:.2f} %'.format(len(list(filter(lambda x: setTests[x].status == -1, setTests.keys()))) * 100 / len(setTests)))
        
     logger.log('    Found '+str(len(allTests))+' unique tests')
     return allTests

@@ -24,5 +24,10 @@ if __name__ == "__main__":
     logger.log('\n<--------- Load Configuration File --------->')
     logger.printDict(configuration)
     gui.draw()
-    
-#TODO exit terminal when GUI is closed
+
+
+# TODO
+
+#Try to handle CHD in a graceful way
+#Add several tabs to the UI to handle more sets : naomi / atomiswave, and if possible handhelds (Tiger, G&W, etc...)
+#In the far future (hopefully before Skynet rise), tests on a more powerfull SBC, either RockPro64, Odroid XU4 or Odroid N2
