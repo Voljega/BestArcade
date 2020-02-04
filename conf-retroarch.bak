@@ -1,0 +1,51 @@
+# Path where your sets will be created (original sets will be left untouched)
+exportDir = G:\[Bordel]\Mamexperiences\Romsets\CustomSet
+# Path to your fbneo set, leave empty if you do not have it
+fbneo = G:\[Bordel]\Mamexperiences\Romsets\FBNeo - 2019-08-17\FBNeo_Release_Sets\non-merged
+# Path to your mame2010 set, leave empty if you do not have it
+mame2010 = G:\[Bordel]\Mamexperiences\Romsets\Mame2010 0.139\Full Romset - non-merged
+# Path to your mame2003 set, leave empty if you do not have it
+mame2003 = G:\[Bordel]\Mamexperiences\Romsets\Mame2003 0.78\Full Romset
+# Path to your mame2003plus set, leave empty if you do not have it
+mame2003plus = G:\[Bordel]\Mamexperiences\Romsets\mame2003plus
+# Paths to your images set, leave empty if you do not have it
+images = G:\[Bordel]\Mamexperiences\Docs etc\flyers_fullset_0.192\flyers|G:\[Bordel]\Mamexperiences\Docs etc\titles_fullset_0.205
+# Format of the image filename
+imgNameFormat = {rom}.png
+# Check this to generate only dat and CSV files, no roms will be copied
+dryRun = 1
+# Select minimum working level at which roms will be kept
+keepLevel = 0
+# Check to keep untested roms even in STRICT mode
+keepNotTested = 1
+# Determine how roms are kept if they are in different sets
+# STRICT (only keep the best working one), EQUAL (keep in several sets if equals in both), NONE (keep in all sets)
+exclusionType = NONE
+# General prefered set in STRICT mode if rom is in same working level in several sets
+preferedSet = fbneo
+# Check to use prefered set for genres in STRICT mode and define them. Takes precedence over general prefered set if activated
+usePreferedSetForGenre = 1
+# Prefered set for BeatEmUp games
+BeatEmUpPreferedSet = 
+# Prefered set for Gun games
+GunPreferedSet = mame2010
+# Prefered set for Misc games
+MiscPreferedSet = 
+# Prefered set for Platform games
+PlatformPreferedSet = 
+# Prefered set for Puzzle games
+PuzzlePreferedSet = 
+# Prefered set for Race games
+RacePreferedSet = mame2010
+# Prefered set for RunNGun games
+RunNGunPreferedSet = 
+# Prefered set for Shmup games
+ShootEmUpPreferedSet = 
+# Prefered set for Sport games
+SportPreferedSet = 
+# Prefered set for VsFighting games
+VsFightingPreferedSet = 
+# Check to use genre subfolders for roms
+genreSubFolders = 1
+# Check to use images for games and folders
+useImages = 1

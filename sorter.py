@@ -274,7 +274,8 @@ class Sorter :
                     image = self.configuration['imgNameFormat'].replace('{rom}',game)
                     if setKey in selected :
 #                        TODO aliases should be handled here
-                        self.setFileCopy(setRom,genre,game,setKey,useGenreSubFolder,dryRun)                
+                        self.setFileCopy(setRom,genre,game,setKey,useGenreSubFolder,dryRun)
+#                       TODO Handle CHD copy here
                         self.writeCSV(CSVs[setKey],game,scores[setKey],genre,dats[setKey],testForGame,setKey)
                         self.writeGamelistEntry(gamelists[setKey],game,image,dats[setKey],genre,useGenreSubFolder,testForGame,setKey)
                         roots[setKey].append(dats[setKey][game].node) if game in dats[setKey] else None
