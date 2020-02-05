@@ -3,7 +3,7 @@
 
 import xml.etree.ElementTree as etree
 import os.path, shutil
-import gamelist
+import gamelist, utils
 import fav, test, dat
 
 class Sorter :
@@ -12,19 +12,14 @@ class Sorter :
     mame2010Key = "mame2010"
     mame2003Key = "mame2003"
     mame2003plusKey = "mame2003plus"
-    setKeys = [fbneoKey,mame2003Key,mame2003plusKey,mame2010Key]
-    dataDir = r"data"
+    setKeys = [fbneoKey,mame2003Key,mame2003plusKey,mame2010Key]    
+    bigSetFile = r"BigSet.ini"    
     
-    bioses = ['acpsx','atarisy1','cpzn1','cpzn2','cvs2gd','cvsgd','decocass','konamigv','konamigx','megaplay',
-        'megatech','neogeo','nss','pgm','playch10','skns','stvbios','taitofx1','taitogn','taitotz','tps',
-        'atarisy1','coh1000t','hng64','crysbios','coh1000a','coh1002e','coh1001l','coh1002m','coh3002t',
-        'sys573','sys246','sys256','chihiro','naomi','naomigd','ar_bios','aleck64','neocdz','isgsm',
-        'midssio','nmk004','ym2608','maxaflex']
-    
-    def __init__(self,configuration,scriptDir,logger) :
+    def __init__(self,configuration,scriptDir,logger,bioses) :
         self.configuration = configuration               
         self.scriptDir = scriptDir
         self.logger = logger
+        self.bioses = bioses
         
     def process(self) :        
         self.prepare()
@@ -40,14 +35,14 @@ class Sorter :
         self.usingSystems = self.useSystems(self.configuration)
         # create favorites containing fav games
         self.logger.log('\n<--------- Load Favorites Ini Files --------->')
-        self.favorites = fav.loadFavs(self.scriptDir,Sorter.bioses,self.logger)
+        self.favorites = fav.loadFavs(self.scriptDir,Sorter.bigSetFile,self.bioses,self.logger)
         # parse dat files
         self.logger.log('\n<--------- Load FBNeo & Mame Dats --------->')        
         datsDict = dict(zip(self.setKeys,[self.fbneoKey+'.dat',self.mame2003Key+'.dat',self.mame2003plusKey+'.dat',self.mame2010Key+'.dat']))
-        self.dats = dat.parseDats(self.scriptDir,self.dataDir,datsDict,self.usingSystems,self.logger)
+        self.dats = dat.parseDats(self.scriptDir,utils.dataDir,datsDict,self.usingSystems,self.logger)
         # parse test files
         self.logger.log('\n<--------- Load Tests Files --------->')        
-        self.allTests = test.loadTests(Sorter.setKeys,os.path.join(self.scriptDir,self.dataDir),self.usingSystems,self.logger)
+        self.allTests = test.loadTests(Sorter.setKeys,os.path.join(self.scriptDir,utils.dataDir),self.usingSystems,self.logger)
         
     def useSystems(self,configuration) :
         systems = []
@@ -55,22 +50,6 @@ class Sorter :
             systems.append(setKey) if os.path.exists(configuration[setKey]) else None            
         self.logger.logList('Using systems',systems)
         return systems
-    
-    def setFileCopy(self,romsetFile,genre,fileName,targetDir,useGenreSubFolder,dryRun) :
-        if not dryRun :         
-            if os.path.exists(romsetFile) :
-                if useGenreSubFolder :
-                    shutil.copy2(romsetFile, os.path.join(self.configuration['exportDir'],targetDir,genre,fileName+".zip"))
-                else :
-                    shutil.copy2(romsetFile, os.path.join(self.configuration['exportDir'],targetDir,fileName+".zip"))
-
-    def setImageCopy(self,paths,fileName,targetDir,dryRun) :
-        if not dryRun :
-            for path in paths.split('|') :
-                filePath = os.path.join(path.strip(),fileName)            
-                if os.path.exists(filePath):
-                    shutil.copy2(filePath, os.path.join(self.configuration['exportDir'],targetDir,'downloaded_images',fileName))
-                    return
     
     def computeScore(self,setKey,setDir,game,test) :
         score = test[setKey].status if (test is not None and setKey in test) else -2
@@ -105,26 +84,6 @@ class Sorter :
                     return scores[key] >= keepLevel
                 elif self.fbneoKey not in keep and self.mame2010Key not in keep:  # check not already in keep
                     return scores[key] >= keepLevel
-                    
-    def writeCSV(self,csvFile,game,score,genre,dat,test,setKey) :
-        if game in dat :
-            name = dat[game].description
-            year = dat[game].year
-            manufacturer = dat[game].manufacturer
-        else :
-            name, year, manufacturer = '','',''
-            
-        if test is not None and setKey in test :
-            hardware = test[setKey].hardware
-            comments = test[setKey].comments
-            notes = test[setKey].notes
-        else :
-            hardware,comments,notes = '','',''
-        
-        genreExport = genre.replace('[','')
-        genreExport = genreExport.replace(']','')    
-        csvFile.write("%i;%s;%s;%s;%s;%s;%s;%s;%s\n" 
-                      %(score,genreExport,name,game,year,manufacturer,hardware,comments,notes))
     
     def getStatus(cls,status) :
         if status == -1 :
@@ -157,47 +116,6 @@ class Sorter :
             return -1
         
     getIntStatus = classmethod(getIntStatus)
-    
-    def writeGamelistHiddenEntry(self,gamelistFile,game,genre,useGenreSubFolder) :
-        gamelist.writeGamelistHiddenEntry(gamelistFile,game+".zip",genre,useGenreSubFolder)
-        
-    def writeGamelistEntry(self,gamelistFile,game,image,dat,genre,useGenreSubFolder,test,setKey):
-        frontPic = "./downloaded_images/"+image
-        
-        if game in dat :
-            fullName = dat[game].description
-            fullName.replace('&', '&amp;')
-            name = fullName
-            if '(' in name :
-                indPar = name.index('(')
-                name = name[:(indPar-1)].strip()
-            if '[' in name :
-                indPar = name.index('[')
-                name = name[:(indPar-1)].strip()                    
-                
-            year = dat[game].year if dat[game].year else ''
-            developer = dat[game].manufacturer.replace('&', '&amp;') if dat[game].manufacturer else ''
-            cloneof = dat[game].cloneof
-        else :
-            fullName, name, year, developer, cloneof = '','','','',''
-            
-        if test is not None and setKey in test :
-            hardware = test[setKey].hardware
-            comments = test[setKey].comments
-            notes = test[setKey].notes
-            status = self.getStatus(test[setKey].status)        
-        else :
-            hardware,comments,notes,status = '','','','UNTESTED &amp; FRESHLY ADDED'
-            
-        desc = ('Rom : '+game+' , Clone of : ' + cloneof + '\n') if cloneof else ('Rom : '+game+'\n')
-        desc = desc + ('Fullname : '+fullName+'\n')
-        desc = desc + ('Status : ' + status + '\n' )
-        desc = desc + (('Hardware : ' + hardware + '\n') if hardware else '')
-        desc = desc + ((comments + '\n') if comments else '')
-        desc = desc + ((notes + '\n') if notes else '')
-        desc = desc + '        '
-        
-        gamelist.writeGamelistEntry(gamelistFile,game+".zip",name,desc,year,frontPic,developer,developer,genre,useGenreSubFolder)    
     
     def createSets(self,allTests,dats) :
         
@@ -242,15 +160,15 @@ class Sorter :
                     os.makedirs(os.path.join(self.configuration['exportDir'],setKey,genre))
                     if scrapeImages :
                         gamelist.writeGamelistFolder(gamelists[setKey],genre,genre+'.png')
-                        self.setImageCopy(os.path.join(self.scriptDir,'data','images'),genre+'.png',setKey,dryRun)
+                        utils.setImageCopy(self.configuration['exportDir'],os.path.join(self.scriptDir,'data','images'),genre+'.png',setKey,dryRun)
                 
             # copy bios in each subdirectory
             for bios in self.bioses :
                 for setKey in self.usingSystems :
                     setBios = os.path.join(self.configuration[setKey],bios+".zip")
-                    self.setFileCopy(setBios,genre,bios,setKey,useGenreSubFolder,dryRun)
+                    utils.setFileCopy(self.configuration['exportDir'],setBios,genre,bios,setKey,useGenreSubFolder,dryRun)
                     if os.path.exists(setBios) :
-                        self.writeGamelistHiddenEntry(gamelists[setKey],bios,genre,useGenreSubFolder)
+                        utils.writeGamelistHiddenEntry(gamelists[setKey],bios,genre,useGenreSubFolder)
             
             for game in sorted(self.favorites[genre]) :
                 audit = game +" -> "            
@@ -271,16 +189,18 @@ class Sorter :
                 
                 for setKey in self.usingSystems :
                     setRom = os.path.join(self.configuration[setKey],game+".zip")
+                    setCHD = os.path.join(self.configuration[setKey],game)
                     image = self.configuration['imgNameFormat'].replace('{rom}',game)
                     if setKey in selected :
 #                        TODO aliases should be handled here
-                        self.setFileCopy(setRom,genre,game,setKey,useGenreSubFolder,dryRun)
-#                       TODO Handle CHD copy here
-                        self.writeCSV(CSVs[setKey],game,scores[setKey],genre,dats[setKey],testForGame,setKey)
-                        self.writeGamelistEntry(gamelists[setKey],game,image,dats[setKey],genre,useGenreSubFolder,testForGame,setKey)
+                        utils.setFileCopy(self.configuration['exportDir'],setRom,genre,game,setKey,useGenreSubFolder,dryRun)
+                        utils.setCHDCopy(self.configuration['exportDir'],setCHD,genre,game,setKey,useGenreSubFolder,dryRun)
+                        utils.writeCSV(CSVs[setKey],game,scores[setKey],genre,dats[setKey],testForGame,setKey)
+                        testStatus = self.getStatus(testForGame[setKey].status) if testForGame is not None and setKey in testForGame else 'UNTESTED &amp; FRESHLY ADDED'
+                        utils.writeGamelistEntry(gamelists[setKey],game,image,dats[setKey],genre,useGenreSubFolder,testForGame,setKey,testStatus)
                         roots[setKey].append(dats[setKey][game].node) if game in dats[setKey] else None
                         if scrapeImages :                          
-                            self.setImageCopy(self.configuration['images'],image,setKey,dryRun)
+                            utils.setImageCopy(self.configuration['exportDir'],self.configuration['images'],image,setKey,dryRun)
                 
                 if len(selected) == 0 :                
                     notInAnySet.append(game)
@@ -337,5 +257,4 @@ class Sorter :
                             self.logger.log("    ERROR "+rom+" should be exported for "+key)
                             
 # TODOS
-# missing doctype on generated dat  ?
 # if name from dat is empty, take one from test file

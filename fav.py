@@ -1,9 +1,7 @@
 #!/usr/lib/python2.7/
 # -*- coding: utf-8 -*-
 import os.path
-
-dataDir = r"data"
-bigSetFile = r"BigSet.ini"
+import utils
 
 def parseSetFile(setFile, favorites) :
     file = open(setFile,'r')
@@ -21,9 +19,9 @@ def parseSetFile(setFile, favorites) :
                 
     file.close()
 
-def loadFavs(scriptDir, bioses, logger) :    
+def loadFavs(scriptDir,fileName,bioses, logger) :    
     favorites = dict()    
-    parseSetFile(os.path.join(scriptDir,dataDir,bigSetFile),favorites)
+    parseSetFile(os.path.join(scriptDir,utils.dataDir,fileName),favorites)
     
     logger.log('Nb Genre : '+ str(len(favorites)))    
     sumGames = 0

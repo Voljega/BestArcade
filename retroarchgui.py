@@ -10,21 +10,17 @@ from sorter import Sorter
 import _thread
 import wckToolTips
 
-confFileName = r"conf-retroarch.conf"
-confBakFileName = r"conf-retroarch.bak"
-guiStringsFilename = r'gui-en-retroarch.csv'
-
 class RetroarchGUI():
     
-    def __init__(self,rootFrame,scriptDir,logger) :
+    def __init__(self,rootFrame,scriptDir,logger,mummy) :
         self.tabFrame = rootFrame
         self.scriptDir = scriptDir
         self.logger = logger
-        self.configuration = conf.loadConf(os.path.join(self.scriptDir,confFileName))
-        self.logger.log('\n<--------- Load Configuration File --------->')
-        self.logger.printDict(self.configuration)        
+        self.mummy = mummy
+        self.configuration = conf.loadConf(os.path.join(self.scriptDir,utils.confDir,utils.getConfFilename('retroarch')))
+        self.logger.log('Loaded '+utils.getConfFilename('retroarch'))            
         self.guiVars = dict()
-        self.guiStrings = utils.loadUIStrings(self.scriptDir, guiStringsFilename)        
+        self.guiStrings = utils.loadUIStrings(self.scriptDir, utils.getGuiStringsFilename('retroarch'))        
         
     def draw(self) :
         self.drawRomsetFrame()
@@ -334,16 +330,16 @@ class RetroarchGUI():
         self.proceedButton.grid(column=5,row=0,sticky="E",padx=3)
 
     def clickSave(self) :
-        self.logger.log ('\n<--------- Saving configuration --------->')
+        self.logger.log ('\n<--------- Saving retroarch configuration --------->')
         self.saveConfFile()
         self.saveConfInMem()    
     
     def saveConfFile(self) :        
-        confBackupFilePath = os.path.join(self.scriptDir,confBakFileName)
+        confBackupFilePath = os.path.join(self.scriptDir,utils.confDir,utils.getConfBakFilename('retroarch'))
         if os.path.exists(confBackupFilePath) :
             os.remove(confBackupFilePath)
-        shutil.copy2(os.path.join(self.scriptDir,confFileName),os.path.join(self.scriptDir,confBakFileName))
-        confFile = open(os.path.join(self.scriptDir,confFileName),"w",encoding="utf-8")
+        shutil.copy2(os.path.join(self.scriptDir,utils.confDir,utils.getConfFilename('retroarch')),os.path.join(self.scriptDir,utils.confDir,utils.getConfBakFilename('retroarch')))
+        confFile = open(os.path.join(self.scriptDir,utils.confDir,utils.getConfFilename('retroarch')),"w",encoding="utf-8")
         listKeys = sorted(self.guiStrings.values(), key=attrgetter('order'))
         for key in listKeys :
             if key.id not in ['verify','save','proceed','confirm'] :  
@@ -360,7 +356,7 @@ class RetroarchGUI():
                     if key.id in self.guiVars :
                         confFile.write(key.id + ' = ' + str(self.guiVars[key.id].get())+'\n')            
         confFile.close()
-        self.logger.log ('    Configuration saved in '+confFileName+' file')    
+        self.logger.log ('    Configuration saved in '+utils.getConfFilename('retroarch')+' file')    
     
     def saveConfInMem(self) :
         listKeys = sorted(self.guiStrings.values(), key=attrgetter('order'))        
@@ -379,7 +375,7 @@ class RetroarchGUI():
         self.logger.log('    Configuration saved in memory')       
 
     def clickVerify(self) :
-        self.logger.log('\n<--------- Verify Parameters --------->')
+        self.logger.log('\n<--------- Verify retroarch Parameters --------->')
         error = False
         for key in ['exportDir','fbneo','mame2010','mame2003','mame2003plus','Images folder #1','Images folder #2'] :
             if not os.path.exists(self.guiVars[key].get()) :
@@ -391,8 +387,7 @@ class RetroarchGUI():
         if not error :
             self.logger.log('All Good!')
 
-    def clickProceed(self) :
-        self.logger.log('\n<--------- Starting Process --------->')
+    def clickProceed(self) :        
         self.saveConfInMem()
         message=self.guiStrings['confirm'].help.replace('{outputDir}',self.guiVars['exportDir'].get()).replace('#n','\n')
         result = messagebox.askokcancel(self.guiStrings['confirm'].label,message)
@@ -400,8 +395,9 @@ class RetroarchGUI():
             self.verifyButton['state'] = 'disabled'
             self.saveButton['state'] = 'disabled'
             self.proceedButton['state'] = 'disabled'
-            self.logger.log('\n<--------- Starting Process --------->')
-            sorter = Sorter(self.configuration,self.scriptDir,self.logger)
+            self.mummy.disableOtherTabs('retroarch')
+            self.logger.log('\n<--------- Starting retroarch Process --------->')
+            sorter = Sorter(self.configuration,self.scriptDir,self.logger,utils.getBioses('retroarch'))
             _thread.start_new(sorter.process,())
 
 

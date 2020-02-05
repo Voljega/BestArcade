@@ -1,0 +1,13 @@
+id;label;help
+exportDir;Export directory;Path where your atomiswave set will be created (original set will be left untouched)
+atomiswave;Mame set folder;Path to your mame set, leave empty if you do not have it
+dat;Mame dat;Path to your mame dat, leave empty if you do not have it
+images;Images folder;Paths to your images set, leave empty if you do not have it
+imgNameFormat;Image filename format;Format of the image filename
+dryRun;Dry run;Check this to generate only dat and CSV files, no roms will be copied
+genreSubFolders;Use genre subfolders;Check to use genre subfolders for roms
+useImages;Scrape images;Check to use images for games and folders
+verify;Verify;Check that your paths are okay
+save;Save;Save your configuration to file
+proceed;Proceed;Create your romset
+confirm;Confirm;Your output dir is {outputDir}#nIts content will be erased.#nIf you don't want to proceed, close this window, or click Cancel
