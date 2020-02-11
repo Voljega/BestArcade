@@ -1380,7 +1380,6 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;ShootEmUp;Progear (USA 010117);progear;2001;Cave (Capcom license);;;
 0;ShootEmUp;Psyvariar -Medium Unit- (V2.04J);psyvaria;2000;Success;;no launch;
 0;ShootEmUp;Psyvariar -Revision- (V2.04J);psyvarrv;2000;Success;;no launch;
-0;ShootEmUp;Psyvariar 2;psyvar2;;;;doesn't launch;needs naomigd bios, needs CHD
 3;ShootEmUp;R-Shark;rshark;1995;Dooyong;;;
 3;ShootEmUp;R-Type (World);rtype;1987;Irem;;;
 3;ShootEmUp;R-Type II;rtype2;1989;Irem;;;

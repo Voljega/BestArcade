@@ -1,4 +1,3 @@
-#!/usr/lib/python2.7/
 # -*- coding: utf-8 -*-
 
 import tkinter as Tk
@@ -64,7 +63,16 @@ class GUI():
         self.notebook.add(self.naomiFrame, text='Naomi',sticky="EWNS")
         self.notebook.select(self.naomiFrame)
         naomiGUI = CustomGUI(self.naomiFrame,'naomi',self.scriptDir,self.logger,self)
-        naomiGUI.draw()  
+        naomiGUI.draw() 
+        
+        # HANDHELD TAB
+        self.handheldFrame = Tk.Frame(self.notebook,padx=10,pady=5)
+        self.handheldFrame.grid(column=0,row=0,sticky="EWN",pady=5)
+        self.handheldFrame.grid_columnconfigure(0, weight=1)
+        self.notebook.add(self.handheldFrame, text='Handhelds',sticky="EWNS")
+        self.notebook.select(self.handheldFrame)
+        handheldGUI = CustomGUI(self.handheldFrame,'handheld',self.scriptDir,self.logger,self)
+        handheldGUI.draw()
 
         # FUTURE TABS : CUSTOM MAME, ATOMISWAVE, NAOMI, MAME HANDHELDS        
         self.notebook.select(self.retroarchFrame)
