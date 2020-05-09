@@ -225,10 +225,12 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Misc;Congo Bongo (Rev C, 2 board stack);congo;1983;Sega;Zaxxon;;
 3;Misc;Counter Run (bootleg set 1);countrunb;1988;bootleg;;;
 3;Misc;Crazy Balloon (set 1);crbaloon;1980;Taito Corporation;;;
+1;Misc;Crazy Climber (US set 1);cclimber;1980;Nichibutsu;;partial controls;
 1;Misc;Crazy Climber 2 (Japan);cclimbr2;1988;Nichibutsu;Miscellaneous;partial controls;
 3;Misc;Crystal Castles (version 4);ccastles;1983;Atari;;;
 3;Misc;Cuby Bop (location test);cubybop;199?;Hot-B Co., Ltd.;;;
 3;Misc;Cutie Q;cutieq;1979;Namco;;;
+0;Misc;Dacholer;dacholer;1983;Nichibutsu;;crashes on launch;
 3;Misc;Demolition Derby (MCR-3 Mono Board Version);demoderm;1984;Bally Midway;;;
 3;Misc;Devil Fish;devilfsh;1982;Artic;;;
 3;Misc;Dig Dug (rev 2);digdug;1982;Namco;Miscellaneous;;
@@ -266,6 +268,8 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Misc;Jungler;jungler;1981;Konami;;;
 3;Misc;Kamikaze Cabbie;kamikcab;1984;Data East Corporation;;;
 3;Misc;Kick (upright);kick;1981;Midway;;;
+3;Misc;Kick Boy;kickboy;1983;Nichibutsu;;;
+3;Misc;Kid no Hore Hore Daisakusen;horekid;1987;Nichibutsu;;;
 3;Misc;Kram (set 1);kram;1982;Taito America Corporation;;Needs reset to launch;
 1;Misc;Last Survivor (Japan) (FD1094 317-0083);lastsurv;1989;Sega;X-Board;lags a lot;
 3;Misc;Libble Rabble;liblrabl;1983;Namco;;;
@@ -351,6 +355,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Misc;Tutankham;tutankhm;1982;Konami;GX350;;
 3;Misc;Ufo Senshi Yohko Chan (MC-8123, 317-0064);ufosensi;1988;Sega;;;
 1;Misc;VS Block Breaker (Europe);vblokbrk;1997;Kaneko / Mediaworks;Miscellaneous;needs skns.zip BIOS, lags a lot (sh);
+3;Misc;Wiping;wiping;1982;Nichibutsu;;;
 3;Misc;Wit's (Japan);wits;1989;Athena (Visco license);Seta;;
 3;Misc;Zeroize (DECO Cassette) (US);czeroize;1983;Data East Corporation;;Need to wait 142s before game start;
 3;Misc;Zoo Keeper (set 1);zookeep;1982;Taito America Corporation;;needs reset to launch;
@@ -390,6 +395,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Platform;Dyna Gear;dynagear;1993;Sammy;;;
 3;Platform;Fantasy Land (set 1);fantland;19??;Electronic Devices Italy;;;
 3;Platform;Flicky (128k Version, 315-5051);flicky;1984;Sega;System 1;;
+3;Platform;Frisky Tom (set 1);friskyt;1981;Nichibutsu;;;
 3;Platform;Frogger;frogger;1981;Konami;;;
 3;Platform;Funky Jet (World, rev 1);funkyjet;1992;Data East (Mitchell license);DECO IC16;;
 3;Platform;Ghosts'n Goblins (World? set 1);gng;1985;Capcom;Miscellaneous;;
@@ -449,6 +455,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Platform;Spelunker II - 23 no Kagi (Japan);spelunk2;1986;Irem (licensed from Broderbund);Irem M62;;
 3;Platform;Super Burger Time (World, set 1);supbtime;1990;Data East Corporation;DECO IC16;;
 3;Platform;Super Duck;supduck;1992;Comad;;;
+3;Platform;Super Glob;suprglob;1983;Epos Corporation;;;
 3;Platform;Super Rider;suprridr;1983;Taito Corporation (Venture Line license);;;
 3;Platform;Super Trio;suprtrio;1994;Gameace;Miscellaneous;;
 3;Platform;TeddyBoy Blues (315-5115, New Ver.);teddybb;1985;Sega;System 1;;
@@ -967,7 +974,11 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;ShootEmUp;Minefield;minefld;1983;Stern;;;
 3;ShootEmUp;Mission-X (DECO Cassette) (US);cmissnx;1982;Data East Corporation;;Need to wait 99s before game launch;
 3;ShootEmUp;Mister Viking (315-5041);mrviking;1984;Sega;System 1;;
+3;ShootEmUp;Moon Alien Part 2;moonal2;1980;Nichibutsu;;;
+3;ShootEmUp;Moon Cresta (Nichibutsu);mooncrst;1980;Nichibutsu;;;
 3;ShootEmUp;Moon Patrol;mpatrol;1982;Irem;;;
+3;ShootEmUp;Moon Quasar;moonqsr;1980;Nichibutsu;;;
+3;ShootEmUp;Moon Shuttle (US? set 1) [Incomplete Sound];mshuttle;1981;Nichibutsu;;;
 3;ShootEmUp;MX5000;mx5000;1987;Konami;;;
 1;ShootEmUp;Mystic Riders (World);mysticri;1992;Irem;M92;lags a lot;
 3;ShootEmUp;NAM-1975 (NGM-001 ~ NGH-001);nam1975;1990;SNK;Neo Geo MVS;;
@@ -1000,6 +1011,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;ShootEmUp;R-Type II;rtype2;1989;Irem;M82;;
 1;ShootEmUp;R-Type Leo (World);rtypeleo;1992;Irem;M92;lags a lot;
 3;ShootEmUp;Rabbit Punch (US);rpunch;1987;V-System Co. (Bally/Midway/Sente license);;;
+3;ShootEmUp;Radical Radial (US);radrad;1982;Nichibutsu USA;;;
 3;ShootEmUp;Rafflesia (315-5162);raflesia;1986;Coreland / Sega;;;
 3;ShootEmUp;Raiden (set 1);raiden;1990;Seibu Kaihatsu;Miscellaneous;;
 3;ShootEmUp;Raiden DX (UK);raidendx;1994;Seibu Kaihatsu;Miscellaneous;;
@@ -1039,6 +1051,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;ShootEmUp;Seicross;seicross;1984;Nichibutsu / Alice;Miscellaneous;;
 3;ShootEmUp;Sengeki Striker (Asia);sengekis;1997;Kaneko / Warashi;Miscellaneous;skns.zip BIOS, needs Speed Hack;
 3;ShootEmUp;Senjyo;senjyo;1983;Tehkan;;;
+3;ShootEmUp;SF-X [Incomplete Sound];sfx;1983;Nichibutsu;;;
 3;ShootEmUp;Shackled (US);shackled;1986;Data East USA;DEC8;;
 3;ShootEmUp;Shock Troopers - 2nd Squad;shocktr2;1998;Saurus;Neo Geo MVS;;
 3;ShootEmUp;Shock Troopers (set 1);shocktro;1997;Saurus;Neo Geo MVS;;
@@ -1048,6 +1061,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;ShootEmUp;Sinistar (revision 3);sinistar;1982;Williams;;Needs reset to launch game;
 1;ShootEmUp;Skull Fang (World);skullfng;1996;Data East Corporation;;lags a lot;
 3;ShootEmUp;Sky Adventure (World);skyadvnt;1989;Alpha Denshi Co.;;;
+3;ShootEmUp;Sky Fox;skyfox;1987;Jaleco (Nichibutsu USA license);;;
 3;ShootEmUp;Sky Kid (new version);skykid;1985;Namco;;;
 3;ShootEmUp;Sky Kid Deluxe (set 1);skykiddx;1986;Namco;System 86;;
 3;ShootEmUp;Sky Robo;skyrobo;1989;Nichibutsu;;;

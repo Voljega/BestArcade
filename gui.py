@@ -83,18 +83,27 @@ class GUI():
             self.notebook.tab(self.customFrame, state="disabled")
             self.notebook.tab(self.atomiswaveFrame, state="disabled")
             self.notebook.tab(self.naomiFrame, state="disabled")
+            self.notebook.tab(self.handheldFrame, state="disabled")
         elif setKey == 'custom' :
             self.notebook.tab(self.retroarchFrame, state="disabled")            
             self.notebook.tab(self.atomiswaveFrame, state="disabled")
-            self.notebook.tab(self.naomiFrame, state="disabled")
+            self.notebook.tab(self.naomiFrame, state="disabled")            
+            self.notebook.tab(self.handheldFrame, state="disabled")
         elif setKey == 'atomiswave' :
             self.notebook.tab(self.retroarchFrame, state="disabled")
             self.notebook.tab(self.customFrame, state="disabled")            
-            self.notebook.tab(self.naomiFrame, state="disabled")
+            self.notebook.tab(self.naomiFrame, state="disabled")            
+            self.notebook.tab(self.handheldFrame, state="disabled")
         elif setKey == 'naomi' :
             self.notebook.tab(self.retroarchFrame, state="disabled")
             self.notebook.tab(self.customFrame, state="disabled")
-            self.notebook.tab(self.atomiswaveFrame, state="disabled")            
+            self.notebook.tab(self.atomiswaveFrame, state="disabled")
+            self.notebook.tab(self.handheldFrame, state="disabled")
+        elif setKey == 'handheld' :
+            self.notebook.tab(self.retroarchFrame, state="disabled")
+            self.notebook.tab(self.customFrame, state="disabled")
+            self.notebook.tab(self.atomiswaveFrame, state="disabled")
+            self.notebook.tab(self.naomiFrame, state="disabled")
             
 # CONSOLE STUFF
 
