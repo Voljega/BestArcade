@@ -1,7 +1,7 @@
 id;label;help
-exportDir;Export directory;Path where your set will be created (original set will be left untouched)
-custom;Custom set folder;Path to your mame set
-dat;Custom dat;Path to your mame dat, leave empty if you do not have it
+exportDir;Export directory;Path where your Neo Geo AES set will be created (original set will be left untouched)
+neogeoaes;FbNeo/Mame set folder;Path to your FBNeo/Mame set, FBNeo set is recommmanded
+dat;FbNeo/Mame dat;Path to your FbNeo/Mame dat, leave empty if you do not have it
 images;Images folder;Paths to your images set, leave empty if you do not have it
 imgNameFormat;Image filename format;Format of the image filename
 dryRun;Dry run;Check this to generate only dat and CSV files, no roms will be copied

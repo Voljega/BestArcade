@@ -6,11 +6,12 @@ from customgui import CustomGUI
 
 class GUI():    
 
-    def __init__(self,scriptDir,logger) :        
+    def __init__(self,scriptDir,logger,title) :        
         self.scriptDir = scriptDir
         self.window = Tk.Tk()
         self.window.resizable(False,False)
-        self.window.title('BestArcade')        
+        self.window.iconbitmap('bestarcade.ico')
+        self.window.title(title)        
         self.logger = logger         
 
     def draw(self) :
@@ -47,6 +48,15 @@ class GUI():
         customGUI = CustomGUI(self.customFrame,'custom',self.scriptDir,self.logger,self)
         customGUI.draw()
         
+        # NEOGEOAES TAB
+        self.neogeoaesFrame = Tk.Frame(self.notebook,padx=10,pady=5)
+        self.neogeoaesFrame.grid(column=0,row=0,sticky="EWN",pady=5)
+        self.neogeoaesFrame.grid_columnconfigure(0, weight=1)
+        self.notebook.add(self.neogeoaesFrame, text='Neo Geo AES',sticky="EWNS")
+        self.notebook.select(self.neogeoaesFrame)
+        neogeoaesGUI = CustomGUI(self.neogeoaesFrame,'neogeoaes',self.scriptDir,self.logger,self)
+        neogeoaesGUI.draw()
+        
         # ATOMISWAVE TAB
         self.atomiswaveFrame = Tk.Frame(self.notebook,padx=10,pady=5)
         self.atomiswaveFrame.grid(column=0,row=0,sticky="EWN",pady=5)
@@ -73,35 +83,45 @@ class GUI():
         self.notebook.select(self.handheldFrame)
         handheldGUI = CustomGUI(self.handheldFrame,'handheld',self.scriptDir,self.logger,self)
         handheldGUI.draw()
-
-        # FUTURE TABS : CUSTOM MAME, ATOMISWAVE, NAOMI, MAME HANDHELDS        
+                
         self.notebook.select(self.retroarchFrame)
         self.drawConsole()
         
     def disableOtherTabs(self, setKey) :
         if setKey == 'retroarch' :            
             self.notebook.tab(self.customFrame, state="disabled")
+            self.notebook.tab(self.neogeoaesFrame, state="disabled")
             self.notebook.tab(self.atomiswaveFrame, state="disabled")
             self.notebook.tab(self.naomiFrame, state="disabled")
             self.notebook.tab(self.handheldFrame, state="disabled")
         elif setKey == 'custom' :
-            self.notebook.tab(self.retroarchFrame, state="disabled")            
+            self.notebook.tab(self.retroarchFrame, state="disabled")
+            self.notebook.tab(self.neogeoaesFrame, state="disabled")
             self.notebook.tab(self.atomiswaveFrame, state="disabled")
             self.notebook.tab(self.naomiFrame, state="disabled")            
             self.notebook.tab(self.handheldFrame, state="disabled")
+        elif setKey == 'neogeoaes' :
+            self.notebook.tab(self.retroarchFrame, state="disabled")
+            self.notebook.tab(self.customFrame, state="disabled")
+            self.notebook.tab(self.atomiswaveFrame, state="disabled")
+            self.notebook.tab(self.naomiFrame, state="disabled")            
+            self.notebook.tab(self.handheldFrame, state="disabled")    
         elif setKey == 'atomiswave' :
             self.notebook.tab(self.retroarchFrame, state="disabled")
-            self.notebook.tab(self.customFrame, state="disabled")            
+            self.notebook.tab(self.customFrame, state="disabled")   
+            self.notebook.tab(self.neogeoaesFrame, state="disabled")
             self.notebook.tab(self.naomiFrame, state="disabled")            
             self.notebook.tab(self.handheldFrame, state="disabled")
         elif setKey == 'naomi' :
             self.notebook.tab(self.retroarchFrame, state="disabled")
             self.notebook.tab(self.customFrame, state="disabled")
+            self.notebook.tab(self.neogeoaesFrame, state="disabled")
             self.notebook.tab(self.atomiswaveFrame, state="disabled")
             self.notebook.tab(self.handheldFrame, state="disabled")
         elif setKey == 'handheld' :
             self.notebook.tab(self.retroarchFrame, state="disabled")
             self.notebook.tab(self.customFrame, state="disabled")
+            self.notebook.tab(self.neogeoaesFrame, state="disabled")
             self.notebook.tab(self.atomiswaveFrame, state="disabled")
             self.notebook.tab(self.naomiFrame, state="disabled")
             

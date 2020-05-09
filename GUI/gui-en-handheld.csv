@@ -1,6 +1,6 @@
 id;label;help
 exportDir;Export directory;Path where your handhelds set will be created (original set will be left untouched)
-handheld;Mame set folder;Path to your mame set, leave empty if you do not have it
+handheld;Mame set folder;Path to your mame set
 dat;Mame dat;Path to your mame dat, leave empty if you do not have it
 images;Images folder;Paths to your images set, leave empty if you do not have it
 imgNameFormat;Image filename format;Format of the image filename

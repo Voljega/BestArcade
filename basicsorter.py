@@ -109,7 +109,7 @@ class BasicSorter :
         gamelist.closeWrite(gamelists[self.setKey])
 
     def checkErrors(self) :        
-        self.logger.log("Possible errors")
+        foundErrors = False
         useGenreSubFolder = True if self.configuration['genreSubFolders'] == '1' else False
         dryRun = True if self.configuration['dryRun'] == '1' else False
         if not dryRun :
@@ -120,7 +120,13 @@ class BasicSorter :
                     else :
                         setRom = os.path.join(self.configuration['exportDir'],self.setKey,name+".zip")
                     if not os.path.exists(setRom) :
+                        if foundErrors is False :
+                            self.logger.log("Possible errors")
+                            foundErrors = True
                         self.logger.log(setRom +' is missing in output dir')
+                        
+        if foundErrors is False :
+            self.logger.log("S'all good man")
             
                             
 # TODOS

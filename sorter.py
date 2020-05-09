@@ -226,7 +226,7 @@ class Sorter :
     def checkErrors(self,inputTests,keepLevel) :
         self.logger.log("Loading Output Tests")
         outputTests = test.loadTests(Sorter.setKeys,os.path.join(self.configuration['exportDir']),self.usingSystems, self.logger)
-        self.logger.log("Possible errors")
+        foundErrors = False
         for rom in inputTests.keys() :
             
             # new names : bbakraid,snowbro3,fantzn2x,dynwar,rbisland,sf,moomesa,leds2011,batrider,sbomber
@@ -238,7 +238,10 @@ class Sorter :
                     if name == rom :
                         romNotInFav = False
             
-            if romNotInFav :                    
+            if romNotInFav :  
+                if foundErrors is False :
+                    self.logger.log("Possible errors")
+                    foundErrors = True                  
                 self.logger.log("    Orphan rom %s not in favs" %rom)            
             
             # at least higher than keepLevel in one set
@@ -249,11 +252,17 @@ class Sorter :
             if higherThanKeepLevel :
                 if rom not in outputTests :
                     if not rom.startswith('mp_') and not rom.startswith('nss_') :
+                        if foundErrors is False :
+                            self.logger.log("Possible errors")
+                            foundErrors = True
                         self.logger.log("    ERROR "+rom+" not found in ouput csvs, but found in input")
                 else :
                     for key in inputTests[rom] :
                         if key not in outputTests[rom] :
+                            if foundErrors is False :
+                                self.logger.log("Possible errors")
+                                foundErrors = True
                             self.logger.log("    ERROR "+rom+" should be exported for "+key)
                             
-# TODOS
-# if name from dat is empty, take one from test file
+        if foundErrors is False :
+            self.logger.log("S'all good man")
