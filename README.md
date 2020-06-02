@@ -40,6 +40,9 @@ Handhelds tab :
 - Generate full set of all single-game (game & watch like, no consoles) handheld devices from a recent mame set
 - Mame DAT must be provided by the user
 
+### LINUX INSTALLATION AND EXECUTION :
+- first install `sudo apt-get install python3-tk`
+- launch with `python3 BestArcade.py`
 
 ### USAGE :
 Just execute `BestArcade.exe`

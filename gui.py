@@ -3,6 +3,7 @@
 import tkinter as Tk
 from retroarchgui import RetroarchGUI
 from customgui import CustomGUI
+import platform
 
 class GUI():    
 
@@ -10,7 +11,8 @@ class GUI():
         self.scriptDir = scriptDir
         self.window = Tk.Tk()
         self.window.resizable(False,False)
-        self.window.iconbitmap('bestarcade.ico')
+        if platform.system() == 'Windows' :
+        	self.window.iconbitmap('bestarcade.ico')
         self.window.title(title)        
         self.logger = logger         
 
