@@ -12,7 +12,7 @@ class GUI():
         self.window = Tk.Tk()
         self.window.resizable(False,False)
         if platform.system() == 'Windows' :
-        	self.window.iconbitmap('bestarcade.ico')
+            self.window.iconbitmap('bestarcade.ico')
         self.window.title(title)        
         self.logger = logger         
 
