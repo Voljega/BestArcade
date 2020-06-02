@@ -21,6 +21,8 @@ def getBioses(keyset) :
         return []
     elif keyset == 'neogeoaes':
         return ['neogeo']
+    elif keyset == 'model2' or keyset == 'model3' :
+        return []
     else :
         return ['acpsx','atarisy1','cpzn1','cpzn2','decocass','konamigv','konamigx','megaplay',
         'megatech','neogeo','nss','pgm','playch10','skns','stvbios','taitofx1','taitogn','taitotz','tps',

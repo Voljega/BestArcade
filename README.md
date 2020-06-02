@@ -32,7 +32,7 @@ Neo Geo AES tab :
 - Generate Neo Geo AES full set from either FBNeo or recent mame set, FBNeo is recommanded though
 - FBNeo/Mame DAT must be provided by the user
 
-Atomiswave and Naomi tabs :
+Semga Model 2, Sega Model 3, Atomiswave and Naomi tabs :
 - Generate full sets of this system from a recent mame set
 - Mame DAT must be provided by the user
 
@@ -72,10 +72,10 @@ You can modify your configuration by editing the `conf\conf-retroarch.conf` file
 - `genreSubFolders`: determines if your romset will use sub folders for genre or not
 - `useImages`: determines if images will be used for gamelist
 
-### CUSTOM, NEO GEO AES, ATOMISWAVE, NAOMI & HANDHELD ROMSETS CONFIGURATION :
+### CUSTOM, NEO GEO AES, SEGA MODEL 2, SEGA MODEL 3, ATOMISWAVE, NAOMI & HANDHELD ROMSETS CONFIGURATION :
 You can modify your configuration by editing the related `conf\conf-*.conf` (`conf\conf-custom.conf`, `conf\conf-naomi.conf`, etc...) file either directly or from the UI with your own parameters :
 - `exportDir` : the target directory for generation, warning its whole content will be erased (you will be prompted) at the begining of the script
-- `custom`, `neogeoaes`, `atomiswave` `naomi` or `handheld` : the path to your original sets, this will be left untouched by the script
+- `custom`, `neogeoaes`, `model2`, `model3`, `atomiswave`, `naomi` or `handheld` : the path to your original sets, this will be left untouched by the script
 - `dat` : the path to your set dat
 - `images`: Paths to your images folder (flyers, screenshot, etc) separated by ';', will be checked in consecutive order
 - `imgNameFormat` : the image name format in your images folder, '{rom}' part will be replaced by each rom name

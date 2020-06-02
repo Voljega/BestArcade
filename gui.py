@@ -57,6 +57,24 @@ class GUI():
         neogeoaesGUI = CustomGUI(self.neogeoaesFrame,'neogeoaes',self.scriptDir,self.logger,self)
         neogeoaesGUI.draw()
         
+        # MODEL2 TAB
+        self.model2Frame = Tk.Frame(self.notebook,padx=10,pady=5)
+        self.model2Frame.grid(column=0,row=0,sticky="EWN",pady=5)
+        self.model2Frame.grid_columnconfigure(0, weight=1)
+        self.notebook.add(self.model2Frame, text='Sega Model 2',sticky="EWNS")
+        self.notebook.select(self.model2Frame)
+        model2GUI = CustomGUI(self.model2Frame,'model2',self.scriptDir,self.logger,self)
+        model2GUI.draw()
+        
+        # MODEL3 TAB
+        self.model3Frame = Tk.Frame(self.notebook,padx=10,pady=5)
+        self.model3Frame.grid(column=0,row=0,sticky="EWN",pady=5)
+        self.model3Frame.grid_columnconfigure(0, weight=1)
+        self.notebook.add(self.model3Frame, text='Sega Model 3',sticky="EWNS")
+        self.notebook.select(self.model3Frame)
+        model3GUI = CustomGUI(self.model3Frame,'model3',self.scriptDir,self.logger,self)
+        model3GUI.draw()
+        
         # ATOMISWAVE TAB
         self.atomiswaveFrame = Tk.Frame(self.notebook,padx=10,pady=5)
         self.atomiswaveFrame.grid(column=0,row=0,sticky="EWN",pady=5)
@@ -73,7 +91,7 @@ class GUI():
         self.notebook.add(self.naomiFrame, text='Naomi',sticky="EWNS")
         self.notebook.select(self.naomiFrame)
         naomiGUI = CustomGUI(self.naomiFrame,'naomi',self.scriptDir,self.logger,self)
-        naomiGUI.draw() 
+        naomiGUI.draw()
         
         # HANDHELD TAB
         self.handheldFrame = Tk.Frame(self.notebook,padx=10,pady=5)
@@ -91,37 +109,65 @@ class GUI():
         if setKey == 'retroarch' :            
             self.notebook.tab(self.customFrame, state="disabled")
             self.notebook.tab(self.neogeoaesFrame, state="disabled")
+            self.notebook.tab(self.model2Frame, state="disabled")
+            self.notebook.tab(self.model3Frame, state="disabled")
             self.notebook.tab(self.atomiswaveFrame, state="disabled")
             self.notebook.tab(self.naomiFrame, state="disabled")
             self.notebook.tab(self.handheldFrame, state="disabled")
         elif setKey == 'custom' :
             self.notebook.tab(self.retroarchFrame, state="disabled")
             self.notebook.tab(self.neogeoaesFrame, state="disabled")
+            self.notebook.tab(self.model2Frame, state="disabled")
+            self.notebook.tab(self.model3Frame, state="disabled")
             self.notebook.tab(self.atomiswaveFrame, state="disabled")
             self.notebook.tab(self.naomiFrame, state="disabled")            
             self.notebook.tab(self.handheldFrame, state="disabled")
         elif setKey == 'neogeoaes' :
             self.notebook.tab(self.retroarchFrame, state="disabled")
             self.notebook.tab(self.customFrame, state="disabled")
+            self.notebook.tab(self.model2Frame, state="disabled")
+            self.notebook.tab(self.model3Frame, state="disabled")
             self.notebook.tab(self.atomiswaveFrame, state="disabled")
             self.notebook.tab(self.naomiFrame, state="disabled")            
-            self.notebook.tab(self.handheldFrame, state="disabled")    
+            self.notebook.tab(self.handheldFrame, state="disabled")
+        elif setKey == 'model2' :
+            self.notebook.tab(self.retroarchFrame, state="disabled")
+            self.notebook.tab(self.customFrame, state="disabled")
+            self.notebook.tab(self.neogeoaesFrame, state="disabled")
+            self.notebook.tab(self.model3Frame, state="disabled")
+            self.notebook.tab(self.atomiswaveFrame, state="disabled")
+            self.notebook.tab(self.naomiFrame, state="disabled")
+            self.notebook.tab(self.handheldFrame, state="disabled")
+        elif setKey == 'model3' :
+            self.notebook.tab(self.retroarchFrame, state="disabled")
+            self.notebook.tab(self.customFrame, state="disabled")
+            self.notebook.tab(self.neogeoaesFrame, state="disabled")
+            self.notebook.tab(self.model2Frame, state="disabled")
+            self.notebook.tab(self.atomiswaveFrame, state="disabled")
+            self.notebook.tab(self.naomiFrame, state="disabled")
+            self.notebook.tab(self.handheldFrame, state="disabled")
         elif setKey == 'atomiswave' :
             self.notebook.tab(self.retroarchFrame, state="disabled")
             self.notebook.tab(self.customFrame, state="disabled")   
             self.notebook.tab(self.neogeoaesFrame, state="disabled")
+            self.notebook.tab(self.model2Frame, state="disabled")
+            self.notebook.tab(self.model3Frame, state="disabled")
             self.notebook.tab(self.naomiFrame, state="disabled")            
             self.notebook.tab(self.handheldFrame, state="disabled")
         elif setKey == 'naomi' :
             self.notebook.tab(self.retroarchFrame, state="disabled")
             self.notebook.tab(self.customFrame, state="disabled")
             self.notebook.tab(self.neogeoaesFrame, state="disabled")
+            self.notebook.tab(self.model2Frame, state="disabled")
+            self.notebook.tab(self.model3Frame, state="disabled")
             self.notebook.tab(self.atomiswaveFrame, state="disabled")
             self.notebook.tab(self.handheldFrame, state="disabled")
         elif setKey == 'handheld' :
             self.notebook.tab(self.retroarchFrame, state="disabled")
             self.notebook.tab(self.customFrame, state="disabled")
             self.notebook.tab(self.neogeoaesFrame, state="disabled")
+            self.notebook.tab(self.model2Frame, state="disabled")
+            self.notebook.tab(self.model3Frame, state="disabled")
             self.notebook.tab(self.atomiswaveFrame, state="disabled")
             self.notebook.tab(self.naomiFrame, state="disabled")
             

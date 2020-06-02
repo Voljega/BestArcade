@@ -386,7 +386,8 @@ class RetroarchGUI():
         if not error :
             self.logger.log('All Good!')
 
-    def clickProceed(self) :        
+    def clickProceed(self) :
+        self.logger.log ('\n<--------- Saving retroarch configuration --------->')
         self.saveConfInMem()
         message=self.guiStrings['confirm'].help.replace('{outputDir}',self.guiVars['exportDir'].get()).replace('#n','\n')
         result = messagebox.askokcancel(self.guiStrings['confirm'].label,message)
