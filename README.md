@@ -32,7 +32,7 @@ Neo Geo AES tab :
 - Generate Neo Geo AES full set from either FBNeo or recent mame set, FBNeo is recommanded though
 - FBNeo/Mame DAT must be provided by the user
 
-Semga Model 2, Sega Model 3, Atomiswave and Naomi tabs :
+Sega Model 2, Sega Model 3, Atomiswave and Naomi tabs :
 - Generate full sets of this system from a recent mame set
 - Mame DAT must be provided by the user
 
@@ -41,11 +41,15 @@ Handhelds tab :
 - Mame DAT must be provided by the user
 
 ### LINUX INSTALLATION AND EXECUTION :
+- BestArcade requires that python3 is installed
 - first install `sudo apt-get install python3-tk`
-- launch with `python3 BestArcade.py`
+- give execution rights to `BestArcade.sh`
+- launch with `./BestArcade.sh`
+
+## WINDOWS EXECUTION
+Just execute `BestArcade.exe` from latest release
 
 ### USAGE :
-Just execute `BestArcade.exe`
 After execution your will find your generated romsets in your `exportDir`
 See next part for configuration explanation
 
@@ -55,7 +59,7 @@ See next part for configuration explanation
 
 `Proceed` will save your configuration in memory only, leaving your `conf.conf` file intact and launch the whole process
 
-You can build your own version with the instructions found in `build.txt`
+You can build your own Windows version with the instructions found in `build.txt`
 
 You can also directly modify conf files manually if you prefer, see next sections
 
