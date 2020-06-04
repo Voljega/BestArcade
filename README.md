@@ -42,7 +42,8 @@ Handhelds tab :
 
 ### LINUX INSTALLATION AND EXECUTION :
 - BestArcade requires that python3 is installed
-- first install `sudo apt-get install python3-tk`
+- first install `sudo apt-get install python3-tk` if needed
+- directly download sources or clone the repo
 - give execution rights to `BestArcade.sh`
 - launch with `./BestArcade.sh`
 
