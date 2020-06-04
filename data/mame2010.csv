@@ -1289,6 +1289,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;ShootEmUp;Horizon;horizon;1985;Irem;;;
 1;ShootEmUp;Hotdog Storm (International);hotdogst;1996;Marble;;tilted sideways;
 1;ShootEmUp;Hydra;hydra;1990;Atari Games;;no controls;should work
+1;ShootEmUp;Hyper Duel (Japan set 1);hyprduel;1993;Technosoft;;;
 3;ShootEmUp;I, Robot;irobot;1983;Atari;;;
 3;ShootEmUp;Ikari III - The Rescue (Rotary Joystick);ikari3;1989;SNK;;;
 3;ShootEmUp;Ikari Warriors (US JAMMA);ikari;1986;SNK;;;
@@ -1388,6 +1389,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;ShootEmUp;Progear (USA 010117);progear;2001;Cave (Capcom license);;;
 0;ShootEmUp;Psyvariar -Medium Unit- (V2.04J);psyvaria;2000;Success;;no launch;
 0;ShootEmUp;Psyvariar -Revision- (V2.04J);psyvarrv;2000;Success;;no launch;
+3;ShootEmUp;Pulstar;pulstar;1995;Aicom;;;
 3;ShootEmUp;R-Shark;rshark;1995;Dooyong;;;
 3;ShootEmUp;R-Type (World);rtype;1987;Irem;;;
 3;ShootEmUp;R-Type II;rtype2;1989;Irem;;;
@@ -1767,6 +1769,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 0;Sport;NBA Play By Play (ver JAA);nbapbp;1998;Konami;;doesn't launch;no CHD
 0;Sport;NBA Showtime: NBA on NBC (ver 2.0);nbashowt;1998;Midway Games;;doesn't launch;needs CHD
 3;Sport;Neo Turf Masters / Big Tournament Golf;turfmast;1996;Nazca;;;
+3;Sport;Neo-Geo Cup '98 - The Road to the Victory;neocup98;1998;SNK;;;
 0;Sport;NFL Blitz '99;blitz99;1998;Midway Games;;doesn't launch;needs CHD
 0;Sport;NFL Blitz (boot ROM 1.2);blitz;1997;Midway Games;;doesn't launch;needs CHD
 0;Sport;NFL Blitz 2000 Gold Edition;blitz2k;1999;Midway Games;;doesn't launch;needs CHD

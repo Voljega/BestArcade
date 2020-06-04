@@ -1070,6 +1070,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;ShootEmUp;Horizon;horizon;1985;Irem;;;
 3;ShootEmUp;Hotdog Storm;hotdogst;1996;Marble;;;
 3;ShootEmUp;Hydra;hydra;1990;Atari Games;;;
+3;ShootEmUp;Hyper Duel (World);hyprduel;1993;Technosoft;;;
 3;ShootEmUp;I, Robot;irobot;1983;Atari;;;
 1;ShootEmUp;Ikari III - The Rescue (US, Rotary Joystick);ikari3;1989;SNK;;no rotatioon controls;
 1;ShootEmUp;Ikari Warriors (US JAMMA);ikari;1986;SNK;;no rotation controls;
@@ -1155,6 +1156,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;ShootEmUp;Prehistoric Isle 2;preisle2;1999;Yumekobo;;;
 3;ShootEmUp;Prehistoric Isle in 1930 (World);prehisle;1989;SNK;;;
 3;ShootEmUp;Progear (USA 010117);progear;2001;Cave, distributed by Capcom;;;
+3;ShootEmUp;Pulstar;pulstar;1995;Aicom;;;
 3;ShootEmUp;R-Shark;rshark;1995;Dooyong;;;
 3;ShootEmUp;R-Type (World);rtype;1987;Irem;;;
 3;ShootEmUp;R-Type II;rtype2;1989;Irem;;;
@@ -1486,6 +1488,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 0;Sport;NBA Jam Extreme;nbajamex;1996;Acclaim;;no launch, chd ?;
 3;Sport;NBA Jam TE (rev 4.0 03/23/94);nbajamte;1994;Midway;;lags a little tiny bit;
 3;Sport;Neo Turf Masters / Big Tournament Golf;turfmast;1996;Nazca;;;
+3;Sport;Neo-Geo Cup '98 - The Road to the Victory;neocup98;1998;SNK;;;
 0;Sport;NFL Blitz;blitz;1997;Midway Games;;no launch, chd ?;
 0;Sport;NFL Blitz '99;blitz99;1998;Midway Games;;no launch, chd ?;
 0;Sport;NFL Blitz 2000;blitz2k;1999;Midway Games;;no launch, chd ?;

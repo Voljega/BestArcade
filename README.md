@@ -4,7 +4,7 @@ These tool handle two types of usage :
 - generate retroarch sorted romsets (fbneo, mame2003, mame2003plus, mame2010) keeping only the games referenced in the [BestArcade list](https://docs.google.com/spreadsheets/d/1S5qAI-TEl7wfqg6w9VNEwKciMGUtw40n9PS4xslkG3s/edit?usp=sharing), above and equal to the working state level you choose.
 - generate dedicated romsets : custom mame based on Best Arcade list, neo geo aes set, atomiswave set, naomi set, handheld set
 
-FbNeo version currently tested is October 10th, 2019
+FbNeo version currently tested is May 15th, 2020
 Handheld supported romset is currently at mame 0.220 level
 
 ### WHAT THIS TOOL DOESN'T DO :
@@ -46,10 +46,10 @@ Handhelds tab :
 - give execution rights to `BestArcade.sh`
 - launch with `./BestArcade.sh`
 
-## WINDOWS EXECUTION
+### WINDOWS EXECUTION
 Just execute `BestArcade.exe` from latest release
 
-### USAGE :
+### USAGE
 After execution your will find your generated romsets in your `exportDir`
 See next part for configuration explanation
 
