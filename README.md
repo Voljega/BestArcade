@@ -43,9 +43,17 @@ Handhelds tab :
 ### LINUX INSTALLATION AND EXECUTION :
 - BestArcade requires that python3 is installed
 - first install Tkinter for python3 if needed : `sudo apt-get install python3-tk`
-- directly download sources or clone the repo
-- give execution rights to `BestArcade.sh`
-- launch with `./BestArcade.sh`
+- directly download sources or clone the repo with :
+ ```
+ sudo apt install git # optional, only if git is not installed
+ git clone https://github.com/Voljega/BestArcade
+ ```
+- give execution rights to `BestArcade.sh` :
+```
+cd BestArcade            # change to BestArcade directory
+chmod u+x BestArcade.sh  # give execution perms (already done in git-cloned version)
+```
+- launch with `./BestArcade.sh` or `./BestArcade`
 
 ### WINDOWS EXECUTION
 Just execute `BestArcade.exe` from latest release

@@ -13,8 +13,12 @@ if __name__ == "__main__":
     gui.draw()
 
 
-#1.6
-#----
+#TODOS FIX/ENHANCE
+#-----------------
+# scaling issue on MacOSX
+# resolution/scaling/scrollbar for lower resolutions than 1080p
+# error detecting is wrong for keepLevel WORKING and Exclusion Type Strict
+# add neogeo MVS games tab
 # retest for N2
 # allow to choose between pi3 and N2
 # add vertical games tab
