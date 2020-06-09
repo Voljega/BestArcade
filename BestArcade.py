@@ -13,14 +13,18 @@ if __name__ == "__main__":
     gui.draw()
 
 
-#TODOS FIX/ENHANCE
+# FIXES/ENHANCEMENT
 #-----------------
-# scaling issue on MacOSX
-# resolution/scaling/scrollbar for lower resolutions than 1080p
+# scaling issue on MacOSX -> needs to externalize font size somehow
+# resolution/size/scrollbar for lower resolutions than 1080p (see solution draft on my stackoverflow)
+
 # error detecting is wrong for keepLevel WORKING and Exclusion Type Strict
+# allow basicsorter generation without dat / prevents generation without dat ?
+# add info to generate dat from mame exe (see my handheld thread on reddit) -> hhhhhhm si if regular xml from mame site work
+
+# NEW SETS/TESTS
+#----------------
 # add neogeo MVS games tab
 # retest for N2
 # allow to choose between pi3 and N2
 # add vertical games tab
-# add info to generate dat from mame exe (see my handheld thread on reddit) -> hhhhhhm si if regular xml from mame site work
-# allow basicsorter generation without dat / prevents generation without dat ?

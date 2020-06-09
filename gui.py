@@ -1,32 +1,63 @@
 # -*- coding: utf-8 -*-
 
 import tkinter as Tk
+import tkinter.font as Font
 from retroarchgui import RetroarchGUI
 from customgui import CustomGUI
 import platform
+import wckToolTips
 
-class GUI():    
+class GUI():
+
+    MACOS_DEFAULT_FONT_SIZE = 7
+    DEFAULT_FONT_SIZE = 9      
 
     def __init__(self,scriptDir,logger,title) :        
         self.scriptDir = scriptDir
+        
         self.window = Tk.Tk()
-        self.window.resizable(False,False)
+        self.window.resizable(False,False)        
+        self.startFontSize = self.DEFAULT_FONT_SIZE        
+        
         if platform.system() == 'Windows' :
             self.window.iconbitmap('bestarcade.ico')
+        elif platform.system() == 'Darwin' :
+            # Handle tkinter font size bug on MacOS
+            self.startFontSize = self.MACOS_DEFAULT_FONT_SIZE
+            
+        self.setFontSize(self.startFontSize)
         self.window.title(title)        
-        self.logger = logger         
+        self.logger = logger
 
     def draw(self) :
         self.root = Tk.Frame(self.window,padx=10,pady=5)
         self.root.grid(column=0,row=0)
+        self.drawSliderFrame()
         self.drawMainframe()
         self.window.mainloop()
+    
+    def setFontSize(self, value) :        
+        default_font = Font.nametofont("TkDefaultFont")
+        default_font.configure(size=value)
+        text_font = Font.nametofont("TkTextFont")
+        text_font.configure(size=value)
+        fixed_font = Font.nametofont("TkFixedFont")
+        fixed_font.configure(size=value)
+    
+    def drawSliderFrame(self) :
+        self.sliderFrame = Tk.Frame(self.root,padx=10,pady=0)
+        self.sliderFrame.grid(column=0,row=0,sticky="EW",pady=0)
+        self.sliderFrame.grid_columnconfigure(0, weight=1)
+        self.slider = Tk.Scale(self.sliderFrame, from_=4, to=12, orient=Tk.HORIZONTAL, showvalue=0, command=self.setFontSize)
+        wckToolTips.register(self.slider, 'Window Size') #TODO internationalization
+        self.slider.grid(column=0,row=0,sticky="W",pady=0)
+        self.slider.set(self.startFontSize)
 
 # MAINFRAME, NOTEBOOK & TABS
     
     def drawMainframe(self) :
-        self.mainFrame = Tk.Frame(self.root,padx=10,pady=5)
-        self.mainFrame.grid(column=0,row=0,sticky="EW",pady=5)
+        self.mainFrame = Tk.Frame(self.root,padx=10,pady=0)
+        self.mainFrame.grid(column=0,row=1,sticky="EW",pady=5)
         self.mainFrame.grid_columnconfigure(0, weight=1)
         self.notebook = Tk.ttk.Notebook(self.mainFrame)
         self.notebook.grid(column=0,row=0,sticky="EW",pady=5)
@@ -177,7 +208,7 @@ class GUI():
 
     def drawConsole(self) :
         self.consoleFrame = Tk.Frame(self.root, padx=10)
-        self.consoleFrame.grid(column=0,row=4,sticky="EW",pady=5)
+        self.consoleFrame.grid(column=0,row=5,sticky="EW",pady=5)
         self.consoleFrame.grid_columnconfigure(0, weight=1)
         self.logTest = Tk.Text(self.consoleFrame, height=15, state='disabled', wrap='word',background='black',foreground='yellow')
         self.logTest.grid(column=0,row=0,sticky="EW")
