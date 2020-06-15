@@ -6,7 +6,7 @@ def cleanString(string) :
 def loadConf(confFile) :
     conf = dict()
     
-    file = open(confFile,'r')
+    file = open(confFile,'r',encoding="utf-8")
     for line in file.readlines() :
         if not line.startswith('#') :
             confLine = line.split("=")
