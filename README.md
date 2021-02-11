@@ -1,3 +1,5 @@
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate?hosted_button_id=LEAH843NKNG72)
+
 ## Best Arcade Tool
 
 These tool handle two types of usage :
@@ -98,3 +100,5 @@ You can modify your configuration by editing the related `conf\conf-*.conf` (`co
 - `dryRun` : If put to 1, will do a dry run, generating only csv and dat files without copying roms and bios, good for testing
 - `genreSubFolders`: determines if your romset will use sub folders for genre or not
 - `useImages`: determines if images will be used for gamelist
+
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/donate?hosted_button_id=LEAH843NKNG72)
