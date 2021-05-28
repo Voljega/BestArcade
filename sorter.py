@@ -12,13 +12,14 @@ class Sorter :
     mame2003Key = "mame2003"
     mame2003plusKey = "mame2003plus"
     setKeys = [fbneoKey,mame2003Key,mame2003plusKey,mame2010Key]    
-    bigSetFile = r"BigSet.ini"    
+    bigSetFile = r"custom.ini"
     
-    def __init__(self,configuration,scriptDir,logger,bioses) :
+    def __init__(self,configuration,scriptDir,logger,bioses,hardware) :
         self.configuration = configuration               
         self.scriptDir = scriptDir
         self.logger = logger
         self.bioses = bioses
+        self.hardware = hardware
         
     def process(self) :        
         self.prepare()
@@ -41,7 +42,7 @@ class Sorter :
         self.dats = dat.parseDats(self.scriptDir,utils.dataDir,datsDict,self.usingSystems,self.logger)
         # parse test files
         self.logger.log('\n<--------- Load Tests Files --------->')        
-        self.allTests = test.loadTests(Sorter.setKeys,os.path.join(self.scriptDir,utils.dataDir),self.usingSystems,self.logger)
+        self.allTests = test.loadTests(Sorter.setKeys,os.path.join(self.scriptDir,utils.dataDir,self.hardware),self.usingSystems,self.logger)
         
     def useSystems(self,configuration) :
         systems = []
@@ -265,4 +266,4 @@ class Sorter :
                             self.logger.log("    ERROR "+rom+" should be exported for "+key)
                             
         if foundErrors is False :
-            self.logger.log("S'all good man")
+            self.logger.log("\nS'all good man")

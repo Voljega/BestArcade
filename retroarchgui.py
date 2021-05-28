@@ -11,11 +11,12 @@ import wckToolTips
 
 class RetroarchGUI():
     
-    def __init__(self,rootFrame,scriptDir,logger,mummy) :
+    def __init__(self,rootFrame,scriptDir,logger,mummy,hardware) :
         self.tabFrame = rootFrame
         self.scriptDir = scriptDir
         self.logger = logger
         self.mummy = mummy
+        self.hardware = hardware
         self.configuration = conf.loadConf(os.path.join(self.scriptDir,utils.confDir,utils.getConfFilename('retroarch')))
         self.logger.log('Loaded '+utils.getConfFilename('retroarch'))            
         self.guiVars = dict()
@@ -134,7 +135,6 @@ class RetroarchGUI():
         self.preferedSetComboBox = ttk.Combobox(self.parametersFrame, state="readonly", textvariable=self.guiVars['preferedSet'])
         self.preferedSetComboBox.grid(column=1,row=5, sticky="W",pady=5,padx=5)
         self.preferedSetValues = Sorter.setKeys.copy()
-        self.preferedSetValues.append('')
         self.preferedSetComboBox['values'] = self.preferedSetValues
         self.guiVars['usePreferedSetForGenre'] = Tk.IntVar()
         self.guiVars['usePreferedSetForGenre'].set(self.configuration['usePreferedSetForGenre'])
@@ -397,7 +397,7 @@ class RetroarchGUI():
             self.proceedButton['state'] = 'disabled'
             self.mummy.disableOtherTabs('retroarch')
             self.logger.log('\n<--------- Starting retroarch Process --------->')
-            sorter = Sorter(self.configuration,self.scriptDir,self.logger,utils.getBioses('retroarch'))
+            sorter = Sorter(self.configuration,self.scriptDir,self.logger,utils.getBioses('retroarch'),self.hardware)
             _thread.start_new(sorter.process,())
 
 

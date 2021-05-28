@@ -67,9 +67,9 @@ class GUI():
         self.retroarchFrame = Tk.Frame(self.notebook,padx=10,pady=5)
         self.retroarchFrame.grid(column=0,row=0,sticky="EW",pady=5)
         self.retroarchFrame.grid_columnconfigure(0, weight=1)
-        self.notebook.add(self.retroarchFrame, text='Retroarch',sticky="EW")
+        self.notebook.add(self.retroarchFrame, text='Retroarch-pi3',sticky="EW")
         self.notebook.select(self.retroarchFrame)
-        retroarchGUI = RetroarchGUI(self.retroarchFrame,self.scriptDir,self.logger, self)
+        retroarchGUI = RetroarchGUI(self.retroarchFrame,self.scriptDir,self.logger, self, 'pi3')
         retroarchGUI.draw()
         
         # CUSTOM TAB
