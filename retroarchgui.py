@@ -1,4 +1,5 @@
-import conf, utils
+import conf
+import utils
 import tkinter as Tk
 from tkinter import ttk, messagebox
 import os.path, shutil

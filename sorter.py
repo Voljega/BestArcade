@@ -186,57 +186,64 @@ class Sorter:
                     if os.path.exists(setBios):
                         utils.writeGamelistHiddenEntry(gamelists[setKey], bios, genre, useGenreSubFolder)
 
-            for game in sorted(self.favorites[genre]):
-                audit = game + " -> "
-                scores = dict()
-                testForGame = allTests[game] if game in allTests else None
+            for favs in sorted(self.favorites[genre]):
+                # needed to handle multi names games
+                if ';' in favs:
+                    games = favs.split(';')
+                else:
+                    games = [favs]
 
-                for setKey in self.setKeys:
-                    scores[setKey] = self.computeScore(setKey, self.configuration[setKey], game,
-                                                       testForGame) if setKey in self.usingSystems else -2
+                for game in games:
+                    audit = game + " -> "
+                    scores = dict()
+                    testForGame = allTests[game] if game in allTests else None
 
-                audit = audit + " SCORES: " + str(scores[self.fbneoKey]) + " " + str(
-                    scores[self.mame2003Key]) + " " + str(scores[self.mame2003plusKey]) + " " + str(
-                    scores[self.mame2010Key]) + " ,"
-                scoreSheet.write('%s;%i;%i;%i;%i\n' % (game, scores[self.fbneoKey], scores[self.mame2003Key],
-                                                       scores[self.mame2003plusKey], scores[self.mame2010Key]))
+                    for setKey in self.setKeys:
+                        scores[setKey] = self.computeScore(setKey, self.configuration[setKey], game,
+                                                           testForGame) if setKey in self.usingSystems else -2
 
-                selected = []
-                for setKey in self.usingSystems:
-                    selected.append(setKey) if self.keepSet(keepNotTested, usePreferedSetForGenre,
-                                                            self.configuration['exclusionType'], keepLevel, scores,
-                                                            setKey, genre, selected) else None
+                    audit = audit + " SCORES: " + str(scores[self.fbneoKey]) + " " + str(
+                        scores[self.mame2003Key]) + " " + str(scores[self.mame2003plusKey]) + " " + str(
+                        scores[self.mame2010Key]) + " ,"
+                    scoreSheet.write('%s;%i;%i;%i;%i\n' % (game, scores[self.fbneoKey], scores[self.mame2003Key],
+                                                           scores[self.mame2003plusKey], scores[self.mame2010Key]))
 
-                audit = audit + " SELECTED: " + str(selected)
+                    selected = []
+                    for setKey in self.usingSystems:
+                        selected.append(setKey) if self.keepSet(keepNotTested, usePreferedSetForGenre,
+                                                                self.configuration['exclusionType'], keepLevel, scores,
+                                                                setKey, genre, selected) else None
 
-                for setKey in self.usingSystems:
-                    setRom = os.path.join(self.configuration[setKey], game + ".zip")
-                    setCHD = os.path.join(self.configuration[setKey], game)
-                    image = self.configuration['imgNameFormat'].replace('{rom}', game)
-                    if setKey in selected:
-                        #                        TODO aliases should be handled here
-                        utils.setFileCopy(self.configuration['exportDir'], setRom, genre, game, setKey,
-                                          useGenreSubFolder, dryRun)
-                        utils.setCHDCopy(self.configuration['exportDir'], setCHD, genre, game, setKey,
-                                         useGenreSubFolder, dryRun)
-                        utils.writeCSV(CSVs[setKey], game, scores[setKey], genre, dats[setKey], testForGame, setKey)
-                        testStatus = self.getStatus(testForGame[setKey].status) \
-                            if testForGame is not None and setKey in testForGame else 'UNTESTED &amp; FRESHLY ADDED'
-                        utils.writeGamelistEntry(gamelists[setKey], game, image, dats[setKey], genre, useGenreSubFolder,
-                                                 testForGame, setKey, testStatus)
-                        roots[setKey].append(dats[setKey][game].node) if game in dats[setKey] else None
-                        if scrapeImages:
-                            utils.setImageCopy(self.configuration['exportDir'], self.configuration['images'], image,
-                                               setKey, dryRun)
+                    audit = audit + " SELECTED: " + str(selected)
 
-                if len(selected) == 0:
-                    notInAnySet.append(game)
-                elif len(selected) == 1:
-                    if selected[0] not in onlyInOneSet:
-                        onlyInOneSet[selected[0]] = []
-                    onlyInOneSet[selected[0]].append(game)
+                    for setKey in self.usingSystems:
+                        setRom = os.path.join(self.configuration[setKey], game + ".zip")
+                        setCHD = os.path.join(self.configuration[setKey], game)
+                        image = self.configuration['imgNameFormat'].replace('{rom}', game)
+                        if setKey in selected:
+                            #                        TODO aliases should be handled here
+                            utils.setFileCopy(self.configuration['exportDir'], setRom, genre, game, setKey,
+                                              useGenreSubFolder, dryRun)
+                            utils.setCHDCopy(self.configuration['exportDir'], setCHD, genre, game, setKey,
+                                             useGenreSubFolder, dryRun)
+                            utils.writeCSV(CSVs[setKey], game, scores[setKey], genre, dats[setKey], testForGame, setKey)
+                            testStatus = self.getStatus(testForGame[setKey].status) \
+                                if testForGame is not None and setKey in testForGame else 'UNTESTED &amp; FRESHLY ADDED'
+                            utils.writeGamelistEntry(gamelists[setKey], game, image, dats[setKey], genre, useGenreSubFolder,
+                                                     testForGame, setKey, testStatus)
+                            roots[setKey].append(dats[setKey][game].node) if game in dats[setKey] else None
+                            if scrapeImages:
+                                utils.setImageCopy(self.configuration['exportDir'], self.configuration['images'], image,
+                                                   setKey, dryRun)
 
-                self.logger.log("    " + audit)
+                    if len(selected) == 0:
+                        notInAnySet.append(game)
+                    elif len(selected) == 1:
+                        if selected[0] not in onlyInOneSet:
+                            onlyInOneSet[selected[0]] = []
+                        onlyInOneSet[selected[0]].append(game)
+
+                    self.logger.log("    " + audit)
 
         # writing and closing everything
         for setKey in self.usingSystems:
@@ -265,7 +272,7 @@ class Sorter:
             romNotInFav = True
             for genre in self.favorites:
                 for name in self.favorites[genre]:
-                    if name == rom:
+                    if name == rom or (rom + ';') in name or (';' + rom) in name:
                         romNotInFav = False
 
             if romNotInFav:

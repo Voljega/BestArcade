@@ -32,7 +32,7 @@ class BasicSorter:
         self.usingSystems = self.useSystems(self.configuration)
         # create favorites containing fav games
         self.logger.log('\n<--------- Load Favorites Ini Files --------->')
-        self.favorites = fav.loadFasetvs(self.scriptDir, self.setKey + '.ini', self.logger)
+        self.favorites = fav.loadFavs(self.scriptDir, self.setKey + '.ini', self.logger)
         # parse dat files
         self.logger.log('\n<--------- Load ' + self.setKey + ' dat --------->')
         if 'dat' in self.configuration and os.path.exists(self.configuration['dat']):
@@ -99,25 +99,30 @@ class BasicSorter:
                 if os.path.exists(setBios):
                     utils.writeGamelistHiddenEntry(gamelists[self.setKey], bios, genre, useGenreSubFolder)
 
-            for game in sorted(self.favorites[genre]):
+            for favs in sorted(self.favorites[genre]):
+                # needed to handle multi names games
+                if ';' in favs:
+                    games = favs.split(';')
+                else:
+                    games = [favs]
 
-                setRom = os.path.join(self.configuration[self.setKey], game + ".zip")
-                setCHD = os.path.join(self.configuration[self.setKey], game)
-                image = self.configuration['imgNameFormat'].replace('{rom}', game)
-                # TODO aliases should be handled here
-                utils.setFileCopy(self.configuration['exportDir'], setRom, genre, game, self.setKey, useGenreSubFolder,
-                                  dryRun)
-                utils.setCHDCopy(self.configuration['exportDir'], setCHD, genre, game, self.setKey, useGenreSubFolder,
-                                 dryRun)
-                utils.writeCSV(CSVs[self.setKey], game, None, genre, dats[self.setKey], None, self.setKey)
-                utils.writeGamelistEntry(gamelists[self.setKey], game, image, dats[self.setKey], genre,
-                                         useGenreSubFolder, None, self.setKey, None)
-                roots[self.setKey].append(dats[self.setKey][game].node) if game in dats[self.setKey] else None
-                if scrapeImages:
-                    utils.setImageCopy(self.configuration['exportDir'], self.configuration['images'], image,
-                                       self.setKey, dryRun)
+                for game in games:
+                    setRom = os.path.join(self.configuration[self.setKey], game + ".zip")
+                    setCHD = os.path.join(self.configuration[self.setKey], game)
+                    image = self.configuration['imgNameFormat'].replace('{rom}', game)
+                    utils.setFileCopy(self.configuration['exportDir'], setRom, genre, game, self.setKey, useGenreSubFolder,
+                                      dryRun)
+                    utils.setCHDCopy(self.configuration['exportDir'], setCHD, genre, game, self.setKey, useGenreSubFolder,
+                                     dryRun)
+                    utils.writeCSV(CSVs[self.setKey], game, None, genre, dats[self.setKey], None, self.setKey)
+                    utils.writeGamelistEntry(gamelists[self.setKey], game, image, dats[self.setKey], genre,
+                                             useGenreSubFolder, None, self.setKey, None)
+                    roots[self.setKey].append(dats[self.setKey][game].node) if game in dats[self.setKey] else None
+                    if scrapeImages:
+                        utils.setImageCopy(self.configuration['exportDir'], self.configuration['images'], image,
+                                           self.setKey, dryRun)
 
-                self.logger.log(setRom)
+                    self.logger.log(setRom)
 
         # writing and closing everything        
         treeSet = etree.ElementTree(roots[self.setKey])

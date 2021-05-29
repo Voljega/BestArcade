@@ -23,10 +23,11 @@ def loadFavs(scriptDir, fileName, logger):
     favorites = dict()
     parseSetFile(os.path.join(scriptDir, utils.dataDir, fileName), favorites)
 
-    logger.log('Nb Genre : ' + str(len(favorites)))
+    logger.log('Nb Genre : ' + str(len(favorites) - 1))
     sumGames = 0
     for key in favorites.keys():
-        sumGames = sumGames + len(favorites[key])
+        if key != '[BIOSES]':
+            sumGames = sumGames + len(favorites[key])
 
     logger.log('Nb Games : ' + str(sumGames))
     logger.log('Nb Bios : ' + str(len(favorites['[BIOSES]'])))
