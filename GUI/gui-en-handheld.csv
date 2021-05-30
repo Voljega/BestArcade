@@ -1,8 +1,12 @@
 id;label;help
 exportDir;Export directory;Path where your handhelds set will be created (original set will be left untouched)
+selectExportDir;Select;Select export folder
 handheld;Mame set folder;Path to your mame set
+selectRomsetDir;Select;Select mame set folder
 dat;Mame dat;Path to your mame dat, leave empty if you do not have it
+selectDat;Select;Select dat file
 images;Images folder;Paths to your images set, leave empty if you do not have it
+selectImages;Select;Select your images folder
 imgNameFormat;Image filename format;Format of the image filename
 dryRun;Dry run;Check this to generate only dat and CSV files, no roms will be copied
 genreSubFolders;Use genre subfolders;Check to use genre subfolders for roms

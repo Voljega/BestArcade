@@ -16,26 +16,32 @@ class Sorter:
     setKeys = [fbneoKey, mame2003Key, mame2003plusKey, mame2010Key]
     bigSetFile = r"custom.ini"
 
-    def __init__(self, configuration, scriptDir, logger, hardware):
+    def __init__(self, configuration, scriptDir, postProcess, logger, hardware):
         self.configuration = configuration
         self.scriptDir = scriptDir
         self.bioses = []
         self.logger = logger
         self.hardware = hardware
+        self.postProcess = postProcess
+
+        # Init clas vars
+        self.usingSystems = None
+        self.favorites = None
+        self.allTests = None
+        self.dats = None
 
     def process(self):
-        self.prepare()
+        self.__prepare()
         # create bestarcade romsets
         self.logger.log('\n<--------- Create Sets --------->')
-        self.createSets(self.allTests, self.dats)
+        self.__createSets(self.allTests, self.dats)
         self.logger.log("\n<--------- Detecting errors ----------->")
-        self.checkErrors(self.allTests, self.configuration['keepLevel'])
+        self.__checkErrors(self.allTests, self.configuration['keepLevel'])
         self.logger.log('\n<--------- Process finished ----------->')
+        self.postProcess()
 
-    #            input('\n             (Press Enter)              ')
-
-    def prepare(self):
-        self.usingSystems = self.useSystems(self.configuration)
+    def __prepare(self):
+        self.usingSystems = self.__useSystems(self.configuration)
         # create favorites containing fav games
         self.logger.log('\n<--------- Load Favorites Ini Files --------->')
         self.favorites = fav.loadFavs(self.scriptDir, Sorter.bigSetFile, self.logger)
@@ -50,7 +56,7 @@ class Sorter:
         self.allTests = test.loadTests(Sorter.setKeys, os.path.join(self.scriptDir, utils.dataDir, self.hardware),
                                        self.usingSystems, self.logger)
 
-    def useSystems(self, configuration):
+    def __useSystems(self, configuration):
         systems = []
         for setKey in self.setKeys:
             systems.append(setKey) if os.path.exists(configuration[setKey]) else None
@@ -58,7 +64,7 @@ class Sorter:
         return systems
 
     @staticmethod
-    def computeScore(setKey, setDir, game, test):
+    def __computeScore(setKey, setDir, game, test):
         score = test[setKey].status if (test is not None and setKey in test) else -2
 
         if score == -2 and os.path.exists(os.path.join(setDir, game + ".zip")):
@@ -66,10 +72,10 @@ class Sorter:
 
         return score
 
-    def isPreferedSetForGenre(self, genre, keySet):
+    def __isPreferedSetForGenre(self, genre, keySet):
         return self.configuration[genre + 'PreferedSet'] == keySet
 
-    def keepSet(self, keepNotTested, usePreferedSetForGenre, exclusionType, keepLevel, scores, key, genre, keep):
+    def __keepSet(self, keepNotTested, usePreferedSetForGenre, exclusionType, keepLevel, scores, key, genre, keep):
         maxScore = max(scores.values())
         if keepNotTested and scores[key] == -1:
             return True
@@ -82,7 +88,7 @@ class Sorter:
             genreTest = genre.replace('[', '')
             genreTest = genreTest.replace(']', '')
             if usePreferedSetForGenre and self.configuration[genreTest + 'PreferedSet']:  # check not empty
-                if self.isPreferedSetForGenre(genreTest, key):
+                if self.__isPreferedSetForGenre(genreTest, key):
                     return scores[key] >= keepLevel
                 else:
                     return False
@@ -92,7 +98,8 @@ class Sorter:
                 elif self.fbneoKey not in keep and self.mame2010Key not in keep:  # check not already in keep
                     return scores[key] >= keepLevel
 
-    def getStatus(self, status):
+    @staticmethod
+    def getStatus(status):
         if status == -1:
             return 'UNTESTED'
         elif status == 0:
@@ -106,9 +113,8 @@ class Sorter:
         else:
             return 'UNTESTED &amp; FRESHLY ADDED'
 
-    getStatus = classmethod(getStatus)
-
-    def getIntStatus(self, status):
+    @staticmethod
+    def getIntStatus(status):
         if status == 'UNTESTED':
             return -1
         elif status == 'NON WORKING':
@@ -122,9 +128,7 @@ class Sorter:
         else:
             return -1
 
-    getIntStatus = classmethod(getIntStatus)
-
-    def createSets(self, allTests, dats):
+    def __createSets(self, allTests, dats):
 
         self.logger.log('Creating or cleaning output directory ' + self.configuration['exportDir'])
         if os.path.exists(self.configuration['exportDir']):
@@ -199,8 +203,8 @@ class Sorter:
                     testForGame = allTests[game] if game in allTests else None
 
                     for setKey in self.setKeys:
-                        scores[setKey] = self.computeScore(setKey, self.configuration[setKey], game,
-                                                           testForGame) if setKey in self.usingSystems else -2
+                        scores[setKey] = self.__computeScore(setKey, self.configuration[setKey], game,
+                                                             testForGame) if setKey in self.usingSystems else -2
 
                     audit = audit + " SCORES: " + str(scores[self.fbneoKey]) + " " + str(
                         scores[self.mame2003Key]) + " " + str(scores[self.mame2003plusKey]) + " " + str(
@@ -210,9 +214,9 @@ class Sorter:
 
                     selected = []
                     for setKey in self.usingSystems:
-                        selected.append(setKey) if self.keepSet(keepNotTested, usePreferedSetForGenre,
-                                                                self.configuration['exclusionType'], keepLevel, scores,
-                                                                setKey, genre, selected) else None
+                        selected.append(setKey) if self.__keepSet(keepNotTested, usePreferedSetForGenre,
+                                                                  self.configuration['exclusionType'], keepLevel, scores,
+                                                                  setKey, genre, selected) else None
 
                     audit = audit + " SELECTED: " + str(selected)
 
@@ -221,7 +225,6 @@ class Sorter:
                         setCHD = os.path.join(self.configuration[setKey], game)
                         image = self.configuration['imgNameFormat'].replace('{rom}', game)
                         if setKey in selected:
-                            #                        TODO aliases should be handled here
                             utils.setFileCopy(self.configuration['exportDir'], setRom, genre, game, setKey,
                                               useGenreSubFolder, dryRun)
                             utils.setCHDCopy(self.configuration['exportDir'], setCHD, genre, game, setKey,
@@ -229,8 +232,8 @@ class Sorter:
                             utils.writeCSV(CSVs[setKey], game, scores[setKey], genre, dats[setKey], testForGame, setKey)
                             testStatus = self.getStatus(testForGame[setKey].status) \
                                 if testForGame is not None and setKey in testForGame else 'UNTESTED &amp; FRESHLY ADDED'
-                            utils.writeGamelistEntry(gamelists[setKey], game, image, dats[setKey], genre, useGenreSubFolder,
-                                                     testForGame, setKey, testStatus)
+                            utils.writeGamelistEntry(gamelists[setKey], game, image, dats[setKey], genre,
+                                                     useGenreSubFolder, testForGame, setKey, testStatus)
                             roots[setKey].append(dats[setKey][game].node) if game in dats[setKey] else None
                             if scrapeImages:
                                 utils.setImageCopy(self.configuration['exportDir'], self.configuration['images'], image,
@@ -256,10 +259,10 @@ class Sorter:
         scoreSheet.close()
 
         self.logger.log("\n<------------------ RESULTS ------------------>")
-        self.logger.log("NOT FOUND IN ANY SET : " + str(len(notInAnySet)))
-        self.logger.logList("", notInAnySet)
+        self.logger.log("NOT FOUND IN ANY SET : " + str(len(notInAnySet)), self.logger.ERROR)
+        self.logger.logList("", notInAnySet, self.logger.ERROR)
 
-    def checkErrors(self, inputTests, keepLevel):
+    def __checkErrors(self, inputTests, keepLevel):
         self.logger.log("Loading Output Tests")
         outputTests = test.loadTests(Sorter.setKeys, os.path.join(self.configuration['exportDir']), self.usingSystems,
                                      self.logger)
@@ -277,9 +280,9 @@ class Sorter:
 
             if romNotInFav:
                 if foundErrors is False:
-                    self.logger.log("Possible errors")
+                    self.logger.log("Possible errors", self.logger.ERROR)
                     foundErrors = True
-                self.logger.log("    Orphan rom %s not in favs" % rom)
+                self.logger.log("    Orphan rom %s not in favs" % rom, self.logger.ERROR)
 
                 # at least higher than keepLevel in one set
             higherThanKeepLevel = True
@@ -290,16 +293,17 @@ class Sorter:
                 if rom not in outputTests:
                     if not rom.startswith('mp_') and not rom.startswith('nss_'):
                         if foundErrors is False:
-                            self.logger.log("Possible errors")
+                            self.logger.log("Possible errors", self.logger.ERROR)
                             foundErrors = True
-                        self.logger.log("    ERROR " + rom + " not found in ouput csvs, but found in input")
+                        self.logger.log("    ERROR " + rom + " not found in ouput csvs, but found in input",
+                                        self.logger.ERROR)
                 else:
                     for key in inputTests[rom]:
                         if key not in outputTests[rom]:
                             if foundErrors is False:
-                                self.logger.log("Possible errors")
+                                self.logger.log("Possible errors", self.logger.ERROR)
                                 foundErrors = True
-                            self.logger.log("    ERROR " + rom + " should be exported for " + key)
+                            self.logger.log("    ERROR " + rom + " should be exported for " + key, self.logger.ERROR)
 
         if foundErrors is False:
             self.logger.log("\nS'all good man")

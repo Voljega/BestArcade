@@ -2,20 +2,29 @@ import queue
 
 
 class Logger:
+    ERROR = 'ERROR'
+    WARNING = 'WARNING'
+    INFO = 'INFO'
+    SUCCESS = 'SUCCESS'
+    UNKNOWN = 'UNKNOWN'
 
     def __init__(self):
         self.log_queue = queue.Queue()
 
-    def printDict(self, dictList):
+    # Print dictionary to logger
+    def printDict(self, dictList, level=INFO):
         for key in dictList:
-            self.log(key + ' : ' + dictList[key])
+            self.log(key + ' : ' + dictList[key], level)
 
-    def logList(self, desc, list):
-        msg = desc + " :"
-        for key in list:
-            msg = msg + " " + key
-        self.log(msg)
+    # Print list to logger
+    def logList(self, desc, msgList, level=INFO):
+        msg = desc + ": " + ' '.join(msgList)
+        self.log(msg, level)
 
-    def log(self, msg):
-        self.log_queue.put(msg.rstrip('\n'))
-        print(msg.rstrip('\n'))
+    # Print one line msg to logger
+    def log(self, msg, level=INFO, replaceLine=False):
+        self.log_queue.put([level, replaceLine, msg.rstrip('\n').strip('\r')])
+        if not replaceLine:
+            print(msg.rstrip('\n'))
+        else:
+            print(msg.rstrip('\n'), end='')

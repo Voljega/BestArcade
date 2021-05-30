@@ -15,6 +15,7 @@ class GUI:
 
         self.window = Tk.Tk()
         self.window.resizable(False, False)
+        self.window.geometry('+50+25')
         self.startFontSize = self.DEFAULT_FONT_SIZE
 
         if platform.system() == 'Windows':
@@ -23,18 +24,18 @@ class GUI:
             # Handle tkinter font size bug on MacOS
             self.startFontSize = self.MACOS_DEFAULT_FONT_SIZE
 
-        self.setFontSize(self.startFontSize)
+        self.__setFontSize(self.startFontSize)
         self.window.title(title)
         self.logger = logger
 
     def draw(self):
         self.root = Tk.Frame(self.window, padx=10, pady=5)
         self.root.grid(column=0, row=0)
-        self.drawSliderFrame()
-        self.drawMainframe()
+        self.__drawSliderFrame()
+        self.__drawMainframe()
         self.window.mainloop()
 
-    def setFontSize(self, value):
+    def __setFontSize(self, value):
         default_font = Font.nametofont("TkDefaultFont")
         default_font.configure(size=value)
         text_font = Font.nametofont("TkTextFont")
@@ -42,19 +43,19 @@ class GUI:
         fixed_font = Font.nametofont("TkFixedFont")
         fixed_font.configure(size=value)
 
-    def drawSliderFrame(self):
+    def __drawSliderFrame(self):
         self.sliderFrame = Tk.Frame(self.root, padx=10, pady=0)
         self.sliderFrame.grid(column=0, row=0, sticky="EW", pady=0)
         self.sliderFrame.grid_columnconfigure(0, weight=1)
         self.slider = Tk.Scale(self.sliderFrame, from_=4, to=12, orient=Tk.HORIZONTAL, showvalue=0,
-                               command=self.setFontSize)
+                               command=self.__setFontSize)
         wckToolTips.register(self.slider, 'Window Size')  # TODO internationalization
         self.slider.grid(column=0, row=0, sticky="W", pady=0)
         self.slider.set(self.startFontSize)
 
     # MAINFRAME, NOTEBOOK & TABS
 
-    def drawMainframe(self):
+    def __drawMainframe(self):
         self.mainFrame = Tk.Frame(self.root, padx=10, pady=0)
         self.mainFrame.grid(column=0, row=1, sticky="EW", pady=5)
         self.mainFrame.grid_columnconfigure(0, weight=1)
@@ -135,103 +136,115 @@ class GUI:
         handheldGUI.draw()
 
         self.notebook.select(self.retroarchFrame)
-        self.drawConsole()
+        self.__drawConsole()
 
-    def disableOtherTabs(self, setKey):
+    def disableOtherTabs(self, setKey, disable=True):
+        state = 'disabled' if disable else 'normal'
         if setKey == 'retroarch':
-            self.notebook.tab(self.customFrame, state="disabled")
-            self.notebook.tab(self.neogeoaesFrame, state="disabled")
-            self.notebook.tab(self.model2Frame, state="disabled")
-            self.notebook.tab(self.model3Frame, state="disabled")
-            self.notebook.tab(self.atomiswaveFrame, state="disabled")
-            self.notebook.tab(self.naomiFrame, state="disabled")
-            self.notebook.tab(self.handheldFrame, state="disabled")
+            self.notebook.tab(self.customFrame, state=state)
+            self.notebook.tab(self.neogeoaesFrame, state=state)
+            self.notebook.tab(self.model2Frame, state=state)
+            self.notebook.tab(self.model3Frame, state=state)
+            self.notebook.tab(self.atomiswaveFrame, state=state)
+            self.notebook.tab(self.naomiFrame, state=state)
+            self.notebook.tab(self.handheldFrame, state=state)
         elif setKey == 'custom':
-            self.notebook.tab(self.retroarchFrame, state="disabled")
-            self.notebook.tab(self.neogeoaesFrame, state="disabled")
-            self.notebook.tab(self.model2Frame, state="disabled")
-            self.notebook.tab(self.model3Frame, state="disabled")
-            self.notebook.tab(self.atomiswaveFrame, state="disabled")
-            self.notebook.tab(self.naomiFrame, state="disabled")
-            self.notebook.tab(self.handheldFrame, state="disabled")
+            self.notebook.tab(self.retroarchFrame, state=state)
+            self.notebook.tab(self.neogeoaesFrame, state=state)
+            self.notebook.tab(self.model2Frame, state=state)
+            self.notebook.tab(self.model3Frame, state=state)
+            self.notebook.tab(self.atomiswaveFrame, state=state)
+            self.notebook.tab(self.naomiFrame, state=state)
+            self.notebook.tab(self.handheldFrame, state=state)
         elif setKey == 'neogeoaes':
-            self.notebook.tab(self.retroarchFrame, state="disabled")
-            self.notebook.tab(self.customFrame, state="disabled")
-            self.notebook.tab(self.model2Frame, state="disabled")
-            self.notebook.tab(self.model3Frame, state="disabled")
-            self.notebook.tab(self.atomiswaveFrame, state="disabled")
-            self.notebook.tab(self.naomiFrame, state="disabled")
-            self.notebook.tab(self.handheldFrame, state="disabled")
+            self.notebook.tab(self.retroarchFrame, state=state)
+            self.notebook.tab(self.customFrame, state=state)
+            self.notebook.tab(self.model2Frame, state=state)
+            self.notebook.tab(self.model3Frame, state=state)
+            self.notebook.tab(self.atomiswaveFrame, state=state)
+            self.notebook.tab(self.naomiFrame, state=state)
+            self.notebook.tab(self.handheldFrame, state=state)
         elif setKey == 'model2':
-            self.notebook.tab(self.retroarchFrame, state="disabled")
-            self.notebook.tab(self.customFrame, state="disabled")
-            self.notebook.tab(self.neogeoaesFrame, state="disabled")
-            self.notebook.tab(self.model3Frame, state="disabled")
-            self.notebook.tab(self.atomiswaveFrame, state="disabled")
-            self.notebook.tab(self.naomiFrame, state="disabled")
-            self.notebook.tab(self.handheldFrame, state="disabled")
+            self.notebook.tab(self.retroarchFrame, state=state)
+            self.notebook.tab(self.customFrame, state=state)
+            self.notebook.tab(self.neogeoaesFrame, state=state)
+            self.notebook.tab(self.model3Frame, state=state)
+            self.notebook.tab(self.atomiswaveFrame, state=state)
+            self.notebook.tab(self.naomiFrame, state=state)
+            self.notebook.tab(self.handheldFrame, state=state)
         elif setKey == 'model3':
-            self.notebook.tab(self.retroarchFrame, state="disabled")
-            self.notebook.tab(self.customFrame, state="disabled")
-            self.notebook.tab(self.neogeoaesFrame, state="disabled")
-            self.notebook.tab(self.model2Frame, state="disabled")
-            self.notebook.tab(self.atomiswaveFrame, state="disabled")
-            self.notebook.tab(self.naomiFrame, state="disabled")
-            self.notebook.tab(self.handheldFrame, state="disabled")
+            self.notebook.tab(self.retroarchFrame, state=state)
+            self.notebook.tab(self.customFrame, state=state)
+            self.notebook.tab(self.neogeoaesFrame, state=state)
+            self.notebook.tab(self.model2Frame, state=state)
+            self.notebook.tab(self.atomiswaveFrame, state=state)
+            self.notebook.tab(self.naomiFrame, state=state)
+            self.notebook.tab(self.handheldFrame, state=state)
         elif setKey == 'atomiswave':
-            self.notebook.tab(self.retroarchFrame, state="disabled")
-            self.notebook.tab(self.customFrame, state="disabled")
-            self.notebook.tab(self.neogeoaesFrame, state="disabled")
-            self.notebook.tab(self.model2Frame, state="disabled")
-            self.notebook.tab(self.model3Frame, state="disabled")
-            self.notebook.tab(self.naomiFrame, state="disabled")
-            self.notebook.tab(self.handheldFrame, state="disabled")
+            self.notebook.tab(self.retroarchFrame, state=state)
+            self.notebook.tab(self.customFrame, state=state)
+            self.notebook.tab(self.neogeoaesFrame, state=state)
+            self.notebook.tab(self.model2Frame, state=state)
+            self.notebook.tab(self.model3Frame, state=state)
+            self.notebook.tab(self.naomiFrame, state=state)
+            self.notebook.tab(self.handheldFrame, state=state)
         elif setKey == 'naomi':
-            self.notebook.tab(self.retroarchFrame, state="disabled")
-            self.notebook.tab(self.customFrame, state="disabled")
-            self.notebook.tab(self.neogeoaesFrame, state="disabled")
-            self.notebook.tab(self.model2Frame, state="disabled")
-            self.notebook.tab(self.model3Frame, state="disabled")
-            self.notebook.tab(self.atomiswaveFrame, state="disabled")
-            self.notebook.tab(self.handheldFrame, state="disabled")
+            self.notebook.tab(self.retroarchFrame, state=state)
+            self.notebook.tab(self.customFrame, state=state)
+            self.notebook.tab(self.neogeoaesFrame, state=state)
+            self.notebook.tab(self.model2Frame, state=state)
+            self.notebook.tab(self.model3Frame, state=state)
+            self.notebook.tab(self.atomiswaveFrame, state=state)
+            self.notebook.tab(self.handheldFrame, state=state)
         elif setKey == 'handheld':
-            self.notebook.tab(self.retroarchFrame, state="disabled")
-            self.notebook.tab(self.customFrame, state="disabled")
-            self.notebook.tab(self.neogeoaesFrame, state="disabled")
-            self.notebook.tab(self.model2Frame, state="disabled")
-            self.notebook.tab(self.model3Frame, state="disabled")
-            self.notebook.tab(self.atomiswaveFrame, state="disabled")
-            self.notebook.tab(self.naomiFrame, state="disabled")
+            self.notebook.tab(self.retroarchFrame, state=state)
+            self.notebook.tab(self.customFrame, state=state)
+            self.notebook.tab(self.neogeoaesFrame, state=state)
+            self.notebook.tab(self.model2Frame, state=state)
+            self.notebook.tab(self.model3Frame, state=state)
+            self.notebook.tab(self.atomiswaveFrame, state=state)
+            self.notebook.tab(self.naomiFrame, state=state)
 
     # CONSOLE STUFF
 
-    def drawConsole(self):
+    # Console Frame
+    def __drawConsole(self):
         self.consoleFrame = Tk.Frame(self.root, padx=10)
         self.consoleFrame.grid(column=0, row=5, sticky="EW", pady=5)
         self.consoleFrame.grid_columnconfigure(0, weight=1)
         self.logTest = Tk.Text(self.consoleFrame, height=15, state='disabled', wrap='word', background='black',
                                foreground='yellow')
         self.logTest.grid(column=0, row=0, sticky="EW")
+        self.logTest.tag_config('ERROR', background='black', foreground='red')
+        self.logTest.tag_config('WARNING', background='black', foreground='orange')
+        self.logTest.tag_config('INFO', background='black', foreground='yellow')
+        self.logTest.tag_config('SUCCESS', background='black', foreground='green2')
+        self.logTest.tag_config('UNKNOWN', background='black', foreground='deep sky blue')
         self.scrollbar = Tk.Scrollbar(self.consoleFrame, orient=Tk.VERTICAL, command=self.logTest.yview)
         self.scrollbar.grid(column=1, row=0, sticky=(Tk.N, Tk.S))
         self.logTest['yscrollcommand'] = self.scrollbar.set
         self.logTest.after(10, self.updateConsoleFromQueue)
 
+    # Grabs messages from logger queue
     def updateConsoleFromQueue(self):
         while not self.logger.log_queue.empty():
             line = self.logger.log_queue.get()
-            self.writeToConsole(line)
-            # TODO ?
+            self.__writeToConsole(line)
             self.root.update_idletasks()
         self.logTest.after(10, self.updateConsoleFromQueue)
 
-    def writeToConsole(self, msg):
+    def __writeToConsole(self, msg):
         numlines = self.logTest.index('end - 1 line').split('.')[0]
         self.logTest['state'] = 'normal'
         if numlines == 24:
             self.logTest.delete(1.0, 2.0)
+        # previousLine = self.logTest.get('end-1c linestart', 'end-1c')
+        # # handle progress bar
+        # if msg[1] and previousLine.startswith('    [') and previousLine.endswith(']'):
+        #     self.logTest.delete('end-1c linestart', 'end')
+
         if self.logTest.index('end-1c') != '1.0':
             self.logTest.insert('end', '\n')
-        self.logTest.insert('end', msg)
+        self.logTest.insert('end', msg[2], msg[0])
         self.logTest.see(Tk.END)
         self.logTest['state'] = 'disabled'

@@ -10,26 +10,26 @@ import dat
 
 class BasicSorter:
 
-    def __init__(self, configuration, scriptDir, logger, setKey):
+    def __init__(self, configuration, scriptDir, postProcess, logger, setKey):
         self.configuration = configuration
         self.scriptDir = scriptDir
         self.bioses = []
         self.logger = logger
         self.setKey = setKey
+        self.postProcess = postProcess
 
     def process(self):
-        self.prepare()
+        self.__prepare()
         # create bestarcade romsets
         self.logger.log('\n<--------- Create Sets --------->')
-        self.createSets(self.dats)
+        self.__createSets(self.dats)
         self.logger.log("\n<--------- Detecting errors ----------->")
-        self.checkErrors()
+        self.__checkErrors()
         self.logger.log('\n<--------- Process finished ----------->')
+        self.postProcess()
 
-    #            input('\n             (Press Enter)              ')
-
-    def prepare(self):
-        self.usingSystems = self.useSystems(self.configuration)
+    def __prepare(self):
+        self.usingSystems = self.__useSystems(self.configuration)
         # create favorites containing fav games
         self.logger.log('\n<--------- Load Favorites Ini Files --------->')
         self.favorites = fav.loadFavs(self.scriptDir, self.setKey + '.ini', self.logger)
@@ -41,13 +41,13 @@ class BasicSorter:
             datsDict = dict(zip([self.setKey], [self.setKey + '.dat']))
         self.dats = dat.parseDats(self.scriptDir, utils.dataDir, datsDict, self.usingSystems, self.logger)
 
-    def useSystems(self, configuration):
+    def __useSystems(self, configuration):
         systems = []
         systems.append(self.setKey) if os.path.exists(configuration[self.setKey]) else None
         self.logger.logList('Using systems', systems)
         return systems
 
-    def createSets(self, dats):
+    def __createSets(self, dats):
 
         self.logger.log('Creating or cleaning output directory ' + self.configuration['exportDir'])
         if os.path.exists(self.configuration['exportDir']):
@@ -110,10 +110,10 @@ class BasicSorter:
                     setRom = os.path.join(self.configuration[self.setKey], game + ".zip")
                     setCHD = os.path.join(self.configuration[self.setKey], game)
                     image = self.configuration['imgNameFormat'].replace('{rom}', game)
-                    utils.setFileCopy(self.configuration['exportDir'], setRom, genre, game, self.setKey, useGenreSubFolder,
-                                      dryRun)
-                    utils.setCHDCopy(self.configuration['exportDir'], setCHD, genre, game, self.setKey, useGenreSubFolder,
-                                     dryRun)
+                    utils.setFileCopy(self.configuration['exportDir'], setRom, genre, game,
+                                      self.setKey, useGenreSubFolder, dryRun)
+                    utils.setCHDCopy(self.configuration['exportDir'], setCHD, genre, game,
+                                     self.setKey, useGenreSubFolder, dryRun)
                     utils.writeCSV(CSVs[self.setKey], game, None, genre, dats[self.setKey], None, self.setKey)
                     utils.writeGamelistEntry(gamelists[self.setKey], game, image, dats[self.setKey], genre,
                                              useGenreSubFolder, None, self.setKey, None)
@@ -131,7 +131,7 @@ class BasicSorter:
         CSVs[self.setKey].close()
         gamelist.closeWrite(gamelists[self.setKey])
 
-    def checkErrors(self):
+    def __checkErrors(self):
         foundErrors = False
         useGenreSubFolder = True if self.configuration['genreSubFolders'] == '1' else False
         dryRun = True if self.configuration['dryRun'] == '1' else False
@@ -144,9 +144,9 @@ class BasicSorter:
                         setRom = os.path.join(self.configuration['exportDir'], self.setKey, name + ".zip")
                     if not os.path.exists(setRom):
                         if foundErrors is False:
-                            self.logger.log("Possible errors")
+                            self.logger.log("Possible errors", self.logger.ERROR)
                             foundErrors = True
-                        self.logger.log(setRom + ' is missing in output dir')
+                        self.logger.log(setRom + ' is missing in output dir', self.logger.ERROR)
 
         if foundErrors is False:
             self.logger.log("S'all good man")
