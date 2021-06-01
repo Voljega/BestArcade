@@ -66,9 +66,12 @@ class Sorter:
     @staticmethod
     def __computeScore(setKey, setDir, game, test):
         score = test[setKey].status if (test is not None and setKey in test) else -2
-
+        # if file exists in set but not in test, shoudl return -1
         if score == -2 and os.path.exists(os.path.join(setDir, game + ".zip")):
             score = -1
+        # always return -2 if file doesn't exist in set
+        if not os.path.exists(os.path.join(setDir, game + ".zip")):
+            score = -2
 
         return score
 
@@ -197,7 +200,10 @@ class Sorter:
                 else:
                     games = [favs]
 
+                multiGameFoundInSet = False
                 for game in games:
+                    if 'halleysc' in game or 'raidendx' in game:
+                        print('YO!')
                     audit = game + " -> "
                     scores = dict()
                     testForGame = allTests[game] if game in allTests else None
@@ -225,6 +231,7 @@ class Sorter:
                         setCHD = os.path.join(self.configuration[setKey], game)
                         image = self.configuration['imgNameFormat'].replace('{rom}', game)
                         if setKey in selected:
+                            multiGameFoundInSet = True
                             utils.setFileCopy(self.configuration['exportDir'], setRom, genre, game, setKey,
                                               useGenreSubFolder, dryRun)
                             utils.setCHDCopy(self.configuration['exportDir'], setCHD, genre, game, setKey,
@@ -238,8 +245,8 @@ class Sorter:
                             if scrapeImages:
                                 utils.setImageCopy(self.configuration['exportDir'], self.configuration['images'], image,
                                                    setKey, dryRun)
-
-                    if len(selected) == 0:
+                    # Works only if most recent game is first in line (raidendx;raidndx not the opposite)
+                    if len(selected) == 0 and not multiGameFoundInSet:
                         notInAnySet.append(game)
                     elif len(selected) == 1:
                         if selected[0] not in onlyInOneSet:
@@ -259,8 +266,8 @@ class Sorter:
         scoreSheet.close()
 
         self.logger.log("\n<------------------ RESULTS ------------------>")
-        self.logger.log("NOT FOUND IN ANY SET : " + str(len(notInAnySet)), self.logger.ERROR)
-        self.logger.logList("", notInAnySet, self.logger.ERROR)
+        self.logger.log("NOT FOUND IN ANY SET : " + str(len(notInAnySet)), self.logger.WARNING)
+        self.logger.logList("", notInAnySet, self.logger.WARNING)
 
     def __checkErrors(self, inputTests, keepLevel):
         self.logger.log("Loading Output Tests")
@@ -269,14 +276,21 @@ class Sorter:
         foundErrors = False
         for rom in inputTests.keys():
 
-            # new names : bbakraid,snowbro3,fantzn2x,dynwar,rbisland,sf,moomesa,leds2011,batrider,sbomber
-            # changedName = ['bkraidu','snowbros3','fantzn2','dw','rainbow','sf1','moo','ledstorm2','batrid','sbomberb']
-
             romNotInFav = True
+            multiName = []
+            flatFavList = []
             for genre in self.favorites:
-                for name in self.favorites[genre]:
-                    if name == rom or (rom + ';') in name or (';' + rom) in name:
-                        romNotInFav = False
+                flatFavList.extend(self.favorites[genre])
+
+            for name in flatFavList:
+                if name == rom:
+                    romNotInFav = False
+                    multiName = []
+                    break
+                elif (rom + ';') in name or (';' + rom) in name:
+                    romNotInFav = False
+                    multiName = name.split(';')
+                    break
 
             if romNotInFav:
                 if foundErrors is False:
@@ -284,16 +298,21 @@ class Sorter:
                     foundErrors = True
                 self.logger.log("    Orphan rom %s not in favs" % rom, self.logger.ERROR)
 
-                # at least higher than keepLevel in one set
+            # at least higher than keepLevel in one set
             higherThanKeepLevel = True
             for key in inputTests[rom]:
                 higherThanKeepLevel = higherThanKeepLevel and inputTests[rom][key].status >= int(keepLevel)
 
             if higherThanKeepLevel:
                 if rom not in outputTests:
-                    if not rom.startswith('mp_') and not rom.startswith('nss_'):
+                    inError = True
+                    # Check if the rom is multiname or not
+                    if len(multiName) > 0:
+                        for name in multiName:
+                            inError = name not in outputTests and inError
+                    if inError:
                         if foundErrors is False:
-                            self.logger.log("Possible errors", self.logger.ERROR)
+                            self.logger.log("Possible errors", self.logger.WARNING)
                             foundErrors = True
                         self.logger.log("    ERROR " + rom + " not found in ouput csvs, but found in input",
                                         self.logger.ERROR)
@@ -301,9 +320,9 @@ class Sorter:
                     for key in inputTests[rom]:
                         if key not in outputTests[rom]:
                             if foundErrors is False:
-                                self.logger.log("Possible errors", self.logger.ERROR)
+                                self.logger.log("Possible errors", self.logger.WARNING)
                                 foundErrors = True
-                            self.logger.log("    ERROR " + rom + " should be exported for " + key, self.logger.ERROR)
+                            self.logger.log("    ERROR " + rom + " should be exported for " + key, self.logger.WARNING)
 
         if foundErrors is False:
-            self.logger.log("\nS'all good man")
+            self.logger.log("\nS'all good man", self.logger.SUCCESS)

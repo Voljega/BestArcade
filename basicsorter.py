@@ -106,23 +106,28 @@ class BasicSorter:
                 else:
                     games = [favs]
 
+                multiNameRomFound = False
                 for game in games:
+                    if multiNameRomFound:
+                        break
                     setRom = os.path.join(self.configuration[self.setKey], game + ".zip")
                     setCHD = os.path.join(self.configuration[self.setKey], game)
-                    image = self.configuration['imgNameFormat'].replace('{rom}', game)
-                    utils.setFileCopy(self.configuration['exportDir'], setRom, genre, game,
-                                      self.setKey, useGenreSubFolder, dryRun)
-                    utils.setCHDCopy(self.configuration['exportDir'], setCHD, genre, game,
-                                     self.setKey, useGenreSubFolder, dryRun)
-                    utils.writeCSV(CSVs[self.setKey], game, None, genre, dats[self.setKey], None, self.setKey)
-                    utils.writeGamelistEntry(gamelists[self.setKey], game, image, dats[self.setKey], genre,
-                                             useGenreSubFolder, None, self.setKey, None)
-                    roots[self.setKey].append(dats[self.setKey][game].node) if game in dats[self.setKey] else None
-                    if scrapeImages:
-                        utils.setImageCopy(self.configuration['exportDir'], self.configuration['images'], image,
-                                           self.setKey, dryRun)
+                    if os.path.exists(setRom):
+                        multiNameRomFound = True
+                        image = self.configuration['imgNameFormat'].replace('{rom}', game)
+                        utils.setFileCopy(self.configuration['exportDir'], setRom, genre, game,
+                                          self.setKey, useGenreSubFolder, dryRun)
+                        utils.setCHDCopy(self.configuration['exportDir'], setCHD, genre, game,
+                                         self.setKey, useGenreSubFolder, dryRun)
+                        utils.writeCSV(CSVs[self.setKey], game, None, genre, dats[self.setKey], None, self.setKey)
+                        utils.writeGamelistEntry(gamelists[self.setKey], game, image, dats[self.setKey], genre,
+                                                 useGenreSubFolder, None, self.setKey, None)
+                        roots[self.setKey].append(dats[self.setKey][game].node) if game in dats[self.setKey] else None
+                        if scrapeImages:
+                            utils.setImageCopy(self.configuration['exportDir'], self.configuration['images'], image,
+                                               self.setKey, dryRun)
 
-                    self.logger.log(setRom)
+                        self.logger.log(setRom)
 
         # writing and closing everything        
         treeSet = etree.ElementTree(roots[self.setKey])
@@ -137,19 +142,32 @@ class BasicSorter:
         dryRun = True if self.configuration['dryRun'] == '1' else False
         if not dryRun:
             for genre in self.favorites:
-                for name in self.favorites[genre]:
-                    if useGenreSubFolder:
-                        setRom = os.path.join(self.configuration['exportDir'], self.setKey, genre, name + ".zip")
+                for favs in self.favorites[genre]:
+                    # needed to handle multi names games
+                    if ';' in favs:
+                        games = favs.split(';')
                     else:
-                        setRom = os.path.join(self.configuration['exportDir'], self.setKey, name + ".zip")
-                    if not os.path.exists(setRom):
+                        games = [favs]
+
+                    multiNameRomFound = False
+                    for name in games:
+                        if multiNameRomFound:
+                            break
+                        if useGenreSubFolder:
+                            setRom = os.path.join(self.configuration['exportDir'], self.setKey, genre, name + ".zip")
+                        else:
+                            setRom = os.path.join(self.configuration['exportDir'], self.setKey, name + ".zip")
+                        if os.path.exists(setRom):
+                            multiNameRomFound = True
+
+                    if not multiNameRomFound:
                         if foundErrors is False:
-                            self.logger.log("Possible errors", self.logger.ERROR)
+                            self.logger.log("Possible errors", self.logger.WARNING)
                             foundErrors = True
-                        self.logger.log(setRom + ' is missing in output dir', self.logger.ERROR)
+                        self.logger.log(favs + ' is missing in output dir', self.logger.WARNING)
 
         if foundErrors is False:
-            self.logger.log("S'all good man")
+            self.logger.log("S'all good man", self.logger.SUCCESS)
 
 # TODOS
 # if name from dat is empty, take one from test file
