@@ -8,7 +8,7 @@ if __name__ == "__main__":
     title = 'BestArcade 1.6'
     logger = Logger()
     logger.log(title)
-    logger.log('\nScript path : ' + scriptDir)
+    logger.log('\nScript path: ' + scriptDir)
     gui = GUI(scriptDir, logger, title)
     gui.draw()
 

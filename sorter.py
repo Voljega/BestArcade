@@ -62,13 +62,13 @@ class Sorter:
 
     @staticmethod
     def __computeScore(setKey, setDir, game, test):
-        score = test[setKey].status if (test is not None and setKey in test) else -2
-        # if file exists in set but not in test, shoudl return -1
-        if score == -2 and os.path.exists(os.path.join(setDir, game + ".zip")):
-            score = -1
         # always return -2 if file doesn't exist in set
         if not os.path.exists(os.path.join(setDir, game + ".zip")):
-            score = -2
+            return -2
+        score = test[setKey].status if (test is not None and setKey in test) else -2
+        # if file exists in set but not in test, should return -1
+        if score == -2 and os.path.exists(os.path.join(setDir, game + ".zip")):
+            score = -1
 
         return score
 
