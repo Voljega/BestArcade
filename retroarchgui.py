@@ -21,10 +21,10 @@ class RetroarchGUI:
         self.mummy = mummy
         self.hardware = hardware
         self.configuration = conf.loadConf(
-            os.path.join(self.scriptDir, utils.confDir, utils.getConfFilename('retroarch')))
-        self.logger.log('Loaded ' + utils.getConfFilename('retroarch'))
+            os.path.join(self.scriptDir, utils.confDir, utils.getConfFilename('retroarch-'+self.hardware)))
+        self.logger.log('Loaded ' + utils.getConfFilename('retroarch-'+self.hardware))
         self.guiVars = dict()
-        self.guiStrings = utils.loadUIStrings(self.scriptDir, utils.getGuiStringsFilename('retroarch'))
+        self.guiStrings = utils.loadUIStrings(self.scriptDir, utils.getGuiStringsFilename('retroarch-'+self.hardware))
 
         # Init all components
         self.romsetFrame = None
@@ -88,7 +88,7 @@ class RetroarchGUI:
             wckToolTips.register(selectRomsetDirButton, self.guiStrings['selectRomsetDir'].help)
             setRow = setRow + 1
 
-        ttk.Separator(self.romsetFrame, orient=Tk.HORIZONTAL).grid(column=0, row=setRow, columnspan=2, padx=5, pady=5,
+        ttk.Separator(self.romsetFrame, orient=Tk.HORIZONTAL).grid(column=0, row=setRow, columnspan=3, padx=5, pady=5,
                                                                    sticky="EW")
         setRow = setRow + 1
         outputDirLabel = Tk.Label(self.romsetFrame, text=self.guiStrings['exportDir'].label)
@@ -419,17 +419,18 @@ class RetroarchGUI:
         self.proceedButton.grid(column=5, row=0, sticky="E", padx=3)
 
     def __clickSave(self):
-        self.logger.log('\n<--------- Saving retroarch configuration --------->')
+        self.logger.log('\n<---------- Saving retroarch-%s configuration ----------->' % self.hardware)
         self.__saveConfFile()
         self.__saveConfInMem()
 
     def __saveConfFile(self):
-        confBackupFilePath = os.path.join(self.scriptDir, utils.confDir, utils.getConfBakFilename('retroarch'))
+        confBackupFilePath = os.path.join(self.scriptDir, utils.confDir,
+                                          utils.getConfBakFilename('retroarch-'+self.hardware))
         if os.path.exists(confBackupFilePath):
             os.remove(confBackupFilePath)
-        shutil.copy2(os.path.join(self.scriptDir, utils.confDir, utils.getConfFilename('retroarch')),
-                     os.path.join(self.scriptDir, utils.confDir, utils.getConfBakFilename('retroarch')))
-        confFile = open(os.path.join(self.scriptDir, utils.confDir, utils.getConfFilename('retroarch')), "w",
+        shutil.copy2(os.path.join(self.scriptDir, utils.confDir, utils.getConfFilename('retroarch-'+self.hardware)),
+                     os.path.join(self.scriptDir, utils.confDir, utils.getConfBakFilename('retroarch-'+self.hardware)))
+        confFile = open(os.path.join(self.scriptDir, utils.confDir, utils.getConfFilename('retroarch-'+self.hardware)), "w",
                         encoding="utf-8")
         listKeys = sorted(self.guiStrings.values(), key=attrgetter('order'))
         for key in listKeys:
@@ -448,7 +449,7 @@ class RetroarchGUI:
                     if key.id in self.guiVars:
                         confFile.write(key.id + ' = ' + str(self.guiVars[key.id].get()) + '\n')
         confFile.close()
-        self.logger.log('    Configuration saved in ' + utils.getConfFilename('retroarch') + ' file')
+        self.logger.log('    Configuration saved in ' + utils.getConfFilename('retroarch-'+self.hardware) + ' file')
 
     def __saveConfInMem(self):
         listKeys = sorted(self.guiStrings.values(), key=attrgetter('order'))
@@ -493,7 +494,7 @@ class RetroarchGUI:
             self.verifyButton['state'] = 'disabled'
             self.saveButton['state'] = 'disabled'
             self.proceedButton['state'] = 'disabled'
-            self.mummy.disableOtherTabs('retroarch')
+            self.mummy.disableOtherTabs('retroarch', self.hardware)
             self.logger.log('\n<--------- Starting retroarch Process --------->')
             sorter = Sorter(self.configuration, self.scriptDir, partial(self.postProcess), self.logger, self.hardware)
             _thread.start_new(sorter.process, ())
@@ -502,7 +503,7 @@ class RetroarchGUI:
         self.verifyButton['state'] = 'normal'
         self.saveButton['state'] = 'normal'
         self.proceedButton['state'] = 'normal'
-        self.mummy.disableOtherTabs('retroarch', False)
+        self.mummy.disableOtherTabs('retroarch', self.hardware, False)
 
         # File Explorer for various vars
 

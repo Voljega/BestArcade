@@ -27,6 +27,7 @@ class GUI:
         self.__setFontSize(self.startFontSize)
         self.window.title(title)
         self.logger = logger
+        self.root = None
 
     def draw(self):
         self.root = Tk.Frame(self.window, padx=10, pady=5)
@@ -63,14 +64,23 @@ class GUI:
         self.notebook.grid(column=0, row=0, sticky="EW", pady=5)
         self.notebook.grid_columnconfigure(0, weight=1)
 
-        # RETROARCH TAB
-        self.retroarchFrame = Tk.Frame(self.notebook, padx=10, pady=5)
-        self.retroarchFrame.grid(column=0, row=0, sticky="EW", pady=5)
-        self.retroarchFrame.grid_columnconfigure(0, weight=1)
-        self.notebook.add(self.retroarchFrame, text='Retroarch-pi3', sticky="EW")
-        self.notebook.select(self.retroarchFrame)
-        retroarchGUI = RetroarchGUI(self.retroarchFrame, self.scriptDir, self.logger, self, 'pi3')
-        retroarchGUI.draw()
+        # PI3 RETROARCH TAB
+        self.pi3RetroarchFrame = Tk.Frame(self.notebook, padx=10, pady=5)
+        self.pi3RetroarchFrame.grid(column=0, row=0, sticky="EW", pady=5)
+        self.pi3RetroarchFrame.grid_columnconfigure(0, weight=1)
+        self.notebook.add(self.pi3RetroarchFrame, text='Retroarch-pi3', sticky="EW")
+        self.notebook.select(self.pi3RetroarchFrame)
+        pi3RetroarchGUI = RetroarchGUI(self.pi3RetroarchFrame, self.scriptDir, self.logger, self, 'pi3')
+        pi3RetroarchGUI.draw()
+
+        # N2 RETROARCH TAB
+        self.n2RetroarchFrame = Tk.Frame(self.notebook, padx=10, pady=5)
+        self.n2RetroarchFrame.grid(column=0, row=0, sticky="EWN", pady=5)
+        self.n2RetroarchFrame.grid_columnconfigure(0, weight=1)
+        self.notebook.add(self.n2RetroarchFrame, text='Retroarch-n2', sticky="EWNS")
+        self.notebook.select(self.n2RetroarchFrame)
+        n2RetroarchGUI = RetroarchGUI(self.n2RetroarchFrame, self.scriptDir, self.logger, self, 'n2')
+        n2RetroarchGUI.draw()
 
         # CUSTOM TAB
         self.customFrame = Tk.Frame(self.notebook, padx=10, pady=5)
@@ -135,12 +145,22 @@ class GUI:
         handheldGUI = CustomGUI(self.handheldFrame, 'handheld', self.scriptDir, self.logger, self)
         handheldGUI.draw()
 
-        self.notebook.select(self.retroarchFrame)
+        self.notebook.select(self.pi3RetroarchFrame)
         self.__drawConsole()
 
-    def disableOtherTabs(self, setKey, disable=True):
+    def disableOtherTabs(self, setKey, hardware, disable=True):
         state = 'disabled' if disable else 'normal'
-        if setKey == 'retroarch':
+        if setKey == 'retroarch' and hardware == 'pi3':
+            self.notebook.tab(self.n2RetroarchFrame, state=state)
+            self.notebook.tab(self.customFrame, state=state)
+            self.notebook.tab(self.neogeoaesFrame, state=state)
+            self.notebook.tab(self.model2Frame, state=state)
+            self.notebook.tab(self.model3Frame, state=state)
+            self.notebook.tab(self.atomiswaveFrame, state=state)
+            self.notebook.tab(self.naomiFrame, state=state)
+            self.notebook.tab(self.handheldFrame, state=state)
+        elif setKey == 'retroarch' and hardware == 'n2':
+            self.notebook.tab(self.pi3RetroarchFrame, state=state)
             self.notebook.tab(self.customFrame, state=state)
             self.notebook.tab(self.neogeoaesFrame, state=state)
             self.notebook.tab(self.model2Frame, state=state)
@@ -149,7 +169,8 @@ class GUI:
             self.notebook.tab(self.naomiFrame, state=state)
             self.notebook.tab(self.handheldFrame, state=state)
         elif setKey == 'custom':
-            self.notebook.tab(self.retroarchFrame, state=state)
+            self.notebook.tab(self.pi3RetroarchFrame, state=state)
+            self.notebook.tab(self.n2RetroarchFrame, state=state)
             self.notebook.tab(self.neogeoaesFrame, state=state)
             self.notebook.tab(self.model2Frame, state=state)
             self.notebook.tab(self.model3Frame, state=state)
@@ -157,7 +178,8 @@ class GUI:
             self.notebook.tab(self.naomiFrame, state=state)
             self.notebook.tab(self.handheldFrame, state=state)
         elif setKey == 'neogeoaes':
-            self.notebook.tab(self.retroarchFrame, state=state)
+            self.notebook.tab(self.pi3RetroarchFrame, state=state)
+            self.notebook.tab(self.n2RetroarchFrame, state=state)
             self.notebook.tab(self.customFrame, state=state)
             self.notebook.tab(self.model2Frame, state=state)
             self.notebook.tab(self.model3Frame, state=state)
@@ -165,7 +187,8 @@ class GUI:
             self.notebook.tab(self.naomiFrame, state=state)
             self.notebook.tab(self.handheldFrame, state=state)
         elif setKey == 'model2':
-            self.notebook.tab(self.retroarchFrame, state=state)
+            self.notebook.tab(self.pi3RetroarchFrame, state=state)
+            self.notebook.tab(self.n2RetroarchFrame, state=state)
             self.notebook.tab(self.customFrame, state=state)
             self.notebook.tab(self.neogeoaesFrame, state=state)
             self.notebook.tab(self.model3Frame, state=state)
@@ -173,7 +196,8 @@ class GUI:
             self.notebook.tab(self.naomiFrame, state=state)
             self.notebook.tab(self.handheldFrame, state=state)
         elif setKey == 'model3':
-            self.notebook.tab(self.retroarchFrame, state=state)
+            self.notebook.tab(self.pi3RetroarchFrame, state=state)
+            self.notebook.tab(self.n2RetroarchFrame, state=state)
             self.notebook.tab(self.customFrame, state=state)
             self.notebook.tab(self.neogeoaesFrame, state=state)
             self.notebook.tab(self.model2Frame, state=state)
@@ -181,7 +205,8 @@ class GUI:
             self.notebook.tab(self.naomiFrame, state=state)
             self.notebook.tab(self.handheldFrame, state=state)
         elif setKey == 'atomiswave':
-            self.notebook.tab(self.retroarchFrame, state=state)
+            self.notebook.tab(self.pi3RetroarchFrame, state=state)
+            self.notebook.tab(self.n2RetroarchFrame, state=state)
             self.notebook.tab(self.customFrame, state=state)
             self.notebook.tab(self.neogeoaesFrame, state=state)
             self.notebook.tab(self.model2Frame, state=state)
@@ -189,7 +214,8 @@ class GUI:
             self.notebook.tab(self.naomiFrame, state=state)
             self.notebook.tab(self.handheldFrame, state=state)
         elif setKey == 'naomi':
-            self.notebook.tab(self.retroarchFrame, state=state)
+            self.notebook.tab(self.pi3RetroarchFrame, state=state)
+            self.notebook.tab(self.n2RetroarchFrame, state=state)
             self.notebook.tab(self.customFrame, state=state)
             self.notebook.tab(self.neogeoaesFrame, state=state)
             self.notebook.tab(self.model2Frame, state=state)
@@ -197,7 +223,8 @@ class GUI:
             self.notebook.tab(self.atomiswaveFrame, state=state)
             self.notebook.tab(self.handheldFrame, state=state)
         elif setKey == 'handheld':
-            self.notebook.tab(self.retroarchFrame, state=state)
+            self.notebook.tab(self.pi3RetroarchFrame, state=state)
+            self.notebook.tab(self.n2RetroarchFrame, state=state)
             self.notebook.tab(self.customFrame, state=state)
             self.notebook.tab(self.neogeoaesFrame, state=state)
             self.notebook.tab(self.model2Frame, state=state)
