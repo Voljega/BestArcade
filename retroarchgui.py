@@ -73,7 +73,7 @@ class RetroarchGUI:
         self.romsetFrame.grid(column=0, row=0, sticky="EW", pady=5)
         self.romsetFrame.grid_columnconfigure(1, weight=1)
         setRow = 0
-        for key in Sorter.setKeys:
+        for key in Sorter.setKeys[self.hardware]:
             label = Tk.Label(self.romsetFrame, text=self.guiStrings[key].label)
             wckToolTips.register(label, self.guiStrings[key].help)
             label.grid(column=0, row=setRow, padx=5, sticky="W")
@@ -200,7 +200,7 @@ class RetroarchGUI:
         self.preferedSetComboBox = ttk.Combobox(self.parametersFrame, state="readonly",
                                                 textvariable=self.guiVars['preferedSet'])
         self.preferedSetComboBox.grid(column=1, row=5, sticky="W", pady=5, padx=5)
-        self.preferedSetValues = Sorter.setKeys.copy()
+        self.preferedSetValues = Sorter.setKeys[self.hardware].copy()
         self.preferedSetComboBox['values'] = self.preferedSetValues
         self.guiVars['usePreferedSetForGenre'] = Tk.IntVar()
         self.guiVars['usePreferedSetForGenre'].set(self.configuration['usePreferedSetForGenre'])

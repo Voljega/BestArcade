@@ -9,11 +9,7 @@ import dat
 
 
 class Sorter:
-    fbneoKey = "fbneo"
-    mame2010Key = "mame2010"
-    mame2003Key = "mame2003"
-    mame2003plusKey = "mame2003plus"
-    setKeys = [fbneoKey, mame2003Key, mame2003plusKey, mame2010Key]
+    setKeys = {'pi3': ['fbneo', 'mame2003', 'mame2003plus', 'mame2010'], 'n2': ['fbneo', 'mame']}
     bigSetFile = r"custom.ini"
 
     def __init__(self, configuration, scriptDir, postProcess, logger, hardware):
@@ -24,7 +20,7 @@ class Sorter:
         self.hardware = hardware
         self.postProcess = postProcess
 
-        # Init clas vars
+        # Init class vars
         self.usingSystems = None
         self.favorites = None
         self.allTests = None
@@ -36,7 +32,8 @@ class Sorter:
         self.logger.log('\n<--------- Create Sets --------->')
         self.__createSets(self.allTests, self.dats)
         self.logger.log("\n<--------- Detecting errors ----------->")
-        self.__checkErrors(self.allTests, self.configuration['keepLevel'])
+        if not self.configuration['exclusionType'] == 'STRICT':
+            self.__checkErrors(self.allTests, self.configuration['keepLevel'])
         self.logger.log('\n<--------- Process finished ----------->')
         self.postProcess()
 
@@ -47,18 +44,18 @@ class Sorter:
         self.favorites = fav.loadFavs(self.scriptDir, Sorter.bigSetFile, self.logger)
         # parse dat files
         self.logger.log('\n<--------- Load FBNeo & Mame Dats --------->')
-        datsDict = dict(zip(self.setKeys,
-                            [self.fbneoKey + '.dat', self.mame2003Key + '.dat', self.mame2003plusKey + '.dat',
-                             self.mame2010Key + '.dat']))
+        datsDict = dict(zip(self.setKeys[self.hardware],
+                            list(map(lambda key: key + '.dat', self.setKeys[self.hardware]))))
         self.dats = dat.parseDats(self.scriptDir, utils.dataDir, datsDict, self.usingSystems, self.logger)
         # parse test files
         self.logger.log('\n<--------- Load Tests Files --------->')
-        self.allTests = test.loadTests(Sorter.setKeys, os.path.join(self.scriptDir, utils.dataDir, self.hardware),
+        self.allTests = test.loadTests(Sorter.setKeys[self.hardware],
+                                       os.path.join(self.scriptDir, utils.dataDir, self.hardware),
                                        self.usingSystems, self.logger)
 
     def __useSystems(self, configuration):
         systems = []
-        for setKey in self.setKeys:
+        for setKey in self.setKeys[self.hardware]:
             systems.append(setKey) if os.path.exists(configuration[setKey]) else None
         self.logger.logList('Using systems', systems)
         return systems
@@ -98,7 +95,7 @@ class Sorter:
             if scores[key] == maxScore:
                 if key == self.configuration['preferedSet']:
                     return scores[key] >= keepLevel
-                elif self.fbneoKey not in keep and self.mame2010Key not in keep:  # check not already in keep
+                elif len(keep) == 0:  # check not already in keep
                     return scores[key] >= keepLevel
 
     @staticmethod
@@ -151,7 +148,7 @@ class Sorter:
         scrapeImages = True if self.configuration['useImages'] == '1' and self.configuration['images'] else False
 
         scoreSheet = open(os.path.join(self.configuration['exportDir'], "scoreSheet.csv"), "w", encoding="utf-8")
-        scoreSheet.write('rom;fbneoScore;mame2003Score;mame2003PlusScore;mame2010Score\n')
+        scoreSheet.write('rom;' + ';'.join(list(map(lambda key: key + 'Score', self.setKeys[self.hardware]))) + '\n')
 
         CSVs, gamelists, roots = dict(), dict(), dict()
         header = "Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comments;Notes\n"
@@ -202,26 +199,25 @@ class Sorter:
 
                 multiGameFoundInSet = False
                 for game in games:
-                    if 'halleysc' in game or 'raidendx' in game:
-                        print('YO!')
                     audit = game + " -> "
                     scores = dict()
                     testForGame = allTests[game] if game in allTests else None
 
-                    for setKey in self.setKeys:
+                    for setKey in self.setKeys[self.hardware]:
                         scores[setKey] = self.__computeScore(setKey, self.configuration[setKey], game,
                                                              testForGame) if setKey in self.usingSystems else -2
 
-                    audit = audit + " SCORES: " + str(scores[self.fbneoKey]) + " " + str(
-                        scores[self.mame2003Key]) + " " + str(scores[self.mame2003plusKey]) + " " + str(
-                        scores[self.mame2010Key]) + " ,"
-                    scoreSheet.write('%s;%i;%i;%i;%i\n' % (game, scores[self.fbneoKey], scores[self.mame2003Key],
-                                                           scores[self.mame2003plusKey], scores[self.mame2010Key]))
+                    audit = audit + " SCORES: " + \
+                        " ".join(list(map(lambda key: str(scores[key]), self.setKeys[self.hardware]))) + " ,"
+                    scoreSheet.write(game + ';' +
+                                     ';'.join(list(map(lambda key: str(scores[key]), self.setKeys[self.hardware])))
+                                     + '\n')
 
                     selected = []
                     for setKey in self.usingSystems:
                         selected.append(setKey) if self.__keepSet(keepNotTested, usePreferedSetForGenre,
-                                                                  self.configuration['exclusionType'], keepLevel, scores,
+                                                                  self.configuration['exclusionType'], keepLevel,
+                                                                  scores,
                                                                   setKey, genre, selected) else None
 
                     audit = audit + " SELECTED: " + str(selected)
@@ -267,12 +263,12 @@ class Sorter:
 
         self.logger.log("\n<------------------ RESULTS ------------------>")
         self.logger.log("NOT FOUND IN ANY SET : " + str(len(notInAnySet)), self.logger.WARNING)
-        self.logger.logList("", notInAnySet, self.logger.WARNING)
+        self.logger.log(" ".join(notInAnySet), self.logger.WARNING)
 
     def __checkErrors(self, inputTests, keepLevel):
         self.logger.log("Loading Output Tests")
-        outputTests = test.loadTests(Sorter.setKeys, os.path.join(self.configuration['exportDir']), self.usingSystems,
-                                     self.logger)
+        outputTests = test.loadTests(Sorter.setKeys[self.hardware], os.path.join(self.configuration['exportDir']),
+                                     self.usingSystems, self.logger)
         foundErrors = False
         for rom in inputTests.keys():
 

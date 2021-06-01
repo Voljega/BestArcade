@@ -5,7 +5,7 @@ fbneo;FbNeo set folder;Path to your fbneo set, leave empty if you do not have it
 mame2010;Mame2010 set folder;Path to your mame2010 set, leave empty if you do not have it
 mame2003;Mame2003 set folder;Path to your mame2003 set, leave empty if you do not have it
 mame2003plus;Mame2003Plus set folder;Path to your mame2003plus set, leave empty if you do not have it
-selectRomsetDir;Select;Select mame set folder
+selectRomsetDir;Select;Select set folder
 images;Images folder;Paths to your images set, leave empty if you do not have it
 selectImages;Select;Select your images folder
 imgNameFormat;Image filename format;Format of the image filename
