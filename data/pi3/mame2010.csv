@@ -92,7 +92,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;BeatEmUp;Kyros;kyros;1987;Alpha Denshi Co. (World Games Inc. license);;;
 3;BeatEmUp;Lady Master of Kung Fu;ladymstr;1985;Kaneko / Taito;;;
 3;BeatEmUp;Legend;legend;1986;Kyugo / Sega;;;
-3;BeatEmUp;Legend of Hero Tonma;loht;1989;Irem;;;
+3;RunNGun;Legend of Hero Tonma;loht;1989;Irem;;;
 1;BeatEmUp;Legend of Heroes;legendoh;2000;Limenko;;lags a lot, no sound;
 3;BeatEmUp;Legend of Makai (World);lomakai;1988;Jaleco;;;
 3;BeatEmUp;Legend of Success Joe / Ashita no Joe Densetsu;legendos;1991;SNK;;;
@@ -101,7 +101,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;BeatEmUp;Magic Sword: Heroic Fantasy (World 900725);msword;1990;Capcom;;a few sprite issues;
 3;BeatEmUp;Metal Clash (Japan);metlclsh;1985;Data East;;;
 3;BeatEmUp;Metamorphic Force (ver EAA);metamrph;1993;Konami;;;
-3;BeatEmUp;Mighty Guy;mightguy;1986;Nichibutsu;;;
+3;RunNGun;Mighty Guy;mightguy;1986;Nichibutsu;;;
 3;BeatEmUp;Monster Maulers (ver EAA);mmaulers;1993;Konami;;;
 3;BeatEmUp;Mr. Goemon (Japan);mrgoemon;1986;Konami;;;
 3;BeatEmUp;Mutation Nation;mutnat;1992;SNK;;;
@@ -163,7 +163,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;BeatEmUp;The Simpsons (4 Players World, set 1);simpsons;1991;Konami;;;
 3;BeatEmUp;The Super Spy;superspy;1990;SNK;;;
 3;BeatEmUp;The Three Stooges In Brides Is Brides (set 1);3stooges;1984;Mylstar;;not perfect sound;
-3;BeatEmUp;Thunder Fox (World);thundfox;1990;Taito Corporation Japan;;;
+3;RunNGun;Thunder Fox (World);thundfox;1990;Taito Corporation Japan;;;
 3;BeatEmUp;Thunder Heroes;theroes;2001;Primetek Investments;;;
 3;BeatEmUp;Tiger Road (US);tigeroad;1987;Capcom (Romstar license);;;
 3;BeatEmUp;Top Hunter - Roddy & Cathy (set 1);tophuntr;1994;SNK;;;
@@ -268,7 +268,6 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 2;Gun;Target Hits (ver 1.1);targeth;1994;Gaelco;;Very sensitive controls;
 0;Gun;Teraburst (1998/07/17 ver UEL);terabrst;1998;Konami;;doesn't launch;no CHD
 1;Gun;Terminator 2 - Judgment Day (rev LA4 08/03/92);term2;1991;Midway;;tilted sideways, needs player 2 to pass calibration;
-1;Gun;Tickee Tickats;tickee;1994;Raster Elite;;lags a lot;
 0;Gun;Time Crisis (Rev. TS2 Ver.B);timecris;1995;Namco;;freezes mame !!;no CHD
 0;Gun;Time Crisis II (US, TSS3 Ver. B);timecrs2;1997;Namco;;doesn't launch;no CHD
 1;Gun;Top Gunner (Exidy);topgunnr;1986;Exidy;;bad controls;
@@ -308,7 +307,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Misc;Boot Hill;boothill;1977;Midway;;;
 0;Misc;Brick Zone (v6.0, Joystick);brickzn;1992;SunA;;no image after menu;no CHD
 3;Misc;Bubbles;bubbles;1982;Williams;;needs game reset;
-3;Misc;Bullfight (315-5065);bullfgt;1984;Coreland / Sega;;;
+3;Sport;Bullfight (315-5065);bullfgt;1984;Coreland / Sega;;;
 3;Misc;Butasan - Pig's & Bomber's (Japan, English);butasan;1987;NMK (Jaleco license);;;
 3;Misc;Cameltry (US, YM2610);cameltry;1989;Taito America Corporation;;;
 3;Misc;Cavelon;cavelon;1983;Jetsoft;;;
@@ -334,8 +333,8 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 1;Misc;Discs of Tron (Upright);dotron;1983;Bally Midway;;tilted sideways;
 3;Misc;Domino Man;domino;1982;Bally Midway;;;
 3;Misc;Dynablaster / Bomber Man;dynablst;1991;Irem (licensed from Hudson Soft);;;
-3;Misc;Elevator Action (5 pcb version, 1.1);elevator;1983;Taito Corporation;;;
-1;Misc;Elevator Action Returns (Ver 2.2O 1995/02/20);elvactr;1994;Taito Corporation Japan;;lags a lot;
+3;Platform;Elevator Action (5 pcb version, 1.1);elevator;1983;Taito Corporation;;;
+1;Platform;Elevator Action Returns (Ver 2.2O 1995/02/20);elvactr;1994;Taito Corporation Japan;;lags a lot;
 1;Misc;Exterminator;exterm;1989;Gottlieb / Premier Technology;;controls problem;
 1;Misc;Exvania (Japan);exvania;1992;Namco;;lags a lot;
 3;Misc;Fantasy (World);fantasy;1981;SNK;;;
@@ -349,7 +348,6 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 0;Misc;Free Kick;freekick;1987;Nihon System (Sega license);;stuck on loading;
 3;Misc;Freeze;freeze;1984;Cinematronics;;;
 3;Misc;Gee Bee;geebee;1978;Namco;;;
-1;Misc;Ghox (spinner);ghox;1991;Toaplan;;no sound;
 0;Misc;Gigas (MC-8123, 317-5002);gigas;1986;Sega;;stuck on loading;
 1;Misc;Go Go! Mile Smile;gogomile;1995;Fuuki;;lags a lot;
 3;Misc;Goindol (World);goindol;1987;SunA;;;
@@ -380,7 +378,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 1;Misc;Last Fighting;lastfght;2000;Subsino;;no sound;
 1;Misc;Libble Rabble;liblrabl;1983;Namco;;No controls;
 3;Misc;Lock'n'Chase;lnc;1981;Data East Corporation;;;
-1;Misc;Lost Tomb (easy);losttomb;1982;Stern Electronics;;No controls;
+1;ShootEmUp;Lost Tomb (easy);losttomb;1982;Stern Electronics;;No controls;
 3;Misc;Lunar Lander (rev 2);llander;1979;Atari;;;
 2;Misc;Lupin III (set 1);lupin3;1980;Taito;;Missing sounds ?;
 2;Misc;M-4;m4;1977;Midway;;No sounds;
@@ -518,7 +516,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Platform;Baluba-louk no Densetsu (Japan);baluba;1986;Able Corp, Ltd.;;;
 3;Platform;Ben Bero Beh (Japan);benberob;1984;Taito;;;
 1;Platform;Beraboh Man (Japan, Rev C);berabohm;1988;Namco;;tilted sideways;
-3;Platform;Biomechanical Toy (unprotected);biomtoy;1995;Gaelco;;;
+3;RunNGun;Biomechanical Toy (unprotected);biomtoy;1995;Gaelco;;;
 3;Platform;Bionic Commando (Euro);bionicc;1987;Capcom;;;
 3;Platform;Black Tiger;blktiger;1987;Capcom;;;
 3;Platform;Blue's Journey / Raguy;bjourney;1990;Alpha Denshi Co.;;;
@@ -546,9 +544,9 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 2;Platform;Donkey Kong 3 (US);dkong3;1983;Nintendo of America;;cracky sound;
 0;Platform;Donkey Kong Junior (US);dkongjr;1982;Nintendo of America;;freezes mame;
 3;Platform;Dream World;dreamwld;2000;SemiCom;;;
-3;Platform;Dyna Gear;dynagear;1993;Sammy;;;
+3;RunNGun;Dyna Gear;dynagear;1993;Sammy;;;
 1;Platform;Dynamite Bomber (Korea, Rev 1.5);dynabomb;2000;Limenko;;no sound;
-3;Platform;Fantasy Land;fantland;;;;;
+3;RunNGun;Fantasy Land;fantland;;;;;
 3;Platform;Flicky (128k Version, 315-5051);flicky;1984;Sega;;;
 3;Platform;Flip & Flop (Max-A-Flex);mf_flip;1983;Exidy / First Star Software;;;
 3;Platform;Frisky Tom (set 1);friskyt;1981;Nichibutsu;;;
@@ -579,19 +577,19 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Platform;Lode Runner II - The Bungeling Strikes Back;ldrun2;1984;Irem (licensed from Broderbund);;;
 3;Platform;Lode Runner III - The Golden Labyrinth;ldrun3;1985;Irem (licensed from Broderbund);;;
 3;Platform;Lode Runner IV - Teikoku Karano Dasshutsu (Japan);ldrun4;1986;Irem (licensed from Broderbund);;;
-3;Platform;Magician Lord (set 1);maglord;1990;Alpha Denshi Co.;;;
+3;ShootEmUp;Magician Lord (set 1);maglord;1990;Alpha Denshi Co.;;;
 3;Platform;Mappy (US);mappy;1983;Namco;;;
 0;Platform;Mario Bros. (US, Revision F);mario;1983;Nintendo of America;;crashes on launch;
 3;Platform;Marvel Land (US);marvland;1989;Namco;;;
 2;Platform;Mega Twins (World 900619);mtwins;1990;Capcom;;small sprite issues;
 3;Platform;Monster Bash;monsterb;1982;Sega;;;
 1;Platform;Monster Farm Jump (Japan);mfjump;2001;Tecmo;;lags a lot;
-3;Platform;Mr. Do!;mrdo;1982;Universal;;;
+3;Misc;Mr. Do!;mrdo;1982;Universal;;;
 3;Platform;Mr. Do's Castle (set 1);docastle;1983;Universal;;;
 3;Platform;Mr. Do's Wild Ride;dowild;1984;Universal;;;
 0;Platform;Mutant Night;mnight;1987;UPL (Kawakus license);;stuck on configuration screen;
 3;Platform;Nemo (World 901130);nemo;1990;Capcom;;;
-3;Platform;Neo Mr. Do!;neomrdo;1996;Visco;;;
+3;Misc;Neo Mr. Do!;neomrdo;1996;Visco;;;
 2;Platform;Nightmare in the Dark;nitd;2000;Eleven / Gavaking;;cracky sound;
 3;Platform;Ninja-Kid II / NinjaKun Ashura no Shou (set 1);ninjakd2;1987;UPL;;;
 3;Platform;Ninjakun Majou no Bouken;ninjakun;1984;UPL (Taito license);;;
@@ -649,7 +647,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Platform;Wonder Boy in Monster Land (English bootleg);wbmlb;1987;bootleg;;;
 3;Platform;Zupapa!;zupapa;2001;SNK;;;
 3;Platform;Zwackery;zwackery;1984;Bally Midway;;;
-3;Puzzle;Action Hollywood;actionhw;1995;TCH;;;
+3;Misc;Action Hollywood;actionhw;1995;TCH;;;
 3;Puzzle;Ataxx (set 1);ataxx;1990;Leland Corp.;;;
 3;Puzzle;Atomic Point (Korea);atomicp;1990;Philko;;;
 3;Puzzle;Balloon Brothers;ballbros;1992;East Technology;;;
@@ -660,9 +658,9 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Puzzle;Block Out (set 1);blockout;1989;Technos Japan / California Dreams;;;
 3;Puzzle;Bloxeed (Japan) (FD1094 317-0139);bloxeed;1989;Sega;;;
 3;Puzzle;Borench;borench;1990;Sega;;;
-3;Puzzle;Boulder Dash (Cassette);cbdash;1985;Data East Corporation;;Need to wait 103s before launch;
-3;Puzzle;Boulder Dash (Max-A-Flex);mf_bdash;1984;Exidy / First Star Software;;;
-2;Puzzle;Boulder Dash / Boulder Dash Part 2 (World);bouldash;1990;Data East Corporation (licensed from First Star);;speed problems;
+3;Misc;Boulder Dash (Cassette);cbdash;1985;Data East Corporation;;Need to wait 103s before launch;
+3;Misc;Boulder Dash (Max-A-Flex);mf_bdash;1984;Exidy / First Star Software;;;
+2;Misc;Boulder Dash / Boulder Dash Part 2 (World);bouldash;1990;Data East Corporation (licensed from First Star);;speed problems;
 3;Puzzle;Bouncing Balls;bballs;1991;Comad;;;
 2;Puzzle;Boxy Boy (US);boxyboy;1990;Namco;;Lags a little;
 3;Puzzle;Chain Reaction (World, Version 2.2, 1995.09.25);chainrec;1995;Data East;;;
@@ -695,7 +693,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Puzzle;Hebereke no Popoon (Japan);heberpop;1994;Sunsoft / Atlus;;;
 3;Puzzle;Hexion (Japan ver JAB);hexion;1992;Konami;;;
 3;Puzzle;Karian Cross (Rev. 1.0);karianx;1996;Deniam;;;
-2;Puzzle;Kitten Kaboodle;kittenk;1988;Konami;;lags a little;
+2;Misc;Kitten Kaboodle;kittenk;1988;Konami;;lags a little;
 3;Puzzle;Klax (set 1);klax;1989;Atari Games;;;
 3;Puzzle;Kokontouzai Eto Monogatari (Japan);eto;1994;Visco;;;
 0;Puzzle;Kollon (V2.04J);kollon;2003;Taito;;no launch;
@@ -722,7 +720,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 0;Puzzle;Otenki Kororin (V2.01J);otenki;2001;Takumi;;no launch;
 3;Puzzle;Palamedes (US);palamed;1990;Hot-B Co., Ltd.;;;
 3;Puzzle;Panic Bomber;panicbom;1994;Eighting / Hudson;;;
-0;Puzzle;Panic Street (Japan);panicstr;1999;Kaneko;;doesn't launch;no CHD
+0;Misc;Panic Street (Japan);panicstr;1999;Kaneko;;doesn't launch;no CHD
 3;Puzzle;Peggle (Joystick, v1.0);peggle;1991;Strata/Incredible Technologies;;;
 3;Puzzle;Phozon (Japan);phozon;1983;Namco;;;
 3;Puzzle;Pipe Dream (World);pipedrm;1990;Video System Co.;;;
@@ -752,13 +750,13 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 1;Puzzle;Puzzli;puzzli;1995;Metro / Banpresto;;lags a lot;
 0;Puzzle;Puzzli 2 Super (ver. 200);puzzli2;2001;IGS;;Crashes on launch;
 3;Puzzle;Puzznic (World);puzznic;1989;Taito Corporation Japan;;;
-3;Puzzle;Qix (Rev 2);qix;1981;Taito America Corporation;;needs to reset game;
+3;Misc;Qix (Rev 2);qix;1981;Taito America Corporation;;needs to reset game;
 3;Puzzle;Quantum (rev 2);quantum;1982;Atari;;;
 1;Puzzle;Risky Challenge;riskchal;1993;Irem;;lags a lot;
 3;Puzzle;RyuKyu (Japan) (FD1094 317-5023);ryukyu;1990;Success / Sega;;;
 1;Puzzle;Sen-Know (Japan);senknow;1999;Kaneko / Kouyousha;;Lags a lot;
 3;Puzzle;Showdown (version 5.0);showdown;1988;Exidy;;;
-3;Puzzle;Solomon's Key (US);solomon;1986;Tecmo;;;
+3;Misc;Solomon's Key (US);solomon;1986;Tecmo;;;
 3;Puzzle;Sparkz (prototype);sparkz;1992;Atari Games;;;
 3;Puzzle;Stack Columns (World);stkclmns;1994;Sega;;;
 1;Puzzle;Star Sweep (Japan, STP1/VER.A);starswep;1997;Axela/Namco;;Lags a lot;
@@ -766,9 +764,9 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Puzzle;Steel Worker;steelwkr;1980;Taito;;;
 0;Puzzle;Super Puzzle Bobble (V2.05O);spuzbobl;1999;Taito;;no launch;
 3;Puzzle;Super Puzzle Fighter II Turbo (USA 960620);spf2t;1996;Capcom;;;
-3;Puzzle;Super Qix (World, Rev 2);sqix;1987;Taito;;;
+3;Misc;Super Qix (World, Rev 2);sqix;1987;Taito;;;
 1;Puzzle;Taisen Tokkae-dama (ver JAA);tokkae;1996;Konami;;lags a lot;
-3;Puzzle;Tang Tang (ver. 0526, 26/05/2000);tangtang;2000;ESD;;;
+3;Platform;Tang Tang (ver. 0526, 26/05/2000);tangtang;2000;ESD;;;
 1;Puzzle;Teki Paki;tekipaki;1991;Toaplan;;no sound;
 3;Puzzle;Tetris (set 1);atetris;1988;Atari Games;;;
 3;Puzzle;Tetris (set 4, Japan, System 16A) (FD1094 317-0093);tetris;1988;Sega;;;
@@ -776,15 +774,15 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Puzzle;Tetris Plus 2 (World);tetrisp2;1997;Jaleco / The Tetris Company;;;
 1;Puzzle;Tetris the Absolute The Grand Master 2 Plus;tgm2p;2000;Arika;;lags a lot;clone oft tgm2
 1;Puzzle;Tetris The Grand Master (Japan 980710);tgmj;1998;Arika / Capcom;;lags a lot;
-3;Puzzle;Three Wonders (World 910520);3wonders;1991;Capcom;;;
-1;Puzzle;Toggle (prototype);toggle;1985;Bally/Sente;;no controls;
+3;Misc;Three Wonders (World 910520);3wonders;1991;Capcom;;;
+1;Misc;Toggle (prototype);toggle;1985;Bally/Sente;;no controls;
 3;Puzzle;Torus;torus;1996;Yun Sung;;;
 3;Puzzle;Toryumon;toryumon;1994;Sega;;;
 3;Puzzle;Tube-It;tubeit;1993;Taito Corporation;;;
-1;Puzzle;Twin Qix (Ver 1.0A 1995/01/17) (Prototype);twinqix;1995;Taito America Corporation;;lags a lot;
+1;Misc;Twin Qix (Ver 1.0A 1995/01/17) (Prototype);twinqix;1995;Taito America Corporation;;lags a lot;
 3;Puzzle;Twinkle Star Sprites;twinspri;1996;ADK / SNK;;hardware lag;
-3;Puzzle;Tylz (prototype);tylz;1982;Mylstar;;;
-3;Puzzle;Volfied (World, revision 1);volfied;1989;Taito Corporation Japan;;;
+3;Misc;Tylz (prototype);tylz;1982;Mylstar;;;
+3;Misc;Volfied (World, revision 1);volfied;1989;Taito Corporation Japan;;;
 3;Puzzle;Vs. Dr. Mario;drmario;1990;Nintendo;;;
 3;Puzzle;Welltris (World?, 2 players);welltris;1991;Video System Co.;;;
 3;Puzzle;Xor World (prototype);xorworld;1990;Gaelco;;;
@@ -873,14 +871,14 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 1;Race;Lucky & Wild;luckywld;1992;Namco;;lags a lot;
 3;Race;Masked Riders Club Battle Race;kamenrid;1993;Banpresto / Toei;;;
 3;Race;Max RPM (ver 2);maxrpm;1986;Bally Midway;;;
-3;Race;Maze of Flott (Japan);mofflott;1989;Taito Corporation;;;
+3;Misc;Maze of Flott (Japan);mofflott;1989;Taito Corporation;;;
 0;Race;Metal Maniax (prototype);metalmx;1994;Atari Games;;stuck on conf;
 0;Race;Midnight Run: Road Fighters 2 (EAA, Euro v1.11);midnrun;1995;Konami;;doesn't launch;no CHD
 3;Race;Mille Miglia 2: Great 1000 Miles Rally (95/05/24);gtmr2;1995;Kaneko;;;
 1;Race;Moto Frenzy;motofren;1992;Atari Games;;lags a lot, unusable controls;
 0;Race;Motocross Go! (MG3 Ver. A);motoxgo;1997;Namco;;doesn't launch;no CHD
 3;Race;Neo Drift Out - New Technology;neodrift;1996;Visco;;;
-3;Race;New Rally X;nrallyx;1981;Namco;;;
+3;Misc;New Rally X;nrallyx;1981;Namco;;;
 0;Race;Off Road Challenge (v1.63);offroadc;1997;Midway;;freezes raspberry pi;no CHD
 1;Race;Out Run (sitdown/upright, Rev B);outrun;1986;Sega;;lags a lot;?? should work ??
 1;Race;OutRunners (World);orunners;1992;Sega;;lags a lot;
@@ -902,7 +900,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 1;Race;Rad Rally (World);radr;1991;Sega;;lags a lot;
 0;Race;Radikal Bikers (Version 2.02);radikalb;1998;Gaelco;;freezes raspberry pi;no CHD
 3;Race;Rally Bike / Dash Yarou;rallybik;1988;Toaplan / Taito Corporation;;;
-3;Race;Rally X (32k Ver.?);rallyx;1980;Namco;;;
+3;Misc;Rally X (32k Ver.?);rallyx;1980;Namco;;;
 0;Race;Rave Racer (Rev. RV2, World);raveracw;1995;Namco;;freezes raspberry pi;no CHD
 0;Race;Ridge Racer (Rev. RR3, World);ridgerac;1993;Namco;;freezes mame;no CHD
 0;Race;Ridge Racer 2 (Rev. RRS2, US);ridgera2;1994;Namco;;freezes mame;no CHD
@@ -922,7 +920,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 0;Race;San Francisco Rush: The Rock (boot rom L 1.0, GUTS Oct 6 1997 / MAIN Oct 16 1997);sfrushrk;1996;Atari Games;;doesn't launch;needs CHD
 0;Race;Side by Side (Ver 2.7 J);sidebs;1996;Taito;;freezes raspberry pi;no CHD
 0;Race;Side by Side 2 (Ver 2.6 OK);sidebs2;1997;Taito;;freezes raspberry pi;no CHD
-1;Race;Skimaxx;skimaxx;1996;Kyle Hodgetts / ICE;;lags a lot;
+1;Sport;Skimaxx;skimaxx;1996;Kyle Hodgetts / ICE;;lags a lot;
 1;Race;Slip Stream (950515 Brazil);slipstrm;1995;Capcom;;lags a lot, no controls;
 3;Race;Space Position (Japan);spcpostn;1986;Sega / Nasco;;;
 3;Race;Special Criminal Investigation (World set 1);sci;1989;Taito Corporation Japan;;;
@@ -948,7 +946,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Race;Thrash Rally;trally;1991;Alpha Denshi Co.;;;
 0;Race;Thrill Drive (JAE);thrilld;1998;Konami;;doesn't launch;no CHD
 0;Race;Thrill Drive 2 (ver EBB);thrild2;2001;Konami;;doesn't launch;needs CHD
-3;Race;Top Secret (Exidy) (version 1.0);topsecex;1986;Exidy;;;
+3;ShootEmUp;Top Secret (Exidy) (version 1.0);topsecex;1986;Exidy;;;
 1;Race;Top Speed (World);topspeed;1987;Taito Corporation Japan;;lags a lot;
 3;Race;Traverse USA / Zippy Race;travrusa;1983;Irem;;;
 2;Race;Turbo;turbo;1981;Sega;;No sound;
@@ -969,12 +967,12 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 0;Race;Xtreme Rally / Off Beat Racer!;xrally;1998;SNK;;doesn't launch;no CHD
 0;Race;Xtrial Racing (ver JAB);xtrial;2002;Konami;;doesn't launch;needs CHD
 3;RunNGun;Act-Fancer Cybernetick Hyper Weapon (World revision 2);actfancr;1989;Data East Corporation;;;
-3;RunNGun;Alien Syndrome (set 4, System 16B, unprotected);aliensyn;1987;Sega;;;
+3;ShootEmUp;Alien Syndrome (set 4, System 16B, unprotected);aliensyn;1987;Sega;;;
 3;RunNGun;Aliens (World set 1);aliens;1990;Konami;;;
 3;RunNGun;Avenging Spirit;avspirit;1991;Jaleco;;;
 3;RunNGun;Bay Route (set 3, World) (FD1094 317-0116);bayroute;1989;Sunsoft / Sega;;;
 3;RunNGun;Bonze Adventure (World, Newer);bonzeadv;1988;Taito Corporation Japan;;;
-0;RunNGun;Chaos Heat (V2.09O);chaoshea;1998;Taito;;no launch;
+0;ShootEmUp;Chaos Heat (V2.09O);chaoshea;1998;Taito;;no launch;
 3;RunNGun;Charlie Ninja;charlien;1995;Mitchell;;;
 3;RunNGun;Chelnov - Atomic Runner (World);chelnov;1988;Data East Corporation;;;
 3;RunNGun;Contra (US, Set 1);contra;1987;Konami;;;
@@ -984,12 +982,12 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;RunNGun;Cyber-Lip;cyberlip;1990;SNK;;;
 0;RunNGun;Demon Front (ver. 102);dmnfrnt;2002;IGS;;doesn't launch;
 3;RunNGun;Demon's World / Horror Story (set 1);demonwld;1990;Toaplan;;;
-3;RunNGun;Desert Breaker (World, FD1094 317-0196);desertbr;1992;Sega;;;
+3;ShootEmUp;Desert Breaker (World, FD1094 317-0196);desertbr;1992;Sega;;;
 3;RunNGun;E-Swat - Cyber Police (set 3, World, FD1094 317-0130);eswat;1989;Sega;;;
 3;RunNGun;Finest Hour (Japan);finehour;1989;Namco;;;
-1;RunNGun;Flame Gunner;flamegun;1999;Gaps Inc.;;lags a lot;
+1;flamegun;Flame Gunner;flamegun;1999;Gaps Inc.;;lags a lot;
 3;RunNGun;Green Beret;gberet;1985;Konami;;;
-1;RunNGun;Green Beret (Irem);greenber;1980;Irem;;Stuck on menu;
+1;Misc;Green Beret (Irem);greenber;1980;Irem;;Stuck on menu;
 1;RunNGun;Gun Master;gunmast;1994;Metro;;lags a lot;
 3;RunNGun;Gunforce - Battle Fire Engulfed Terror Island (World);gunforce;1991;Irem;;;
 2;RunNGun;Gunforce 2 (US);gunforc2;1994;Irem;;lags a little, bad sound;
@@ -1008,7 +1006,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 2;RunNGun;Psycho Soldier (US);psychos;1987;SNK;;cracky sound;
 3;RunNGun;Psycho-Nics Oscar (World revision 0);oscar;1987;Data East Corporation;;;
 3;RunNGun;Quartet (Rev A, 8751 315-5194);quartet;1986;Sega;;;
-3;RunNGun;Riot;riot;1992;NMK;;;
+3;ShootEmUp;Riot;riot;1992;NMK;;;
 3;RunNGun;Robocop (World revision 4);robocop;1988;Data East Corporation;;;
 3;RunNGun;Robocop 2 (Euro/Asia v0.10);robocop2;1991;Data East Corporation;;;
 3;RunNGun;Rohga Armor Force (Asia/Europe v5.0);rohga;1991;Data East Corporation;;;
@@ -1449,7 +1447,6 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;ShootEmUp;Seicross;seicross;1984;Nichibutsu / Alice;;;
 0;ShootEmUp;Sengeki Striker (Asia);sengekis;1997;Kaneko / Warashi;;doesn't launch;no CHD
 3;ShootEmUp;Senjyo;senjyo;1983;Tehkan;;;
-1;ShootEmUp;Sexy Parodius (ver JAA);sexyparo;1996;Konami;;lags a lot;
 1;ShootEmUp;SF-X;sfx;1983;Nichibutsu;;bad sound, tilted sideways;
 3;ShootEmUp;Shackled (US);shackled;1986;Data East USA;;;
 0;ShootEmUp;Shienryu (JUET 961226 V1.000);shienryu;1997;Warashi;;doesn't launch;no CHD

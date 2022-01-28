@@ -42,7 +42,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;BeatEmUp;Karate Blazers (World?);karatblz;1991;Video System Co.;;;
 3;BeatEmUp;Knights of the Round (World 911127);knights;1991;Capcom;;;
 3;BeatEmUp;Kung-Fu Master (World);kungfum;1984;Irem;;;
-3;BeatEmUp;Legend of Hero Tonma;loht;1989;Irem;;;
+3;RunNGun;Legend of Hero Tonma;loht;1989;Irem;;;
 0;BeatEmUp;Legionnaire;legionna;;;;protected;
 3;BeatEmUp;Magic Sword: Heroic Fantasy (World 900725);msword;1990;Capcom;;;
 3;BeatEmUp;Metamorphic Force (ver EAA);metamrph;1993;Konami;;;
@@ -83,7 +83,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;BeatEmUp;The Simpsons (4 Players World, set 1);simpsons;1991;Konami;;;
 3;BeatEmUp;The Super Spy (NGM-011)(NGH-011);superspy;1990;SNK;;;
 3;BeatEmUp;Three Wonders (World 910520);3wonders;1991;Capcom;;;
-3;BeatEmUp;Thunder Fox (World);thundfox;1990;Taito Corporation Japan;;;
+3;RunNGun;Thunder Fox (World);thundfox;1990;Taito Corporation Japan;;;
 3;BeatEmUp;Tiger Road (US);tigeroad;1987;Capcom;;;
 3;BeatEmUp;Top Hunter - Roddy & Cathy (NGM-046);tophuntr;1994;SNK;;;
 3;BeatEmUp;Trojan (US set 1);trojan;1986;Capcom;;;
@@ -109,7 +109,6 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 1;Gun;Steel Gunner;sgunner;1990;Namco;;control problem;
 1;Gun;Steel Gunner 2 (US);sgunner2;1991;Namco;;Control problems;
 1;Gun;Terminator 2 - Judgment Day (rev LA4 08/03/92);term2;1991;Midway;;Control problems;
-1;Gun;Tickee Tickats;tickee;1994;Raster Elite;;Control problems;
 1;Gun;Under Fire (World);undrfire;1993;Taito Corporation Japan;;Control problems;
 1;Gun;Zero Point (set 1);zeropnt;1998;Unico;;Control problems;
 1;Gun;Zero Point 2;zeropnt2;1999;Unico;;Control problems;
@@ -117,7 +116,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 0;Misc;Arkanoid Returns (Ver 2.02O 1997/02/10);arkretrn;1997;Taito Corporation;;lags a lot, no control;
 3;Misc;Bishi Bashi Championship Mini Game Senshuken (ver JAA, 3 Players);bishi;1996;Konami;;;
 3;Misc;Blocken (Japan);blocken;1994;Visco / KID;;;
-3;Misc;Bullfight (315-5065);bullfgt;1984;Coreland / Sega;;;
+3;Sport;Bullfight (315-5065);bullfgt;1984;Coreland / Sega;;;
 3;Misc;Cameltry (US);cameltry;1989;Taito Corporation;;;
 3;Misc;Congo Bongo (Rev C, 2 board stack);congo;1983;Sega;;wrong ratio ?;
 3;Misc;Crazy Climber 2 (Japan);cclimbr2;1988;Nichibutsu;;;
@@ -125,8 +124,8 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 2;Misc;Dig Dug (rev 2);digdug;1982;Namco;;wrong ratio;
 2;Misc;Dig Dug II (New Ver.);digdug2;1985;Namco;;wrong ratio;
 0;Misc;Discs of Tron (Upright);dotron;1983;Bally Midway;;freezes the rapsberry pi;
-1;Misc;Elevator Action Returns (Ver 2.2O 1995/02/20);elvactr;1994;Taito Corporation Japan;;Laging (sound problem);
-3;Misc;Exterminator;exterm;1989;Gottlieb / Premier Technology;;lags in menu;
+1;Platform;Elevator Action Returns (Ver 2.2O 1995/02/20);elvactr;1994;Taito Corporation Japan;;Laging (sound problem);
+3;Platform;Exterminator;exterm;1989;Gottlieb / Premier Technology;;lags in menu;
 3;Misc;Exvania (World);exvania;1992;Namco;;;
 2;Misc;Fire Trap (US);firetrap;1986;Data East USA;;wrong ratio;
 3;Misc;Hyper Pacman;hyperpac;1995;SemiCom;;;
@@ -179,7 +178,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Platform;Liquid Kids (World);liquidk;1990;Taito Corporation Japan;;;
 3;Platform;Lode Runner - The Dig Fight (ver. B);loderndf;2000;Psikyo;;long to launch;
 3;Platform;Lode Runner II - The Bungeling Strikes Back;ldrun2;1984;Irem (licensed from Broderbund);;;
-3;Platform;Magician Lord (NGM-005);maglord;1990;Alpha Denshi Co.;;;
+3;ShootEmUp;Magician Lord (NGM-005);maglord;1990;Alpha Denshi Co.;;;
 3;Platform;Mario Bros. (US, Revision F);mario;1983;Nintendo of America;;;
 3;Platform;Marvel Land (US);marvland;1989;Namco;;;
 3;Platform;Mega Twins (World 900619);mtwins;1990;Capcom;;;
@@ -209,7 +208,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Puzzle;Ataxx (set 1);ataxx;1990;Leland Corp.;;;
 3;Puzzle;BeatHead (prototype);beathead;1993;Atari Games;;;
 3;Puzzle;Borench (set 1);borench;1990;Sega;;controls ?;
-3;Puzzle;Boulder Dash / Boulder Dash Part 2 (World);bouldash;1990;Data East Corporation (licensed from First Star);;;
+3;Misc;Boulder Dash / Boulder Dash Part 2 (World);bouldash;1990;Data East Corporation (licensed from First Star);;;
 3;Puzzle;Cheese Chase;cheesech;1994;Art & Magic;;;
 3;Puzzle;Chicken Shift;cshift;1984;Bally/Sente;;;
 3;Puzzle;Columns (US);columns;1990;Sega;;;
@@ -228,7 +227,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Puzzle;Monster Slider (Japan);mslider;1997;Visco / Datt Japan;;;
 3;Puzzle;Naname de Magic! (Japan);naname;1994;Atlus;;;
 3;Puzzle;Panic Bomber;panicbom;1994;Eighting / Hudson;;;
-1;Puzzle;Panic Street (Japan);panicstr;1999;Kaneko;;Lags with sound problem;
+1;Misc;Panic Street (Japan);panicstr;1999;Kaneko;;Lags with sound problem;
 2;Puzzle;Peggle (Joystick, v1.0);peggle;1991;Strata/Incredible Technologies;;wrong ratio;
 3;Puzzle;Pipe Dream (World);pipedrm;1990;Video System Co.;;;
 3;Puzzle;Puyo Puyo (Japan);puyopuyo;1992;Sega / Compile;;;
@@ -244,9 +243,9 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 1;Puzzle;Teki Paki;tekipaki;1991;Toaplan;;no sound;
 3;Puzzle;Tetris Plus;tetrisp;1995;Jaleco / BPS;;;
 3;Puzzle;Tetris Plus 2 (World?);tetrisp2;1997;Jaleco / The Tetris Company;;;
-3;Puzzle;Toggle (prototype);toggle;1985;Bally/Sente;;;
+3;Misc;Toggle (prototype);toggle;1985;Bally/Sente;;;
 3;Puzzle;Toryumon;toryumon;1994;Sega;;;
-3;Puzzle;Twin Qix (Ver 1.0A 1995/01/17) (Prototype);twinqix;1995;Taito America Corporation;;a few cracks;
+3;Misc;Twin Qix (Ver 1.0A 1995/01/17) (Prototype);twinqix;1995;Taito America Corporation;;a few cracks;
 3;Puzzle;Twinkle Star Sprites;twinspri;1996;ADK / SNK;;;
 3;Puzzle;Vs. Dr. Mario;drmario;1990;Nintendo;;sound problems;
 3;Puzzle;Welltris (World?, 2 players);welltris;1991;Video System Co.;;;

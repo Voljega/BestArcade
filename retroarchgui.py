@@ -471,8 +471,8 @@ class RetroarchGUI:
     def __clickVerify(self):
         self.logger.log('\n<--------- Verify retroarch Parameters --------->')
         error = False
-        for key in ['exportDir', 'fbneo', 'mame2010', 'mame2003', 'mame2003plus', 'Images folder #1',
-                    'Images folder #2']:
+        keys = Sorter.setKeys[self.hardware] + ['exportDir', 'Images folder #1', 'Images folder #2']
+        for key in keys:
             if not os.path.exists(self.guiVars[key].get()):
                 error = True
                 self.logger.log(key + ' folder does not exist', self.logger.ERROR)
