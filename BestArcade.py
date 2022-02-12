@@ -32,13 +32,13 @@ if __name__ == "__main__":
 # NEW SETS/TESTS
 # ----------------
 # add neogeo MVS games tab
-# retest for N2
 # add vertical games tab
 
 # SET ERRORS & CHECKS
 # --------------------
 # BAD BROKEN CHD fghtmn for latest Mame
-# CHK Demon World / Horror Story
+
+# ddp2 not found in fbneo set when it should
 
 # cave pgm v0.213
 # irem m-72 v0.213
@@ -55,7 +55,6 @@ if __name__ == "__main__":
 # sega system 18 v0.213
 # sega system 24 v0.213
 # sega system 32 v0.213
-# sega system c-2 v0.213
 # seta1 v0.213
 # sony zn1 zn2 v0.213
 # taito f2 v0.213
