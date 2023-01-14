@@ -17,8 +17,14 @@ if __name__ == "__main__":
 # scaling issue on MacOSX -> needs to externalize font size somehow
 #   -> done with slider but slider doesn't appear on MacOS, revert slider ?
 # resolution/size/scrollbar for lower resolutions than 1080p (see solution draft on my stackoverflow)
-# allow to choose between pi3 and N2 -> double tab retroarch using hardware parameters when initializing RetroarchGUI
+# needs to clean <unknown> in mame gamelist
+# pbobblen;pbobble -> pbobble shouldn't be used if pbobblen is found
+# prosoccr;cpsoccer -> cpsoccer shouldn't be used if prosoccr is found
 
+# !!! MAME.dat à mettre à jour
+
+# IDEAS
+# -----------------
 # error detecting is wrong for keepLevel WORKING and Exclusion Type Strict
 # allow basicsorter generation without dat / prevents generation without dat ?
 # add info to generate dat from mame exe (see my handheld thread on reddit)
