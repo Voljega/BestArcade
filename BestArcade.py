@@ -21,7 +21,7 @@ if __name__ == "__main__":
 # pbobblen;pbobble -> pbobble shouldn't be used if pbobblen is found
 # prosoccr;cpsoccer -> cpsoccer shouldn't be used if prosoccr is found
 
-# !!! MAME.dat à mettre à jour
+# homebrews neogeo à mettre dans neogeo.ini également
 
 # IDEAS
 # -----------------
