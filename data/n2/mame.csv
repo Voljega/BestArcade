@@ -2186,7 +2186,6 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 1;Sport;Alpine Racer (Rev. AR2 Ver.D, World);alpinerd;1994;Namco;;lags a lot;
 1;Sport;Alpine Racer 2 (Rev. ARS2 Ver.B, World);alpinr2b;1996;Namco;;lags a lot;
 3;Sport;Alpine Ski (set 1);alpine;1982;Taito Corporation;;;
-1;Sport;Alpine Surfer (Rev. AF2 Ver.A, World);alpinesa;1996;Namco;;lags a lot, broken graphics;
 1;Sport;American Horseshoes (US);horshoes;1990;Taito America Corporation;;bad controls;
 1;Sport;AmeriDarts (set 1);amerdart;1989;Ameri;;bad controls (deadzone + too sensitive);
 3;Sport;Angler Dangler (DECO Cassette) (US);cadanglr;1982;Data East Corporation;;;
