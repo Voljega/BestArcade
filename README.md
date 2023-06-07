@@ -7,7 +7,7 @@ These tool handle two types of usage :
 - generate dedicated romsets : custom mame based on Best Arcade list, neo geo aes set, atomiswave set, naomi set, handheld set
 
 FbNeo version currently tested is Dec 15th, 2022
-Handheld supported romset is currently at mame 0.251 level
+Handheld supported romset is currently at mame 0.255 level
 
 ### WHAT THIS TOOL DOESN'T DO :
 - It's not clrmamepro and will not check that your romsets files are in the right version number
