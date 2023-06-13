@@ -3,10 +3,10 @@
 ## Best Arcade Tool
 
 These tool handle two types of usage :
-- generate retroarch sorted romsets (fbneo, mame2003, mame2003plus, mame2010) keeping only the games referenced in the [BestArcade list](https://docs.google.com/spreadsheets/d/1S5qAI-TEl7wfqg6w9VNEwKciMGUtw40n9PS4xslkG3s/edit?usp=sharing), above and equal to the working state level you choose.
+- generate retroarch sorted romsets (fbneo, mame2003, mame2003plus, mame2010, regular mame) keeping only the games referenced in the [BestArcade list](https://docs.google.com/spreadsheets/d/1S5qAI-TEl7wfqg6w9VNEwKciMGUtw40n9PS4xslkG3s/edit?usp=sharing), above and equal to the working state level you choose.
 - generate dedicated romsets : custom mame based on Best Arcade list, neo geo aes set, atomiswave set, naomi set, handheld set
 
-FbNeo version currently tested is Dec 15th, 2022
+FbNeo version currently tested is Jun 13th, 2023
 Handheld supported romset is currently at mame 0.255 level
 
 ### WHAT THIS TOOL DOESN'T DO :
@@ -18,6 +18,11 @@ Handheld supported romset is currently at mame 0.255 level
 ### WHAT THIS TOOL DO :
 
 Retroarch tab :
+- Available in Pi3, N2/N2+, N100 miniPCs flavor
+- Only N100 tests will be maintained in the future, but feel free to share your tests for other machine types
+- [BestArcade list for Raspberry Pi3](https://docs.google.com/spreadsheets/d/1S5qAI-TEl7wfqg6w9VNEwKciMGUtw40n9PS4xslkG3s/edit?usp=sharing)
+- [BestArcade list for Odroid N2/N2+](https://docs.google.com/spreadsheets/d/1M4J1jIRgnoo5lVzYGYLGYm0_VPXfEiwUAl5XZ91ZsB8/edit?usp=sharing)
+- [BestArcade list for N100 MiniPC](https://docs.google.com/spreadsheets/d/144LnHJMpPIIiknSP-TP1-i6jjxQqO_rLD-qtjVIdy20/edit?usp=sharing)  
 - Generate BestArcade romsets by using your fbneo, mame2003, mame2003plus and mame2010 non-merged sets, your original sets will be kept intact
 - Generate basic gamelist (Recalbox format but should work for other distribs) for your sets, with optional images. Genre images were generated with the awesome site [Game-icons.net](https://game-icons.net/)
 - Generate csv files documenting the generated sets
@@ -34,7 +39,7 @@ Neo Geo AES tab :
 - Generate Neo Geo AES full set from either FBNeo or recent mame set, FBNeo is recommanded though
 - FBNeo/Mame DAT must be provided by the user
 
-Sega Model 2, Sega Model 3, Atomiswave and Naomi tabs :
+Sega Model 2, Sega Model 3, Atomiswave, Naomi and Naomi2 tabs :
 - Generate full sets of this system from a recent mame set
 - Mame DAT must be provided by the user
 
@@ -90,7 +95,7 @@ You can modify your configuration by editing the `conf\conf-retroarch.conf` file
 - `genreSubFolders`: determines if your romset will use sub folders for genre or not
 - `useImages`: determines if images will be used for gamelist
 
-### CUSTOM, NEO GEO AES, SEGA MODEL 2, SEGA MODEL 3, ATOMISWAVE, NAOMI & HANDHELD ROMSETS CONFIGURATION :
+### CUSTOM, NEO GEO AES, SEGA MODEL 2 & 3, ATOMISWAVE, NAOMI 1&2 AND HANDHELD ROMSETS CONFIGURATION :
 You can modify your configuration by editing the related `conf\conf-*.conf` (`conf\conf-custom.conf`, `conf\conf-naomi.conf`, etc...) file either directly or from the UI with your own parameters :
 - `exportDir` : the target directory for generation, warning its whole content will be erased (you will be prompted) at the begining of the script
 - `custom`, `neogeoaes`, `model2`, `model3`, `atomiswave`, `naomi` or `handheld` : the path to your original sets, this will be left untouched by the script

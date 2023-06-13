@@ -1,0 +1,31 @@
+id;label;help
+exportDir;Export directory;Path where your sets will be created (original sets will be left untouched)
+selectExportDir;Select;Select export folder
+fbneo;FbNeo set folder;Path to your fbneo set, leave empty if you do not have it
+mame;Mame set folder;Path to your mame set, leave empty if you do not have it
+selectRomsetDir;Select;Select set folder
+images;Images folder;Paths to your images set, leave empty if you do not have it
+selectImages;Select;Select your images folder
+imgNameFormat;Image filename format;Format of the image filename
+dryRun;Dry run;Check this to generate only dat and CSV files, no roms will be copied
+keepLevel;Keep level;Select minimum working level at which roms will be kept
+keepNotTested;Keep not tested roms;Check to keep untested roms even in STRICT mode
+exclusionType;Exclusion Type;Determine how roms are kept if they are in different sets#nSTRICT (only keep the best working one), EQUAL (keep in several sets if equals in both), NONE (keep in all sets)
+preferedSet;Prefered set;General prefered set in STRICT mode if rom is in same working level in several sets
+usePreferedSetForGenre;Use prefered set for genre;Check to use prefered set for genres in STRICT mode and define them. Takes precedence over general prefered set if activated
+BeatEmUpPreferedSet;BeatEmUp prefered set;Prefered set for BeatEmUp games
+GunPreferedSet;Gun prefered set;Prefered set for Gun games
+MiscPreferedSet;Misc prefered set;Prefered set for Misc games
+PlatformPreferedSet;Platform prefered set;Prefered set for Platform games
+PuzzlePreferedSet;Puzzle prefered set;Prefered set for Puzzle games
+RacePreferedSet;Race prefered set;Prefered set for Race games
+RunNGunPreferedSet;RunNGun prefered set;Prefered set for RunNGun games
+ShootEmUpPreferedSet;Shmup prefered set;Prefered set for Shmup games
+SportPreferedSet;Sport prefered set;Prefered set for Sport games
+VsFightingPreferedSet;VsFighting prefered set;Prefered set for VsFighting games
+genreSubFolders;Use genre subfolders;Check to use genre subfolders for roms
+useImages;Scrape images;Check to use images for games and folders
+verify;Verify;Check that your paths are okay
+save;Save;Save your configuration to file
+proceed;Proceed;Create your romsets
+confirm;Confirm;Your output dir is {outputDir}#nIts content will be erased.#nIf you don't want to proceed, close this window, or click Cancel

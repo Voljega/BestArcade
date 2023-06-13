@@ -9,7 +9,7 @@ import dat
 
 
 class Sorter:
-    setKeys = {'pi3': ['fbneo', 'mame2003', 'mame2003plus', 'mame2010'], 'n2': ['fbneo', 'mame']}
+    setKeys = {'pi3': ['fbneo', 'mame2003', 'mame2003plus', 'mame2010'], 'n2': ['fbneo', 'mame'], 'n100': ['fbneo', 'mame']}
     bigSetFile = r"custom.ini"
 
     def __init__(self, configuration, scriptDir, postProcess, logger, hardware):
