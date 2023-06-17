@@ -241,7 +241,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 0;Homebrews;Vector Breakout [h];vbrakout;1999;Clay Cowgill;;romset is unknown;
 3;Misc;96 Flag Rally;flagrall;1996;unknown;;;
 3;Misc;Ali Baba and 40 Thieves;alibaba;1982;Sega;;;
-2;Misc;Alien Arena;alienar;1985;Duncan Brown;no sound;;
+2;Misc;Alien Arena;alienaru;1985;Duncan Brown;no sound;;
 3;Misc;Amidar;amidar;1981;Konami;;;
 3;Misc;Angel Kids (Japan);angelkds;1988;Sega / Nasco?;Miscellaneous;;
 3;Misc;Anteater;anteater;1982;Stern (Tago license);;;

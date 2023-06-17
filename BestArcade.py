@@ -17,11 +17,13 @@ if __name__ == "__main__":
 # scaling issue on MacOSX -> needs to externalize font size somehow
 #   -> done with slider but slider doesn't appear on MacOS, revert slider ?
 # resolution/size/scrollbar for lower resolutions than 1080p (see solution draft on my stackoverflow)
-# needs to clean <unknown> in mame gamelist
-# pbobblen;pbobble -> pbobble shouldn't be used if pbobblen is found
-# prosoccr;cpsoccer -> cpsoccer shouldn't be used if prosoccr is found
 
-# homebrews neogeo à mettre dans neogeo.ini également
+# EXTRACT error
+# needs to clean <unknown> in mame gamelist -> # CHK fix gamelist
+# spclforc and spcfrcii should have sound past 0.252
+
+# clean 'NOT FOUND in any set'
+
 
 # IDEAS
 # -----------------

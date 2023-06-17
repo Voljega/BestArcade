@@ -29,8 +29,8 @@ def writeGamelistEntry(gamelist, romName, name, desc, year, frontPic, developer,
     gamelist.write("        <desc>" + desc.replace('&', '&amp;') + "</desc>\n")
     gamelist.write("        <releasedate>" + year + "0101T000000</releasedate>\n")
     gamelist.write("        <image>" + frontPic + "</image>\n")
-    gamelist.write("        <developer>" + developer.replace('&', '&amp;') + "</developer>\n")
-    gamelist.write("        <publisher>" + publisher.replace('&', '&amp;') + "</publisher>\n")
+    gamelist.write("        <developer>" + developer.replace('&', '&amp;').replace('<', '&lgt;').replace('>', '&rgt;') + "</developer>\n")
+    gamelist.write("        <publisher>" + publisher.replace('&', '&amp;').replace('<', '&lgt;').replace('>', '&rgt;') + "</publisher>\n")
     gamelist.write("        <genre>" + genre.replace('[', '').replace(']', '') + "</genre>\n")
     gamelist.write("    </game>\n")
 

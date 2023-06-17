@@ -199,6 +199,10 @@ class Sorter:
 
                 multiGameFoundInSet = False
                 for game in games:
+                    # TODO TEMP debug
+                    if game == 'pbobblen' or game == 'prosoccr' or game == 'sdtennis':
+                        print('ouaich')
+                    # TODO END TEMP debug
                     audit = game + " -> "
                     scores = dict()
                     testForGame = allTests[game] if game in allTests else None
