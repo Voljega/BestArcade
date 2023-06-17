@@ -3,3 +3,4 @@
 *.iml
 BestArcade.iml
 **/build
+**/__pycache__

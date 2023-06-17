@@ -6,7 +6,7 @@ If you want to build your own executable on Windows, it's pretty straightforward
 AUTOMATIC BUILD:
 - use build.bat, you can then find your build in the build directory
 
-MANUAL BUIL:
+MANUAL BUILD:
 - Copy all `.py` files and the `bestarcade.ico` file in a work directory
 - Go into the work directory and type : `pyinstaller --icon=bestarcade.ico --clean -F BestArcade.py`
 - Your exe will be generated into a `dist` subDirectory
