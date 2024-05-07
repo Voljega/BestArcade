@@ -14,6 +14,7 @@ if __name__ == "__main__":
 
 # FIXES/ENHANCEMENT
 # -----------------
+# github issues
 # scaling issue on MacOSX -> needs to externalize font size somehow
 #   -> done with slider but slider doesn't appear on MacOS, revert slider ?
 # resolution/size/scrollbar for lower resolutions than 1080p (see solution draft on my stackoverflow)
@@ -23,6 +24,42 @@ if __name__ == "__main__":
 # spclforc and spcfrcii should have sound past 0.252
 
 # clean 'NOT FOUND in any set'
+
+# CHD Handling
+# ---------------
+# check handeld / tvgames still working
+# Modify README.md -> mention CHD defaults to rom folder
+
+# Allow avoiding CHD games
+# ------------------------
+# use property file
+# Modify README.md
+
+# 3D games overhaul
+# -------------------
+# Games that ran on Atari/Midway's Seattle, Vegas, and Denver hardware - NFL Blitz, California Speed, Vapor TRX, Cart Fury, SF Rush, and SF Rush 2049, among others - can require a beefy CPU at times, but are in great shape.
+#
+# Incredible Technologies' "Eagle" platform is in the same boat, which includes Virtual Pool and the first few releases of Golden Tee Fore! and Big Buck Hunter.
+#
+# Gaelco's 3D titles are in pretty great shape.
+#
+# Cruis'n USA, Cruis'n World, War Gods, and Off Road Challenge, likewise.
+#
+# 3DO M2 runs well but is on the slow side.
+#
+# Various 3D Konami games are in great shape, including GTI Club, Solar Assault, Polygonet Commanders, and various others.
+#
+# Namco System 22 (Ridge Racer, Prop Cycle, and various others" are in pretty great shape, too.
+#
+# PS1-based hardware (Namco System 10/11/12, Konami GQ/GV, Capcom ZN1/ZN2, and others, which encompass loads of games) is in pretty decent shape as well.
+#
+# Sega Model 1 is in okay shape, but needs some additional bugfixing by Olivier at some point.
+#
+# Sega Model 2 needs some deep digging into how it's rasterizer functions, as that's something ElSemi never even managed without cramming hacks upon hacks into NebulaM2.
+#
+# Sega Model 3 could really use some love, Supermodel is a better choice right now.
+#
+# Namco System 21 is hit-or-miss depending on the generation of the board involved.
 
 
 # IDEAS

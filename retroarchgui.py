@@ -73,7 +73,8 @@ class RetroarchGUI:
         self.romsetFrame.grid(column=0, row=0, sticky="EW", pady=5)
         self.romsetFrame.grid_columnconfigure(1, weight=1)
         setRow = 0
-        for key in Sorter.setKeys[self.hardware]:
+        romsetKeys = Sorter.setKeys[self.hardware] if self.hardware == 'pi3' else Sorter.setKeys[self.hardware] + ['chd']
+        for key in romsetKeys:
             label = Tk.Label(self.romsetFrame, text=self.guiStrings[key].label)
             wckToolTips.register(label, self.guiStrings[key].help)
             label.grid(column=0, row=setRow, padx=5, sticky="W")
@@ -144,12 +145,14 @@ class RetroarchGUI:
         self.parametersFrame.grid(column=0, row=2, sticky="EW", pady=5)
         self.parametersFrame.grid_columnconfigure(1, weight=1)
         self.parametersFrame.grid_columnconfigure(4, weight=2)
+
         self.guiVars['dryRun'] = Tk.IntVar()
         self.guiVars['dryRun'].set(self.configuration['dryRun'])
         dryRunCheckButton = Tk.Checkbutton(self.parametersFrame, text=self.guiStrings['dryRun'].label,
                                            variable=self.guiVars['dryRun'], onvalue=1, offvalue=0)
         wckToolTips.register(dryRunCheckButton, self.guiStrings['dryRun'].help)
         dryRunCheckButton.grid(column=0, row=0, sticky="W")
+
         self.guiVars['genreSubFolders'] = Tk.IntVar()
         self.guiVars['genreSubFolders'].set(self.configuration['genreSubFolders'])
         useGenreSubFolderCheckButton = Tk.Checkbutton(self.parametersFrame,
@@ -157,12 +160,22 @@ class RetroarchGUI:
                                                       variable=self.guiVars['genreSubFolders'], onvalue=1, offvalue=0)
         wckToolTips.register(useGenreSubFolderCheckButton, self.guiStrings['genreSubFolders'].help)
         useGenreSubFolderCheckButton.grid(column=2, row=0, sticky="W")
+
         self.guiVars['useImages'] = Tk.IntVar()
         self.guiVars['useImages'].set(self.configuration['useImages'])
         useImagesCheckButton = Tk.Checkbutton(self.parametersFrame, text=self.guiStrings['useImages'].label,
                                               variable=self.guiVars['useImages'], onvalue=1, offvalue=0)
         wckToolTips.register(useImagesCheckButton, self.guiStrings['useImages'].help)
         useImagesCheckButton.grid(column=3, row=0, sticky="W")
+
+        if self.hardware not in ['pi3']:
+            self.guiVars['excludeCHDGames'] = Tk.IntVar()
+            self.guiVars['excludeCHDGames'].set(self.configuration['excludeCHDGames'])
+            excludeCHDGamesCheckButton = Tk.Checkbutton(self.parametersFrame, text=self.guiStrings['excludeCHDGames'].label,
+                                                  variable=self.guiVars['excludeCHDGames'], onvalue=1, offvalue=0)
+            wckToolTips.register(excludeCHDGamesCheckButton, self.guiStrings['excludeCHDGames'].help)
+            excludeCHDGamesCheckButton.grid(column=4, row=0, sticky="W")
+
         ttk.Separator(self.parametersFrame, orient=Tk.HORIZONTAL).grid(column=0, row=1, columnspan=5, padx=5, pady=5,
                                                                        sticky="EW")
         keepLevelLabel = Tk.Label(self.parametersFrame, text=self.guiStrings['keepLevel'].label)

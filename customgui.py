@@ -29,6 +29,7 @@ class CustomGUI:
         # Init all components
         self.romsetFrame = None
         self.selectRomsetDirButton = None
+        self.selectCHDDirButton = None
         self.imagesFrame = None
         self.parametersFrame = None
         self.buttonsFrame = None
@@ -62,6 +63,20 @@ class CustomGUI:
         self.selectRomsetDirButton.grid(column=2, row=setRow, padx=5, sticky="WE")
         wckToolTips.register(self.selectRomsetDirButton, self.guiStrings['selectRomsetDir'].help)
         setRow = setRow + 1
+
+        if self.setKey not in ['handheld', 'tvgames']:
+            label = Tk.Label(self.romsetFrame, text=self.guiStrings['chd'].label)
+            wckToolTips.register(label, self.guiStrings['chd'].help)
+            label.grid(column=0, row=setRow, padx=5, sticky="W")
+            self.guiVars['chd'] = Tk.StringVar()
+            self.guiVars['chd'].set(self.configuration['chd'])
+            entry = Tk.Entry(self.romsetFrame, textvariable=self.guiVars['chd'])
+            entry.grid(column=1, row=setRow, padx=5, sticky="WE")
+            self.selectCHDDirButton = Tk.Button(self.romsetFrame, text=self.guiStrings['selectCHDDir'].label,
+                                                   command=lambda: self.__openFileExplorer(True, 'chd', None))
+            self.selectCHDDirButton.grid(column=2, row=setRow, padx=5, sticky="WE")
+            wckToolTips.register(self.selectCHDDirButton, self.guiStrings['selectCHDDir'].help)
+            setRow = setRow + 1
 
         label = Tk.Label(self.romsetFrame, text=self.guiStrings['dat'].label)
         wckToolTips.register(label, self.guiStrings['dat'].help)
@@ -133,12 +148,14 @@ class CustomGUI:
         self.parametersFrame.grid(column=0, row=2, sticky="EW", pady=5)
         self.parametersFrame.grid_columnconfigure(1, weight=1)
         self.parametersFrame.grid_columnconfigure(4, weight=2)
+
         self.guiVars['dryRun'] = Tk.IntVar()
         self.guiVars['dryRun'].set(self.configuration['dryRun'])
         dryRunCheckButton = Tk.Checkbutton(self.parametersFrame, text=self.guiStrings['dryRun'].label,
                                            variable=self.guiVars['dryRun'], onvalue=1, offvalue=0)
         wckToolTips.register(dryRunCheckButton, self.guiStrings['dryRun'].help)
         dryRunCheckButton.grid(column=0, row=0, sticky="W")
+
         self.guiVars['genreSubFolders'] = Tk.IntVar()
         self.guiVars['genreSubFolders'].set(self.configuration['genreSubFolders'])
         useGenreSubFolderCheckButton = Tk.Checkbutton(self.parametersFrame,
@@ -146,12 +163,21 @@ class CustomGUI:
                                                       variable=self.guiVars['genreSubFolders'], onvalue=1, offvalue=0)
         wckToolTips.register(useGenreSubFolderCheckButton, self.guiStrings['genreSubFolders'].help)
         useGenreSubFolderCheckButton.grid(column=2, row=0, sticky="W")
+
         self.guiVars['useImages'] = Tk.IntVar()
         self.guiVars['useImages'].set(self.configuration['useImages'])
         useImagesCheckButton = Tk.Checkbutton(self.parametersFrame, text=self.guiStrings['useImages'].label,
                                               variable=self.guiVars['useImages'], onvalue=1, offvalue=0)
         wckToolTips.register(useImagesCheckButton, self.guiStrings['useImages'].help)
         useImagesCheckButton.grid(column=3, row=0, sticky="W")
+
+        if self.setKey not in ['handheld', 'tvgames']:
+            self.guiVars['excludeCHDGames'] = Tk.IntVar()
+            self.guiVars['excludeCHDGames'].set(self.configuration['excludeCHDGames'])
+            excludeCHDGamesCheckButton = Tk.Checkbutton(self.parametersFrame, text=self.guiStrings['excludeCHDGames'].label,
+                                                  variable=self.guiVars['excludeCHDGames'], onvalue=1, offvalue=0)
+            wckToolTips.register(excludeCHDGamesCheckButton, self.guiStrings['excludeCHDGames'].help)
+            excludeCHDGamesCheckButton.grid(column=4, row=0, sticky="W")
 
     def __drawButtonsFrame(self):
         self.buttonsFrame = Tk.Frame(self.tabFrame, padx=10)
@@ -185,7 +211,7 @@ class CustomGUI:
                         encoding="utf-8")
         listKeys = sorted(self.guiStrings.values(), key=attrgetter('order'))
         for key in listKeys:
-            if key.id not in ['verify', 'save', 'proceed', 'confirm', 'selectRomsetDir', 'selectDat',
+            if key.id not in ['verify', 'save', 'proceed', 'confirm', 'selectRomsetDir', 'selectCHDDir', 'selectDat',
                               'selectExportDir', 'selectImages']:
                 if key.help:
                     confFile.write('# ' + key.help.replace('#n', '\n# ') + '\n')
@@ -218,8 +244,8 @@ class CustomGUI:
     def __clickVerify(self):
         self.logger.log('\n<--------- Verify ' + self.setKey + ' Parameters --------->')
         error = False
-        for key in ['exportDir', self.setKey, 'Images folder #1', 'Images folder #2']:
-            if not os.path.exists(self.guiVars[key].get()):
+        for key in ['exportDir', self.setKey, 'chd', 'Images folder #1', 'Images folder #2']:
+            if key in self.guiVars and not os.path.exists(self.guiVars[key].get()):
                 error = True
                 self.logger.log(key + ' folder does not exist', self.logger.ERROR)
         if not os.path.exists(self.guiVars['dat'].get()):

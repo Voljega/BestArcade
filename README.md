@@ -2,18 +2,18 @@
 
 ## Best Arcade Tool
 
-These tool handle two types of usage :
+This tool handles two types of usage :
 - generate retroarch sorted romsets (fbneo, mame2003, mame2003plus, mame2010, regular mame) keeping only the games referenced in the [BestArcade list](https://docs.google.com/spreadsheets/d/1S5qAI-TEl7wfqg6w9VNEwKciMGUtw40n9PS4xslkG3s/edit?usp=sharing), above and equal to the working state level you choose.
 - generate dedicated romsets : custom mame based on Best Arcade list, neo geo aes set, atomiswave set, naomi set, handheld set
 
-FbNeo version currently tested is Jun 13th, 2023
-Handheld supported romset is currently at mame 0.255 level
+FbNeo version currently tested is Apr 30th, 2024
+Handheld supported romset is currently at mame 0.265 level
 
 ### WHAT THIS TOOL DOESN'T DO :
 - It's not clrmamepro and will not check that your romsets files are in the right version number
 - It only works with non-merged sets, split and merged sets are not supported, use clrmamepro to generate non-merged sets if needed. However very few clones ares used, so it should be mostly ok with other type of sets.
-- CHD are handled, decompressed CHD folder for each games must be located directly inside romset directory (i.e your romset directory should contain `kinst.zip` rom and `kinst` chd folder at the same level)
-- It only works on Windows, well it should work on Linux by launching it manually with Python 3.7, but it needs testing to be sure. Please contact me through isues if you manage to make it work or encounter bugs
+- CHD are handled, decompressed CHD folder for each games must be located inside your CHD folder or will default to romset directory (i.e your CHD directory should contain `kinst.zip` rom and `kinst` chd folder at the same level)
+- You can excude CHD games from generation if that's what you want
 
 ### WHAT THIS TOOL DO :
 
@@ -45,6 +45,10 @@ Sega Model 2, Sega Model 3, Atomiswave, Naomi and Naomi2 tabs :
 
 Handhelds tab :
 - Generate full set of all single-game (game & watch like, no consoles) handheld devices from a recent mame set
+- Mame DAT must be provided by the user
+
+TV Games tab:
+- Generate full set of all TV Games devices from a recent mame set
 - Mame DAT must be provided by the user
 
 ### LINUX INSTALLATION AND EXECUTION :
@@ -83,6 +87,7 @@ You can also directly modify conf files manually if you prefer, see next section
 You can modify your configuration by editing the `conf\conf-retroarch.conf` file either directly or from the UI with your own parameters :
 - `exportDir` : the target directory for generation, warning its whole content will be erased (you will be prompted) at the begining of the script
 - `fbneo`, `mame2003`, `mame2003plus`, `mame2010` : the path to your original sets, this will be left untouched by the script
+- `chd`: the path to your CHD set, if it doesn't exist, it will simply default to romset folder
 - `images`: Paths to your images folder (flyers, screenshot, etc) separated by ';', will be checked in consecutive order
 - `imgNameFormat` : the image name format in your images folder, '{rom}' part will be replaced by each rom name
 - `dryRun` : If put to 1, will do a dry run, generating only csv and dat files without copying roms and bios, good for testing
@@ -94,16 +99,19 @@ You can modify your configuration by editing the `conf\conf-retroarch.conf` file
 - `BeatEmUpPreferedSet`,`GunPreferedSet`,`MiscPreferedSet`,`PlatformPreferedSet`,`PuzzlePreferedSet`,`RacePreferedSet`,`RunNGunPreferedSet`,`ShootEmUpPreferedSet`,`SportPreferedSet`,`VsFightingPreferedSet` list of settings for prefered set for genre
 - `genreSubFolders`: determines if your romset will use sub folders for genre or not
 - `useImages`: determines if images will be used for gamelist
+- `excludeCHDGames`: determines if CHD games are to be excluded
 
 ### CUSTOM, NEO GEO AES, SEGA MODEL 2 & 3, ATOMISWAVE, NAOMI 1&2 AND HANDHELD ROMSETS CONFIGURATION :
 You can modify your configuration by editing the related `conf\conf-*.conf` (`conf\conf-custom.conf`, `conf\conf-naomi.conf`, etc...) file either directly or from the UI with your own parameters :
 - `exportDir` : the target directory for generation, warning its whole content will be erased (you will be prompted) at the begining of the script
 - `custom`, `neogeoaes`, `model2`, `model3`, `atomiswave`, `naomi` or `handheld` : the path to your original sets, this will be left untouched by the script
+- `chd`: the path to your CHD set, if it doesn't exist, it will simply default to romset folder
 - `dat` : the path to your set dat
 - `images`: Paths to your images folder (flyers, screenshot, etc) separated by ';', will be checked in consecutive order
 - `imgNameFormat` : the image name format in your images folder, '{rom}' part will be replaced by each rom name
 - `dryRun` : If put to 1, will do a dry run, generating only csv and dat files without copying roms and bios, good for testing
 - `genreSubFolders`: determines if your romset will use sub folders for genre or not
 - `useImages`: determines if images will be used for gamelist
+- `excludeCHDGames`: determines if CHD games are to be excluded
 
 [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/donate?hosted_button_id=LEAH843NKNG72)

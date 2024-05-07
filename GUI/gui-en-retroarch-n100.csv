@@ -4,6 +4,8 @@ selectExportDir;Select;Select export folder
 fbneo;FbNeo set folder;Path to your fbneo set, leave empty if you do not have it
 mame;Mame set folder;Path to your mame set, leave empty if you do not have it
 selectRomsetDir;Select;Select set folder
+chd;CHD set folder;Path to your CHD set
+selectCHDDir;Select;Select CHD set folder
 images;Images folder;Paths to your images set, leave empty if you do not have it
 selectImages;Select;Select your images folder
 imgNameFormat;Image filename format;Format of the image filename
@@ -25,6 +27,7 @@ SportPreferedSet;Sport prefered set;Prefered set for Sport games
 VsFightingPreferedSet;VsFighting prefered set;Prefered set for VsFighting games
 genreSubFolders;Use genre subfolders;Check to use genre subfolders for roms
 useImages;Scrape images;Check to use images for games and folders
+excludeCHDGames;Exclude CHD Games;Check to exclude CHD games from generation
 verify;Verify;Check that your paths are okay
 save;Save;Save your configuration to file
 proceed;Proceed;Create your romsets

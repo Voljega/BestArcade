@@ -111,8 +111,12 @@ class BasicSorter:
                     if multiNameRomFound:
                         break
                     setRom = os.path.join(self.configuration[self.setKey], game + ".zip")
-                    setCHD = os.path.join(self.configuration[self.setKey], game)
-                    if os.path.exists(setRom):
+                    setCHD = os.path.join(self.configuration['chd'], game) if 'chd' in self.configuration \
+                        else os.path.join(self.configuration[self.setKey], game)
+                    # TODO use property file for excludedBecauseCHDGame
+                    excludedBecauseCHDGame = 'excludeCHDGames' in self.configuration and \
+                                             self.configuration['excludeCHDGames'] == '1' and os.path.exists(setCHD)
+                    if os.path.exists(setRom) and not excludedBecauseCHDGame:
                         multiNameRomFound = True
                         image = self.configuration['imgNameFormat'].replace('{rom}', game)
                         utils.setFileCopy(self.configuration['exportDir'], setRom, genre, game,
