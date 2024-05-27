@@ -6,7 +6,7 @@ import utils
 import fav
 import test
 import dat
-
+import properties
 
 class Sorter:
     setKeys = {'pi3': ['fbneo', 'mame2003', 'mame2003plus', 'mame2010'], 'n2': ['fbneo', 'mame'], 'n100': ['fbneo', 'mame']}
@@ -52,6 +52,8 @@ class Sorter:
         self.allTests = test.loadTests(Sorter.setKeys[self.hardware],
                                        os.path.join(self.scriptDir, utils.dataDir, self.hardware),
                                        self.usingSystems, self.logger)
+        self.logger.log('\n<--------- Load Property File --------->')
+        self.properties = properties.loadProperties(os.path.join(self.scriptDir, utils.dataDir, 'custom.properties'))
 
     def __useSystems(self, configuration):
         systems = []
@@ -230,9 +232,10 @@ class Sorter:
                         setRom = os.path.join(self.configuration[setKey], game + ".zip")
                         setCHD = os.path.join(self.configuration['chd'], game) if 'chd' in self.configuration \
                             else os.path.join(self.configuration[setKey], game)
-                        # TODO use property file for excludedBecauseCHDGame
                         excludedBecauseCHDGame = 'excludeCHDGames' in self.configuration and \
-                                                 self.configuration['excludeCHDGames'] == '1' and os.path.exists(setCHD)
+                                                 self.configuration['excludeCHDGames'] == '1' and \
+                                                 game in self.properties and \
+                                                 self.properties[game].chd == 'yes'
                         image = self.configuration['imgNameFormat'].replace('{rom}', game)
                         if setKey in selected and not excludedBecauseCHDGame:
                             multiGameFoundInSet = True

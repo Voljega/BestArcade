@@ -4,7 +4,7 @@
 
 This tool handles two types of usage :
 - generate retroarch sorted romsets (fbneo, mame2003, mame2003plus, mame2010, regular mame) keeping only the games referenced in the [BestArcade list](https://docs.google.com/spreadsheets/d/1S5qAI-TEl7wfqg6w9VNEwKciMGUtw40n9PS4xslkG3s/edit?usp=sharing), above and equal to the working state level you choose.
-- generate dedicated romsets : custom mame based on Best Arcade list, neo geo aes set, atomiswave set, naomi set, handheld set
+- generate dedicated romsets : custom mame based on Best Arcade list, neo geo aes set, sega model 2 & 3 sets, atomiswave set, naomi & naomi 2 sets, handheld set, tvgames set
 
 FbNeo version currently tested is Apr 30th, 2024
 Handheld supported romset is currently at mame 0.265 level
@@ -13,7 +13,7 @@ Handheld supported romset is currently at mame 0.265 level
 - It's not clrmamepro and will not check that your romsets files are in the right version number
 - It only works with non-merged sets, split and merged sets are not supported, use clrmamepro to generate non-merged sets if needed. However very few clones ares used, so it should be mostly ok with other type of sets.
 - CHD are handled, decompressed CHD folder for each games must be located inside your CHD folder or will default to romset directory (i.e your CHD directory should contain `kinst.zip` rom and `kinst` chd folder at the same level)
-- You can excude CHD games from generation if that's what you want
+- You can exclude CHD games from generation if that's what you want
 
 ### WHAT THIS TOOL DO :
 
@@ -33,7 +33,7 @@ Retroarch tab :
 Custom tab :
 - Same as above, without the testing part and everything related to it
 - So it will generate a set of the most interesting games
-- Mame DAT must be provided by the user
+- Mame DAT must be provided by the user or you can use the one included in the softxare data files)
 
 Neo Geo AES tab :
 - Generate Neo Geo AES full set from either FBNeo or recent mame set, FBNeo is recommanded though

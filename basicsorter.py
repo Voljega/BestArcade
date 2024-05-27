@@ -6,7 +6,7 @@ import gamelist
 import utils
 import fav
 import dat
-
+import properties
 
 class BasicSorter:
 
@@ -40,6 +40,8 @@ class BasicSorter:
         else:
             datsDict = dict(zip([self.setKey], [self.setKey + '.dat']))
         self.dats = dat.parseDats(self.scriptDir, utils.dataDir, datsDict, self.usingSystems, self.logger)
+        self.logger.log('\n<--------- Load Property File --------->')
+        self.properties = properties.loadProperties(os.path.join(self.scriptDir, utils.dataDir, 'custom.properties'))
 
     def __useSystems(self, configuration):
         systems = []
@@ -113,9 +115,10 @@ class BasicSorter:
                     setRom = os.path.join(self.configuration[self.setKey], game + ".zip")
                     setCHD = os.path.join(self.configuration['chd'], game) if 'chd' in self.configuration \
                         else os.path.join(self.configuration[self.setKey], game)
-                    # TODO use property file for excludedBecauseCHDGame
                     excludedBecauseCHDGame = 'excludeCHDGames' in self.configuration and \
-                                             self.configuration['excludeCHDGames'] == '1' and os.path.exists(setCHD)
+                                             self.configuration['excludeCHDGames'] == '1' and \
+                                             game in self.properties and \
+                                             self.properties[game].chd == 'yes'
                     if os.path.exists(setRom) and not excludedBecauseCHDGame:
                         multiNameRomFound = True
                         image = self.configuration['imgNameFormat'].replace('{rom}', game)
