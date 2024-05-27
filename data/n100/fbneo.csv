@@ -111,6 +111,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;BeatEmUp;Nekketsu Kouha Kunio-kun (Japan);kuniokun;1986;Technos Japan;;;
 3;BeatEmUp;Night Slashers (Korea Rev 1.3, DE-0397-0 PCB);nslasher;1994;Data East Corporation;;;
 3;BeatEmUp;Ninja Baseball Bat Man (World);nbbatman;1993;Irem;M92;;
+0;BeatEmUp;Ninja Clowns (27 oct 91);ninclown;1991;Strata/Incredible Technologies;;Romset is unknown;
 3;BeatEmUp;Ninja Combat (NGM-009);ncombat;1990;Alpha Denshi Co.;Neo Geo MVS;;
 3;BeatEmUp;Ninja Gaiden (US);gaiden;1988;Tecmo;;;
 3;BeatEmUp;Ninja Kazan (World);kazan;1988;Jaleco;Mega System 1;;
@@ -145,7 +146,9 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;BeatEmUp;Splatter House (World, new version (SH3));splatter;1988;Namco;;;
 3;BeatEmUp;Strider (USA, B-Board 89624B-2);strider;1989;Capcom;CPS1;;
 3;BeatEmUp;Superman (World);superman;1988;Taito Corporation;Taito-X;;
+3;BeatEmUp;Teenage Mutant Ninja Turtles - Turtles in Time (2 Players ver UDA);tmnt22pu;1991;Konami;;;
 3;BeatEmUp;Teenage Mutant Ninja Turtles - Turtles in Time (4 Players ver UAA);tmnt2;1991;Konami;GX063;;
+3;BeatEmUp;Teenage Mutant Ninja Turtles (Oceania 2 Players, version ?);tmnt2po;1989;Konami;;;
 3;BeatEmUp;Teenage Mutant Ninja Turtles (World 4 Players, version X);tmnt;1989;Konami;GX963;;
 3;BeatEmUp;The Astyanax;astyanax;1989;Jaleco;Mega System 1;;
 3;BeatEmUp;The Cliffhanger - Edward Randy (World ver 3);edrandy;1990;Data East Corporation;DECO IC16;;
@@ -159,6 +162,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;BeatEmUp;The Ninja Warriors (World);ninjaw;1987;Taito Corporation Japan;Taito Misc;;
 3;BeatEmUp;The Punisher (World 930422);punisher;1993;Capcom;CPS1 / QSound;;
 3;BeatEmUp;The Return of Ishtar;roishtar;1986;Namco;System 86;;
+3;BeatEmUp;The Simpsons (2 Players World, set 3);simpsons2p3;1991;Konami;;;
 3;BeatEmUp;The Simpsons (4 Players World, set 1);simpsons;1991;Konami;GX072;;
 3;BeatEmUp;The Super Spy (NGM-011 ~ NGH-011);superspy;1990;SNK;Neo Geo MVS;;
 3;BeatEmUp;Thunder Fox (World);thundfox;1990;Taito Corporation Japan;Taito-F2;;
@@ -181,7 +185,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;BeatEmUp;Wizard Fire (Over Sea v2.1);wizdfire;1992;Data East Corporation;DECO IC16;;
 3;BeatEmUp;Wonder Momo;wndrmomo;1987;Namco;System 86;;
 3;BeatEmUp;X-Men (4 Players ver UBB);xmen;1992;Konami;GX065;;
-3;BeatEmUp;X-Men (6 Players ver ECB);xmen6p;1992;Konami;;;
+3;BeatEmUp;X-Men (6 Players ver UCB);xmen6pu;1992;Konami;;;
 3;BeatEmUp;Zero Team USA (US);zeroteam;1993;Seibu Kaihatsu (Fabtek license);Miscellaneous;;Unemulated protection
 3;Gun;Alien3: The Gun (World);alien3;1993;Sega;;;
 3;Gun;Bang!;bang;1998;Gaelco;Miscellaneous;;
@@ -190,7 +194,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Gun;Battle Zone (rev 2) [GFX/Sound Issues];bzone;1980;Atari;;;
 3;Gun;Beast Busters (World);bbusters;1989;SNK;Miscellaneous;;
 3;Gun;Blasted;blasted;1988;Bally Midway;;;
-0;Gun;Bubble Trouble (World, Rev B);bubbletr;1992;Namco;;unsupported;
+0;Gun;Bubble Trouble (World, Rev B);bubbletr;1992;Namco;;romset marked as not working, try clone;
 3;Gun;Cheyenne (version 1.0);cheyenne;1984;Exidy;;;
 3;Gun;Chiller (version 3.0);chiller;1986;Exidy;;;
 3;Gun;Clay Pigeon (version 2.0);claypign;1986;Exidy;;;
@@ -199,12 +203,12 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Gun;Crackshot (version 2.0);cracksht;1985;Exidy;;;
 3;Gun;Crazy Fight;crazyfgt;1996;Subsino;Seta;rhythm-like controls;
 3;Gun;Crossbow (version 2.0);crossbow;1983;Exidy;;;
-0;Gun;Cycle Shooting;cyclshtg;1986;Taito;;unsupported;
+0;Gun;Cycle Shooting;cyclshtg;1986;Taito;;romset marked as not working, try clone;
 3;Gun;D-Con;dcon;1992;Success;Miscellaneous;;
 3;Gun;Dragon Gun (US);dragngun;1993;Data East Corporation;;;
 3;Gun;Empire City: 1931 (bootleg?);empcity;1986;Seibu Kaihatsu;;;
 3;Gun;Enforce (World);enforce;1988;Taito Corporation Japan;Taito-Z;;
-0;Gun;Golly! Ghost!;gollygho;1990;Namco;;unsupported;
+0;Gun;Golly! Ghost!;gollygho;1990;Namco;;romset marked as not working, try clone;
 3;Gun;Gunbuster (World);gunbustr;1992;Taito Corporation Japan;;;
 3;Gun;Hit 'n Miss (version 3.0);hitnmiss;1987;Exidy;;;
 3;Gun;Jurassic Park (World, Rev A);jpark;1993;Sega;;;
@@ -244,7 +248,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Homebrews;Hypernoid (Ver. 20211128);hypernoid;2021;NeoHomeBrew;;neogeo;
 3;Homebrews;Jonas Indiana and the Lost Temple of RA (20050717);ltorb;2005;blastar@gmx.net;;no sound in this homebrew;
 3;Homebrews;Looptris (v.2021-12-26);looptris;2021;Blastar;;;
-0;Homebrews;Metal Slug 3X (Complete Collection);mslug3x;2022;Homebrew;;bad romset ?;
+3;Homebrews;Metal Slug 3X (Complete Collection);mslug3x;2022;Homebrew;;;
 3;Homebrews;Neo No Panepon (beta);neonopon;????;blastar@gmx.net;;no sound in this homebrew;
 3;Homebrews;Neo Pang;neopang;2010;CeL;;neogeo;
 3;Homebrews;NeoTRIS (Free Beta 2, Ver. 202009);neotris;2020;Chipsonsteroids;;neogeo;
@@ -307,7 +311,6 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Misc;Cuby Bop (location test);cubybop;199?;Hot-B Co., Ltd.;;;
 3;Misc;Cutie Q;cutieq;1979;Namco;;;
 3;Misc;Dacholer;dacholer;1983;Nichibutsu;;;
-0;Misc;Dangerous Dungeons (set 1);ddungeon;1992;Game Room;;Romset is unknown;
 3;Misc;Dark Planet;darkplnt;1982;Stern;;;
 3;Misc;Demolition Derby (MCR-3 Mono Board Version);demoderm;1984;Bally Midway;;;
 3;Misc;Desert Dan;desertdn;1982;Video Optics;;;
@@ -366,7 +369,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Misc;I'm Sorry (315-5110, US);imsorry;1985;Coreland / Sega;;;
 3;Misc;Insector (prototype);insector;1982;Gottlieb;;;
 3;Misc;Itazura Tenshi (Japan);itaten;1984;Nichibutsu / Alice;;;
-0;Misc;Ixion (prototype);ixion;1983;Sega;;unsupported;
+0;Misc;Ixion (prototype);ixion;1983;Sega;;romset marked as not working, try clone;
 3;Misc;Jack the Giantkiller (set 1);jack;1982;Hara Industries (Cinematronics license);;;
 3;Misc;Jin;jin;1982;Falcon;;;
 3;Misc;Joinem;joinem;1983;Global Corporation;;;
@@ -382,6 +385,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Misc;Kick Boy;kickboy;1983;Nichibutsu;;;
 3;Misc;Kid no Hore Hore Daisakusen;horekid;1987;Nichibutsu;;;
 2;Misc;Knightmare (prototype);kngtmare;1983;Gottlieb;;no sound due to imperfect emulation;
+3;Misc;Koroleva;koroleva;198?;Terminal;;;
 3;Misc;Kram (set 1);kram;1982;Taito America Corporation;;Needs reset to launch;
 3;Misc;Krull;krull;1983;Gottlieb;;;
 3;Misc;Lady Bug;ladybug;1981;Universal;;;
@@ -462,6 +466,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Misc;Pop's Pop's;popspops;1999;Afega;;;
 3;Misc;Porky;porky;1985;Shinkai Inc. (Magic Eletronics Inc. license);;;
 3;Misc;Power Surge;psurge;1988;Vision Electronics;;;
+1;Misc;Prebillian;pbillian;1986;Kaneko / Taito;;missing button, no deadzone handling;
 3;Misc;Puchi Carat (Ver 2.02O 1997/10/29);puchicar;1997;Taito Corporation;;;
 3;Misc;Puzzle Break;pzlbreak;1997;SemiCom / Tirano;Kaneko Pandora;;
 3;Misc;Q*bert (US set 1);qbert;1982;Gottlieb;Miscellaneous;;
@@ -497,7 +502,6 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Misc;Shark Attack;sharkatt;1980;Pacific Novelty;;;
 3;Misc;Snap Jack;snapjack;1982;Universal;;;
 3;Misc;Snapper (Korea);snapper;1990;Philko;;;
-0;Misc;Snezhnaja Koroleva;koroleva;198?;Terminal;;Romset is unknown;
 3;Misc;Sokonuke Taisen Game (Japan);sokonuke;1995;Sammy Industries;Seta;;
 3;Misc;Solar Fox (upright);solarfox;1981;Bally Midway;;;
 3;Misc;Sotsugyo Shousho;sotsugyo;1995;Mitchell (Atlus license);DECO IC16;;
@@ -510,6 +514,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Misc;Super Mouse;suprmous;1982;Taito Corporation;;;
 3;Misc;Super Pac-Man;superpac;1982;Namco;;;
 3;Misc;Super Pang (World 900914);spang;1990;Mitchell;Miscellaneous;;
+3;Misc;Super Qix (World/Japan, V1.2);sqix;1987;Kaneko / Taito;;;
 3;Misc;Susume! Mile Smile / Go Go! Mile Smile (newer);gogomile;1995;Fuuki;;;
 3;Misc;Tapper (Budweiser, 1/27/84);tapper;1983;Bally Midway;;;
 3;Misc;Taxi Driver;taxidriv;1984;Graphic Techno;;;
@@ -527,7 +532,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Misc;Time Scanner (set 2, System 16B);timescan;1987;Sega;System 16B;;
 3;Misc;Time Tunnel;timetunl;1982;Taito Corporation;;;
 3;Misc;Tinkle Pit (Japan);tinklpit;1993;Namco;;;
-0;Misc;Toffy;toffy;1993;Midas;;Romset is unknown;
+3;Misc;Toffy;toffy;1993;Midas;;;
 3;Misc;Tom Tom Magic;tomagic;1997;Hobbitron T.K.Trading Co. Ltd.;;;
 3;Misc;Touche Me (set 1);toucheme;19??;<unknown>;;;
 3;Misc;Tournament Arkanoid (US);arkatour;1987;Taito America Corporation (Romstar license);Arkanoid;;
@@ -546,8 +551,10 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Misc;Tylz (prototype);tylz;1982;Mylstar;;;
 3;Misc;Ufo Senshi Yohko Chan (MC-8123, 317-0064);ufosensi;1988;Sega;;;
 3;Misc;Uncle Poo;unclepoo;1983;Diatec;;;
+0;Misc;Vampire (prototype?);vampire;1983;Entertainment Enterprises, Ltd.;;Romset is unknown;
 3;Misc;Van-Van Car;vanvan;1983;Sanritsu;;;
 3;Misc;VS Block Breaker (Europe);vblokbrk;1997;Kaneko / Mediaworks;Miscellaneous;needs skns.zip BIOS;
+3;Misc;Vs. Hot Smash;hotsmash;1987;Kaneko / Taito;;;
 3;Misc;Wall Crash (set 1);wallc;1984;Midcoin;;;
 3;Misc;Wally wo Sagase! (rev B, Japan, 2 players, FD1094 317-0197B);wwallyj;1992;Sega;;;
 3;Misc;Warlords;warlords;1980;Atari;;;
@@ -586,6 +593,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Platform;Chameleon;chameleo;1983;Jaleco;Miscellaneous;;
 3;Platform;Circus Charlie (level select, set 1);circusc;1984;Konami;;;
 3;Platform;City Connection (set 1);citycon;1985;Jaleco;;;
+3;Platform;Clockwork Aquario (prototype);aquario;2021;Sega / Westone;;;
 3;Platform;Come Back Toto;toto;1996;SoftClub;;;
 3;Platform;Complex X;complexx;1984;Taito America Corporation;;Needs to reset game;
 3;Platform;Crazy Kong;ckong;1981;Kyoei / Falcon;;;
@@ -628,7 +636,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Platform;Jungle King (Japan);junglek;1982;Taito Corporation;;;
 3;Platform;Kangaroo;kangaroo;1982;Sun Electronics;;;
 3;Platform;Karnov (US, rev 6);karnov;1987;Data East USA;Miscellaneous;;
-0;Platform;Konek-Gorbunok;konek;198?;Terminal;;Romset is unknown;
+3;Platform;Konek-Gorbunok;konek;198?;Terminal;;;
 3;Platform;Liquid Kids (World);liquidk;1990;Taito Corporation Japan;Taito-F2;;
 3;Platform;Lode Runner - The Dig Fight (ver. B);loderndf;2000;Psikyo;PS4;;
 3;Platform;Lode Runner (set 1);ldrun;1984;Irem (licensed from Broderbund);Irem M62;;
@@ -673,7 +681,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Platform;Red Robin;redrobin;1986;Elettronolo;;;
 3;Platform;Roc'n Rope;rocnrope;1983;Konami;GX364;;
 3;Platform;Rod-Land (World);rodland;1990;Jaleco;Mega System 1;;
-0;Platform;S.O.S.;sosterm;198?;Terminal;;Romset is unknown;
+3;Platform;S.O.S.;sosterm;198?;Terminal;;;
 3;Platform;Saboten Bombers (set 1);sabotenb;1992;NMK / Tecmo;NMK16;;
 3;Platform;SegaSonic The Hedgehog (Japan, rev. C);sonic;1992;Sega;;;
 3;Platform;Shadowland (YD3);shadowld;1987;Namco;;;
@@ -789,6 +797,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Puzzle;Orbs (10/7/94 prototype?);orbs;1994;American Sammy;;;
 3;Puzzle;Palamedes (US);palamed;1990;Hot-B Co., Ltd.;;;
 3;Puzzle;Panic Bomber;panicbom;1994;Eighting / Hudson;Neo Geo MVS;;
+0;Puzzle;Peggle (Joystick, v1.0);peggle;1991;Strata/Incredible Technologies;;Romset is unknown;
 3;Puzzle;Phozon (Japan);phozon;1983;Namco;;;
 3;Puzzle;Pipe Dream (World);pipedrm;1990;Video System Co.;;;
 3;Puzzle;Pitapat Puzzle;pitapat;1997;F2 System;;;
@@ -913,6 +922,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Race;Max RPM (ver 2);maxrpm;1986;Bally Midway;;;
 3;Race;Maze of Flott (Japan);mofflott;1989;Taito Corporation;Taito Misc;;
 3;Race;Mille Miglia 2: Great 1000 Miles Rally (95/05/24);gtmr2;1995;Kaneko;Kaneko16;;
+3;Race;Mortal Race;mortalr;1995;New Dream Games;;;
 3;Race;Namennayo (Japan);namenayo;1982;Cat's;;;
 3;Race;Neo Drift Out - New Technology;neodrift;1996;Visco;Neo Geo MVS;;
 3;Race;New Rally X;nrallyx;1981;Namco;;;
@@ -947,7 +957,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Race;Suzuka 8 Hours 2 (World, Rev B);suzuk8h2;1993;Namco;;;
 3;Race;Tail to Nose - Great Championship;tail2nos;1989;V-System Co.;Miscellaneous;;
 3;Race;Thrash Rally (ALM-003 ~ ALH-003);trally;1991;Alpha Denshi Co.;Neo Geo MVS;;
-0;Race;Top Driving (version 1.1);topdrive;1995;Proyesel;;Romset is unknown;
+3;Race;Top Driving (version 1.1);topdrive;1995;Proyesel;;;
 3;Race;Top Speed (World);topspeed;1987;Taito Corporation Japan;Taito Misc;;
 3;Race;Traverse USA / Zippy Race;travrusa;1983;Irem;;;
 3;Race;Turbo (program 1513-1515);turbo;1981;Sega;;;
@@ -970,6 +980,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;RunNGun;Crazy War;crazywar;2002;Eolith;;;
 3;RunNGun;Crime City (World);crimec;1989;Taito Corporation Japan;Taito B System;;
 3;RunNGun;Cyber-Lip (NGM-010);cyberlip;1990;SNK;Neo Geo MVS;;
+1;RunNGun;Cyborg Force!;cyborgforce;2023;NEO.BYTE.FORCE;;Romset is unknown;
 3;RunNGun;Demon Front (68k label V105, ROM M105XX 08/05/02) (ARM label V105, ROM 08/05/02 S105XX);dmnfrnt;2002;IGS;PolyGameMaster;;
 3;RunNGun;Demon's World / Horror Story (set 1);demonwld;1990;Toaplan;Toaplan BCU-2;western horror version;
 3;RunNGun;Demon's World / Horror Story (set 5);demonwld4;1989;Toaplan;;eastern horror version;
@@ -1010,6 +1021,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;RunNGun;Shinobi (set 6, System 16A) (unprotected);shinobi;1987;Sega;System 16A;;
 3;RunNGun;Son Son;sonson;1984;Capcom;Miscellaneous;;
 3;RunNGun;Spark Man (v2.0, set 1);sparkman;1989;SunA;Miscellaneous;;
+3;RunNGun;Sunset Riders (2 Players ver EBD);ssridersebd;1991;Konami;;;
 3;RunNGun;Sunset Riders (4 Players ver EAC);ssriders;1991;Konami;GX064;;
 3;RunNGun;Super Contra;scontra;1988;Konami;GX775;;
 3;RunNGun;Super Ranger (v2.0);sranger;1988;SunA;Miscellaneous;;
@@ -1329,7 +1341,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;ShootEmUp;Lightning Fighters (World);lgtnfght;1990;Konami;GX939;;
 3;ShootEmUp;Lizard Wizard;lizwiz;1985;Techstar (Sunn license);;;
 3;ShootEmUp;Lock On (Philko);lockonph;1991;Philco;;;
-0;ShootEmUp;Lock-On (rev. E);lockon;1986;Tatsumi;;Romset is unknown;
+3;ShootEmUp;Lock-On (rev. E);lockon;1986;Tatsumi;;;
 3;ShootEmUp;Macross Plus;macrossp;1996;MOSS / Banpresto;;;
 3;ShootEmUp;Mad Crasher;madcrash;1984;SNK;Miscellaneous;;
 3;ShootEmUp;Mad Planets;mplanets;1983;Gottlieb;;;
@@ -1431,7 +1443,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;ShootEmUp;Raiden II (US, set 1);raiden2;1993;Seibu Kaihatsu (Fabtek license);Miscellaneous;;
 3;ShootEmUp;Raiga - Strato Fighter (US);stratof;1991;Tecmo;Miscellaneous;;
 3;ShootEmUp;Rambo III (Europe);rambo3;1989;Taito Europe Corporation;Taito B System;;
-0;ShootEmUp;Razzmatazz;razmataz;1983;Sega;;unsupported;
+0;ShootEmUp;Razzmatazz;razmataz;1983;Sega;;romset marked as not working, try clone;
 3;ShootEmUp;Red Baron (Revised Hardware);redbaron;1980;Atari;;;
 2;ShootEmUp;Red Clash;redclash;1981;Kaneko;;no sound due to imperfect emulation;
 3;ShootEmUp;Regulus (315-5033, rev. A);regulus;1983;Sega;;;
@@ -1584,7 +1596,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;ShootEmUp;Thunder Dragon (8th Jan. 1992, unprotected);tdragon;1991;NMK (Tecmo license);NMK16;;
 3;ShootEmUp;Thunder Dragon 2 (9th Nov. 1993);tdragon2;1993;NMK;NMK16;;
 3;ShootEmUp;Thunder Force AC;tfrceac;1990;Technosoft / Sega;;;
-0;ShootEmUp;Thunder Strike (set 1);tstrike;1991;East Coast Coin Company;;Romset is unknown;
+3;ShootEmUp;Thunder Strike (set 1);tstrike;1991;East Coast Coin Company;;;
 3;ShootEmUp;Thunder Zone (World, Rev 1);thndzone;1991;Data East Corporation;DECO IC16;;
 3;ShootEmUp;Thundercade / Twin Formation;tndrcade;1987;Seta (Taito license);;game needs to be reset;
 3;ShootEmUp;ThunderJaws (rev 3);thunderj;1990;Atari Games;;;
@@ -1685,6 +1697,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Sport;Baseball Stars 2;bstars2;1992;SNK;Neo Geo MVS;;
 3;Sport;Baseball Stars Professional (NGM-002);bstars;1990;SNK;Neo Geo MVS;;
 3;Sport;Battle Flip Shot;flipshot;1998;Visco;Neo Geo MVS;;
+0;Sport;Beach Festival World Championship 1997;wbbc97;1997;Comad;;romset marked as not working, try clone;
 3;Sport;Big Striker;bigstrik;1992;Jaleco;Mega System 1;;
 3;Sport;Billiard;bilyard;198?;Terminal;;;
 3;Sport;Birdie Try (Japan revision 2, revision 1 MCU);birdtry;1988;Data East Corporation;;;
@@ -1698,7 +1711,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Sport;Clutch Hitter (set 2, US, FD1094 317-0176);cltchitr;1991;Sega;;;
 3;Sport;Combat School (joystick);combatsc;1988;Konami;;;
 3;Sport;Competition Golf Final Round (revision 3);compgolf;1986;Data East;;;
-0;Sport;Country Club;countryc;1988;SNK;;unsupported;
+0;Sport;Country Club;countryc;1988;SNK;;romset marked as not working, try clone;
 3;Sport;Cycle Maabou (Japan);cyclemb;1984;Taito Corporation;;;
 3;Sport;Double Dribble;ddribble;1986;Konami;;;
 3;Sport;Dream Soccer '94 (World, M107 hardware);dsoccr94;1994;Irem (Data East Corporation license);M107;;
@@ -1718,18 +1731,21 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Sport;Fighting Golf (World?);fitegolf;1988;SNK;;;
 3;Sport;Fighting Ice Hockey (DECO Cassette) (US);cfghtice;1984;Data East Corporation;;;
 3;Sport;Fighting Roller;fightrol;1983;Kaneko (Taito license);Miscellaneous;;
-0;Sport;Fighting Soccer (version 4);fsoccer;1988;SNK;;unsupported;
+0;Sport;Fighting Soccer (version 4);fsoccer;1988;SNK;;romset marked as not working, try clone;
 3;Sport;Football Champ / Euro Football Champ (World);footchmp;1990;Taito Corporation Japan;Taito-F2;;
 3;Sport;Football Frenzy (NGM-034 ~ NGH-034);fbfrenzy;1992;SNK;Neo Geo MVS;;
 3;Sport;Gladiator 1984;sgladiat;1984;SNK;Miscellaneous;;
 3;Sport;Goal! Goal! Goal!;goalx3;1995;Visco;Neo Geo MVS;;
 3;Sport;Gold Medalist (set 1);goldmedl;1988;SNK;;;
+0;Sport;Golden Par Golf (Joystick, V1.1);gpgolf;1992;Strata/Incredible Technologies;;Romset is unkown;
 3;Sport;Golden Tee '97 (v1.30);gt97;1997;Incredible Technologies;;;
 3;Sport;Golden Tee '98 (v1.10);gt98;1998;Incredible Technologies;;;
 3;Sport;Golden Tee '99 (v1.00);gt99;1999;Incredible Technologies;;;
 3;Sport;Golden Tee 2K (v1.00);gt2k;2000;Incredible Technologies;;;
 3;Sport;Golden Tee 3D Golf (v1.93N);gt3d;1995;Incredible Technologies;;;
 3;Sport;Golden Tee Classic (v1.00);gtclassc;2001;Incredible Technologies;;;
+0;Sport;Golden Tee Golf (Joystick, v3.3);gtg;1990;Strata/Incredible Technologies;;Romset is unkown;
+0;Sport;Golden Tee Golf II (Trackball, V2.2);gtg2;1992;Strata/Incredible Technologies;;Romset is unkown;
 3;Sport;Grand Striker 2 (Europe and Oceania);gstrik2;1996;Human Amusement;;;
 3;Sport;Hard Dunk (World);harddunk;1994;Sega;;;
 3;Sport;Hard Yardage (v1.20);hardyard;1993;Strata/Incredible Technologies;;;
@@ -1738,6 +1754,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Sport;Hit the Ice (US);hitice;1990;Taito Corporation (Williams license);Taito B System;;Imperfect graphics
 3;Sport;Hoccer (set 1);hoccer;1983;Eastern Micro Electronics, Inc.;;;
 3;Sport;Hoops '96 (Europe/Asia 2.0);hoops96;1996;Data East Corporation;;;
+0;Sport;Hot Shots Tennis (V1.1);hstennis;1990;Strata/Incredible Technologies;;Romset is unkown;
 3;Sport;Hunchback Olympic;huncholy;1984;Century Electronics / Seatongrove Ltd;;use clone hncholms;
 3;Sport;Hyper Sports;hyperspt;1984;Konami (Centuri license);;;
 3;Sport;In Your Face (North America, prototype) [Prototype];inyourfa;1991;Jaleco;;;
@@ -1785,6 +1802,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Sport;Rack + Roll;racknrol;1986;Status (Shinkai License);;;
 3;Sport;Recordbreaker (World);recordbr;1988;Taito Corporation Japan;H System;;
 3;Sport;Relief Pitcher (set 1, 07 Jun 1992 / 28 May 1992);relief;1992;Atari Games;;;
+0;Sport;Rim Rockin' Basketball (V2.2);rimrockn;1991;Strata/Incredible Technologies;;Romset is unkown;
 3;Sport;Roller Jammer;rjammer;1984;Nichibutsu / Alice;;;
 3;Sport;Rollergames (US);rollerg;1991;Konami;GX999;;
 3;Sport;Scrum Try (DECO Cassette) (US) (set 1);cscrtry;1984;Data East Corporation;;Need to wait 109s before game start;
@@ -1828,10 +1846,9 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Sport;The Ultimate 11 - The SNK Football Championship / Tokuten Ou - Honoo no Libero;ssideki4;1996;SNK;Neo Geo MVS;;
 3;Sport;Toobin' (rev 3);toobin;1988;Atari Games;;needs L2 and R2;
 3;Sport;Top Player's Golf (NGM-003 ~ NGH-003);tpgolf;1990;SNK;Neo Geo MVS;;
-0;Sport;Top Shooter;topshoot;1993;Sun Mixing;;bad romset;
 3;Sport;Touch & Go (World);touchgo;1995;Gaelco;;;
-0;Sport;TouchDown Fever (US);tdfever;1987;SNK;;unsupported;
-0;Sport;TouchDown Fever 2;tdfever2;1988;SNK;;unsupported;
+0;Sport;TouchDown Fever (US);tdfever;1987;SNK;;romset marked as not working, try clone;
+0;Sport;TouchDown Fever 2;tdfever2;1988;SNK;;romset marked as not working, try clone;
 3;Sport;Tournament Pro Golf (DECO Cassette) (US);cprogolf;1981;Data East Corporation;;Need to wait 102s before game start;
 3;Sport;Track & Field;trackfld;1983;Konami;Miscellaneous;;
 3;Sport;Tri-Sports;trisport;1989;Bally Midway;;;
@@ -1899,6 +1916,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;VsFighting;Garou - Mark of the Wolves (NGM-2530);garou;1999;SNK;Neo Geo MVS;;
 3;VsFighting;Godzilla (Japan);godzilla;1993;Banpresto;;;
 3;VsFighting;Gogetsuji Legends (US, Ver. 95/06/20);plegends;1995;Atlus;Cave;;
+0;VsFighting;Grudge Match (Yankee Game Technology);grmatch;1989;Yankee Game Technology;;Romset is unkown;
 3;VsFighting;Heavyweight Champ;hwchamp;1987;Sega;System 16B;;
 3;VsFighting;Hippodrome (US);hippodrm;1989;Data East USA;DEC0;;
 3;VsFighting;Holosseum (US, Rev A);holo;1992;Sega;;;

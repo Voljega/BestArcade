@@ -195,7 +195,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;BeatEmUp;Wizard Fire (Over Sea v2.1);wizdfire;1992;Data East Corporation;;;
 3;BeatEmUp;Wonder Momo;wndrmomo;1987;Namco;;;
 3;BeatEmUp;X-Men (4 Players ver UBB);xmen;1992;Konami;;;
-3;BeatEmUp;X-Men (6 Players ver ECB);xmen6p;1992;Konami;;;
+3;BeatEmUp;X-Men (6 Players ver UCB);xmen6pu;1992;Konami;;;
 3;BeatEmUp;Zero Team USA (US);zeroteam;1993;Seibu Kaihatsu (Fabtek license);;;
 3;Gun;Alien3: The Gun (World);alien3;1993;Sega;;;
 1;Gun;Area 51 (R3000);area51;1996;Atari Games;;missing controls;
