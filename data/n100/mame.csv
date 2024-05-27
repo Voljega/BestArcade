@@ -158,7 +158,9 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;BeatEmUp;Strider (USA, B-Board 89624B-2);strider;1989;Capcom;;;
 0;BeatEmUp;Strider 2 (Euro 991213);strider2;1999;Capcom;;no image;
 3;BeatEmUp;Superman (World);superman;1988;Taito Corporation;;;
+3;BeatEmUp;Teenage Mutant Ninja Turtles - Turtles in Time (2 Players ver UDA);tmnt22pu;1991;Konami;;;
 3;BeatEmUp;Teenage Mutant Ninja Turtles - Turtles in Time (4 Players ver UAA);tmnt2;1991;Konami;;;
+3;BeatEmUp;Teenage Mutant Ninja Turtles (Oceania 2 Players, version ?);tmnt2po;1989;Konami;;;
 3;BeatEmUp;Teenage Mutant Ninja Turtles (World 4 Players, version X);tmnt;1989;Konami;;;
 3;BeatEmUp;The Astyanax;astyanax;1989;Jaleco;;;
 3;BeatEmUp;The Cliffhanger - Edward Randy (World ver 3);edrandy;1990;Data East Corporation;;;
@@ -173,6 +175,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;BeatEmUp;The Ninja Warriors (World, later version);ninjaw;1987;Taito Corporation Japan;;;
 3;BeatEmUp;The Punisher (World 930422);punisher;1993;Capcom;;;
 3;BeatEmUp;The Return of Ishtar;roishtar;1986;Namco;;;
+3;BeatEmUp;The Simpsons (2 Players World, set 3);simpsons2p3;1991;Konami;;;
 3;BeatEmUp;The Simpsons (4 Players World, set 1);simpsons;1991;Konami;;;
 3;BeatEmUp;The Super Spy (NGM-011 ~ NGH-011);superspy;1990;SNK;;;
 3;BeatEmUp;Thunder Heroes;theroes;2001;Primetek Investments;;;
@@ -199,7 +202,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;BeatEmUp;Zero Team USA (US);zeroteam;1993;Seibu Kaihatsu (Fabtek license);;;
 3;Gun;Alien3: The Gun (World);alien3;1993;Sega;;;
 1;Gun;Area 51 (R3000);area51;1996;Atari Games;;missing controls;
-1;Gun;Area 51 / Maximum Force Duo v2.0;area51mx;1998;Atari Games;;bad controls (no calibration);extra mode for mx, nex secret areas
+1;Gun;Area 51 / Maximum Force Duo v2.0;area51mx;1998;Atari Games;;bad controls (no calibration);extra mode for mx, new secret areas
 1;Gun;Area 51: Site 4 (HD Rev 2.01, September 7, 1998);a51site4;1998;Atari Games;;lags a lot;
 1;Gun;Bang!;bang;1998;Gaelco;;bad controls (no calibration);
 2;Gun;Bank Panic;bankp;1984;Sanritsu / Sega;;bad mapping;
@@ -235,6 +238,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 1;Gun;Gallagher's Gallery (v2.2);gallgall;1992;American Laser Games;;bad controls (no calibration);
 1;Gun;Ghoul Panic (World, OB2/VER.A);ghlpanic;1999;Eighting / Raizing / Namco;;bad controls (no calibration);
 1;Gun;Golgo 13 (Japan, GLG1/VER.A);golgo13;1999;Eighting / Raizing / Namco;;very long load, bad controls (no calibration);
+0;Gun;Golgo 13 Jussei no Requiem;g13jnr;2001;Eighting / Raizing / Namco;;back to ES;
 1;Gun;Golgo 13 Kiseki no Dandou (Japan, GLS1/VER.A);g13knd;2000;Eighting / Raizing / Namco;;very long load, bad controls (no calibration);
 1;Gun;Golly! Ghost!;gollygho;1990;Namco;;missing controls;
 1;Gun;Great Guns;greatgun;1983;Stern Electronics;;missing controls;
@@ -353,6 +357,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 1;Misc;BnB Arcade;bballoon;2003;Eolith;;long loading, lags a lot;
 1;Misc;Bomb Bee;bombbee;1979;Namco;;bad controls (too sensitive);
 3;Misc;Bomber Man World / New Dyna Blaster - Global Quest;bbmanw;1992;Irem;;;
+3;Misc;Booby Kids (Magnet System);mag_boob;1987;EFO SA / Cedar;;;
 3;Misc;Boot Hill;boothill;1977;Dave Nutting Associates / Midway;;;
 3;Misc;Botanic (English / Spanish, set 1);botanic;1983;Itisa;;;
 3;Misc;Boulder Dash (DECO Cassette) (US);cbdash;1985;Data East Corporation;;;
@@ -389,7 +394,6 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Misc;Cuby Bop (location test);cubybop;199?;Hot-B Co., Ltd.;;;
 2;Misc;Cutie Q;cutieq;1979;Namco;;bad controls (too sensitive);
 3;Misc;Dacholer;dacholer;1983;Nichibutsu;;;
-3;Misc;Dangerous Dungeons (set 1);ddungeon;1992;The Game Room;;;
 3;Misc;Dazzler;dazzler;1982;Century Electronics;;;
 2;Misc;Demolition Derby (MCR-3 Mono Board Version);demoderm;1984;Bally Midway;;bad controls (deadzone issue);
 3;Misc;Desert Dan;desertdn;1982;Video Optics;;;
@@ -724,7 +728,9 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Misc;Tylz (prototype);tylz;1982;Mylstar;;;
 0;Misc;Uchuu Daisakusen: Chocovader Contactee (Japan, CVC1 Ver.A);chocovdr;2002;Namco;;black screen, should launch;
 3;Misc;Ufo Senshi Yohko Chan (MC-8123, 317-0064);ufosensi;1988;Sega;;;
+3;Misc;Um Jammer Lammy NOW! (Japan, UL1/VER.A);ujlnow;1999;Namco;;;
 3;Misc;Uncle Poo;unclepoo;1983;Diatec;;;
+3;Misc;Vampire (prototype?);vampire;1983;Entertainment Enterprises, Ltd.;;;
 3;Misc;Van-Van Car;vanvan;1983;Sanritsu;;;
 3;Misc;Venture (version 5 set 1);venture;1981;Exidy;;;
 1;Misc;Video Pinball (16 PROMs version);videopin;1979;Atari;;no control;
@@ -1208,6 +1214,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 0;Race;Metal Maniax (prototype);metalmx;1994;Atari Games;;unsupported;
 3;Race;Midnight Run: Road Fighter 2 (EAA, Euro v1.11);midnrun;1995;Konami;;;
 3;Race;Mille Miglia 2: Great 1000 Miles Rally (95/05/24);gtmr2;1995;Kaneko;;;
+3;Race;Mortal Race;mortalr;1995;New Dream Games;;;
 1;Race;Moto Frenzy;motofren;1992;Atari Games;;bad controls (too sensitive + deadzone);
 0;Race;Motocross Go! (US, MG3 Ver. A);motoxgo;1997;Namco;;unsupported;
 3;Race;Motor Raid - Twin;motoraid;1997;Sega;;;
@@ -1377,6 +1384,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;RunNGun;Spark Man (v2.0, set 1);sparkman;1989;SunA;;;
 2;RunNGun;Special Forces;spclforc;1985;Senko Industries (Magic Electronics Inc. license);;no sound ingame, should have in 0.252;
 2;RunNGun;Special Forces II;spcfrcii;1985;Senko Industries (Magic Electronics Inc. license);;no sound ingame, should have in 0.252;
+3;RunNGun;Sunset Riders (2 Players ver EBD);ssridersebd;1991;Konami;;;
 3;RunNGun;Sunset Riders (4 Players ver EAC);ssriders;1991;Konami;;;
 3;RunNGun;Super Contra;scontra;1988;Konami;;;
 3;RunNGun;Super Ranger (v2.0);sranger;1988;SunA;;;
@@ -1432,6 +1440,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;ShootEmUp;Alligator Hunt (World, protected);aligator;1994;Gaelco;;;
 3;ShootEmUp;Alpha Mission II / ASO II - Last Guardian (NGM-007 ~ NGH-007);alpham2;1991;SNK;;;
 3;ShootEmUp;Altair;altair;1981;Cidelsa;;;
+3;ShootEmUp;Altair II;altair2;198?;Cidelsa;;;
 2;ShootEmUp;Ambush;ambush;1983;Tecfri;;how to take of ?;
 3;ShootEmUp;Andro Dunos (NGM-049 ~ NGH-049);androdun;1992;Visco;;;
 3;ShootEmUp;Android (prototype, later build);androidp;1987;Nasco;;;
@@ -2084,6 +2093,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;ShootEmUp;Super Spacefortress Macross II / Chou-Jikuu Yousai Macross II;macross2;1993;Banpresto;;;
 2;ShootEmUp;Super Stingray (Japan);sstingry;1986;Alpha Denshi Co.;;bad sound due to imperfect emulation;
 3;ShootEmUp;Super Tank;supertnk;1981;Video Games GmbH;;;
+1;ShootEmUp;Super Tank Attack (prototype rev. 1.12);stankatk;1992;Microprose Games Inc.;;partial controls;
 3;ShootEmUp;Super Zaxxon (315-5013);szaxxon;1982;Sega;;no sound but hould have;
 3;ShootEmUp;Super-X (NTC);superx;1994;Dooyong (NTC license);;;
 3;ShootEmUp;Superbike;superbik;1983;Century Electronics;;;
@@ -2325,6 +2335,8 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 0;Sport;Final Furlong (FF2 Ver. A);finlflng;1997;Namco;;unsupported;
 0;Sport;Final Furlong (World, FF2 Ver. A);finfurl;1997;Namco;;unsupported;
 0;Sport;Final Furlong 2 (World);finfurl2;1998;Namco;;unsupported;
+3;Sport;Fishing Maniac 2+;fmaniac2p;2000;Saero Entertainment;;;
+3;Sport;Fishing Maniac 3;fmaniac3;2002;Saero Entertainment;;;
 1;Sport;Five a Side Soccer (ver UAA);fiveside;1995;Konami;;lags a lot, bad controls;
 3;Sport;Flyball (rev 2);flyball;1976;Atari;;2 players only;
 3;Sport;Football Champ / Euro Football Champ (World);footchmp;1990;Taito Corporation Japan;;;
@@ -2503,8 +2515,8 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Sport;Taito Power Goal (Ver 2.5O 1994/11/03);pwrgoal;1994;Taito Corporation Japan;;;
 3;Sport;Team Hat Trick;teamht;1985;Bally/Sente;;;
 3;Sport;Tecmo Bowl (World, set 1);tbowl;1987;Tecmo;;;
-3;Sport;Tecmo World Cup '90 (World set 1);twcup90;1989;Tecmo;;;
 0;Sport;Tecmo World Cup '90 (World set 1);wc90;1989;Tecmo;;should work;
+3;Sport;Tecmo World Cup '90 (World set 1);twcup90;1989;Tecmo;;;
 3;Sport;Tecmo World Cup '94 (set 1);twcup94;1994;Tecmo;;;
 1;Sport;Tecmo World Cup '98 (JUET 980410 V1.000);twcup98;1998;Tecmo;;lags a lot;
 3;Sport;Tecmo World Cup Millennium (Japan);twcupmil;2000;Tecmo;;;
@@ -2518,7 +2530,6 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 1;Sport;Toobin' (rev 3);toobin;1988;Atari Games;;impossible to start;
 3;Sport;Top Player's Golf (NGM-003 ~ NGH-003);tpgolf;1990;SNK;;;
 3;Sport;Top Roller;toprollr;1983;Jaleco;;;
-3;Sport;Top Shooter;topshoot;1995;Sun Mixing;;;
 3;Sport;Touch & Go (World);touchgo;1995;Gaelco;;;
 1;Sport;TouchDown Fever (US);tdfever;1987;SNK;;bad controls;
 1;Sport;TouchDown Fever 2;tdfever2;1988;SNK;;bad controls;
@@ -2813,4 +2824,3 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;VsFighting;X-Men: Children of the Atom (Euro 950331);xmcota;1994;Capcom;;;
 3;VsFighting;Yie Ar Kung-Fu (program code I);yiear;1985;Konami;;;
 3;VsFighting;Zen Nippon Pro-Wrestling Featuring Virtua (J 971123 V1.000);znpwfv;1997;Sega;;little lags in menu;
-0;;Golgo 13 Jussei no Requiem;g13jnr;2001;Eighting / Raizing / Namco;;back to ES;
