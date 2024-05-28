@@ -186,7 +186,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;BeatEmUp;Trojan (US set 1);trojan;1986;Capcom;;;
 3;BeatEmUp;Ultra Toukon Densetsu (Japan);utoukond;1993;Banpresto / Tsuburaya Productions;;;
 3;BeatEmUp;Undercover Cops (World);uccops;1992;Irem;;;
-3;BeatEmUp;Vamf x1/2 (Europe, version 1.1.0908);vamphalf;1999;Danbi / F2 System;;crash to ES, should work;
+3;BeatEmUp;Vamf x1/2 (Europe, version 1.1.0908);vamphalf;1999;Danbi / F2 System;;;
 3;BeatEmUp;Vandyke (Japan);vandyke;1990;UPL;;;
 3;BeatEmUp;Vendetta (World, 4 Players, ver. T);vendetta;1991;Konami;;;
 3;BeatEmUp;Vigilante (World, Rev E);vigilant;1988;Irem;;;
@@ -273,7 +273,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 1;Gun;Operation Thunderbolt (World, rev 1);othunder;1988;Taito Corporation Japan;;bad controls (too sensitive);
 0;Gun;Operation Tiger (Ver 2.14 O);optiger;1998;Taito;;freezes mame, unsupported;
 1;Gun;Operation Wolf (World, set 1);opwolf;1987;Taito Corporation Japan;;missing controls;
-0;Gun;Operation Wolf 3 (World);opwolf3;1994;Taito Corporation Japan;;no image, should work;
+0;Gun;Operation Wolf 3 (World);opwolf3;1994;Taito Corporation Japan;;can't get past calibration;
 1;Gun;Point Blank (World, GN2 Rev B, set 1);ptblank;1994;Namco;;missing controls;
 1;Gun;Point Blank 2 (GNB5/VER.A);ptblank2;1999;Namco;;bad controls (no calibration);
 0;Gun;Point Blank 3 (World, GNN2 Ver.A);ptblank3;2000;Namco;;unsupported;
@@ -424,7 +424,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Misc;Exvania (World);exvania;1992;Namco;;;
 3;Misc;Eyes (US set 1);eyes;1982;Techstar (Rock-Ola license);;;
 3;Misc;Fail Gate;failgate;1991;Success (Seibu Kaihatsu license);;;
-3;Misc;Fantasy (US);fantasyu;1981;SNK (Rock-Ola license);;;
+3;Misc;Fantasy (US);fantasyu;1981;SNK (Rock-Ola license);;sample for fantasy rom;
 3;Misc;Fast Lane;fastlane;1987;Konami;;;
 1;Misc;Field Goal (set 1);fgoal;1979;Taito;;bad controls (too sensitive) + no sound;
 3;Misc;Fire Ball (FM Work);fball;1992;FM Work;;;
@@ -438,8 +438,9 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 1;Misc;Free Kick (NS6201-A 1987.10);freekick;1987;Nihon System (Merit license);;bad controls (too sensitive);
 3;Misc;Freeze;freeze;1984;Cinematronics;;;
 3;Misc;Frogs;frogs;1978;Gremlin;;;
-0;Misc;GAHAHA Ippatsudou (World, GID2 Ver.A);gahaha;2000;Namco / Metro;;No launch, back to ES, should work;
-0;Misc;GAHAHA Ippatsudou 2 (Japan, GIS1 Ver.A);gahaha2;2001;Namco / Metro;;No launch, back to ES, should work;
+3;Misc;Gachaga Champ (GE877 VER. JAB);gchgchmp;1999;Konami;;;
+1;Misc;GAHAHA Ippatsudou (World, GID2 Ver.A);gahaha;2000;Namco / Metro;;needs two joystick;
+1;Misc;GAHAHA Ippatsudou 2 (Japan, GIS1 Ver.A);gahaha2;2001;Namco / Metro;;needs two joystick;
 1;Misc;Gee Bee (Japan);geebee;1978;Namco;;bad controls (too sensitive);
 3;Misc;Genix Family;genix;1994;NIX;;;
 3;Misc;Ghox (joystick);ghoxj;1991;Toaplan;;;
@@ -610,7 +611,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Misc;Q*bert's Qubes;qbertqub;1983;Mylstar;;;
 3;Misc;Qix (Rev 2);qix;1981;Taito America Corporation;;needs restart;
 1;Misc;Quantum (rev 2);quantum;1982;General Computer Corporation (Atari license);;bad controls (too sensitive);
-1;Misc;Quester (Japan);quester;1987;Namco;;bad controls (too sensitive);
+3;Misc;Quester Special Edition (Japan);questers;1987;Namco;;;
 3;Misc;Radar Zone;radarzon;1982;Century Electronics;;;
 3;Misc;Raiders5;raiders5;1985;UPL;;;
 3;Misc;Raimais (World);raimais;1988;Taito Corporation Japan;;;
@@ -736,6 +737,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 1;Misc;Video Pinball (16 PROMs version);videopin;1979;Atari;;no control;
 3;Misc;Volfied (World, revision 1);volfied;1989;Taito Corporation Japan;;;
 1;Misc;VS Block Breaker (Europe);vblokbrk;1997;Kaneko / Mediaworks;;missing controls;
+3;Misc;Vs. Balloon Fight (set BF4 A-3);balonfgt;1984;Nintendo;;;
 3;Misc;Vs. Balloon Fight (set BF4 A-3);balonfgt;1984;Nintendo;;;
 3;Misc;Vs. Clu Clu Land;cluclu;1984;Nintendo;;;
 1;Misc;Vs. Hot Smash;hotsmash;1987;Kaneko / Taito;;bad controls (too sensitive);
@@ -889,7 +891,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Platform;Snow Bros. 2 - With New Elves / Otenki Paradise (Hanafram);snowbro2;1994;Hanafram;;;
 3;Platform;Snow Brothers 3 - Magical Adventure;snowbro3;2002;Syrmex;;;
 3;Platform;Solomon's Key (US);solomon;1986;Tecmo;;;
-3;Platform;Space Panic (version E);panic;1980;Universal;;;
+3;Platform;Space Panic (version E);panic;1980;Universal;;needs samples;
 3;Platform;Spelunker;spelunkr;1985;Irem (licensed from Broderbund);;;
 3;Platform;Spelunker II - 23 no Kagi (Japan);spelunk2;1986;Irem (licensed from Broderbund);;;
 0;Platform;Spica Adventure (v2.03J);spicaadv;2005;Taito Corporation;;not supported;
@@ -924,6 +926,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Platform;Vs. Ninja Jajamaru Kun (Japan);jajamaru;1985;Jaleco;;;
 3;Platform;Vs. Super Mario Bros. (set SM4-4 E);suprmrio;1986;Nintendo;;;
 3;Platform;Vs. The Goonies (set E);goonies;1986;Konami;;;
+3;Platform;Vs. Wrecking Crew;wrecking;1984;Nintendo;;;
 3;Platform;Vs. Wrecking Crew;wrecking;1984;Nintendo;;;
 3;Platform;Wardner (World);wardner;1987;Toaplan / Taito Corporation Japan;;;
 3;Platform;Wily Tower;wilytowr;1984;Irem;;;
@@ -1214,6 +1217,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 0;Race;Metal Maniax (prototype);metalmx;1994;Atari Games;;unsupported;
 3;Race;Midnight Run: Road Fighter 2 (EAA, Euro v1.11);midnrun;1995;Konami;;;
 3;Race;Mille Miglia 2: Great 1000 Miles Rally (95/05/24);gtmr2;1995;Kaneko;;;
+3;Race;Monte Carlo;montecar;1979;Atari;;;
 3;Race;Mortal Race;mortalr;1995;New Dream Games;;;
 1;Race;Moto Frenzy;motofren;1992;Atari Games;;bad controls (too sensitive + deadzone);
 0;Race;Motocross Go! (US, MG3 Ver. A);motoxgo;1997;Namco;;unsupported;
@@ -1223,6 +1227,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Race;Off Road Challenge (v1.63);offroadc;1997;Midway;;;
 0;Race;Offroad Thunder;offrthnd;2000;Midway Games;;no image, unsupported;
 3;Race;Out Run (sitdown/upright, Rev B);outrun;1986;Sega;;;
+3;Race;OutRunners (World);orunners;1992;Sega;;;
 3;Race;OutRunners (World);orunners;1992;Sega;;;
 2;Race;Over Drive (set 1);overdriv;1990;Konami;;lots of graphical bugs + too sensitive;
 3;Race;Over Top;overtop;1996;ADK;;;
@@ -1245,6 +1250,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Race;Radikal Bikers (Version 2.02);radikalb;1998;Gaelco;;;
 2;Race;Rally Bike / Dash Yarou;rallybik;1988;Toaplan / Taito Corporation;;bad mapping;
 3;Race;Rave Racer (Rev. RV2, World);raverace;1995;Namco;;;
+0;Race;RC De Go (V2.03J 1999/05/22 19:29);rcdego;1999;Taito;;can't pass calibration screen;
 1;Race;Redline Racer (2 players);redlin2p;1987;Cinematronics (Tradewest license);;bad controls (deadzone issue);
 3;Race;Ridge Racer (Rev. RR3, World);ridgerac;1993;Namco;;;
 3;Race;Ridge Racer 2 (Rev. RRS2, World);ridgera2;1994;Namco;;;
@@ -1252,7 +1258,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Race;Riding Hero (NGM-006 ~ NGH-006);ridhero;1990;SNK;;;
 0;Race;Ring Riders (Software version v2.2);rriders;2004;Gaelco;;no image, unsupported;
 1;Race;Road Blasters (upright, rev 4);roadblst;1987;Atari Games;;accelerate also shoots;
-0;Race;Road Burners (ver 1.04);roadburn;1999;Atari Games;;no image, should work ?;
+1;Race;Road Burners (ver 1.04);roadburn;1999;Atari Games;;lags a lot, no deadzone handling;
 1;Race;Road Fighter (set 1);roadf;1984;Konami;;bad mapping;
 1;Race;Road Riot 4WD (set 1, 04 Dec 1991);roadriot;1991;Atari Games;;bad controls (deadzone, too sensitive);
 1;Race;Road Riot's Revenge (prototype, Sep 06, 1994);rrreveng;1993;Atari Games;;accelerate also shoots;
@@ -1261,7 +1267,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 2;Race;Round Up 5 - Super Delta Force;roundup5;1989;Tatsumi;;bad mapping;
 2;Race;S.T.U.N. Runner (rev 6);stunrun;1989;Atari Games;;bad controls (deadzone), playable;
 1;Race;San Francisco Rush (boot rom L 1.0);sfrush;1996;Atari Games;;bad controls (deadzone);
-1;Race;San Francisco Rush 2049;sf2049;1999;Atari Games;;bad controls (deadzone);
+3;Race;San Francisco Rush 2049: Special Edition;sf2049se;2003;Atari Games;;;
 1;Race;San Francisco Rush: The Rock (boot rom L 1.0, GUTS Oct 6 1997 / MAIN Oct 16 1997);sfrushrk;1997;Atari Games;;bad controls (deadzone);
 3;Race;Shot Rider;shtrider;1985;Seibu Kaihatsu;;;
 3;Race;Side by Side (Ver 2.7 J);sidebs;1996;Taito;;very low sound;
@@ -1277,6 +1283,9 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 1;Race;Speed Up (Version 1.20);speedup;1996;Gaelco;;bad controls(deadzone);
 3;Race;Splendor Blast (set 1);splndrbt;1985;Alpha Denshi Co.;;;
 3;Race;Splendor Blast II;splndrbt2;1985;Alpha Denshi Co.;;;
+3;Race;Sprint 1;sprint1;1978;Atari (Kee Games);;;
+3;Race;Sprint 4 (Rev 03);sprint4;1977;Atari;;;
+3;Race;Sprint 8;sprint8;1977;Atari;;;
 2;Race;Spy Hunter;spyhunt;1983;Bally Midway;;bad mapping;
 2;Race;Spy Hunter II (rev 2);spyhunt2;1987;Bally Midway;;bad mapping;
 3;Race;Stadium Cross (World);scross;1992;Sega;;;
@@ -1301,7 +1310,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 1;Race;Thrill Drive (JAE);thrilld;1998;Konami;;initialization error;
 1;Race;Thrill Drive 2 (ver EBB);thrild2;2001;Konami;;initialization error;
 0;Race;Tokyo Cop (US, dedicated version);tokyocop;2003;Gaelco;;no image, unsupported;
-0;Race;Top Driving (version 1.1);topdrive;1995;Proyesel;;no launch, back to ES, should work;
+3;Race;Top Driving (version 1.1);topdrive;1995;Proyesel;;;
 3;Race;Top Speed (World);topspeed;1987;Taito Corporation Japan;;;
 2;Race;Traverse USA / Zippy Race;travrusa;1983;Irem;;bad mapping;
 3;Race;Turbo (program 1513-1515);turbo;1981;Sega;;needs samples;
@@ -1322,6 +1331,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 1;Race;World Grand Prix (World);wgp;1989;Taito Corporation Japan;;missing controls;
 1;Race;World Grand Prix 2 (Japan);wgp2;1990;Taito Corporation;;missing controls;
 3;Race;World Rally (Version 1.0, Checksum 0E56);wrally;1993;Gaelco;;;
+3;Race;World Rally 2: Twin Racing (mask ROM version);wrally2;1995;Gaelco;;;
 3;Race;World Rally 2: Twin Racing (mask ROM version);wrally2;1995;Gaelco;;;
 0;Race;Xtreme Rally / Off Beat Racer!;xrally;1998;SNK;;freezes mame, unsupported;
 0;Race;Xtrial Racing (ver JAB);xtrial;2002;Konami;;lags a lot, unsupported;
@@ -1371,6 +1381,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;RunNGun;Psycho Soldier (US);psychos;1987;SNK;;;
 3;RunNGun;Psycho-Nics Oscar (World revision 0);oscar;1987;Data East Corporation;;;
 3;RunNGun;Quartet (Rev A, 8751 315-5194);quartet;1986;Sega;;;
+3;RunNGun;Quartet 2 (8751 317-0010);quartet2;1986;Sega;;;
 3;RunNGun;Robocop (World revision 4);robocop;1988;Data East Corporation;;;
 3;RunNGun;Robocop 2 (Euro/Asia v0.10);robocop2;1991;Data East Corporation;;;
 3;RunNGun;Rohga Armor Force (Asia/Europe v5.0);rohga;1991;Data East Corporation;;;
@@ -1382,8 +1393,8 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;RunNGun;Shinobi (set 6, System 16A) (unprotected);shinobi;1987;Sega;;;
 3;RunNGun;Son Son;sonson;1984;Capcom;;;
 3;RunNGun;Spark Man (v2.0, set 1);sparkman;1989;SunA;;;
-2;RunNGun;Special Forces;spclforc;1985;Senko Industries (Magic Electronics Inc. license);;no sound ingame, should have in 0.252;
-2;RunNGun;Special Forces II;spcfrcii;1985;Senko Industries (Magic Electronics Inc. license);;no sound ingame, should have in 0.252;
+3;RunNGun;Special Forces;spclforc;1985;Senko Industries (Magic Electronics Inc. license);;;
+3;RunNGun;Special Forces II;spcfrcii;1985;Senko Industries (Magic Electronics Inc. license);;;
 3;RunNGun;Sunset Riders (2 Players ver EBD);ssridersebd;1991;Konami;;;
 3;RunNGun;Sunset Riders (4 Players ver EAC);ssriders;1991;Konami;;;
 3;RunNGun;Super Contra;scontra;1988;Konami;;;
@@ -1894,6 +1905,8 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;ShootEmUp;Plus Alpha;plusalph;1989;Jaleco;;;
 3;ShootEmUp;Polaris (Latest version);polaris;1980;Taito;;;
 3;ShootEmUp;Pollux (set 1);pollux;1991;Dooyong;;;
+3;ShootEmUp;Poly-Net Warriors (ver JAA);polynetw;1993;Konami;;;
+1;ShootEmUp;Polygonet Commanders (ver UAA);plygonet;1993;Konami;;bad controls;
 3;ShootEmUp;Pooyan;pooyan;1982;Konami;;;
 3;ShootEmUp;Prehistoric Isle 2;preisle2;1999;Yumekobo / Saurus;;;
 3;ShootEmUp;Prehistoric Isle in 1930 (World);prehisle;1989;SNK;;;
@@ -2011,7 +2024,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 0;ShootEmUp;Slither (set 1);slither;1982;Century II;;stuck on CMOS Invalid;
 2;ShootEmUp;Smash T.V. (rev 8.00);smashtv;1990;Williams;;not perfect controls;
 3;ShootEmUp;Sol Divide - The Sword Of Darkness;soldivid;1997;Psikyo;;;
-0;ShootEmUp;Solar Assault (ver UAA);slrasslt;1997;Konami;;stuck while loading;
+1;ShootEmUp;Solar Assault Revised (ver JAA);slrassltj;1997;Konami;;no direction controls;
 3;ShootEmUp;Solar Quest (rev 10 8 81);solarq;1981;Cinematronics;;;
 3;ShootEmUp;Soldier Girl Amazon;amazon;1986;Nichibutsu;;;
 1;ShootEmUp;Solvalou (SV1, Japan);solvalou;1991;Namco;;bad controls;
@@ -2084,6 +2097,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 2;ShootEmUp;Sub Hunter (Gremlin / Taito);subhunt;1977;Gremlin (Taito license);;no sound due to imperfect emulation;
 3;ShootEmUp;Submarine (Sigma);sub;1985;Sigma Enterprises Inc.;;;
 3;ShootEmUp;Subroc-3D;subroc3d;1982;Sega;;needs samples;
+3;ShootEmUp;Subs;subs;1977;Atari;;;
 1;ShootEmUp;Sundance;sundance;1979;Cinematronics;;no controls;
 3;ShootEmUp;Super Astro Fighter (DECO Cassette) (US);csuperas;1981;Data East Corporation;;;
 3;ShootEmUp;Super Cobra;scobra;1981;Konami;;;
@@ -2094,7 +2108,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 2;ShootEmUp;Super Stingray (Japan);sstingry;1986;Alpha Denshi Co.;;bad sound due to imperfect emulation;
 3;ShootEmUp;Super Tank;supertnk;1981;Video Games GmbH;;;
 1;ShootEmUp;Super Tank Attack (prototype rev. 1.12);stankatk;1992;Microprose Games Inc.;;partial controls;
-3;ShootEmUp;Super Zaxxon (315-5013);szaxxon;1982;Sega;;no sound but hould have;
+3;ShootEmUp;Super Zaxxon (315-5013);szaxxon;1982;Sega;;no sound but should have, sample for zaxxon;
 3;ShootEmUp;Super-X (NTC);superx;1994;Dooyong (NTC license);;;
 3;ShootEmUp;Superbike;superbik;1983;Century Electronics;;;
 3;ShootEmUp;SWAT (315-5048);swat;1984;Coreland / Sega;;;
@@ -2149,6 +2163,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 1;ShootEmUp;Tobe! Polystars (ver JAA);polystar;1997;Konami;;lags a lot;
 3;ShootEmUp;Toki no Senshi - Chrono Soldier (MC-8123, 317-0040);tokisens;1987;Sega;;;
 3;ShootEmUp;Tokio / Scramble Formation (newer);tokio;1986;Taito Corporation;;;
+3;ShootEmUp;Tokyo Wars (World, TW2 Ver.A);tokyowar;1996;Namco;;;
 3;ShootEmUp;Tomahawk 777 (rev 5);tomahawk;1980;Data East;;;
 1;ShootEmUp;Top Secret (Exidy) (version 1.0);topsecex;1986;Exidy;;bad controls (deadzone);
 3;ShootEmUp;Tora Tora (prototype?);toratora;1980;Game Plan;;;
@@ -2360,6 +2375,12 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 1;Sport;Golden Tee 2K (v1.00);gt2k;2000;Incredible Technologies;;bad controls;
 1;Sport;Golden Tee 3D Golf (v1.93N);gt3d;1995;Incredible Technologies;;bad controls;
 1;Sport;Golden Tee Classic (v1.00);gtclassc;2001;Incredible Technologies;;bad controls;
+1;Sport;Golden Tee Fore! (v1.00.25);gtfore01;2000;Incredible Technologies;;controls not good (needs trackball);
+1;Sport;Golden Tee Fore! 2002 (v2.01.06);gtfore02;2001;Incredible Technologies;;controls not good (needs trackball);
+1;Sport;Golden Tee Fore! 2003 (v3.00.10);gtfore03;2002;Incredible Technologies;;controls not good (needs trackball);
+1;Sport;Golden Tee Fore! 2004 Extra (v4.00.08);gtfore04;2003;Incredible Technologies;;controls not good (needs trackball);
+1;Sport;Golden Tee Fore! 2005 Extra (v5.01.06);gtfore05;2004;Incredible Technologies;;controls not good (needs trackball);
+1;Sport;Golden Tee Fore! 2006 Complete (v6.00.01);gtfore06;2005;Incredible Technologies;;controls not good (needs trackball);
 3;Sport;Golden Tee Golf (Joystick, v3.3);gtg;1990;Strata/Incredible Technologies;;;
 1;Sport;Golden Tee Golf II (Trackball, V2.2);gtg2;1992;Strata/Incredible Technologies;;bad controls;
 3;Sport;Golfing Greats (World, version L);glfgreat;1991;Konami;;;
@@ -2408,6 +2429,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Sport;Mayhem 2002;mayhem;1985;Cinematronics;;;
 3;Sport;Mermaid;mermaid;1982;Sanritsu / Rock-Ola;;;
 1;Sport;Mini Golf (11/25/85);minigolf;1985;Bally/Sente;;bad controls;
+2;Sport;Mini Golf (Atari, prototype);mgolf;1978;Atari;;controls are difficult;
 3;Sport;Moero!! Pro Yakyuu Homerun Kyousou;homerun;1988;Jaleco;;;
 3;Sport;MVP (set 2, US) (FD1094 317-0143);mvp;1989;Sega;;;
 3;Sport;Mystic Marathon;mysticm;1983;Williams;;;
@@ -2515,7 +2537,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Sport;Taito Power Goal (Ver 2.5O 1994/11/03);pwrgoal;1994;Taito Corporation Japan;;;
 3;Sport;Team Hat Trick;teamht;1985;Bally/Sente;;;
 3;Sport;Tecmo Bowl (World, set 1);tbowl;1987;Tecmo;;;
-0;Sport;Tecmo World Cup '90 (World set 1);wc90;1989;Tecmo;;should work;
+3;Sport;Tecmo World Cup '90 (World set 1);wc90;1989;Tecmo;;;
 3;Sport;Tecmo World Cup '90 (World set 1);twcup90;1989;Tecmo;;;
 3;Sport;Tecmo World Cup '94 (set 1);twcup94;1994;Tecmo;;;
 1;Sport;Tecmo World Cup '98 (JUET 980410 V1.000);twcup98;1998;Tecmo;;lags a lot;
@@ -2544,6 +2566,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;Sport;Versus Net Soccer (ver EAD);vsnetscr;1996;Konami;;;
 3;Sport;Video Eight Ball;8ball;1982;Century Electronics;;;
 3;Sport;Video Hustler;hustler;1981;Konami;;;
+1;Sport;Virtual Pool;virtpool;1998;Incredible Technologies;;can't change queue orientation;
 3;Sport;Vs 10-Yard Fight (World, 11/05/84);vs10yard;1984;Irem;;;
 3;Sport;Vs. Atari R.B.I. Baseball (set 1);rbibb;1986;Namco;;;
 3;Sport;Vs. BaseBall (US, set BA E-1);vsbball;1984;Nintendo of America;;;
@@ -2769,7 +2792,7 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;VsFighting;Tekken 2 Ver.B (US, TES3/VER.D);tekken2;1996;Namco;;;
 3;VsFighting;Tekken 3 (World, TET2/VER.E1);tekken3;1996;Namco;;;
 3;VsFighting;Tekken Tag Tournament (World, TEG2/VER.C1, set 1);tektagt;1999;Namco;;;
-0;VsFighting;Tenth Degree (prototype);tenthdeg;1998;Atari Games;;no image, should work;
+3;VsFighting;Tenth Degree (prototype);tenthdeg;1998;Atari Games;;;
 0;VsFighting;The Battle of Yu Yu Hakusho: Shitou! Ankoku Bujutsukai!;yuyuhaku;2006;Banpresto;;unsupported;
 3;VsFighting;The Big Pro Wrestling!;bigprowr;1983;Technos Japan;;;
 3;VsFighting;The Fallen Angels;daraku;1998;Psikyo;;;

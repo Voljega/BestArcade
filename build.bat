@@ -27,6 +27,7 @@ echo Moving conf files
 if not exist .\dist\data mkdir .\dist\data
 copy ..\data\*.ini .\dist\data
 copy ..\data\*.dat .\dist\data
+copy ..\data\*.properties .\dist\data
 if not exist .\dist\data\images mkdir .\dist\data\images
 copy ..\data\images\*.png .\dist\data\images
 if not exist .\dist\data\n2 mkdir .\dist\data\n2
