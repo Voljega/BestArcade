@@ -5,7 +5,7 @@ from logger import Logger
 
 if __name__ == "__main__":
     scriptDir = os.path.abspath(os.path.dirname(sys.argv[0]))
-    title = 'BestArcade 1.7'
+    title = 'BestArcade 1.8'
     logger = Logger()
     logger.log(title)
     logger.log('\nScript path: ' + scriptDir)
