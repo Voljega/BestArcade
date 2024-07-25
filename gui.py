@@ -154,6 +154,15 @@ class GUI:
         naomi2GUI = CustomGUI(self.naomi2Frame, 'naomi2', self.scriptDir, self.logger, self)
         naomi2GUI.draw()
 
+        # NAMCO2x6 TAB
+        self.namco2x6Frame = Tk.Frame(self.notebook, padx=10, pady=5)
+        self.namco2x6Frame.grid(column=0, row=0, sticky="EWN", pady=5)
+        self.namco2x6Frame.grid_columnconfigure(0, weight=1)
+        self.notebook.add(self.namco2x6Frame, text='Namco 2x6', sticky="EWNS")
+        self.notebook.select(self.namco2x6Frame)
+        namco2x6GUI = CustomGUI(self.namco2x6Frame, 'namco2x6', self.scriptDir, self.logger, self)
+        namco2x6GUI.draw()
+
         # HANDHELD TAB
         self.handheldFrame = Tk.Frame(self.notebook, padx=10, pady=5)
         self.handheldFrame.grid(column=0, row=0, sticky="EWN", pady=5)
@@ -187,6 +196,7 @@ class GUI:
             self.notebook.tab(self.atomiswaveFrame, state=state)
             self.notebook.tab(self.naomiFrame, state=state)
             self.notebook.tab(self.naomi2Frame, state=state)
+            self.notebook.tab(self.namco2x6Frame, state=state)
             self.notebook.tab(self.handheldFrame, state=state)
             self.notebook.tab(self.tvgamesFrame, state=state)
         elif setKey == 'retroarch' and hardware == 'n2':
@@ -199,6 +209,7 @@ class GUI:
             self.notebook.tab(self.atomiswaveFrame, state=state)
             self.notebook.tab(self.naomiFrame, state=state)
             self.notebook.tab(self.naomi2Frame, state=state)
+            self.notebook.tab(self.namco2x6Frame, state=state)
             self.notebook.tab(self.handheldFrame, state=state)
             self.notebook.tab(self.tvgamesFrame, state=state)
         elif setKey == 'retroarch' and hardware == 'n100':
@@ -211,6 +222,7 @@ class GUI:
             self.notebook.tab(self.atomiswaveFrame, state=state)
             self.notebook.tab(self.naomiFrame, state=state)
             self.notebook.tab(self.naomi2Frame, state=state)
+            self.notebook.tab(self.namco2x6Frame, state=state)
             self.notebook.tab(self.handheldFrame, state=state)
             self.notebook.tab(self.tvgamesFrame, state=state)
         elif setKey == 'custom':
@@ -223,6 +235,7 @@ class GUI:
             self.notebook.tab(self.atomiswaveFrame, state=state)
             self.notebook.tab(self.naomiFrame, state=state)
             self.notebook.tab(self.naomi2Frame, state=state)
+            self.notebook.tab(self.namco2x6Frame, state=state)
             self.notebook.tab(self.handheldFrame, state=state)
             self.notebook.tab(self.tvgamesFrame, state=state)
         elif setKey == 'neogeoaes':
@@ -235,6 +248,7 @@ class GUI:
             self.notebook.tab(self.atomiswaveFrame, state=state)
             self.notebook.tab(self.naomiFrame, state=state)
             self.notebook.tab(self.naomi2Frame, state=state)
+            self.notebook.tab(self.namco2x6Frame, state=state)
             self.notebook.tab(self.handheldFrame, state=state)
             self.notebook.tab(self.tvgamesFrame, state=state)
         elif setKey == 'model2':
@@ -247,6 +261,7 @@ class GUI:
             self.notebook.tab(self.atomiswaveFrame, state=state)
             self.notebook.tab(self.naomiFrame, state=state)
             self.notebook.tab(self.naomi2Frame, state=state)
+            self.notebook.tab(self.namco2x6Frame, state=state)
             self.notebook.tab(self.handheldFrame, state=state)
             self.notebook.tab(self.tvgamesFrame, state=state)
         elif setKey == 'model3':
@@ -259,6 +274,7 @@ class GUI:
             self.notebook.tab(self.atomiswaveFrame, state=state)
             self.notebook.tab(self.naomiFrame, state=state)
             self.notebook.tab(self.naomi2Frame, state=state)
+            self.notebook.tab(self.namco2x6Frame, state=state)
             self.notebook.tab(self.handheldFrame, state=state)
             self.notebook.tab(self.tvgamesFrame, state=state)
         elif setKey == 'atomiswave':
@@ -271,6 +287,7 @@ class GUI:
             self.notebook.tab(self.model3Frame, state=state)
             self.notebook.tab(self.naomiFrame, state=state)
             self.notebook.tab(self.naomi2Frame, state=state)
+            self.notebook.tab(self.namco2x6Frame, state=state)
             self.notebook.tab(self.handheldFrame, state=state)
             self.notebook.tab(self.tvgamesFrame, state=state)
         elif setKey == 'naomi':
@@ -283,6 +300,7 @@ class GUI:
             self.notebook.tab(self.model3Frame, state=state)
             self.notebook.tab(self.atomiswaveFrame, state=state)
             self.notebook.tab(self.naomi2Frame, state=state)
+            self.notebook.tab(self.namco2x6Frame, state=state)
             self.notebook.tab(self.handheldFrame, state=state)
             self.notebook.tab(self.tvgamesFrame, state=state)
         elif setKey == 'naomi2':
@@ -295,6 +313,20 @@ class GUI:
             self.notebook.tab(self.model3Frame, state=state)
             self.notebook.tab(self.atomiswaveFrame, state=state)
             self.notebook.tab(self.naomiFrame, state=state)
+            self.notebook.tab(self.namco2x6Frame, state=state)
+            self.notebook.tab(self.handheldFrame, state=state)
+            self.notebook.tab(self.tvgamesFrame, state=state)
+        elif setKey == 'namco2x6':
+            self.notebook.tab(self.pi3RetroarchFrame, state=state)
+            self.notebook.tab(self.n2RetroarchFrame, state=state)
+            self.notebook.tab(self.n100RetroarchFrame, state=state)
+            self.notebook.tab(self.customFrame, state=state)
+            self.notebook.tab(self.neogeoaesFrame, state=state)
+            self.notebook.tab(self.model2Frame, state=state)
+            self.notebook.tab(self.model3Frame, state=state)
+            self.notebook.tab(self.atomiswaveFrame, state=state)
+            self.notebook.tab(self.naomiFrame, state=state)
+            self.notebook.tab(self.naomi2Frame, state=state)
             self.notebook.tab(self.handheldFrame, state=state)
             self.notebook.tab(self.tvgamesFrame, state=state)
         elif setKey == 'handheld':

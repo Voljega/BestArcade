@@ -1008,8 +1008,8 @@ Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comment
 3;RunNGun;Narc (rev 7.00);narc;1988;Williams;;needs to reset;
 3;RunNGun;Psycho Soldier (US);psychos;1987;SNK;Miscellaneous;;
 3;RunNGun;Psycho-Nics Oscar (World revision 0);oscar;1987;Data East Corporation;DEC8;;
-3;RunNGun;Quartet (Rev A, 8751 315-5194);quartet;1986;Sega;System 16A;;
-3;RunNGun;Quartet 2 (8751 317-0010);quartet2;1986;Sega;System 16A;;
+3;RunNGun;Quartet (Rev A, 8751 315-5194);quartet;1986;Sega;;;
+3;RunNGun;Quartet 2 (8751 317-0010);quartet2;1986;Sega;;;
 3;RunNGun;Riot;riot;1992;NMK;Miscellaneous;;
 3;RunNGun;Robocop (World revision 4);robocop;1988;Data East Corporation;DEC0;;
 3;RunNGun;Robocop 2 (Euro/Asia v0.10);robocop2;1991;Data East Corporation;DECO IC16;;

@@ -2,54 +2,36 @@
 
 ## Best Arcade Tool
 
+The main purpose of this tool is to filter mame/fbneo romsets to keep only the arcade games, removing:
+- clones
+- mahjong, medal redemption & gambling games
+- adult games  
+- electromechanical games and other non arcade games
+
 This tool handles two types of usage :
 - generate retroarch sorted romsets (fbneo, mame2003, mame2003plus, mame2010, regular mame) keeping only the games referenced in the [BestArcade list](https://docs.google.com/spreadsheets/d/1S5qAI-TEl7wfqg6w9VNEwKciMGUtw40n9PS4xslkG3s/edit?usp=sharing), above and equal to the working state level you choose.
-- generate dedicated romsets : custom mame based on Best Arcade list, neo geo aes set, sega model 2 & 3 sets, atomiswave set, naomi & naomi 2 sets, handheld set, tvgames set
+  
+
+- generate dedicated system romsets : custom mame based on Best Arcade list, neo geo aes set, sega model 2 & 3 sets, atomiswave set, naomi & naomi 2 sets, namco2x6 set, handheld set, tvgames set
 
 FbNeo version currently tested is Apr 30th, 2024
-Handheld supported romset is currently at mame 0.265 level
+Handheld supported romset is currently at mame 0.267 level
 
 ### WHAT THIS TOOL DOESN'T DO :
-- It's not clrmamepro and will not check that your romsets files are in the right version number
+- It's not clrmamepro and will not check that your romsets files are in the right version number  
+  
+
 - It only works with non-merged sets, split and merged sets are not supported, use clrmamepro to generate non-merged sets if needed. However very few clones ares used, so it should be mostly ok with other type of sets.
+  
+
 - CHD are handled, decompressed CHD folder for each games must be located inside your CHD folder or will default to romset directory (i.e your CHD directory should contain `kinst.zip` rom and `kinst` chd folder at the same level)
+  
+
 - You can exclude CHD games from generation if that's what you want
 
 ### WHAT THIS TOOL DO :
 
-Retroarch tab :
-- Available in Pi3, N2/N2+, N100 miniPCs flavor
-- Only N100 tests will be maintained in the future, but feel free to share your tests for other machine types
-- [BestArcade list for Raspberry Pi3](https://docs.google.com/spreadsheets/d/1S5qAI-TEl7wfqg6w9VNEwKciMGUtw40n9PS4xslkG3s/edit?usp=sharing)
-- [BestArcade list for Odroid N2/N2+](https://docs.google.com/spreadsheets/d/1M4J1jIRgnoo5lVzYGYLGYm0_VPXfEiwUAl5XZ91ZsB8/edit?usp=sharing)
-- [BestArcade list for N100 MiniPC](https://docs.google.com/spreadsheets/d/144LnHJMpPIIiknSP-TP1-i6jjxQqO_rLD-qtjVIdy20/edit?usp=sharing)  
-- Generate BestArcade romsets by using your fbneo, mame2003, mame2003plus and mame2010 non-merged sets, your original sets will be kept intact
-- Generate basic gamelist (Recalbox format but should work for other distribs) for your sets, with optional images. Genre images were generated with the awesome site [Game-icons.net](https://game-icons.net/)
-- Generate csv files documenting the generated sets
-- Generate a scoresheet comparing working level in generated sets
-- Generate dat files for the generated romsets
-- All needed DATs are included in the application
-
-Custom tab :
-- Same as above, without the testing part and everything related to it
-- So it will generate a set of the most interesting games
-- Mame DAT must be provided by the user or you can use the one included in the softxare data files)
-
-Neo Geo AES tab :
-- Generate Neo Geo AES full set from either FBNeo or recent mame set, FBNeo is recommanded though
-- FBNeo/Mame DAT must be provided by the user
-
-Sega Model 2, Sega Model 3, Atomiswave, Naomi and Naomi2 tabs :
-- Generate full sets of this system from a recent mame set
-- Mame DAT must be provided by the user
-
-Handhelds tab :
-- Generate full set of all single-game (game & watch like, no consoles) handheld devices from a recent mame set
-- Mame DAT must be provided by the user
-
-TV Games tab:
-- Generate full set of all TV Games devices from a recent mame set
-- Mame DAT must be provided by the user
+[Detailed functionalities](https://github.com/Voljega/BestArcade/wiki/What-this-Tool-Do)
 
 ### LINUX INSTALLATION AND EXECUTION :
 - BestArcade requires that python3 is installed
@@ -84,34 +66,10 @@ You can build your own Windows version with the instructions found in `build.txt
 You can also directly modify conf files manually if you prefer, see next sections
 
 ### RETROARCH ROMSET CONFIGURATION :
-You can modify your configuration by editing the `conf\conf-retroarch.conf` file either directly or from the UI with your own parameters :
-- `exportDir` : the target directory for generation, warning its whole content will be erased (you will be prompted) at the begining of the script
-- `fbneo`, `mame2003`, `mame2003plus`, `mame2010` : the path to your original sets, this will be left untouched by the script
-- `chd`: the path to your CHD set, if it doesn't exist, it will simply default to romset folder
-- `images`: Paths to your images folder (flyers, screenshot, etc) separated by ';', will be checked in consecutive order
-- `imgNameFormat` : the image name format in your images folder, '{rom}' part will be replaced by each rom name
-- `dryRun` : If put to 1, will do a dry run, generating only csv and dat files without copying roms and bios, good for testing
-- `keepLevel`: the working state level at which you will keep the roms in the generated romset (i.e keepLevel 2 will keep only MOSTLY_WORKING and WORKING roms)
-- `keepNotTested`: determines if untested roms will be kept or not, even in STRICT mode
-- `exclusionType`: determines how roms will be kept (based on their working state level) if you use several romsets
-- `preferedSet`: in strict mode, if rom has same working level in several sets, preferedSet will be chosen
-- `usePreferedSetForGenre` : in strict mode, activate use of prefered set for specific genres
-- `BeatEmUpPreferedSet`,`GunPreferedSet`,`MiscPreferedSet`,`PlatformPreferedSet`,`PuzzlePreferedSet`,`RacePreferedSet`,`RunNGunPreferedSet`,`ShootEmUpPreferedSet`,`SportPreferedSet`,`VsFightingPreferedSet` list of settings for prefered set for genre
-- `genreSubFolders`: determines if your romset will use sub folders for genre or not
-- `useImages`: determines if images will be used for gamelist
-- `excludeCHDGames`: determines if CHD games are to be excluded
+see the wiki page [Retroarch Romset Configuration](https://github.com/Voljega/BestArcade/wiki/Retroarch-Romset-Configuration)
 
-### CUSTOM, NEO GEO AES, SEGA MODEL 2 & 3, ATOMISWAVE, NAOMI 1&2 AND HANDHELD ROMSETS CONFIGURATION :
-You can modify your configuration by editing the related `conf\conf-*.conf` (`conf\conf-custom.conf`, `conf\conf-naomi.conf`, etc...) file either directly or from the UI with your own parameters :
-- `exportDir` : the target directory for generation, warning its whole content will be erased (you will be prompted) at the begining of the script
-- `custom`, `neogeoaes`, `model2`, `model3`, `atomiswave`, `naomi` or `handheld` : the path to your original sets, this will be left untouched by the script
-- `chd`: the path to your CHD set, if it doesn't exist, it will simply default to romset folder
-- `dat` : the path to your set dat
-- `images`: Paths to your images folder (flyers, screenshot, etc) separated by ';', will be checked in consecutive order
-- `imgNameFormat` : the image name format in your images folder, '{rom}' part will be replaced by each rom name
-- `dryRun` : If put to 1, will do a dry run, generating only csv and dat files without copying roms and bios, good for testing
-- `genreSubFolders`: determines if your romset will use sub folders for genre or not
-- `useImages`: determines if images will be used for gamelist
-- `excludeCHDGames`: determines if CHD games are to be excluded
+
+### CUSTOM, NEO GEO AES, SEGA MODEL 2 & 3, ATOMISWAVE, NAOMI 1&2, NAMCO 2x6 AND HANDHELD ROMSETS CONFIGURATION :
+see the wiki page [Custom & Specific Romsets Configuration](https://github.com/Voljega/BestArcade/wiki/Custom-&-Specific-Romsets-Configuration)
 
 [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/donate?hosted_button_id=LEAH843NKNG72)
