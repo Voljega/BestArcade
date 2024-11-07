@@ -41,6 +41,8 @@ def loadTests(setKeys, sourceDir, usingSystems, logger):
         if setKey in usingSystems:
             setTests = loadTest(os.path.join(sourceDir, setKey + '.csv'), setKey, allTests)
             logger.log('    Found ' + str(len(setTests)) + ' ' + setKey + ' tests')
+            if len(setTests) == 0:
+                continue
             logger.log('      WORKING {0:.2f} %'.format(
                 len(list(filter(lambda x: setTests[x].status == 3, setTests.keys()))) * 100 / len(setTests)),
                 logger.SUCCESS)

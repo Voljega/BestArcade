@@ -89,7 +89,7 @@ class Sorter:
         elif exclusionType == 'STRICT':
             genreTest = genre.replace('[', '')
             genreTest = genreTest.replace(']', '')
-            if usePreferedSetForGenre and self.configuration[genreTest + 'PreferedSet']:  # check not empty
+            if usePreferedSetForGenre and genreTest + 'PreferedSet' in self.configuration:  # check not empty
                 if self.__isPreferedSetForGenre(genreTest, key):
                     return scores[key] >= keepLevel
                 else:
