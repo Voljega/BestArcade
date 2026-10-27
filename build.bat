@@ -13,7 +13,7 @@ echo .
 echo .
 echo Build with pyinstaller
 echo .
-pyinstaller --icon=bestarcade.ico --clean -F BestArcade.py
+pyinstaller --icon=bestarcade.ico --clean --collect-all ttkbootstrap -F BestArcade.py
 echo .
 echo Pyinstaller has ended its work
 echo .

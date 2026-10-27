@@ -13,6 +13,9 @@ from functools import partial
 
 
 class RetroarchGUI:
+    GENRES = ['BeatEmUp', 'Gun', 'Misc', 'Platform', 'Puzzle', 'Race', 'RunNGun', 'ShootEmUp', 'Sport', 'VsFighting']
+    GENRES_PER_ROW = 5
+    GENRE_COMBOBOX_WIDTH = 12
 
     def __init__(self, rootFrame, scriptDir, logger, mummy, hardware):
         self.tabFrame = rootFrame
@@ -36,26 +39,8 @@ class RetroarchGUI:
         self.preferedSetValues = None
         self.preferedSetForGenreFrame = None
         self.usePreferedSetForGenreCheckButton = None
-        self.beatEmUpPreferedSetLabel = None
-        self.beatEmUpPreferedSetComboBox = None
-        self.gunPreferedSetLabel = None
-        self.gunPreferedSetComboBox = None
-        self.miscPreferedSetLabel = None
-        self.miscPreferedSetComboBox = None
-        self.platformPreferedSetLabel = None
-        self.platformPreferedSetComboBox = None
-        self.puzzlePreferedSetLabel = None
-        self.puzzlePreferedSetComboBox = None
-        self.racePreferedSetLabel = None
-        self.racePreferedSetComboBox = None
-        self.runNGunPreferedSetLabel = None
-        self.runNGunPreferedSetComboBox = None
-        self.shootEmUpPreferedSetLabel = None
-        self.shootEmUpPreferedSetComboBox = None
-        self.sportPreferedSetLabel = None
-        self.sportPreferedSetComboBox = None
-        self.vsFightingPreferedSetLabel = None
-        self.vsFightingPreferedSetComboBox = None
+        # (label, combobox) of each genre prefered set
+        self.genreWidgets = []
         self.buttonsFrame = None
         self.verifyButton = None
         self.saveButton = None
@@ -69,20 +54,20 @@ class RetroarchGUI:
 
     def __drawRomsetFrame(self):
         # Romsets frame
-        self.romsetFrame = Tk.LabelFrame(self.tabFrame, text="Your Romsets", padx=10, pady=5)
+        self.romsetFrame = ttk.LabelFrame(self.tabFrame, text="Your Romsets", padding=(10, 5))
         self.romsetFrame.grid(column=0, row=0, sticky="EW", pady=5)
         self.romsetFrame.grid_columnconfigure(1, weight=1)
         setRow = 0
         romsetKeys = Sorter.setKeys[self.hardware] if self.hardware == 'pi3' else Sorter.setKeys[self.hardware] + ['chd']
         for key in romsetKeys:
-            label = Tk.Label(self.romsetFrame, text=self.guiStrings[key].label)
+            label = ttk.Label(self.romsetFrame, text=self.guiStrings[key].label)
             wckToolTips.register(label, self.guiStrings[key].help)
             label.grid(column=0, row=setRow, padx=5, sticky="W")
             self.guiVars[key] = Tk.StringVar()
             self.guiVars[key].set(self.configuration[key])
-            entry = Tk.Entry(self.romsetFrame, textvariable=self.guiVars[key])
+            entry = ttk.Entry(self.romsetFrame, textvariable=self.guiVars[key])
             entry.grid(column=1, row=setRow, padx=5, sticky="WE")
-            selectRomsetDirButton = Tk.Button(
+            selectRomsetDirButton = ttk.Button(
                 self.romsetFrame, text=self.guiStrings['selectRomsetDir'].label,
                 command=lambda setKey=key: self.__openFileExplorer(True, setKey, None, self.guiStrings[setKey].label))
             selectRomsetDirButton.grid(column=2, row=setRow, padx=5, sticky="WE")
@@ -92,35 +77,35 @@ class RetroarchGUI:
         ttk.Separator(self.romsetFrame, orient=Tk.HORIZONTAL).grid(column=0, row=setRow, columnspan=3, padx=5, pady=5,
                                                                    sticky="EW")
         setRow = setRow + 1
-        outputDirLabel = Tk.Label(self.romsetFrame, text=self.guiStrings['exportDir'].label)
+        outputDirLabel = ttk.Label(self.romsetFrame, text=self.guiStrings['exportDir'].label)
         wckToolTips.register(outputDirLabel, self.guiStrings['exportDir'].help)
         outputDirLabel.grid(column=0, row=setRow, padx=5, sticky=Tk.W)
         self.guiVars['exportDir'] = Tk.StringVar()
         self.guiVars['exportDir'].set(self.configuration['exportDir'])
-        outputEntry = Tk.Entry(self.romsetFrame, textvariable=self.guiVars['exportDir'])
+        outputEntry = ttk.Entry(self.romsetFrame, textvariable=self.guiVars['exportDir'])
         outputEntry.grid(column=1, row=setRow, padx=5, sticky="WE")
 
-        self.selectExportDirButton = Tk.Button(self.romsetFrame, text=self.guiStrings['selectExportDir'].label,
+        self.selectExportDirButton = ttk.Button(self.romsetFrame, text=self.guiStrings['selectExportDir'].label,
                                                command=lambda: self.__openFileExplorer(True, 'exportDir', None))
         self.selectExportDirButton.grid(column=2, row=setRow, padx=5, sticky="WE")
         wckToolTips.register(self.selectExportDirButton, self.guiStrings['selectExportDir'].help)
 
     def __drawImagesFrame(self):
         # Images frame
-        self.imagesFrame = Tk.LabelFrame(self.tabFrame, text="Images", padx=10, pady=5)
+        self.imagesFrame = ttk.LabelFrame(self.tabFrame, text="Images", padding=(10, 5))
         self.imagesFrame.grid(column=0, row=1, sticky="EW", pady=5)
         self.imagesFrame.grid_columnconfigure(1, weight=1)
         setRow = 0
         for path in self.configuration['images'].split('|'):
             pathLabel = self.guiStrings['images'].label + ' #' + str(setRow + 1)
-            label = Tk.Label(self.imagesFrame, text=pathLabel)
+            label = ttk.Label(self.imagesFrame, text=pathLabel)
             wckToolTips.register(label, self.guiStrings['images'].help)
             label.grid(column=0, row=setRow, padx=5, sticky="W")
             self.guiVars[pathLabel] = Tk.StringVar()
             self.guiVars[pathLabel].set(path.strip())
-            entry = Tk.Entry(self.imagesFrame, textvariable=self.guiVars[pathLabel])
+            entry = ttk.Entry(self.imagesFrame, textvariable=self.guiVars[pathLabel])
             entry.grid(column=1, row=setRow, padx=5, sticky="WE")
-            selectImagesPathButton = Tk.Button(self.imagesFrame, text=self.guiStrings['selectImages'].label,
+            selectImagesPathButton = ttk.Button(self.imagesFrame, text=self.guiStrings['selectImages'].label,
                                                command=lambda feLabel=pathLabel: self.__openFileExplorer(True, feLabel,
                                                                                                          None, feLabel))
             selectImagesPathButton.grid(column=2, row=setRow, padx=5, sticky="WE")
@@ -130,71 +115,78 @@ class RetroarchGUI:
         ttk.Separator(self.imagesFrame, orient=Tk.HORIZONTAL).grid(column=0, row=setRow, columnspan=3, padx=5, pady=5,
                                                                    sticky="EW")
         setRow = setRow + 1
-        imgFormatLabel = Tk.Label(self.imagesFrame, text=self.guiStrings['imgNameFormat'].label)
+        imgFormatLabel = ttk.Label(self.imagesFrame, text=self.guiStrings['imgNameFormat'].label)
         wckToolTips.register(imgFormatLabel, self.guiStrings['imgNameFormat'].help)
         imgFormatLabel.grid(column=0, row=setRow, padx=5, sticky=Tk.W)
         self.guiVars['imgNameFormat'] = Tk.StringVar()
         self.guiVars['imgNameFormat'].set(self.configuration['imgNameFormat'])
         # place entry in dict to retrieve later
-        imgFormatEntry = Tk.Entry(self.imagesFrame, textvariable=self.guiVars['imgNameFormat'])
-        imgFormatEntry.grid(column=1, row=setRow, columnspan=5, padx=5, sticky="W")
+        imgFormatEntry = ttk.Entry(self.imagesFrame, textvariable=self.guiVars['imgNameFormat'])
+        imgFormatEntry.grid(column=1, row=setRow, padx=5, sticky="WE")
 
     def __drawParametersFrame(self):
         # Parameters frame
-        self.parametersFrame = Tk.LabelFrame(self.tabFrame, text="Sorting Parameters", padx=10, pady=5)
+        self.parametersFrame = ttk.LabelFrame(self.tabFrame, text="Sorting Parameters", padding=(10, 5))
         self.parametersFrame.grid(column=0, row=2, sticky="EW", pady=5)
-        self.parametersFrame.grid_columnconfigure(1, weight=1)
-        self.parametersFrame.grid_columnconfigure(4, weight=2)
+
+        checkButtonsFrame = ttk.Frame(self.parametersFrame)
+        checkButtonsFrame.grid(column=0, row=0, columnspan=5, pady=5, sticky="W")
+        # nothing else is in this column: it gets the room left so other columns keep their natural width
+        self.parametersFrame.grid_columnconfigure(5, weight=1)
 
         self.guiVars['dryRun'] = Tk.IntVar()
         self.guiVars['dryRun'].set(self.configuration['dryRun'])
-        dryRunCheckButton = Tk.Checkbutton(self.parametersFrame, text=self.guiStrings['dryRun'].label,
+        dryRunCheckButton = ttk.Checkbutton(checkButtonsFrame, text=self.guiStrings['dryRun'].label,
                                            variable=self.guiVars['dryRun'], onvalue=1, offvalue=0)
         wckToolTips.register(dryRunCheckButton, self.guiStrings['dryRun'].help)
-        dryRunCheckButton.grid(column=0, row=0, sticky="W")
+        dryRunCheckButton.grid(column=0, row=0, padx=(10, 20), sticky="W")
 
         self.guiVars['genreSubFolders'] = Tk.IntVar()
         self.guiVars['genreSubFolders'].set(self.configuration['genreSubFolders'])
-        useGenreSubFolderCheckButton = Tk.Checkbutton(self.parametersFrame,
+        useGenreSubFolderCheckButton = ttk.Checkbutton(checkButtonsFrame,
                                                       text=self.guiStrings['genreSubFolders'].label,
                                                       variable=self.guiVars['genreSubFolders'], onvalue=1, offvalue=0)
         wckToolTips.register(useGenreSubFolderCheckButton, self.guiStrings['genreSubFolders'].help)
-        useGenreSubFolderCheckButton.grid(column=2, row=0, sticky="W")
+        useGenreSubFolderCheckButton.grid(column=1, row=0, padx=20, sticky="W")
 
         self.guiVars['useImages'] = Tk.IntVar()
         self.guiVars['useImages'].set(self.configuration['useImages'])
-        useImagesCheckButton = Tk.Checkbutton(self.parametersFrame, text=self.guiStrings['useImages'].label,
+        useImagesCheckButton = ttk.Checkbutton(checkButtonsFrame, text=self.guiStrings['useImages'].label,
                                               variable=self.guiVars['useImages'], onvalue=1, offvalue=0)
         wckToolTips.register(useImagesCheckButton, self.guiStrings['useImages'].help)
-        useImagesCheckButton.grid(column=3, row=0, sticky="W")
+        useImagesCheckButton.grid(column=2, row=0, padx=20, sticky="W")
 
         if self.hardware not in ['pi3']:
             self.guiVars['excludeCHDGames'] = Tk.IntVar()
             self.guiVars['excludeCHDGames'].set(self.configuration['excludeCHDGames'])
-            excludeCHDGamesCheckButton = Tk.Checkbutton(self.parametersFrame, text=self.guiStrings['excludeCHDGames'].label,
+            excludeCHDGamesCheckButton = ttk.Checkbutton(checkButtonsFrame, text=self.guiStrings['excludeCHDGames'].label,
                                                   variable=self.guiVars['excludeCHDGames'], onvalue=1, offvalue=0)
             wckToolTips.register(excludeCHDGamesCheckButton, self.guiStrings['excludeCHDGames'].help)
-            excludeCHDGamesCheckButton.grid(column=4, row=0, sticky="W")
+            excludeCHDGamesCheckButton.grid(column=3, row=0, padx=20, sticky="W")
 
-        ttk.Separator(self.parametersFrame, orient=Tk.HORIZONTAL).grid(column=0, row=1, columnspan=5, padx=5, pady=5,
+        ttk.Separator(self.parametersFrame, orient=Tk.HORIZONTAL).grid(column=0, row=1, columnspan=6, padx=5, pady=5,
                                                                        sticky="EW")
-        keepLevelLabel = Tk.Label(self.parametersFrame, text=self.guiStrings['keepLevel'].label)
+        # own frame so that the combobox is right next to its label
+        keepLevelFrame = ttk.Frame(self.parametersFrame)
+        keepLevelFrame.grid(column=0, row=2, columnspan=2, sticky="W")
+        keepLevelLabel = ttk.Label(keepLevelFrame, text=self.guiStrings['keepLevel'].label)
         wckToolTips.register(keepLevelLabel, self.guiStrings['keepLevel'].help)
-        keepLevelLabel.grid(column=0, row=2, sticky="W")
+        keepLevelLabel.grid(column=0, row=0, sticky="W")
         self.guiVars['keepLevel'] = Tk.StringVar()
         self.guiVars['keepLevel'].set(Sorter.getStatus(int(self.configuration['keepLevel'])))
-        keepLevelComboBox = ttk.Combobox(self.parametersFrame, state="readonly", textvariable=self.guiVars['keepLevel'])
-        keepLevelComboBox.grid(column=1, row=2, sticky="W", pady=5)
+        keepLevelComboBox = ttk.Combobox(keepLevelFrame, state="readonly", textvariable=self.guiVars['keepLevel'])
+        keepLevelComboBox.grid(column=1, row=0, sticky="W", pady=5, padx=5)
         keepLevelComboBox['values'] = ('WORKING', 'MOSTLY WORKING', 'BADLY WORKING', 'NON WORKING')
         self.guiVars['keepNotTested'] = Tk.IntVar()
         self.guiVars['keepNotTested'].set(self.configuration['keepNotTested'])
-        keepNotTestedCheckButton = Tk.Checkbutton(self.parametersFrame, text=self.guiStrings['keepNotTested'].label,
+        keepNotTestedCheckButton = ttk.Checkbutton(self.parametersFrame, text=self.guiStrings['keepNotTested'].label,
                                                   variable=self.guiVars['keepNotTested'], onvalue=1, offvalue=0)
         wckToolTips.register(keepNotTestedCheckButton, self.guiStrings['keepNotTested'].help)
-        keepNotTestedCheckButton.grid(column=2, row=2, sticky="W")
-        ttk.Separator(self.parametersFrame, orient=Tk.HORIZONTAL).grid(column=0, row=3, columnspan=5, padx=5, pady=5,
+        keepNotTestedCheckButton.grid(column=2, row=2, padx=20, sticky="W")
+        ttk.Separator(self.parametersFrame, orient=Tk.HORIZONTAL).grid(column=0, row=3, columnspan=6, padx=5, pady=5,
                                                                        sticky="EW")
-        exclusionTypeLabel = Tk.Label(self.parametersFrame, text=self.guiStrings['exclusionType'].label)
+        # exclusion type, prefered set and genre prefered sets switch on one line
+        exclusionTypeLabel = ttk.Label(self.parametersFrame, text=self.guiStrings['exclusionType'].label)
         wckToolTips.register(exclusionTypeLabel,
                              self.guiStrings['exclusionType'].help.replace('#n', '\n').replace(',', '\n'))
         exclusionTypeLabel.grid(column=0, row=4, sticky="W")
@@ -205,129 +197,44 @@ class RetroarchGUI:
         exclusionTypeComboBox.grid(column=1, row=4, sticky="W", pady=5, padx=5)
         exclusionTypeComboBox['values'] = ('STRICT', 'EQUAL', 'NONE')
         exclusionTypeComboBox.bind('<<ComboboxSelected>>', self.__changeExclusionType)
-        self.preferedSetLabel = Tk.Label(self.parametersFrame, text=self.guiStrings['preferedSet'].label)
+        # own frame: its columns are sized by their content and not by the checkboxes row above
+        preferedSetFrame = ttk.Frame(self.parametersFrame)
+        preferedSetFrame.grid(column=2, row=4, columnspan=4, padx=20, sticky="W")
+        self.preferedSetLabel = ttk.Label(preferedSetFrame, text=self.guiStrings['preferedSet'].label)
         wckToolTips.register(self.preferedSetLabel, self.guiStrings['preferedSet'].help)
-        self.preferedSetLabel.grid(column=0, row=5, sticky="W", pady=5)
+        self.preferedSetLabel.grid(column=0, row=0, sticky="W")
         self.guiVars['preferedSet'] = Tk.StringVar()
         self.guiVars['preferedSet'].set(self.configuration['preferedSet'])
-        self.preferedSetComboBox = ttk.Combobox(self.parametersFrame, state="readonly",
+        self.preferedSetComboBox = ttk.Combobox(preferedSetFrame, state="readonly",
                                                 textvariable=self.guiVars['preferedSet'])
-        self.preferedSetComboBox.grid(column=1, row=5, sticky="W", pady=5, padx=5)
+        self.preferedSetComboBox.grid(column=1, row=0, sticky="W", pady=5, padx=5)
         self.preferedSetValues = Sorter.setKeys[self.hardware].copy()
         self.preferedSetComboBox['values'] = self.preferedSetValues
         self.guiVars['usePreferedSetForGenre'] = Tk.IntVar()
         self.guiVars['usePreferedSetForGenre'].set(self.configuration['usePreferedSetForGenre'])
-        self.usePreferedSetForGenreCheckButton = Tk.Checkbutton(self.parametersFrame,
+        self.usePreferedSetForGenreCheckButton = ttk.Checkbutton(preferedSetFrame,
                                                                 text=self.guiStrings['usePreferedSetForGenre'].label,
                                                                 variable=self.guiVars['usePreferedSetForGenre'],
                                                                 onvalue=1, offvalue=0,
                                                                 command=self.__changeUsePreferedSetForGenre)
         wckToolTips.register(self.usePreferedSetForGenreCheckButton, self.guiStrings['usePreferedSetForGenre'].help)
-        self.usePreferedSetForGenreCheckButton.grid(column=2, row=5, sticky="W")
-        self.preferedSetForGenreFrame = Tk.Frame(self.parametersFrame)
-        self.preferedSetForGenreFrame.grid(column=0, row=6, columnspan=5, sticky="EW")
-        self.preferedSetForGenreFrame.grid_columnconfigure(2, weight=1)
-        self.preferedSetForGenreFrame.grid_columnconfigure(5, weight=1)
-        # usePreferedSetForGenre comboboxes
-        self.beatEmUpPreferedSetLabel = Tk.Label(self.preferedSetForGenreFrame,
-                                                 text=self.guiStrings['BeatEmUpPreferedSet'].label)
-        wckToolTips.register(self.beatEmUpPreferedSetLabel, self.guiStrings['BeatEmUpPreferedSet'].help)
-        self.beatEmUpPreferedSetLabel.grid(column=0, row=0, sticky="W", pady=5)
-        self.guiVars['BeatEmUpPreferedSet'] = Tk.StringVar()
-        self.guiVars['BeatEmUpPreferedSet'].set(self.configuration['BeatEmUpPreferedSet'])
-        self.beatEmUpPreferedSetComboBox = ttk.Combobox(self.preferedSetForGenreFrame, state="readonly",
-                                                        textvariable=self.guiVars['BeatEmUpPreferedSet'])
-        self.beatEmUpPreferedSetComboBox.grid(column=1, row=0, sticky="W", pady=5, padx=5)
-        self.beatEmUpPreferedSetComboBox['values'] = self.preferedSetValues
-        self.gunPreferedSetLabel = Tk.Label(self.preferedSetForGenreFrame, text=self.guiStrings['GunPreferedSet'].label)
-        wckToolTips.register(self.gunPreferedSetLabel, self.guiStrings['GunPreferedSet'].help)
-        self.gunPreferedSetLabel.grid(column=3, row=0, sticky="W", pady=5)
-        self.guiVars['GunPreferedSet'] = Tk.StringVar()
-        self.guiVars['GunPreferedSet'].set(self.configuration['GunPreferedSet'])
-        self.gunPreferedSetComboBox = ttk.Combobox(self.preferedSetForGenreFrame, state="readonly",
-                                                   textvariable=self.guiVars['GunPreferedSet'])
-        self.gunPreferedSetComboBox.grid(column=4, row=0, sticky="W", pady=5, padx=5)
-        self.gunPreferedSetComboBox['values'] = self.preferedSetValues
-        self.miscPreferedSetLabel = Tk.Label(self.preferedSetForGenreFrame,
-                                             text=self.guiStrings['MiscPreferedSet'].label)
-        wckToolTips.register(self.miscPreferedSetLabel, self.guiStrings['MiscPreferedSet'].help)
-        self.miscPreferedSetLabel.grid(column=6, row=0, sticky="W", pady=5)
-        self.guiVars['MiscPreferedSet'] = Tk.StringVar()
-        self.guiVars['MiscPreferedSet'].set(self.configuration['MiscPreferedSet'])
-        self.miscPreferedSetComboBox = ttk.Combobox(self.preferedSetForGenreFrame, state="readonly",
-                                                    textvariable=self.guiVars['MiscPreferedSet'])
-        self.miscPreferedSetComboBox.grid(column=7, row=0, sticky="W", pady=5, padx=5)
-        self.miscPreferedSetComboBox['values'] = self.preferedSetValues
-        self.platformPreferedSetLabel = Tk.Label(self.preferedSetForGenreFrame,
-                                                 text=self.guiStrings['PlatformPreferedSet'].label)
-        wckToolTips.register(self.platformPreferedSetLabel, self.guiStrings['PlatformPreferedSet'].help)
-        self.platformPreferedSetLabel.grid(column=0, row=1, sticky="W", pady=5)
-        self.guiVars['PlatformPreferedSet'] = Tk.StringVar()
-        self.guiVars['PlatformPreferedSet'].set(self.configuration['PlatformPreferedSet'])
-        self.platformPreferedSetComboBox = ttk.Combobox(self.preferedSetForGenreFrame, state="readonly",
-                                                        textvariable=self.guiVars['PlatformPreferedSet'])
-        self.platformPreferedSetComboBox.grid(column=1, row=1, sticky="W", pady=5, padx=5)
-        self.platformPreferedSetComboBox['values'] = self.preferedSetValues
-        self.puzzlePreferedSetLabel = Tk.Label(self.preferedSetForGenreFrame,
-                                               text=self.guiStrings['PuzzlePreferedSet'].label)
-        wckToolTips.register(self.puzzlePreferedSetLabel, self.guiStrings['PuzzlePreferedSet'].help)
-        self.puzzlePreferedSetLabel.grid(column=3, row=1, sticky="W", pady=5)
-        self.guiVars['PuzzlePreferedSet'] = Tk.StringVar()
-        self.guiVars['PuzzlePreferedSet'].set(self.configuration['PuzzlePreferedSet'])
-        self.puzzlePreferedSetComboBox = ttk.Combobox(self.preferedSetForGenreFrame, state="readonly",
-                                                      textvariable=self.guiVars['PuzzlePreferedSet'])
-        self.puzzlePreferedSetComboBox.grid(column=4, row=1, sticky="W", pady=5, padx=5)
-        self.puzzlePreferedSetComboBox['values'] = self.preferedSetValues
-        self.racePreferedSetLabel = Tk.Label(self.preferedSetForGenreFrame,
-                                             text=self.guiStrings['RacePreferedSet'].label)
-        wckToolTips.register(self.racePreferedSetLabel, self.guiStrings['RacePreferedSet'].help)
-        self.racePreferedSetLabel.grid(column=6, row=1, sticky="W", pady=5)
-        self.guiVars['RacePreferedSet'] = Tk.StringVar()
-        self.guiVars['RacePreferedSet'].set(self.configuration['RacePreferedSet'])
-        self.racePreferedSetComboBox = ttk.Combobox(self.preferedSetForGenreFrame, state="readonly",
-                                                    textvariable=self.guiVars['RacePreferedSet'])
-        self.racePreferedSetComboBox.grid(column=7, row=1, sticky="W", pady=5, padx=5)
-        self.racePreferedSetComboBox['values'] = self.preferedSetValues
-        self.runNGunPreferedSetLabel = Tk.Label(self.preferedSetForGenreFrame,
-                                                text=self.guiStrings['RunNGunPreferedSet'].label)
-        wckToolTips.register(self.runNGunPreferedSetLabel, self.guiStrings['RunNGunPreferedSet'].help)
-        self.runNGunPreferedSetLabel.grid(column=0, row=2, sticky="W", pady=5)
-        self.guiVars['RunNGunPreferedSet'] = Tk.StringVar()
-        self.guiVars['RunNGunPreferedSet'].set(self.configuration['RunNGunPreferedSet'])
-        self.runNGunPreferedSetComboBox = ttk.Combobox(self.preferedSetForGenreFrame, state="readonly",
-                                                       textvariable=self.guiVars['RunNGunPreferedSet'])
-        self.runNGunPreferedSetComboBox.grid(column=1, row=2, sticky="W", pady=5, padx=5)
-        self.runNGunPreferedSetComboBox['values'] = self.preferedSetValues
-        self.shootEmUpPreferedSetLabel = Tk.Label(self.preferedSetForGenreFrame,
-                                                  text=self.guiStrings['ShootEmUpPreferedSet'].label)
-        wckToolTips.register(self.shootEmUpPreferedSetLabel, self.guiStrings['ShootEmUpPreferedSet'].help)
-        self.shootEmUpPreferedSetLabel.grid(column=3, row=2, sticky="W", pady=5)
-        self.guiVars['ShootEmUpPreferedSet'] = Tk.StringVar()
-        self.guiVars['ShootEmUpPreferedSet'].set(self.configuration['ShootEmUpPreferedSet'])
-        self.shootEmUpPreferedSetComboBox = ttk.Combobox(self.preferedSetForGenreFrame, state="readonly",
-                                                         textvariable=self.guiVars['ShootEmUpPreferedSet'])
-        self.shootEmUpPreferedSetComboBox.grid(column=4, row=2, sticky="W", pady=5, padx=5)
-        self.shootEmUpPreferedSetComboBox['values'] = self.preferedSetValues
-        self.sportPreferedSetLabel = Tk.Label(self.preferedSetForGenreFrame,
-                                              text=self.guiStrings['SportPreferedSet'].label)
-        wckToolTips.register(self.sportPreferedSetLabel, self.guiStrings['SportPreferedSet'].help)
-        self.sportPreferedSetLabel.grid(column=6, row=2, sticky="W", pady=5)
-        self.guiVars['SportPreferedSet'] = Tk.StringVar()
-        self.guiVars['SportPreferedSet'].set(self.configuration['SportPreferedSet'])
-        self.sportPreferedSetComboBox = ttk.Combobox(self.preferedSetForGenreFrame, state="readonly",
-                                                     textvariable=self.guiVars['SportPreferedSet'])
-        self.sportPreferedSetComboBox.grid(column=7, row=2, sticky="W", pady=5, padx=5)
-        self.sportPreferedSetComboBox['values'] = self.preferedSetValues
-        self.vsFightingPreferedSetLabel = Tk.Label(self.preferedSetForGenreFrame,
-                                                   text=self.guiStrings['VsFightingPreferedSet'].label)
-        wckToolTips.register(self.vsFightingPreferedSetLabel, self.guiStrings['VsFightingPreferedSet'].help)
-        self.vsFightingPreferedSetLabel.grid(column=0, row=3, sticky="W", pady=5)
-        self.guiVars['VsFightingPreferedSet'] = Tk.StringVar()
-        self.guiVars['VsFightingPreferedSet'].set(self.configuration['VsFightingPreferedSet'])
-        self.vsFightingPreferedSetComboBox = ttk.Combobox(self.preferedSetForGenreFrame, state="readonly",
-                                                          textvariable=self.guiVars['VsFightingPreferedSet'])
-        self.vsFightingPreferedSetComboBox.grid(column=1, row=3, sticky="W", pady=5, padx=5)
-        self.vsFightingPreferedSetComboBox['values'] = self.preferedSetValues
+        self.usePreferedSetForGenreCheckButton.grid(column=2, row=0, padx=20, sticky="W")
+        self.preferedSetForGenreFrame = ttk.Frame(self.parametersFrame)
+        self.preferedSetForGenreFrame.grid(column=0, row=5, columnspan=6, sticky="EW")
+        # genre prefered sets, GENRES_PER_ROW groups of label and combobox per row
+        for index, genre in enumerate(self.GENRES):
+            key = genre + 'PreferedSet'
+            column = 2 * (index % self.GENRES_PER_ROW)
+            row = index // self.GENRES_PER_ROW
+            label = ttk.Label(self.preferedSetForGenreFrame, text=self.guiStrings[key].label)
+            wckToolTips.register(label, self.guiStrings[key].help)
+            label.grid(column=column, row=row, sticky="W", pady=5)
+            self.guiVars[key] = Tk.StringVar()
+            self.guiVars[key].set(self.configuration[key])
+            comboBox = ttk.Combobox(self.preferedSetForGenreFrame, state="readonly", width=self.GENRE_COMBOBOX_WIDTH,
+                                    textvariable=self.guiVars[key], values=self.preferedSetValues)
+            comboBox.grid(column=column + 1, row=row, sticky="W", pady=5, padx=(5, 10))
+            self.genreWidgets.append((label, comboBox))
         self.__showHide()
 
     def __changeExclusionType(self, event):
@@ -337,96 +244,30 @@ class RetroarchGUI:
         self.__showHide()
 
     def __showHide(self):
-        if self.guiVars['exclusionType'].get() == 'STRICT':
-            self.preferedSetLabel['state'] = 'normal'
-            self.preferedSetComboBox['state'] = 'readonly'
-            self.usePreferedSetForGenreCheckButton['state'] = 'normal'
-            if self.guiVars['usePreferedSetForGenre'].get() == 1:
-                self.beatEmUpPreferedSetLabel['state'] = 'normal'
-                self.beatEmUpPreferedSetComboBox['state'] = 'readonly'
-                self.gunPreferedSetLabel['state'] = 'normal'
-                self.gunPreferedSetComboBox['state'] = 'readonly'
-                self.miscPreferedSetLabel['state'] = 'normal'
-                self.miscPreferedSetComboBox['state'] = 'readonly'
-                self.platformPreferedSetLabel['state'] = 'normal'
-                self.miscPreferedSetComboBox['state'] = 'readonly'
-                self.platformPreferedSetLabel['state'] = 'normal'
-                self.platformPreferedSetComboBox['state'] = 'readonly'
-                self.puzzlePreferedSetLabel['state'] = 'normal'
-                self.puzzlePreferedSetComboBox['state'] = 'readonly'
-                self.racePreferedSetLabel['state'] = 'normal'
-                self.racePreferedSetComboBox['state'] = 'readonly'
-                self.runNGunPreferedSetLabel['state'] = 'normal'
-                self.runNGunPreferedSetComboBox['state'] = 'readonly'
-                self.shootEmUpPreferedSetLabel['state'] = 'normal'
-                self.shootEmUpPreferedSetComboBox['state'] = 'readonly'
-                self.sportPreferedSetLabel['state'] = 'normal'
-                self.sportPreferedSetComboBox['state'] = 'readonly'
-                self.vsFightingPreferedSetLabel['state'] = 'normal'
-                self.vsFightingPreferedSetComboBox['state'] = 'readonly'
-            else:
-                self.beatEmUpPreferedSetLabel['state'] = 'disabled'
-                self.beatEmUpPreferedSetComboBox['state'] = 'disabled'
-                self.gunPreferedSetLabel['state'] = 'disabled'
-                self.gunPreferedSetComboBox['state'] = 'disabled'
-                self.miscPreferedSetLabel['state'] = 'disabled'
-                self.miscPreferedSetComboBox['state'] = 'disabled'
-                self.platformPreferedSetLabel['state'] = 'disabled'
-                self.miscPreferedSetComboBox['state'] = 'disabled'
-                self.platformPreferedSetLabel['state'] = 'disabled'
-                self.platformPreferedSetComboBox['state'] = 'disabled'
-                self.puzzlePreferedSetLabel['state'] = 'disabled'
-                self.puzzlePreferedSetComboBox['state'] = 'disabled'
-                self.racePreferedSetLabel['state'] = 'disabled'
-                self.racePreferedSetComboBox['state'] = 'disabled'
-                self.runNGunPreferedSetLabel['state'] = 'disabled'
-                self.runNGunPreferedSetComboBox['state'] = 'disabled'
-                self.shootEmUpPreferedSetLabel['state'] = 'disabled'
-                self.shootEmUpPreferedSetComboBox['state'] = 'disabled'
-                self.sportPreferedSetLabel['state'] = 'disabled'
-                self.sportPreferedSetComboBox['state'] = 'disabled'
-                self.vsFightingPreferedSetLabel['state'] = 'disabled'
-                self.vsFightingPreferedSetComboBox['state'] = 'disabled'
-        else:
-            self.preferedSetLabel['state'] = 'disabled'
-            self.preferedSetComboBox['state'] = 'disabled'
-            self.usePreferedSetForGenreCheckButton['state'] = 'disabled'
-            self.beatEmUpPreferedSetLabel['state'] = 'disabled'
-            self.beatEmUpPreferedSetComboBox['state'] = 'disabled'
-            self.gunPreferedSetLabel['state'] = 'disabled'
-            self.gunPreferedSetComboBox['state'] = 'disabled'
-            self.miscPreferedSetLabel['state'] = 'disabled'
-            self.miscPreferedSetComboBox['state'] = 'disabled'
-            self.platformPreferedSetLabel['state'] = 'disabled'
-            self.miscPreferedSetComboBox['state'] = 'disabled'
-            self.platformPreferedSetLabel['state'] = 'disabled'
-            self.platformPreferedSetComboBox['state'] = 'disabled'
-            self.puzzlePreferedSetLabel['state'] = 'disabled'
-            self.puzzlePreferedSetComboBox['state'] = 'disabled'
-            self.racePreferedSetLabel['state'] = 'disabled'
-            self.racePreferedSetComboBox['state'] = 'disabled'
-            self.runNGunPreferedSetLabel['state'] = 'disabled'
-            self.runNGunPreferedSetComboBox['state'] = 'disabled'
-            self.shootEmUpPreferedSetLabel['state'] = 'disabled'
-            self.shootEmUpPreferedSetComboBox['state'] = 'disabled'
-            self.sportPreferedSetLabel['state'] = 'disabled'
-            self.sportPreferedSetComboBox['state'] = 'disabled'
-            self.vsFightingPreferedSetLabel['state'] = 'disabled'
-            self.vsFightingPreferedSetComboBox['state'] = 'disabled'
+        strict = self.guiVars['exclusionType'].get() == 'STRICT'
+        genres = strict and self.guiVars['usePreferedSetForGenre'].get() == 1
+        self.preferedSetLabel['state'] = 'normal' if strict else 'disabled'
+        self.preferedSetComboBox['state'] = 'readonly' if strict else 'disabled'
+        self.usePreferedSetForGenreCheckButton['state'] = 'normal' if strict else 'disabled'
+        for label, comboBox in self.genreWidgets:
+            label['state'] = 'normal' if genres else 'disabled'
+            comboBox['state'] = 'readonly' if genres else 'disabled'
 
     def __drawButtonsFrame(self):
-        self.buttonsFrame = Tk.Frame(self.tabFrame, padx=10)
+        self.buttonsFrame = ttk.Frame(self.tabFrame, padding=(10, 0))
         self.buttonsFrame.grid(column=0, row=3, sticky="EW", pady=5)
 
-        emptyFrame = Tk.Frame(self.buttonsFrame, width=700, padx=10)
+        # empty column takes all the room left, buttons are on the right of the window
+        self.buttonsFrame.grid_columnconfigure(0, weight=1)
+        emptyFrame = ttk.Frame(self.buttonsFrame, width=700, padding=(10, 0))
         emptyFrame.grid(column=0, row=0, columnspan=3, sticky="EW", pady=5)
-        self.verifyButton = Tk.Button(self.buttonsFrame, text=self.guiStrings['verify'].label, command=self.__clickVerify)
+        self.verifyButton = ttk.Button(self.buttonsFrame, text=self.guiStrings['verify'].label, command=self.__clickVerify)
         wckToolTips.register(self.verifyButton, self.guiStrings['verify'].help)
         self.verifyButton.grid(column=3, row=0, sticky="E", padx=3)
-        self.saveButton = Tk.Button(self.buttonsFrame, text=self.guiStrings['save'].label, command=self.__clickSave)
+        self.saveButton = ttk.Button(self.buttonsFrame, text=self.guiStrings['save'].label, command=self.__clickSave)
         wckToolTips.register(self.saveButton, self.guiStrings['save'].help)
         self.saveButton.grid(column=4, row=0, sticky="E", padx=3)
-        self.proceedButton = Tk.Button(self.buttonsFrame, text=self.guiStrings['proceed'].label,
+        self.proceedButton = ttk.Button(self.buttonsFrame, text=self.guiStrings['proceed'].label,
                                        command=self.__clickProceed)
         wckToolTips.register(self.proceedButton, self.guiStrings['proceed'].help)
         self.proceedButton.grid(column=5, row=0, sticky="E", padx=3)

@@ -1,19 +1,34 @@
 import tkinter as Tk
 import tkinter.font as Font
+from tkinter import ttk
+import ttkbootstrap
+import tabstyle
 from retroarchgui import RetroarchGUI
 from customgui import CustomGUI
 import platform
-import wckToolTips
 
 
 class GUI:
     MACOS_DEFAULT_FONT_SIZE = 7
     DEFAULT_FONT_SIZE = 9
+    THEME = 'flatly'
+    DISABLED_COLOR = '#adb5bd'
+    DISABLED_BACKGROUND = '#e9ecef'
 
     def __init__(self, scriptDir, logger, title):
         self.scriptDir = scriptDir
 
         self.window = Tk.Tk()
+        style = ttkbootstrap.Style(theme=self.THEME)
+        tabstyle.roundTabs(style)
+        # section titles in bold
+        self.sectionFont = Font.Font(font=Font.nametofont('TkDefaultFont'))
+        self.sectionFont.configure(weight='bold')
+        style.configure('TLabelframe.Label', font=self.sectionFont)
+        # the theme doesn't render disabled checkbuttons differently from enabled ones
+        style.map('TCheckbutton', foreground=[('disabled', self.DISABLED_COLOR)],
+                  indicatorforeground=[('disabled', self.DISABLED_COLOR)],
+                  indicatorcolor=[('disabled', self.DISABLED_BACKGROUND)])
         self.window.resizable(False, False)
         self.window.geometry('+50+25')
         self.startFontSize = self.DEFAULT_FONT_SIZE
@@ -30,9 +45,8 @@ class GUI:
         self.root = None
 
     def draw(self):
-        self.root = Tk.Frame(self.window, padx=10, pady=5)
+        self.root = ttk.Frame(self.window, padding=(10, 5))
         self.root.grid(column=0, row=0)
-        self.__drawSliderFrame()
         self.__drawMainframe()
         self.window.mainloop()
 
@@ -43,29 +57,20 @@ class GUI:
         text_font.configure(size=value)
         fixed_font = Font.nametofont("TkFixedFont")
         fixed_font.configure(size=value)
-
-    def __drawSliderFrame(self):
-        self.sliderFrame = Tk.Frame(self.root, padx=10, pady=0)
-        self.sliderFrame.grid(column=0, row=0, sticky="EW", pady=0)
-        self.sliderFrame.grid_columnconfigure(0, weight=1)
-        self.slider = Tk.Scale(self.sliderFrame, from_=4, to=12, orient=Tk.HORIZONTAL, showvalue=0,
-                               command=self.__setFontSize)
-        wckToolTips.register(self.slider, 'Window Size')  # TODO internationalization
-        self.slider.grid(column=0, row=0, sticky="W", pady=0)
-        self.slider.set(self.startFontSize)
+        self.sectionFont.configure(size=value)
 
     # MAINFRAME, NOTEBOOK & TABS
 
     def __drawMainframe(self):
-        self.mainFrame = Tk.Frame(self.root, padx=10, pady=0)
+        self.mainFrame = ttk.Frame(self.root, padding=(10, 0))
         self.mainFrame.grid(column=0, row=1, sticky="EW", pady=5)
         self.mainFrame.grid_columnconfigure(0, weight=1)
-        self.notebook = Tk.ttk.Notebook(self.mainFrame)
+        self.notebook = ttk.Notebook(self.mainFrame)
         self.notebook.grid(column=0, row=0, sticky="EW", pady=5)
         self.notebook.grid_columnconfigure(0, weight=1)
 
         # PI3 RETROARCH TAB
-        self.pi3RetroarchFrame = Tk.Frame(self.notebook, padx=10, pady=5)
+        self.pi3RetroarchFrame = ttk.Frame(self.notebook, padding=(10, 5))
         self.pi3RetroarchFrame.grid(column=0, row=0, sticky="EW", pady=5)
         self.pi3RetroarchFrame.grid_columnconfigure(0, weight=1)
         self.notebook.add(self.pi3RetroarchFrame, text='Retroarch-Pi3', sticky="EW")
@@ -74,7 +79,7 @@ class GUI:
         pi3RetroarchGUI.draw()
 
         # N2 RETROARCH TAB
-        self.n2RetroarchFrame = Tk.Frame(self.notebook, padx=10, pady=5)
+        self.n2RetroarchFrame = ttk.Frame(self.notebook, padding=(10, 5))
         self.n2RetroarchFrame.grid(column=0, row=0, sticky="EWN", pady=5)
         self.n2RetroarchFrame.grid_columnconfigure(0, weight=1)
         self.notebook.add(self.n2RetroarchFrame, text='Retroarch-N2', sticky="EWNS")
@@ -83,7 +88,7 @@ class GUI:
         n2RetroarchGUI.draw()
 
         # N2 RETROARCH TAB
-        self.n100RetroarchFrame = Tk.Frame(self.notebook, padx=10, pady=5)
+        self.n100RetroarchFrame = ttk.Frame(self.notebook, padding=(10, 5))
         self.n100RetroarchFrame.grid(column=0, row=0, sticky="EWN", pady=5)
         self.n100RetroarchFrame.grid_columnconfigure(0, weight=1)
         self.notebook.add(self.n100RetroarchFrame, text='Retroarch-N100', sticky="EWNS")
@@ -92,7 +97,7 @@ class GUI:
         n100RetroarchGUI.draw()
 
         # CUSTOM TAB
-        self.customFrame = Tk.Frame(self.notebook, padx=10, pady=5)
+        self.customFrame = ttk.Frame(self.notebook, padding=(10, 5))
         self.customFrame.grid(column=0, row=0, sticky="EWN", pady=5)
         self.customFrame.grid_columnconfigure(0, weight=1)
         self.notebook.add(self.customFrame, text='Custom', sticky="EWNS")
@@ -101,7 +106,7 @@ class GUI:
         customGUI.draw()
 
         # NEOGEOAES TAB
-        self.neogeoaesFrame = Tk.Frame(self.notebook, padx=10, pady=5)
+        self.neogeoaesFrame = ttk.Frame(self.notebook, padding=(10, 5))
         self.neogeoaesFrame.grid(column=0, row=0, sticky="EWN", pady=5)
         self.neogeoaesFrame.grid_columnconfigure(0, weight=1)
         self.notebook.add(self.neogeoaesFrame, text='Neo Geo AES', sticky="EWNS")
@@ -110,7 +115,7 @@ class GUI:
         neogeoaesGUI.draw()
 
         # MODEL2 TAB
-        self.model2Frame = Tk.Frame(self.notebook, padx=10, pady=5)
+        self.model2Frame = ttk.Frame(self.notebook, padding=(10, 5))
         self.model2Frame.grid(column=0, row=0, sticky="EWN", pady=5)
         self.model2Frame.grid_columnconfigure(0, weight=1)
         self.notebook.add(self.model2Frame, text='Sega Model 2', sticky="EWNS")
@@ -119,7 +124,7 @@ class GUI:
         model2GUI.draw()
 
         # MODEL3 TAB
-        self.model3Frame = Tk.Frame(self.notebook, padx=10, pady=5)
+        self.model3Frame = ttk.Frame(self.notebook, padding=(10, 5))
         self.model3Frame.grid(column=0, row=0, sticky="EWN", pady=5)
         self.model3Frame.grid_columnconfigure(0, weight=1)
         self.notebook.add(self.model3Frame, text='Sega Model 3', sticky="EWNS")
@@ -128,7 +133,7 @@ class GUI:
         model3GUI.draw()
 
         # ATOMISWAVE TAB
-        self.atomiswaveFrame = Tk.Frame(self.notebook, padx=10, pady=5)
+        self.atomiswaveFrame = ttk.Frame(self.notebook, padding=(10, 5))
         self.atomiswaveFrame.grid(column=0, row=0, sticky="EWN", pady=5)
         self.atomiswaveFrame.grid_columnconfigure(0, weight=1)
         self.notebook.add(self.atomiswaveFrame, text='Atomiswave', sticky="EWNS")
@@ -137,7 +142,7 @@ class GUI:
         atomiswaveGUI.draw()
 
         # NAOMI TAB
-        self.naomiFrame = Tk.Frame(self.notebook, padx=10, pady=5)
+        self.naomiFrame = ttk.Frame(self.notebook, padding=(10, 5))
         self.naomiFrame.grid(column=0, row=0, sticky="EWN", pady=5)
         self.naomiFrame.grid_columnconfigure(0, weight=1)
         self.notebook.add(self.naomiFrame, text='Naomi', sticky="EWNS")
@@ -146,7 +151,7 @@ class GUI:
         naomiGUI.draw()
 
         # NAOMI2 TAB
-        self.naomi2Frame = Tk.Frame(self.notebook, padx=10, pady=5)
+        self.naomi2Frame = ttk.Frame(self.notebook, padding=(10, 5))
         self.naomi2Frame.grid(column=0, row=0, sticky="EWN", pady=5)
         self.naomi2Frame.grid_columnconfigure(0, weight=1)
         self.notebook.add(self.naomi2Frame, text='Naomi 2', sticky="EWNS")
@@ -155,7 +160,7 @@ class GUI:
         naomi2GUI.draw()
 
         # NAMCO2x6 TAB
-        self.namco2x6Frame = Tk.Frame(self.notebook, padx=10, pady=5)
+        self.namco2x6Frame = ttk.Frame(self.notebook, padding=(10, 5))
         self.namco2x6Frame.grid(column=0, row=0, sticky="EWN", pady=5)
         self.namco2x6Frame.grid_columnconfigure(0, weight=1)
         self.notebook.add(self.namco2x6Frame, text='Namco 2x6', sticky="EWNS")
@@ -164,7 +169,7 @@ class GUI:
         namco2x6GUI.draw()
 
         # HANDHELD TAB
-        self.handheldFrame = Tk.Frame(self.notebook, padx=10, pady=5)
+        self.handheldFrame = ttk.Frame(self.notebook, padding=(10, 5))
         self.handheldFrame.grid(column=0, row=0, sticky="EWN", pady=5)
         self.handheldFrame.grid_columnconfigure(0, weight=1)
         self.notebook.add(self.handheldFrame, text='Handhelds', sticky="EWNS")
@@ -173,7 +178,7 @@ class GUI:
         handheldGUI.draw()
 
         # TVGAMES TAB
-        self.tvgamesFrame = Tk.Frame(self.notebook, padx=10, pady=5)
+        self.tvgamesFrame = ttk.Frame(self.notebook, padding=(10, 5))
         self.tvgamesFrame.grid(column=0, row=0, sticky="EWN", pady=5)
         self.tvgamesFrame.grid_columnconfigure(0, weight=1)
         self.notebook.add(self.tvgamesFrame, text='TV Games', sticky="EWNS")
@@ -358,10 +363,10 @@ class GUI:
 
     # Console Frame
     def __drawConsole(self):
-        self.consoleFrame = Tk.Frame(self.root, padx=10)
+        self.consoleFrame = ttk.Frame(self.root, padding=(10, 0))
         self.consoleFrame.grid(column=0, row=5, sticky="EW", pady=5)
         self.consoleFrame.grid_columnconfigure(0, weight=1)
-        self.logTest = Tk.Text(self.consoleFrame, height=15, state='disabled', wrap='word', background='black',
+        self.logTest = Tk.Text(self.consoleFrame, height=16, state='disabled', wrap='word', background='black',
                                foreground='yellow')
         self.logTest.grid(column=0, row=0, sticky="EW")
         self.logTest.tag_config('ERROR', background='black', foreground='red')
@@ -369,7 +374,7 @@ class GUI:
         self.logTest.tag_config('INFO', background='black', foreground='yellow')
         self.logTest.tag_config('SUCCESS', background='black', foreground='green2')
         self.logTest.tag_config('UNKNOWN', background='black', foreground='deep sky blue')
-        self.scrollbar = Tk.Scrollbar(self.consoleFrame, orient=Tk.VERTICAL, command=self.logTest.yview)
+        self.scrollbar = ttk.Scrollbar(self.consoleFrame, orient=Tk.VERTICAL, command=self.logTest.yview)
         self.scrollbar.grid(column=1, row=0, sticky=(Tk.N, Tk.S))
         self.logTest['yscrollcommand'] = self.scrollbar.set
         self.logTest.after(10, self.updateConsoleFromQueue)

@@ -36,6 +36,7 @@ Handheld supported romset is currently at mame 0.267 level
 ### LINUX INSTALLATION AND EXECUTION :
 - BestArcade requires that python3 is installed
 - first install Tkinter for python3 if needed : `sudo apt-get install python3-tk`
+- then install ttkbootstrap : `pip3 install -r requirements.txt` (or `pip3 install ttkbootstrap`)
 - directly download sources or clone the repo with :
  ```
  sudo apt install git # optional, only if git is not installed
