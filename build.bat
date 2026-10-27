@@ -30,12 +30,8 @@ copy ..\data\*.dat .\dist\data
 copy ..\data\*.properties .\dist\data
 if not exist .\dist\data\images mkdir .\dist\data\images
 copy ..\data\images\*.png .\dist\data\images
-if not exist .\dist\data\n2 mkdir .\dist\data\n2
-copy ..\data\n2\*.csv .\dist\data\n2
-if not exist .\dist\data\n100 mkdir .\dist\data\n100
-copy ..\data\n100\*.csv .\dist\data\n100
-if not exist .\dist\data\pi3 mkdir .\dist\data\pi3
-copy ..\data\pi3\*.csv .\dist\data\pi3
+if not exist .\dist\data\retroarch mkdir .\dist\data\retroarch
+copy ..\data\retroarch\*.csv .\dist\data\retroarch
 if not exist .\dist\conf mkdir .\dist\conf
 if not exist .\dist\GUI mkdir .\dist\GUI
 copy ..\GUI\*.* .\dist\GUI

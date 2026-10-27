@@ -9,15 +9,14 @@ import dat
 import properties
 
 class Sorter:
-    setKeys = {'pi3': ['fbneo', 'mame2003', 'mame2003plus', 'mame2010'], 'n2': ['fbneo', 'mame'], 'n100': ['fbneo', 'mame']}
+    setKeys = ['fbneo', 'mame']
     bigSetFile = r"custom.ini"
 
-    def __init__(self, configuration, scriptDir, postProcess, logger, hardware):
+    def __init__(self, configuration, scriptDir, postProcess, logger):
         self.configuration = configuration
         self.scriptDir = scriptDir
         self.bioses = []
         self.logger = logger
-        self.hardware = hardware
         self.postProcess = postProcess
 
         # Init class vars
@@ -44,20 +43,20 @@ class Sorter:
         self.favorites = fav.loadFavs(self.scriptDir, Sorter.bigSetFile, self.logger)
         # parse dat files
         self.logger.log('\n<--------- Load FBNeo & Mame Dats --------->')
-        datsDict = dict(zip(self.setKeys[self.hardware],
-                            list(map(lambda key: key + '.dat', self.setKeys[self.hardware]))))
+        datsDict = dict(zip(self.setKeys,
+                            list(map(lambda key: key + '.dat', self.setKeys))))
         self.dats = dat.parseDats(self.scriptDir, utils.dataDir, datsDict, self.usingSystems, self.logger)
         # parse test files
         self.logger.log('\n<--------- Load Tests Files --------->')
-        self.allTests = test.loadTests(Sorter.setKeys[self.hardware],
-                                       os.path.join(self.scriptDir, utils.dataDir, self.hardware),
+        self.allTests = test.loadTests(Sorter.setKeys,
+                                       os.path.join(self.scriptDir, utils.dataDir, 'retroarch'),
                                        self.usingSystems, self.logger)
         self.logger.log('\n<--------- Load Property File --------->')
         self.properties = properties.loadProperties(os.path.join(self.scriptDir, utils.dataDir, 'custom.properties'))
 
     def __useSystems(self, configuration):
         systems = []
-        for setKey in self.setKeys[self.hardware]:
+        for setKey in self.setKeys:
             systems.append(setKey) if os.path.exists(configuration[setKey]) else None
         self.logger.logList('Using systems', systems)
         return systems
@@ -150,7 +149,7 @@ class Sorter:
         scrapeImages = True if self.configuration['useImages'] == '1' and self.configuration['images'] else False
 
         scoreSheet = open(os.path.join(self.configuration['exportDir'], "scoreSheet.csv"), "w", encoding="utf-8")
-        scoreSheet.write('rom;' + ';'.join(list(map(lambda key: key + 'Score', self.setKeys[self.hardware]))) + '\n')
+        scoreSheet.write('rom;' + ';'.join(list(map(lambda key: key + 'Score', self.setKeys))) + '\n')
 
         CSVs, gamelists, roots = dict(), dict(), dict()
         header = "Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comments;Notes\n"
@@ -209,14 +208,14 @@ class Sorter:
                     scores = dict()
                     testForGame = allTests[game] if game in allTests else None
 
-                    for setKey in self.setKeys[self.hardware]:
+                    for setKey in self.setKeys:
                         scores[setKey] = self.__computeScore(setKey, self.configuration[setKey], game,
                                                              testForGame) if setKey in self.usingSystems else -2
 
                     audit = audit + " SCORES: " + \
-                        " ".join(list(map(lambda key: str(scores[key]), self.setKeys[self.hardware]))) + " ,"
+                        " ".join(list(map(lambda key: str(scores[key]), self.setKeys))) + " ,"
                     scoreSheet.write(game + ';' +
-                                     ';'.join(list(map(lambda key: str(scores[key]), self.setKeys[self.hardware])))
+                                     ';'.join(list(map(lambda key: str(scores[key]), self.setKeys)))
                                      + '\n')
 
                     selected = []
@@ -278,7 +277,7 @@ class Sorter:
 
     def __checkErrors(self, inputTests, keepLevel):
         self.logger.log("Loading Output Tests")
-        outputTests = test.loadTests(Sorter.setKeys[self.hardware], os.path.join(self.configuration['exportDir']),
+        outputTests = test.loadTests(Sorter.setKeys, os.path.join(self.configuration['exportDir']),
                                      self.usingSystems, self.logger)
         foundErrors = False
         for rom in inputTests.keys():

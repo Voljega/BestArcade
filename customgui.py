@@ -277,7 +277,7 @@ class CustomGUI:
             self.verifyButton['state'] = 'disabled'
             self.saveButton['state'] = 'disabled'
             self.proceedButton['state'] = 'disabled'
-            self.mummy.disableOtherTabs(self.setKey, None)
+            self.mummy.disableOtherTabs(self.setKey)
             self.logger.log('\n<--------- Starting ' + self.setKey + ' Process --------->')
             sorter = BasicSorter(self.configuration, self.scriptDir, partial(self.postProcess), self.logger,
                                  self.setKey)
@@ -287,7 +287,7 @@ class CustomGUI:
         self.verifyButton['state'] = 'normal'
         self.saveButton['state'] = 'normal'
         self.proceedButton['state'] = 'normal'
-        self.mummy.disableOtherTabs(self.setKey, None, False)
+        self.mummy.disableOtherTabs(self.setKey, False)
 
     # File Explorer for various vars
     def __openFileExplorer(self, openDir, var, fileTypes, label=None):

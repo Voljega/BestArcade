@@ -9,7 +9,7 @@ The main purpose of this tool is to filter mame/fbneo romsets to keep only the a
 - electromechanical games and other non arcade games
 
 This tool handles two types of usage :
-- generate retroarch sorted romsets (fbneo, mame2003, mame2003plus, mame2010, regular mame) keeping only the games referenced in the [BestArcade list](https://docs.google.com/spreadsheets/d/1S5qAI-TEl7wfqg6w9VNEwKciMGUtw40n9PS4xslkG3s/edit?usp=sharing), above and equal to the working state level you choose.
+- generate retroarch sorted romsets (fbneo, regular mame) keeping only the games referenced in the [BestArcade list](https://docs.google.com/spreadsheets/d/1S5qAI-TEl7wfqg6w9VNEwKciMGUtw40n9PS4xslkG3s/edit?usp=sharing), above and equal to the working state level you choose.
   
 
 - generate dedicated system romsets : custom mame based on Best Arcade list, neo geo aes set, sega model 2 & 3 sets, atomiswave set, naomi & naomi 2 sets, namco2x6 set, handheld set, tvgames set

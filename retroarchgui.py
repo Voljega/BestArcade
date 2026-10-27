@@ -17,17 +17,16 @@ class RetroarchGUI:
     GENRES_PER_ROW = 5
     GENRE_COMBOBOX_WIDTH = 12
 
-    def __init__(self, rootFrame, scriptDir, logger, mummy, hardware):
+    def __init__(self, rootFrame, scriptDir, logger, mummy):
         self.tabFrame = rootFrame
         self.scriptDir = scriptDir
         self.logger = logger
         self.mummy = mummy
-        self.hardware = hardware
-        self.guiStrings = utils.loadUIStrings(self.scriptDir, utils.getGuiStringsFilename('retroarch-'+self.hardware))
+        self.guiStrings = utils.loadUIStrings(self.scriptDir, utils.getGuiStringsFilename('retroarch'))
         self.configuration = conf.loadConf(
-            os.path.join(self.scriptDir, utils.confDir, utils.getConfFilename('retroarch-'+self.hardware)),
+            os.path.join(self.scriptDir, utils.confDir, utils.getConfFilename('retroarch')),
             self.guiStrings)
-        self.logger.log('Loaded ' + utils.getConfFilename('retroarch-'+self.hardware))
+        self.logger.log('Loaded ' + utils.getConfFilename('retroarch'))
         self.guiVars = dict()
 
         # Init all components
@@ -59,7 +58,7 @@ class RetroarchGUI:
         self.romsetFrame.grid(column=0, row=0, sticky="EW", pady=5)
         self.romsetFrame.grid_columnconfigure(1, weight=1)
         setRow = 0
-        romsetKeys = Sorter.setKeys[self.hardware] if self.hardware == 'pi3' else Sorter.setKeys[self.hardware] + ['chd']
+        romsetKeys = Sorter.setKeys + ['chd']
         for key in romsetKeys:
             label = ttk.Label(self.romsetFrame, text=self.guiStrings[key].label)
             wckToolTips.register(label, self.guiStrings[key].help)
@@ -157,13 +156,12 @@ class RetroarchGUI:
         wckToolTips.register(useImagesCheckButton, self.guiStrings['useImages'].help)
         useImagesCheckButton.grid(column=2, row=0, padx=20, sticky="W")
 
-        if self.hardware not in ['pi3']:
-            self.guiVars['excludeCHDGames'] = Tk.IntVar()
-            self.guiVars['excludeCHDGames'].set(self.configuration['excludeCHDGames'])
-            excludeCHDGamesCheckButton = ttk.Checkbutton(checkButtonsFrame, text=self.guiStrings['excludeCHDGames'].label,
-                                                  variable=self.guiVars['excludeCHDGames'], onvalue=1, offvalue=0)
-            wckToolTips.register(excludeCHDGamesCheckButton, self.guiStrings['excludeCHDGames'].help)
-            excludeCHDGamesCheckButton.grid(column=3, row=0, padx=20, sticky="W")
+        self.guiVars['excludeCHDGames'] = Tk.IntVar()
+        self.guiVars['excludeCHDGames'].set(self.configuration['excludeCHDGames'])
+        excludeCHDGamesCheckButton = ttk.Checkbutton(checkButtonsFrame, text=self.guiStrings['excludeCHDGames'].label,
+                                              variable=self.guiVars['excludeCHDGames'], onvalue=1, offvalue=0)
+        wckToolTips.register(excludeCHDGamesCheckButton, self.guiStrings['excludeCHDGames'].help)
+        excludeCHDGamesCheckButton.grid(column=3, row=0, padx=20, sticky="W")
 
         ttk.Separator(self.parametersFrame, orient=Tk.HORIZONTAL).grid(column=0, row=1, columnspan=6, padx=5, pady=5,
                                                                        sticky="EW")
@@ -209,7 +207,7 @@ class RetroarchGUI:
         self.preferedSetComboBox = ttk.Combobox(preferedSetFrame, state="readonly",
                                                 textvariable=self.guiVars['preferedSet'])
         self.preferedSetComboBox.grid(column=1, row=0, sticky="W", pady=5, padx=5)
-        self.preferedSetValues = Sorter.setKeys[self.hardware].copy()
+        self.preferedSetValues = Sorter.setKeys.copy()
         self.preferedSetComboBox['values'] = self.preferedSetValues
         self.guiVars['usePreferedSetForGenre'] = Tk.IntVar()
         self.guiVars['usePreferedSetForGenre'].set(self.configuration['usePreferedSetForGenre'])
@@ -274,20 +272,20 @@ class RetroarchGUI:
         self.proceedButton.grid(column=5, row=0, sticky="E", padx=3)
 
     def __clickSave(self):
-        self.logger.log('\n<---------- Saving retroarch-%s configuration ----------->' % self.hardware)
+        self.logger.log('\n<---------- Saving retroarch configuration ----------->')
         self.__saveConfFile()
         self.__saveConfInMem()
 
     def __saveConfFile(self):
         confBackupFilePath = os.path.join(self.scriptDir, utils.confDir,
-                                          utils.getConfBakFilename('retroarch-'+self.hardware))
+                                          utils.getConfBakFilename('retroarch'))
         if os.path.exists(confBackupFilePath):
             os.remove(confBackupFilePath)
-        confFilePath = os.path.join(self.scriptDir, utils.confDir, utils.getConfFilename('retroarch-'+self.hardware))
+        confFilePath = os.path.join(self.scriptDir, utils.confDir, utils.getConfFilename('retroarch'))
         os.makedirs(os.path.join(self.scriptDir, utils.confDir), exist_ok=True)
         if os.path.exists(confFilePath):
             shutil.copy2(confFilePath, confBackupFilePath)
-        confFile = open(os.path.join(self.scriptDir, utils.confDir, utils.getConfFilename('retroarch-'+self.hardware)), "w",
+        confFile = open(os.path.join(self.scriptDir, utils.confDir, utils.getConfFilename('retroarch')), "w",
                         encoding="utf-8")
         listKeys = sorted(self.guiStrings.values(), key=attrgetter('order'))
         for key in listKeys:
@@ -306,7 +304,7 @@ class RetroarchGUI:
                     if key.id in self.guiVars:
                         confFile.write(key.id + ' = ' + str(self.guiVars[key.id].get()) + '\n')
         confFile.close()
-        self.logger.log('    Configuration saved in ' + utils.getConfFilename('retroarch-'+self.hardware) + ' file')
+        self.logger.log('    Configuration saved in ' + utils.getConfFilename('retroarch') + ' file')
 
     def __saveConfInMem(self):
         listKeys = sorted(self.guiStrings.values(), key=attrgetter('order'))
@@ -328,7 +326,7 @@ class RetroarchGUI:
     def __clickVerify(self):
         self.logger.log('\n<--------- Verify retroarch Parameters --------->')
         error = False
-        keys = Sorter.setKeys[self.hardware] + ['exportDir', 'Images folder #1', 'Images folder #2']
+        keys = Sorter.setKeys + ['exportDir', 'Images folder #1', 'Images folder #2']
         for key in keys:
             if not os.path.exists(self.guiVars[key].get()):
                 error = True
@@ -351,16 +349,16 @@ class RetroarchGUI:
             self.verifyButton['state'] = 'disabled'
             self.saveButton['state'] = 'disabled'
             self.proceedButton['state'] = 'disabled'
-            self.mummy.disableOtherTabs('retroarch', self.hardware)
+            self.mummy.disableOtherTabs('retroarch')
             self.logger.log('\n<--------- Starting retroarch Process --------->')
-            sorter = Sorter(self.configuration, self.scriptDir, partial(self.postProcess), self.logger, self.hardware)
+            sorter = Sorter(self.configuration, self.scriptDir, partial(self.postProcess), self.logger)
             _thread.start_new(sorter.process, ())
 
     def postProcess(self):
         self.verifyButton['state'] = 'normal'
         self.saveButton['state'] = 'normal'
         self.proceedButton['state'] = 'normal'
-        self.mummy.disableOtherTabs('retroarch', self.hardware, False)
+        self.mummy.disableOtherTabs('retroarch', False)
 
         # File Explorer for various vars
 
