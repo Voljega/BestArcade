@@ -37,7 +37,6 @@ copy ..\data\n100\*.csv .\dist\data\n100
 if not exist .\dist\data\pi3 mkdir .\dist\data\pi3
 copy ..\data\pi3\*.csv .\dist\data\pi3
 if not exist .\dist\conf mkdir .\dist\conf
-copy ..\conf\*.conf .\dist\conf
 if not exist .\dist\GUI mkdir .\dist\GUI
 copy ..\GUI\*.* .\dist\GUI
 copy ..\*.md .\dist

@@ -20,11 +20,12 @@ class CustomGUI:
         self.scriptDir = scriptDir
         self.logger = logger
         self.mummy = mummy
+        self.guiStrings = utils.loadUIStrings(self.scriptDir, utils.getGuiStringsFilename(self.setKey))
         self.configuration = conf.loadConf(
-            os.path.join(self.scriptDir, utils.confDir, utils.getConfFilename(self.setKey)))
+            os.path.join(self.scriptDir, utils.confDir, utils.getConfFilename(self.setKey)),
+            self.guiStrings)
         self.logger.log('Loaded ' + utils.getConfFilename(self.setKey))
         self.guiVars = dict()
-        self.guiStrings = utils.loadUIStrings(self.scriptDir, utils.getGuiStringsFilename(self.setKey))
 
         # Init all components
         self.romsetFrame = None
@@ -210,8 +211,10 @@ class CustomGUI:
         confBackupFilePath = os.path.join(self.scriptDir, utils.confDir, utils.getConfBakFilename(self.setKey))
         if os.path.exists(confBackupFilePath):
             os.remove(confBackupFilePath)
-        shutil.copy2(os.path.join(self.scriptDir, utils.confDir, utils.getConfFilename(self.setKey)),
-                     os.path.join(self.scriptDir, utils.confDir, utils.getConfBakFilename(self.setKey)))
+        confFilePath = os.path.join(self.scriptDir, utils.confDir, utils.getConfFilename(self.setKey))
+        os.makedirs(os.path.join(self.scriptDir, utils.confDir), exist_ok=True)
+        if os.path.exists(confFilePath):
+            shutil.copy2(confFilePath, confBackupFilePath)
         confFile = open(os.path.join(self.scriptDir, utils.confDir, utils.getConfFilename(self.setKey)), "w",
                         encoding="utf-8")
         listKeys = sorted(self.guiStrings.values(), key=attrgetter('order'))

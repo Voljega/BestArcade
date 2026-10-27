@@ -230,7 +230,7 @@ class Sorter:
 
                     for setKey in self.usingSystems:
                         setRom = os.path.join(self.configuration[setKey], game + ".zip")
-                        setCHD = os.path.join(self.configuration['chd'], game) if 'chd' in self.configuration \
+                        setCHD = os.path.join(self.configuration['chd'], game) if self.configuration.get('chd') \
                             else os.path.join(self.configuration[setKey], game)
                         excludedBecauseCHDGame = 'excludeCHDGames' in self.configuration and \
                                                  self.configuration['excludeCHDGames'] == '1' and \

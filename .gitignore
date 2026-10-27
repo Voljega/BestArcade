@@ -4,3 +4,4 @@
 BestArcade.iml
 **/build
 **/__pycache__
+conf/*.conf

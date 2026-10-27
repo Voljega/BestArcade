@@ -23,11 +23,12 @@ class RetroarchGUI:
         self.logger = logger
         self.mummy = mummy
         self.hardware = hardware
+        self.guiStrings = utils.loadUIStrings(self.scriptDir, utils.getGuiStringsFilename('retroarch-'+self.hardware))
         self.configuration = conf.loadConf(
-            os.path.join(self.scriptDir, utils.confDir, utils.getConfFilename('retroarch-'+self.hardware)))
+            os.path.join(self.scriptDir, utils.confDir, utils.getConfFilename('retroarch-'+self.hardware)),
+            self.guiStrings)
         self.logger.log('Loaded ' + utils.getConfFilename('retroarch-'+self.hardware))
         self.guiVars = dict()
-        self.guiStrings = utils.loadUIStrings(self.scriptDir, utils.getGuiStringsFilename('retroarch-'+self.hardware))
 
         # Init all components
         self.romsetFrame = None
@@ -282,8 +283,10 @@ class RetroarchGUI:
                                           utils.getConfBakFilename('retroarch-'+self.hardware))
         if os.path.exists(confBackupFilePath):
             os.remove(confBackupFilePath)
-        shutil.copy2(os.path.join(self.scriptDir, utils.confDir, utils.getConfFilename('retroarch-'+self.hardware)),
-                     os.path.join(self.scriptDir, utils.confDir, utils.getConfBakFilename('retroarch-'+self.hardware)))
+        confFilePath = os.path.join(self.scriptDir, utils.confDir, utils.getConfFilename('retroarch-'+self.hardware))
+        os.makedirs(os.path.join(self.scriptDir, utils.confDir), exist_ok=True)
+        if os.path.exists(confFilePath):
+            shutil.copy2(confFilePath, confBackupFilePath)
         confFile = open(os.path.join(self.scriptDir, utils.confDir, utils.getConfFilename('retroarch-'+self.hardware)), "w",
                         encoding="utf-8")
         listKeys = sorted(self.guiStrings.values(), key=attrgetter('order'))

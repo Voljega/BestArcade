@@ -10,4 +10,4 @@ MANUAL BUILD:
 - Copy all `.py` files and the `bestarcade.ico` file in a work directory
 - Go into the work directory and type : `pyinstaller --icon=bestarcade.ico --clean --collect-all ttkbootstrap -F BestArcade.py`
 - Your exe will be generated into a `dist` subDirectory
-- Just copy README.md, bestarcade.ico, BestArcade.sh, build.txt and conf, data and GUI directories alongside the BestArcade exe and you're good to go
+- Just copy README.md, bestarcade.ico, BestArcade.sh, build.txt and data and GUI directories alongside the BestArcade exe, and create an empty conf directory, and you're good to go
