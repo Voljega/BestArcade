@@ -30,6 +30,7 @@ copy ..\data\*.dat .\dist\data
 copy ..\data\*.properties .\dist\data
 if not exist .\dist\data\images mkdir .\dist\data\images
 copy ..\data\images\*.png .\dist\data\images
+copy ..\data\images\*.gif .\dist\data\images
 if not exist .\dist\data\retroarch mkdir .\dist\data\retroarch
 copy ..\data\retroarch\*.csv .\dist\data\retroarch
 if not exist .\dist\conf mkdir .\dist\conf

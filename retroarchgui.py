@@ -25,7 +25,7 @@ class RetroarchGUI:
         self.guiStrings = utils.loadUIStrings(self.scriptDir, utils.getGuiStringsFilename('retroarch'))
         self.configuration = conf.loadConf(
             os.path.join(self.scriptDir, utils.confDir, utils.getConfFilename('retroarch')),
-            self.guiStrings)
+            self.guiStrings, self.scriptDir)
         self.logger.log('Loaded ' + utils.getConfFilename('retroarch'))
         self.guiVars = dict()
 

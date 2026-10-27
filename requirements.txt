@@ -1,2 +1,3 @@
 ttkbootstrap>=1.10
-pillow
+pillow>=10
+pyinstaller>=6

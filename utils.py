@@ -71,13 +71,22 @@ def setImageCopy(exportDir, paths, fileName, targetDir, dryRun):
                 return
 
 
+def getGameName(game, dat, test, setKey):
+    """Name from the dat, or from the test file if the dat has none"""
+    if game in dat and dat[game].description:
+        return dat[game].description
+    if test is not None and setKey in test and test[setKey].name:
+        return test[setKey].name
+    return ''
+
+
 def writeCSV(csvFile, game, score, genre, dat, test, setKey):
+    name = getGameName(game, dat, test, setKey)
     if game in dat:
-        name = dat[game].description
         year = dat[game].year
         manufacturer = dat[game].manufacturer
     else:
-        name, year, manufacturer = '', '', ''
+        year, manufacturer = '', ''
 
     if test is not None and setKey in test:
         hardware = test[setKey].hardware
@@ -103,22 +112,21 @@ def writeGamelistHiddenEntry(gamelistFile, game, genre, useGenreSubFolder):
 def writeGamelistEntry(gamelistFile, game, image, dat, genre, useGenreSubFolder, test, setKey, testStatus):
     frontPic = "./downloaded_images/" + image
 
-    if game in dat:
-        fullName = dat[game].description
-        fullName.replace('&', '&amp;')
-        name = fullName
-        if '(' in name:
-            indPar = name.index('(')
-            name = name[:(indPar - 1)].strip()
-        if '[' in name:
-            indPar = name.index('[')
-            name = name[:(indPar - 1)].strip()
+    fullName = getGameName(game, dat, test, setKey)
+    name = fullName
+    if '(' in name:
+        indPar = name.index('(')
+        name = name[:(indPar - 1)].strip()
+    if '[' in name:
+        indPar = name.index('[')
+        name = name[:(indPar - 1)].strip()
 
+    if game in dat:
         year = dat[game].year if dat[game].year else ''
         developer = dat[game].manufacturer.replace('&', '&amp;') if dat[game].manufacturer else ''
         cloneof = dat[game].cloneof
     else:
-        fullName, name, year, developer, cloneof = '', '', '', '', ''
+        year, developer, cloneof = '', '', ''
 
     if test is not None and setKey in test:
         hardware = test[setKey].hardware

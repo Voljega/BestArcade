@@ -15,16 +15,16 @@ keepNotTested;Keep not tested roms;Check to keep untested roms even in STRICT mo
 exclusionType;Exclusion Type;Determine how roms are kept if they are in different sets#nSTRICT (only keep the best working one), EQUAL (keep in several sets if equals in both), NONE (keep in all sets)
 preferedSet;Prefered set;General prefered set in STRICT mode if rom is in same working level in several sets
 usePreferedSetForGenre;Use prefered set for genre;Check to use prefered set for genres in STRICT mode and define them. Takes precedence over general prefered set if activated
-BeatEmUpPreferedSet;BeatEmUp prefered set;Prefered set for BeatEmUp games
-GunPreferedSet;Gun prefered set;Prefered set for Gun games
-MiscPreferedSet;Misc prefered set;Prefered set for Misc games
-PlatformPreferedSet;Platform prefered set;Prefered set for Platform games
-PuzzlePreferedSet;Puzzle prefered set;Prefered set for Puzzle games
-RacePreferedSet;Race prefered set;Prefered set for Race games
-RunNGunPreferedSet;RunNGun prefered set;Prefered set for RunNGun games
-ShootEmUpPreferedSet;Shmup prefered set;Prefered set for Shmup games
-SportPreferedSet;Sport prefered set;Prefered set for Sport games
-VsFightingPreferedSet;VsFighting prefered set;Prefered set for VsFighting games
+BeatEmUpPreferedSet;BeatEmUp;Prefered set for BeatEmUp games
+GunPreferedSet;Gun;Prefered set for Gun games
+MiscPreferedSet;Misc;Prefered set for Misc games
+PlatformPreferedSet;Platform;Prefered set for Platform games
+PuzzlePreferedSet;Puzzle;Prefered set for Puzzle games
+RacePreferedSet;Race;Prefered set for Race games
+RunNGunPreferedSet;RunNGun;Prefered set for RunNGun games
+ShootEmUpPreferedSet;Shmup;Prefered set for Shmup games
+SportPreferedSet;Sport;Prefered set for Sport games
+VsFightingPreferedSet;VsFighting;Prefered set for VsFighting games
 genreSubFolders;Use genre subfolders;Check to use genre subfolders for roms
 useImages;Scrape images;Check to use images for games and folders
 excludeCHDGames;Exclude CHD Games;Check to exclude CHD games from generation

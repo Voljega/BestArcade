@@ -23,7 +23,7 @@ class CustomGUI:
         self.guiStrings = utils.loadUIStrings(self.scriptDir, utils.getGuiStringsFilename(self.setKey))
         self.configuration = conf.loadConf(
             os.path.join(self.scriptDir, utils.confDir, utils.getConfFilename(self.setKey)),
-            self.guiStrings)
+            self.guiStrings, self.scriptDir)
         self.logger.log('Loaded ' + utils.getConfFilename(self.setKey))
         self.guiVars = dict()
 
@@ -256,9 +256,10 @@ class CustomGUI:
             if key in self.guiVars and not os.path.exists(self.guiVars[key].get()):
                 error = True
                 self.logger.log(key + ' folder does not exist', self.logger.ERROR)
-        if not os.path.exists(self.guiVars['dat'].get()):
+        datValue = self.guiVars['dat'].get()
+        if datValue and not os.path.exists(datValue):
             error = True
-            self.logger.log('dat does ' + self.guiVars['dat'].get() + ' not exist ', self.logger.ERROR)
+            self.logger.log('dat ' + datValue + ' does not exist', self.logger.ERROR)
         if self.guiVars['dryRun'].get() == 1:
             error = True
             self.logger.log(

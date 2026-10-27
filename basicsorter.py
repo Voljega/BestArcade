@@ -1,7 +1,7 @@
-
 import xml.etree.ElementTree as etree
 import os.path
 import shutil
+import conf
 import gamelist
 import utils
 import fav
@@ -35,10 +35,10 @@ class BasicSorter:
         self.favorites = fav.loadFavs(self.scriptDir, self.setKey + '.ini', self.logger)
         # parse dat files
         self.logger.log('\n<--------- Load ' + self.setKey + ' dat --------->')
-        if 'dat' in self.configuration and os.path.exists(self.configuration['dat']):
+        if os.path.exists(self.configuration.get('dat', '')):
             datsDict = dict(zip([self.setKey], [self.configuration['dat']]))
         else:
-            datsDict = dict(zip([self.setKey], [self.setKey + '.dat']))
+            datsDict = dict(zip([self.setKey], [conf.DEFAULT_DAT]))
         self.dats = dat.parseDats(self.scriptDir, utils.dataDir, datsDict, self.usingSystems, self.logger)
         self.logger.log('\n<--------- Load Property File --------->')
         self.properties = properties.loadProperties(os.path.join(self.scriptDir, utils.dataDir, 'custom.properties'))
@@ -175,6 +175,3 @@ class BasicSorter:
 
         if foundErrors is False:
             self.logger.log("S'all good man", self.logger.SUCCESS)
-
-# TODOS
-# if name from dat is empty, take one from test file

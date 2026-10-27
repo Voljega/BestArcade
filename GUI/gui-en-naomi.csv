@@ -6,7 +6,7 @@ selectRomsetDir;Select;Select mame set folder
 chd;CHD set folder;Path to your CHD set
 selectCHDDir;Select;Select CHD set folder
 selectDat;Select;Select dat file
-dat;Mame dat;Path to your mame dat, leave empty if you do not have it
+dat;Mame dat;Path to your mame dat, defaults to the bundled mame.dat
 images;Images folder;Paths to your images set, leave empty if you do not have it
 selectImages;Select;Select your images folder
 imgNameFormat;Image filename format;Format of the image filename
