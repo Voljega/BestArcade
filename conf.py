@@ -10,7 +10,7 @@ NON_CONF_KEYS = ['verify', 'save', 'proceed', 'confirm', 'selectRomsetDir', 'sel
 # dat bundled in the data directory, used when no dat of your own is set
 DEFAULT_DAT = 'mame.dat'
 # Defaults other than an empty value
-DEFAULT_VALUES = {'imgNameFormat': '{rom}.png', 'dryRun': '1', 'genreSubFolders': '1', 'useImages': '1',
+DEFAULT_VALUES = {'imgNameFormat': '{rom}.png', 'dryRun': '1', 'datOnly': '0', 'genreSubFolders': '1', 'useImages': '1',
                   'excludeCHDGames': '0', 'keepLevel': '0', 'keepNotTested': '1', 'exclusionType': 'NONE',
                   'usePreferedSetForGenre': '0'}
 

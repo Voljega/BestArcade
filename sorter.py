@@ -54,21 +54,30 @@ class Sorter:
         self.logger.log('\n<--------- Load Property File --------->')
         self.properties = properties.loadProperties(os.path.join(self.scriptDir, utils.dataDir, 'custom.properties'))
 
+    def __isDatOnly(self):
+        return self.configuration.get('datOnly') == '1'
+
     def __useSystems(self, configuration):
         systems = []
-        for setKey in self.setKeys:
-            systems.append(setKey) if os.path.exists(configuration[setKey]) else None
+        if self.__isDatOnly():
+            # no romset to look for, the sets with a folder are the ones wanted, both if none is given
+            systems = [setKey for setKey in self.setKeys if configuration[setKey]] or list(self.setKeys)
+        else:
+            for setKey in self.setKeys:
+                systems.append(setKey) if os.path.exists(configuration[setKey]) else None
         self.logger.logList('Using systems', systems)
         return systems
 
     @staticmethod
-    def __computeScore(setKey, setDir, game, test):
-        # always return -2 if file doesn't exist in set
-        if not os.path.exists(os.path.join(setDir, game + ".zip")):
+    def __computeScore(setKey, setDir, game, test, dat=None):
+        # without a romset (dat only), a game is in the set if it is in the dat
+        inSet = game in dat if dat is not None else os.path.exists(os.path.join(setDir, game + ".zip"))
+        # always return -2 if game doesn't exist in set
+        if not inSet:
             return -2
         score = test[setKey].status if (test is not None and setKey in test) else -2
-        # if file exists in set but not in test, should return -1
-        if score == -2 and os.path.exists(os.path.join(setDir, game + ".zip")):
+        # if game exists in set but not in test, should return -1
+        if score == -2:
             score = -1
 
         return score
@@ -88,7 +97,7 @@ class Sorter:
         elif exclusionType == 'STRICT':
             genreTest = genre.replace('[', '')
             genreTest = genreTest.replace(']', '')
-            if usePreferedSetForGenre and self.configuration[genreTest + 'PreferedSet']:  # check not empty
+            if usePreferedSetForGenre and self.configuration.get(genreTest + 'PreferedSet'):  # check not empty or missing
                 if self.__isPreferedSetForGenre(genreTest, key):
                     return scores[key] >= keepLevel
                 else:
@@ -141,7 +150,9 @@ class Sorter:
 
         notInAnySet = []
         onlyInOneSet = dict()
-        dryRun = True if self.configuration['dryRun'] == '1' else False
+        datOnly = self.__isDatOnly()
+        # nothing to copy without a romset
+        dryRun = True if self.configuration['dryRun'] == '1' or datOnly else False
         useGenreSubFolder = True if self.configuration['genreSubFolders'] == '1' else False
         keepNotTested = True if self.configuration['keepNotTested'] == '1' else False
         keepLevel = int(self.configuration['keepLevel'])
@@ -188,7 +199,7 @@ class Sorter:
                     setBios = os.path.join(self.configuration[setKey], bios + ".zip")
                     utils.setFileCopy(self.configuration['exportDir'], setBios, genre, bios, setKey, useGenreSubFolder,
                                       dryRun)
-                    if os.path.exists(setBios):
+                    if bios in dats[setKey] if datOnly else os.path.exists(setBios):
                         utils.writeGamelistHiddenEntry(gamelists[setKey], bios, genre, useGenreSubFolder)
 
             for favs in sorted(self.favorites[genre]):
@@ -206,7 +217,7 @@ class Sorter:
 
                     for setKey in self.setKeys:
                         scores[setKey] = self.__computeScore(setKey, self.configuration[setKey], game,
-                                                             testForGame) if setKey in self.usingSystems else -2
+                                                             testForGame, dats[setKey] if datOnly else None)                             if setKey in self.usingSystems else -2
 
                     audit = audit + " SCORES: " + \
                         " ".join(list(map(lambda key: str(scores[key]), self.setKeys))) + " ,"

@@ -10,6 +10,7 @@ images;Images folder;Paths to your images set, leave empty if you do not have it
 selectImages;Select;Select your images folder
 imgNameFormat;Image filename format;Format of the image filename
 dryRun;Dry run;Check this to generate only dat and CSV files, no roms will be copied
+datOnly;DAT only;Generate only the filtered DATs and CSV files, without needing a romset (implies Dry run)#nGames are considered present if they are in the bundled DAT#nFill in the FBNeo and/or MAME folder fields to choose which sets to generate#nIf both are empty, both are generated
 keepLevel;Keep level;Select minimum working level at which roms will be kept
 keepNotTested;Keep not tested roms;Check to keep untested roms even in STRICT mode
 exclusionType;Exclusion Type;Determine how roms are kept if they are in different sets#nSTRICT (only keep the best working one), EQUAL (keep in several sets if equals in both), NONE (keep in all sets)

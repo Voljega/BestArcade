@@ -153,12 +153,23 @@ class CustomGUI:
         # nothing else is in this column: it gets the room left so other columns keep their natural width
         self.parametersFrame.grid_columnconfigure(5, weight=1)
 
+        self.guiVars['datOnly'] = Tk.IntVar()
+        self.guiVars['datOnly'].set(self.configuration['datOnly'])
+        datOnlyCheckButton = ttk.Checkbutton(checkButtonsFrame, text=self.guiStrings['datOnly'].label,
+                                            variable=self.guiVars['datOnly'], onvalue=1, offvalue=0,
+                                            command=self.__toggleDatOnly)
+        wckToolTips.register(datOnlyCheckButton, self.guiStrings['datOnly'].help)
+        datOnlyCheckButton.grid(column=0, row=0, padx=(10, 20), sticky="W")
+
         self.guiVars['dryRun'] = Tk.IntVar()
         self.guiVars['dryRun'].set(self.configuration['dryRun'])
         dryRunCheckButton = ttk.Checkbutton(checkButtonsFrame, text=self.guiStrings['dryRun'].label,
                                            variable=self.guiVars['dryRun'], onvalue=1, offvalue=0)
         wckToolTips.register(dryRunCheckButton, self.guiStrings['dryRun'].help)
-        dryRunCheckButton.grid(column=0, row=0, padx=(10, 20), sticky="W")
+        dryRunCheckButton.grid(column=1, row=0, padx=20, sticky="W")
+        self.dryRunCheckButton = dryRunCheckButton
+        self.dryRunBeforeDatOnly = self.configuration['dryRun']
+        self.__toggleDatOnly(init=True)
 
         self.guiVars['genreSubFolders'] = Tk.IntVar()
         self.guiVars['genreSubFolders'].set(self.configuration['genreSubFolders'])
@@ -166,14 +177,14 @@ class CustomGUI:
                                                       text=self.guiStrings['genreSubFolders'].label,
                                                       variable=self.guiVars['genreSubFolders'], onvalue=1, offvalue=0)
         wckToolTips.register(useGenreSubFolderCheckButton, self.guiStrings['genreSubFolders'].help)
-        useGenreSubFolderCheckButton.grid(column=1, row=0, padx=20, sticky="W")
+        useGenreSubFolderCheckButton.grid(column=2, row=0, padx=20, sticky="W")
 
         self.guiVars['useImages'] = Tk.IntVar()
         self.guiVars['useImages'].set(self.configuration['useImages'])
         useImagesCheckButton = ttk.Checkbutton(checkButtonsFrame, text=self.guiStrings['useImages'].label,
                                               variable=self.guiVars['useImages'], onvalue=1, offvalue=0)
         wckToolTips.register(useImagesCheckButton, self.guiStrings['useImages'].help)
-        useImagesCheckButton.grid(column=2, row=0, padx=20, sticky="W")
+        useImagesCheckButton.grid(column=3, row=0, padx=20, sticky="W")
 
         if self.setKey not in ['handheld', 'tvgames']:
             self.guiVars['excludeCHDGames'] = Tk.IntVar()
@@ -181,7 +192,19 @@ class CustomGUI:
             excludeCHDGamesCheckButton = ttk.Checkbutton(checkButtonsFrame, text=self.guiStrings['excludeCHDGames'].label,
                                                   variable=self.guiVars['excludeCHDGames'], onvalue=1, offvalue=0)
             wckToolTips.register(excludeCHDGamesCheckButton, self.guiStrings['excludeCHDGames'].help)
-            excludeCHDGamesCheckButton.grid(column=3, row=0, padx=20, sticky="W")
+            excludeCHDGamesCheckButton.grid(column=4, row=0, padx=20, sticky="W")
+
+    def __toggleDatOnly(self, init=False):
+        """Dry run is implied by dat only: ticked and disabled, its previous value is back when dat only is not"""
+        if self.guiVars['datOnly'].get() == 1:
+            if not init:
+                self.dryRunBeforeDatOnly = self.guiVars['dryRun'].get()
+            self.guiVars['dryRun'].set(1)
+            self.dryRunCheckButton.state(['disabled'])
+        else:
+            if not init:
+                self.guiVars['dryRun'].set(self.dryRunBeforeDatOnly)
+            self.dryRunCheckButton.state(['!disabled'])
 
     def __drawButtonsFrame(self):
         self.buttonsFrame = ttk.Frame(self.tabFrame, padding=(10, 0))
@@ -252,7 +275,10 @@ class CustomGUI:
     def __clickVerify(self):
         self.logger.log('\n<--------- Verify ' + self.setKey + ' Parameters --------->')
         error = False
+        datOnly = self.guiVars['datOnly'].get() == 1
         for key in ['exportDir', self.setKey, 'chd', 'Images folder #1', 'Images folder #2']:
+            if datOnly and key != 'exportDir':  # no romset nor images needed
+                continue
             if key in self.guiVars and not os.path.exists(self.guiVars[key].get()):
                 error = True
                 self.logger.log(key + ' folder does not exist', self.logger.ERROR)
@@ -260,7 +286,12 @@ class CustomGUI:
         if datValue and not os.path.exists(datValue):
             error = True
             self.logger.log('dat ' + datValue + ' does not exist', self.logger.ERROR)
-        if self.guiVars['dryRun'].get() == 1:
+        if datOnly:
+            error = True
+            self.logger.log(
+                'WARNING: dat only mode is used, only the filtered dat, csv and gamelist files will be generated '
+                'from your dat, games are considered present if they are in it', self.logger.WARNING)
+        elif self.guiVars['dryRun'].get() == 1:
             error = True
             self.logger.log(
                 'WARNING: dryRun mode is used, only csv and gamelist files will be generated, '

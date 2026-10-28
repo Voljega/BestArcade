@@ -43,7 +43,8 @@ class ToolTipManager:
         return self.tag
 
     def register(self, widget, text):
-        widget.ui_tooltip_text = text
+        # #n is a line break in the gui strings
+        widget.ui_tooltip_text = text.replace('#n', '\n')
         tags = list(widget.bindtags())
         tags.append(self.getcontroller(widget))
         widget.bindtags(tuple(tags))
@@ -63,7 +64,7 @@ class ToolTipManager:
             self.popup.overrideredirect(1)
             self.popup.withdraw()
             self.label = Tk.Label(
-                self.popup, fg=self.fg, bg=self.bg, bd=0, padx=2
+                self.popup, fg=self.fg, bg=self.bg, bd=0, padx=2, justify=Tk.LEFT
                 )
             self.label.pack()
             self.active = 0
