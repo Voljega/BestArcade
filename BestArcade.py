@@ -2,10 +2,11 @@ import sys
 import os.path
 from gui import GUI
 from logger import Logger
+from version import VERSION
 
 if __name__ == "__main__":
     scriptDir = os.path.abspath(os.path.dirname(sys.argv[0]))
-    title = 'BestArcade 2.0'
+    title = 'BestArcade ' + VERSION
     logger = Logger()
     logger.log(title)
     logger.log('\nScript path: ' + scriptDir)

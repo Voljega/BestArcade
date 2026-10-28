@@ -21,7 +21,7 @@ Handheld supported romset is currently at mame 0.267 level
 - It's not clrmamepro and will not check that your romsets files are in the right version number  
   
 
-- It only works with non-merged sets, split and merged sets are not supported, use clrmamepro to generate non-merged sets if needed. However very few clones ares used, so it should be mostly ok with other type of sets.
+- It only works with non-merged sets, split and merged sets are not supported, use clrmamepro to generate non-merged sets if needed. However very few clones are used, so it should be mostly ok with other type of sets.
   
 
 - CHD are handled, decompressed CHD folder for each games must be located inside your CHD folder or will default to romset directory (i.e your CHD directory should contain `kinst.zip` rom and `kinst` chd folder at the same level)
@@ -29,38 +29,44 @@ Handheld supported romset is currently at mame 0.267 level
 
 - You can exclude CHD games from generation if that's what you want
 
-### WHAT THIS TOOL DO :
+### WHAT THIS TOOL DOES :
 
 [Detailed functionalities](https://github.com/Voljega/BestArcade/wiki/What-this-Tool-Do)
 
 ### LINUX INSTALLATION AND EXECUTION :
 - BestArcade requires that python3 is installed
-- first install Tkinter for python3 if needed : `sudo apt-get install python3-tk`
-- then install ttkbootstrap : `pip3 install -r requirements.txt` (or `pip3 install ttkbootstrap`)
+- first install Tkinter, pip and venv for python3 if needed : `sudo apt-get install python3-tk python3-pip python3-venv`
 - directly download sources or clone the repo with :
  ```
  sudo apt install git # optional, only if git is not installed
  git clone https://github.com/Voljega/BestArcade
  ```
+- then create a virtual environment and install the dependencies in it (recent distributions refuse a system-wide `pip3 install` with an `externally-managed-environment` error, pyinstaller is only needed to build an executable) :
+```
+cd BestArcade                             # change to BestArcade directory
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt
+```
 - give execution rights to `BestArcade.sh` :
 ```
-cd BestArcade            # change to BestArcade directory
 chmod u+x BestArcade.sh  # give execution perms (already done in git-cloned version)
 ```
-- launch with `./BestArcade.sh` or `./BestArcade`
+- launch with `./BestArcade.sh` or `./BestArcade`, it uses the `.venv` virtual environment when it exists
 
 ### WINDOWS EXECUTION
 Just execute `BestArcade.exe` from latest release
 
 ### USAGE
-After execution your will find your generated romsets in your `exportDir`
+After execution you will find your generated romsets in your `exportDir`
 See next part for configuration explanation
 
 `Verify` will check the validity of the various folders and/or dats
 
-`Save` will save you configuration to both the related `conf.conf` file (making a copy of the previous `conf.conf` file to `conf.bak`) and in memory
+`Save` will save your configuration to both the related `conf/conf-<set>.conf` file (making a copy of the previous one to `conf/conf-<set>.bak`) and in memory
 
-`Proceed` will save your configuration in memory only, leaving your `conf.conf` file intact and launch the whole process
+`Proceed` will save your configuration in memory only, leaving your `conf-<set>.conf` file intact and launch the whole process
+
+`DAT only` generates only the filtered dat(s), CSV and gamelist files, without needing any romset on disk : a game is considered present if it is in the dat (your custom dat on the custom, handheld and tvgames tabs, the bundled fbneo and mame dats on the Retroarch tab, where the sets with a folder filled in are used, or both if none is). It implies `Dry run`, and `Verify` will not check the romset, CHD and images folders
 
 You can build your own Windows version with the instructions found in `build.txt`
 

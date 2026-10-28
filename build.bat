@@ -1,5 +1,7 @@
 @echo off
-set /p "version=Version number: "
+rem version is defined in version.py
+for /f %%v in ('python -c "import version; print(version.VERSION)"') do set "version=%%v"
+echo Building version %version%
 echo .
 echo Clean build directory content
 rd /s /q .\build

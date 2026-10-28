@@ -1,10 +1,10 @@
 If you want to build your own executable on Windows, it's pretty straightforward :
-- Install your Python 3.3 environment (on Windows I use Anaconda)
+- Install your Python 3.8 or newer environment (on Windows I use Anaconda)
 - Launch python prompt (Anaconda prompt on Windows)
-- Install pyinstaller and ttkbootstrap with this command : `pip install pyinstaller ttkbootstrap`
+- Install the dependencies with this command : `pip install -r requirements.txt` (ttkbootstrap, pillow and pyinstaller)
 
 AUTOMATIC BUILD:
-- use build.bat, you can then find your build in the build directory
+- use build.bat, you can then find your build in the build directory. The version number comes from `version.py`, bump it before building a release
 
 MANUAL BUILD:
 - Copy all `.py` files and the `bestarcade.ico` file in a work directory
