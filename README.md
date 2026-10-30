@@ -15,7 +15,7 @@ This tool handles two types of usage :
 - generate dedicated system romsets : all arcade based on Best Arcade list, neo geo aes set, sega model 2 & 3 sets, atomiswave set, naomi & naomi 2 sets, namco2x6 set, handheld set, tvgames set
 
 FbNeo version currently tested is Apr 30th, 2024
-Handheld supported romset is currently at mame 0.267 level
+Handheld supported romset is currently at mame 0.289 level
 
 ### WHAT THIS TOOL DOESN'T DO :
 - It's not clrmamepro and will not check that your romsets files are in the right version number  
