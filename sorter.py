@@ -9,15 +9,14 @@ import dat
 import properties
 
 class Sorter:
-    setKeys = {'pi3': ['fbneo', 'mame2003', 'mame2003plus', 'mame2010'], 'n2': ['fbneo', 'mame'], 'n100': ['fbneo', 'mame']}
-    bigSetFile = r"custom.ini"
+    setKeys = ['fbneo', 'mame']
+    bigSetFile = r"arcade.ini"
 
-    def __init__(self, configuration, scriptDir, postProcess, logger, hardware):
+    def __init__(self, configuration, scriptDir, postProcess, logger):
         self.configuration = configuration
         self.scriptDir = scriptDir
         self.bioses = []
         self.logger = logger
-        self.hardware = hardware
         self.postProcess = postProcess
 
         # Init class vars
@@ -41,35 +40,44 @@ class Sorter:
         self.usingSystems = self.__useSystems(self.configuration)
         # create favorites containing fav games
         self.logger.log('\n<--------- Load Favorites Ini Files --------->')
-        self.favorites = fav.loadFavs(self.scriptDir, Sorter.bigSetFile, self.logger)
+        self.favorites = fav.loadFavs(self.scriptDir, self.configuration.get('iniFile') or Sorter.bigSetFile, self.logger)
         # parse dat files
         self.logger.log('\n<--------- Load FBNeo & Mame Dats --------->')
-        datsDict = dict(zip(self.setKeys[self.hardware],
-                            list(map(lambda key: key + '.dat', self.setKeys[self.hardware]))))
+        datsDict = dict(zip(self.setKeys,
+                            list(map(lambda key: key + '.dat', self.setKeys))))
         self.dats = dat.parseDats(self.scriptDir, utils.dataDir, datsDict, self.usingSystems, self.logger)
         # parse test files
         self.logger.log('\n<--------- Load Tests Files --------->')
-        self.allTests = test.loadTests(Sorter.setKeys[self.hardware],
-                                       os.path.join(self.scriptDir, utils.dataDir, self.hardware),
+        self.allTests = test.loadTests(Sorter.setKeys,
+                                       os.path.join(self.scriptDir, utils.dataDir, 'retroarch'),
                                        self.usingSystems, self.logger)
         self.logger.log('\n<--------- Load Property File --------->')
-        self.properties = properties.loadProperties(os.path.join(self.scriptDir, utils.dataDir, 'custom.properties'))
+        self.properties = properties.loadProperties(os.path.join(self.scriptDir, utils.dataDir, 'arcade.properties'))
+
+    def __isDatOnly(self):
+        return self.configuration.get('datOnly') == '1'
 
     def __useSystems(self, configuration):
         systems = []
-        for setKey in self.setKeys[self.hardware]:
-            systems.append(setKey) if os.path.exists(configuration[setKey]) else None
+        if self.__isDatOnly():
+            # no romset to look for, the sets with a folder are the ones wanted, both if none is given
+            systems = [setKey for setKey in self.setKeys if configuration[setKey]] or list(self.setKeys)
+        else:
+            for setKey in self.setKeys:
+                systems.append(setKey) if os.path.exists(configuration[setKey]) else None
         self.logger.logList('Using systems', systems)
         return systems
 
     @staticmethod
-    def __computeScore(setKey, setDir, game, test):
-        # always return -2 if file doesn't exist in set
-        if not os.path.exists(os.path.join(setDir, game + ".zip")):
+    def __computeScore(setKey, setDir, game, test, dat=None):
+        # without a romset (dat only), a game is in the set if it is in the dat
+        inSet = game in dat if dat is not None else os.path.exists(os.path.join(setDir, game + ".zip"))
+        # always return -2 if game doesn't exist in set
+        if not inSet:
             return -2
         score = test[setKey].status if (test is not None and setKey in test) else -2
-        # if file exists in set but not in test, should return -1
-        if score == -2 and os.path.exists(os.path.join(setDir, game + ".zip")):
+        # if game exists in set but not in test, should return -1
+        if score == -2:
             score = -1
 
         return score
@@ -89,7 +97,7 @@ class Sorter:
         elif exclusionType == 'STRICT':
             genreTest = genre.replace('[', '')
             genreTest = genreTest.replace(']', '')
-            if usePreferedSetForGenre and self.configuration[genreTest + 'PreferedSet']:  # check not empty
+            if usePreferedSetForGenre and self.configuration.get(genreTest + 'PreferedSet'):  # check not empty or missing
                 if self.__isPreferedSetForGenre(genreTest, key):
                     return scores[key] >= keepLevel
                 else:
@@ -142,7 +150,9 @@ class Sorter:
 
         notInAnySet = []
         onlyInOneSet = dict()
-        dryRun = True if self.configuration['dryRun'] == '1' else False
+        datOnly = self.__isDatOnly()
+        # nothing to copy without a romset
+        dryRun = True if self.configuration['dryRun'] == '1' or datOnly else False
         useGenreSubFolder = True if self.configuration['genreSubFolders'] == '1' else False
         keepNotTested = True if self.configuration['keepNotTested'] == '1' else False
         keepLevel = int(self.configuration['keepLevel'])
@@ -150,7 +160,7 @@ class Sorter:
         scrapeImages = True if self.configuration['useImages'] == '1' and self.configuration['images'] else False
 
         scoreSheet = open(os.path.join(self.configuration['exportDir'], "scoreSheet.csv"), "w", encoding="utf-8")
-        scoreSheet.write('rom;' + ';'.join(list(map(lambda key: key + 'Score', self.setKeys[self.hardware]))) + '\n')
+        scoreSheet.write('rom;' + ';'.join(list(map(lambda key: key + 'Score', self.setKeys))) + '\n')
 
         CSVs, gamelists, roots = dict(), dict(), dict()
         header = "Status;Genre;Name (mame description);Rom name;Year;Manufacturer;Hardware;Comments;Notes\n"
@@ -189,7 +199,7 @@ class Sorter:
                     setBios = os.path.join(self.configuration[setKey], bios + ".zip")
                     utils.setFileCopy(self.configuration['exportDir'], setBios, genre, bios, setKey, useGenreSubFolder,
                                       dryRun)
-                    if os.path.exists(setBios):
+                    if bios in dats[setKey] if datOnly else os.path.exists(setBios):
                         utils.writeGamelistHiddenEntry(gamelists[setKey], bios, genre, useGenreSubFolder)
 
             for favs in sorted(self.favorites[genre]):
@@ -201,22 +211,18 @@ class Sorter:
 
                 multiGameFoundInSet = False
                 for game in games:
-                    # TODO TEMP debug
-                    if game == 'pbobblen' or game == 'prosoccr' or game == 'sdtennis':
-                        print('ouaich')
-                    # TODO END TEMP debug
                     audit = game + " -> "
                     scores = dict()
                     testForGame = allTests[game] if game in allTests else None
 
-                    for setKey in self.setKeys[self.hardware]:
+                    for setKey in self.setKeys:
                         scores[setKey] = self.__computeScore(setKey, self.configuration[setKey], game,
-                                                             testForGame) if setKey in self.usingSystems else -2
+                                                             testForGame, dats[setKey] if datOnly else None)                             if setKey in self.usingSystems else -2
 
                     audit = audit + " SCORES: " + \
-                        " ".join(list(map(lambda key: str(scores[key]), self.setKeys[self.hardware]))) + " ,"
+                        " ".join(list(map(lambda key: str(scores[key]), self.setKeys))) + " ,"
                     scoreSheet.write(game + ';' +
-                                     ';'.join(list(map(lambda key: str(scores[key]), self.setKeys[self.hardware])))
+                                     ';'.join(list(map(lambda key: str(scores[key]), self.setKeys)))
                                      + '\n')
 
                     selected = []
@@ -230,7 +236,7 @@ class Sorter:
 
                     for setKey in self.usingSystems:
                         setRom = os.path.join(self.configuration[setKey], game + ".zip")
-                        setCHD = os.path.join(self.configuration['chd'], game) if 'chd' in self.configuration \
+                        setCHD = os.path.join(self.configuration['chd'], game) if self.configuration.get('chd') \
                             else os.path.join(self.configuration[setKey], game)
                         excludedBecauseCHDGame = 'excludeCHDGames' in self.configuration and \
                                                  self.configuration['excludeCHDGames'] == '1' and \
@@ -278,7 +284,7 @@ class Sorter:
 
     def __checkErrors(self, inputTests, keepLevel):
         self.logger.log("Loading Output Tests")
-        outputTests = test.loadTests(Sorter.setKeys[self.hardware], os.path.join(self.configuration['exportDir']),
+        outputTests = test.loadTests(Sorter.setKeys, os.path.join(self.configuration['exportDir']),
                                      self.usingSystems, self.logger)
         foundErrors = False
         for rom in inputTests.keys():

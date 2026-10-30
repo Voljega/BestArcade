@@ -1,7 +1,7 @@
-
 import xml.etree.ElementTree as etree
 import os.path
 import shutil
+import conf
 import gamelist
 import utils
 import fav
@@ -32,20 +32,24 @@ class BasicSorter:
         self.usingSystems = self.__useSystems(self.configuration)
         # create favorites containing fav games
         self.logger.log('\n<--------- Load Favorites Ini Files --------->')
-        self.favorites = fav.loadFavs(self.scriptDir, self.setKey + '.ini', self.logger)
+        self.favorites = fav.loadFavs(self.scriptDir, self.configuration.get('iniFile') or self.setKey + '.ini', self.logger)
         # parse dat files
         self.logger.log('\n<--------- Load ' + self.setKey + ' dat --------->')
-        if 'dat' in self.configuration and os.path.exists(self.configuration['dat']):
+        if os.path.exists(self.configuration.get('dat', '')):
             datsDict = dict(zip([self.setKey], [self.configuration['dat']]))
         else:
-            datsDict = dict(zip([self.setKey], [self.setKey + '.dat']))
+            datsDict = dict(zip([self.setKey], [conf.DEFAULT_DAT]))
         self.dats = dat.parseDats(self.scriptDir, utils.dataDir, datsDict, self.usingSystems, self.logger)
         self.logger.log('\n<--------- Load Property File --------->')
-        self.properties = properties.loadProperties(os.path.join(self.scriptDir, utils.dataDir, 'custom.properties'))
+        self.properties = properties.loadProperties(os.path.join(self.scriptDir, utils.dataDir, 'arcade.properties'))
+
+    def __isDatOnly(self):
+        return self.configuration.get('datOnly') == '1'
 
     def __useSystems(self, configuration):
         systems = []
-        systems.append(self.setKey) if os.path.exists(configuration[self.setKey]) else None
+        # in dat only mode there is no romset to look for
+        systems.append(self.setKey) if self.__isDatOnly() or os.path.exists(configuration[self.setKey]) else None
         self.logger.logList('Using systems', systems)
         return systems
 
@@ -59,7 +63,9 @@ class BasicSorter:
         else:
             os.makedirs(self.configuration['exportDir'])
 
-        dryRun = True if self.configuration['dryRun'] == '1' else False
+        datOnly = self.__isDatOnly()
+        # nothing to copy without a romset
+        dryRun = True if self.configuration['dryRun'] == '1' or datOnly else False
         useGenreSubFolder = True if self.configuration['genreSubFolders'] == '1' else False
         scrapeImages = True if self.configuration['useImages'] == '1' and self.configuration['images'] else False
 
@@ -98,7 +104,7 @@ class BasicSorter:
                 setBios = os.path.join(self.configuration[self.setKey], bios + ".zip")
                 utils.setFileCopy(self.configuration['exportDir'], setBios, genre, bios, self.setKey, useGenreSubFolder,
                                   dryRun)
-                if os.path.exists(setBios):
+                if bios in dats[self.setKey] if datOnly else os.path.exists(setBios):
                     utils.writeGamelistHiddenEntry(gamelists[self.setKey], bios, genre, useGenreSubFolder)
 
             for favs in sorted(self.favorites[genre]):
@@ -113,13 +119,15 @@ class BasicSorter:
                     if multiNameRomFound:
                         break
                     setRom = os.path.join(self.configuration[self.setKey], game + ".zip")
-                    setCHD = os.path.join(self.configuration['chd'], game) if 'chd' in self.configuration \
+                    setCHD = os.path.join(self.configuration['chd'], game) if self.configuration.get('chd') \
                         else os.path.join(self.configuration[self.setKey], game)
                     excludedBecauseCHDGame = 'excludeCHDGames' in self.configuration and \
                                              self.configuration['excludeCHDGames'] == '1' and \
                                              game in self.properties and \
                                              self.properties[game].chd == 'yes'
-                    if os.path.exists(setRom) and not excludedBecauseCHDGame:
+                    # a game is in the set if it is in the dat when there is no romset
+                    inSet = game in dats[self.setKey] if datOnly else os.path.exists(setRom)
+                    if inSet and not excludedBecauseCHDGame:
                         multiNameRomFound = True
                         image = self.configuration['imgNameFormat'].replace('{rom}', game)
                         utils.setFileCopy(self.configuration['exportDir'], setRom, genre, game,
@@ -146,7 +154,7 @@ class BasicSorter:
     def __checkErrors(self):
         foundErrors = False
         useGenreSubFolder = True if self.configuration['genreSubFolders'] == '1' else False
-        dryRun = True if self.configuration['dryRun'] == '1' else False
+        dryRun = True if self.configuration['dryRun'] == '1' or self.__isDatOnly() else False
         if not dryRun:
             for genre in self.favorites:
                 for favs in self.favorites[genre]:
@@ -175,6 +183,3 @@ class BasicSorter:
 
         if foundErrors is False:
             self.logger.log("S'all good man", self.logger.SUCCESS)
-
-# TODOS
-# if name from dat is empty, take one from test file

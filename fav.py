@@ -20,6 +20,7 @@ def parseSetFile(setFile, favorites):
 
 
 def loadFavs(scriptDir, fileName, logger):
+    """fileName is relative to the data dir, an absolute path is used as is"""
     favorites = dict()
     parseSetFile(os.path.join(scriptDir, utils.dataDir, fileName), favorites)
 

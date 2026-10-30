@@ -1,16 +1,19 @@
 id;label;help
+iniFile;Roms selection;Path to the roms selection. Leave default if unsure
+selectIni;Select;Select ini file
 exportDir;Export directory;Path where your sega model 2 set will be created (original set will be left untouched)
 selectExportDir;Select;Select export folder
 model2;Mame set folder;Path to your mame set
 selectRomsetDir;Select;Select mame set folder
 chd;CHD set folder;Path to your CHD set
 selectCHDDir;Select;Select CHD set folder
-dat;Mame dat;Path to your mame dat, leave empty if you do not have it
+dat;Mame dat;Path to your mame dat, defaults to the bundled mame.dat
 selectDat;Select;Select dat file
 images;Images folder;Paths to your images set, leave empty if you do not have it
 selectImages;Select;Select your images folder
 imgNameFormat;Image filename format;Format of the image filename
 dryRun;Dry run;Check this to generate only dat and CSV files, no roms will be copied
+datOnly;DAT only;Generate only the filtered dat and CSV files from your dat, without needing a romset (implies Dry run)#nGames are considered present if they are in the dat
 genreSubFolders;Use genre subfolders;Check to use genre subfolders for roms
 useImages;Scrape images;Check to use images for games and folders
 excludeCHDGames;Exclude CHD Games;Check to exclude CHD games from generation
