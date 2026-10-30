@@ -19,7 +19,7 @@ class GUI:
     DEFAULT_FONT_SIZE = 9
     THEMES = {'Light': 'flatly', 'Dark': 'darkly'}
     SETTINGS_FILE = 'conf-settings.conf'
-    TABS = [('retroarch', 'Retroarch'), ('arcade', 'Arcade'), ('neogeoaes', 'Neo Geo AES'),
+    TABS = [('retroarch', 'Retroarch'), ('arcade', 'All Arcade'), ('neogeoaes', 'Neo Geo AES'),
             ('model2', 'Sega Model 2'), ('model3', 'Sega Model 3'), ('atomiswave', 'Atomiswave'),
             ('naomi', 'Naomi'), ('naomi2', 'Naomi 2'), ('namco2x6', 'Namco 2x6'), ('handheld', 'Handhelds'),
             ('tvgames', 'TV Games')]
