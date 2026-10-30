@@ -8,7 +8,7 @@ import wckToolTips
 import os
 import utils
 from retroarchgui import RetroarchGUI
-from customgui import CustomGUI
+from arcadegui import ArcadeGUI
 from settingsgui import SettingsGUI
 import platform
 import subprocess
@@ -19,7 +19,7 @@ class GUI:
     DEFAULT_FONT_SIZE = 9
     THEMES = {'Light': 'flatly', 'Dark': 'darkly'}
     SETTINGS_FILE = 'conf-settings.conf'
-    TABS = [('retroarch', 'Retroarch'), ('custom', 'Custom'), ('neogeoaes', 'Neo Geo AES'),
+    TABS = [('retroarch', 'Retroarch'), ('arcade', 'Arcade'), ('neogeoaes', 'Neo Geo AES'),
             ('model2', 'Sega Model 2'), ('model3', 'Sega Model 3'), ('atomiswave', 'Atomiswave'),
             ('naomi', 'Naomi'), ('naomi2', 'Naomi 2'), ('namco2x6', 'Namco 2x6'), ('handheld', 'Handhelds'),
             ('tvgames', 'TV Games')]
@@ -179,7 +179,7 @@ class GUI:
         if setKey == 'retroarch':
             RetroarchGUI(frame, self.scriptDir, self.logger, self).draw()
         else:
-            CustomGUI(frame, setKey, self.scriptDir, self.logger, self).draw()
+            ArcadeGUI(frame, setKey, self.scriptDir, self.logger, self).draw()
 
     # a notebook gives the focus to the first widget of the tab it opens, which selects the text of an entry
     def __clearTabFocus(self):

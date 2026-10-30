@@ -1,11 +1,13 @@
 id;label;help
+iniFile;Roms selection;Path to the roms selection. Leave default if unsure
+selectIni;Select;Select ini file
 exportDir;Export directory;Path where your set will be created (original set will be left untouched)
 selectExportDir;Select;Select export folder
-custom;Custom set folder;Path to your mame set
+arcade;Arcade set folder;Path to your mame set
 selectRomsetDir;Select;Select mame set folder
 chd;CHD set folder;Path to your CHD set
 selectCHDDir;Select;Select CHD set folder
-dat;Custom dat;Path to your mame dat, defaults to the bundled mame.dat
+dat;Arcade dat;Path to your mame dat, defaults to the bundled mame.dat
 selectDat;Select;Select dat file
 images;Images folder;Paths to your images set, leave empty if you do not have it
 selectImages;Select;Select your images folder

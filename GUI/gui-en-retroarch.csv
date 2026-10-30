@@ -1,4 +1,6 @@
 id;label;help
+iniFile;Roms selection;Path to the roms selection. Leave default if unsure
+selectIni;Select;Select ini file
 exportDir;Export directory;Path where your sets will be created (original sets will be left untouched)
 selectExportDir;Select;Select export folder
 fbneo;FbNeo set folder;Path to your fbneo set, leave empty if you do not have it

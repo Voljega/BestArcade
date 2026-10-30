@@ -12,7 +12,7 @@ This tool handles two types of usage :
 - generate retroarch sorted romsets (fbneo, regular mame) keeping only the games referenced in the [BestArcade list](https://docs.google.com/spreadsheets/d/1S5qAI-TEl7wfqg6w9VNEwKciMGUtw40n9PS4xslkG3s/edit?usp=sharing), above and equal to the working state level you choose.
   
 
-- generate dedicated system romsets : custom mame based on Best Arcade list, neo geo aes set, sega model 2 & 3 sets, atomiswave set, naomi & naomi 2 sets, namco2x6 set, handheld set, tvgames set
+- generate dedicated system romsets : all arcade based on Best Arcade list, neo geo aes set, sega model 2 & 3 sets, atomiswave set, naomi & naomi 2 sets, namco2x6 set, handheld set, tvgames set
 
 FbNeo version currently tested is Apr 30th, 2024
 Handheld supported romset is currently at mame 0.267 level
@@ -66,7 +66,7 @@ See next part for configuration explanation
 
 `Proceed` will save your configuration in memory only, leaving your `conf-<set>.conf` file intact and launch the whole process
 
-`DAT only` generates only the filtered dat(s), CSV and gamelist files, without needing any romset on disk : a game is considered present if it is in the dat (your custom dat on the custom, handheld and tvgames tabs, the bundled fbneo and mame dats on the Retroarch tab, where the sets with a folder filled in are used, or both if none is). It implies `Dry run`, and `Verify` will not check the romset, CHD and images folders
+`DAT only` generates only the filtered dat(s), CSV and gamelist files, without needing any romset on disk : a game is considered present if it is in the dat (your arcade dat on the arcade, handheld and tvgames tabs, the bundled fbneo and mame dats on the Retroarch tab, where the sets with a folder filled in are used, or both if none is). It implies `Dry run`, and `Verify` will not check the romset, CHD and images folders
 
 You can build your own Windows version with the instructions found in `build.txt`
 
@@ -76,7 +76,7 @@ You can also directly modify conf files manually if you prefer, see next section
 see the wiki page [Retroarch Romset Configuration](https://github.com/Voljega/BestArcade/wiki/Retroarch-Romset-Configuration)
 
 
-### CUSTOM, NEO GEO AES, SEGA MODEL 2 & 3, ATOMISWAVE, NAOMI 1&2, NAMCO 2x6 AND HANDHELD ROMSETS CONFIGURATION :
-see the wiki page [Custom & Specific Romsets Configuration](https://github.com/Voljega/BestArcade/wiki/Custom-&-Specific-Romsets-Configuration)
+### ARCADE, NEO GEO AES, SEGA MODEL 2 & 3, ATOMISWAVE, NAOMI 1&2, NAMCO 2x6 AND HANDHELD ROMSETS CONFIGURATION :
+see the wiki page [Arcade & Specific Romsets Configuration](https://github.com/Voljega/BestArcade/wiki/Custom-&-Specific-Romsets-Configuration)
 
 [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/donate?hosted_button_id=LEAH843NKNG72)

@@ -12,7 +12,7 @@ import wckToolTips
 from functools import partial
 
 
-class CustomGUI:
+class ArcadeGUI:
 
     def __init__(self, rootFrame, setKey, scriptDir, logger, mummy):
         self.tabFrame = rootFrame
@@ -26,6 +26,8 @@ class CustomGUI:
             self.guiStrings, self.scriptDir)
         self.logger.log('Loaded ' + utils.getConfFilename(self.setKey))
         self.guiVars = dict()
+        if not self.configuration['iniFile']:
+            self.configuration['iniFile'] = os.path.join(self.scriptDir, utils.dataDir, self.setKey + '.ini')
 
         # Init all components
         self.romsetFrame = None
@@ -95,6 +97,18 @@ class CustomGUI:
 
         ttk.Separator(self.romsetFrame, orient=Tk.HORIZONTAL).grid(column=0, row=setRow, columnspan=3, padx=5, pady=5,
                                                                    sticky="EW")
+        setRow = setRow + 1
+        iniLabel = ttk.Label(self.romsetFrame, text=self.guiStrings['iniFile'].label)
+        wckToolTips.register(iniLabel, self.guiStrings['iniFile'].help)
+        iniLabel.grid(column=0, row=setRow, padx=5, sticky="W")
+        self.guiVars['iniFile'] = Tk.StringVar()
+        self.guiVars['iniFile'].set(self.configuration['iniFile'])
+        iniEntry = ttk.Entry(self.romsetFrame, textvariable=self.guiVars['iniFile'])
+        iniEntry.grid(column=1, row=setRow, padx=5, sticky="WE")
+        self.selectIniButton = ttk.Button(self.romsetFrame, text=self.guiStrings['selectIni'].label,
+                                         command=lambda: self.__openFileExplorer(False, 'iniFile', ['ini']))
+        self.selectIniButton.grid(column=2, row=setRow, padx=5, sticky="WE")
+        wckToolTips.register(self.selectIniButton, self.guiStrings['selectIni'].help)
         setRow = setRow + 1
         outputDirLabel = ttk.Label(self.romsetFrame, text=self.guiStrings['exportDir'].label)
         wckToolTips.register(outputDirLabel, self.guiStrings['exportDir'].help)
@@ -243,7 +257,7 @@ class CustomGUI:
         listKeys = sorted(self.guiStrings.values(), key=attrgetter('order'))
         for key in listKeys:
             if key.id not in ['verify', 'save', 'proceed', 'confirm', 'selectRomsetDir', 'selectCHDDir', 'selectDat',
-                              'selectExportDir', 'selectImages']:
+                              'selectExportDir', 'selectImages', 'selectIni']:
                 if key.help:
                     confFile.write('# ' + key.help.replace('#n', '\n# ') + '\n')
                 if key.id == 'images':
@@ -261,7 +275,7 @@ class CustomGUI:
         listKeys = sorted(self.guiStrings.values(), key=attrgetter('order'))
         for key in listKeys:
             if key.id not in ['verify', 'save', 'proceed', 'confirm', 'selectRomsetDir', 'selectDat',
-                              'selectExportDir', 'selectImages']:
+                              'selectExportDir', 'selectImages', 'selectIni']:
                 if key.id == 'images':
                     imagesValue = self.guiVars[self.guiStrings['images'].label + ' #1'].get()
                     if self.guiStrings['images'].label + ' #2' in self.guiVars:
@@ -282,6 +296,9 @@ class CustomGUI:
             if key in self.guiVars and not os.path.exists(self.guiVars[key].get()):
                 error = True
                 self.logger.log(key + ' folder does not exist', self.logger.ERROR)
+        if not os.path.exists(self.guiVars['iniFile'].get()):
+            error = True
+            self.logger.log('Roms selection ' + self.guiVars['iniFile'].get() + ' does not exist', self.logger.ERROR)
         datValue = self.guiVars['dat'].get()
         if datValue and not os.path.exists(datValue):
             error = True
@@ -330,7 +347,7 @@ class CustomGUI:
         else:
             basedir = os.path.dirname(self.guiVars[var].get())
             initialDir = basedir if os.path.exists(basedir) else self.scriptDir
-            fileTypes = list(map(lambda ft: ('Dat Files', '*.%s' % ft), fileTypes))
+            fileTypes = list(map(lambda ft: (ft.upper() + ' Files', '*.%s' % ft), fileTypes))
             result = filedialog.askopenfilename(initialdir=initialDir,
                                                 title="Select your " + self.guiStrings[var].label,
                                                 filetypes=fileTypes)

@@ -6,7 +6,7 @@ def cleanString(string):
 
 # GUI string ids that are not configuration values
 NON_CONF_KEYS = ['verify', 'save', 'proceed', 'confirm', 'selectRomsetDir', 'selectCHDDir', 'selectDat',
-                 'selectExportDir', 'selectImages']
+                 'selectExportDir', 'selectImages', 'selectIni']
 # dat bundled in the data directory, used when no dat of your own is set
 DEFAULT_DAT = 'mame.dat'
 # Defaults other than an empty value

@@ -1,4 +1,6 @@
 id;label;help
+iniFile;Roms selection;Path to the roms selection. Leave default if unsure
+selectIni;Select;Select ini file
 exportDir;Export directory;Path where your naomi set will be created (original set will be left untouched)
 selectExportDir;Select;Select export folder
 naomi;Mame set folder;Path to your mame set

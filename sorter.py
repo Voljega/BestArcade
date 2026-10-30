@@ -10,7 +10,7 @@ import properties
 
 class Sorter:
     setKeys = ['fbneo', 'mame']
-    bigSetFile = r"custom.ini"
+    bigSetFile = r"arcade.ini"
 
     def __init__(self, configuration, scriptDir, postProcess, logger):
         self.configuration = configuration
@@ -40,7 +40,7 @@ class Sorter:
         self.usingSystems = self.__useSystems(self.configuration)
         # create favorites containing fav games
         self.logger.log('\n<--------- Load Favorites Ini Files --------->')
-        self.favorites = fav.loadFavs(self.scriptDir, Sorter.bigSetFile, self.logger)
+        self.favorites = fav.loadFavs(self.scriptDir, self.configuration.get('iniFile') or Sorter.bigSetFile, self.logger)
         # parse dat files
         self.logger.log('\n<--------- Load FBNeo & Mame Dats --------->')
         datsDict = dict(zip(self.setKeys,
@@ -52,7 +52,7 @@ class Sorter:
                                        os.path.join(self.scriptDir, utils.dataDir, 'retroarch'),
                                        self.usingSystems, self.logger)
         self.logger.log('\n<--------- Load Property File --------->')
-        self.properties = properties.loadProperties(os.path.join(self.scriptDir, utils.dataDir, 'custom.properties'))
+        self.properties = properties.loadProperties(os.path.join(self.scriptDir, utils.dataDir, 'arcade.properties'))
 
     def __isDatOnly(self):
         return self.configuration.get('datOnly') == '1'

@@ -32,7 +32,7 @@ class BasicSorter:
         self.usingSystems = self.__useSystems(self.configuration)
         # create favorites containing fav games
         self.logger.log('\n<--------- Load Favorites Ini Files --------->')
-        self.favorites = fav.loadFavs(self.scriptDir, self.setKey + '.ini', self.logger)
+        self.favorites = fav.loadFavs(self.scriptDir, self.configuration.get('iniFile') or self.setKey + '.ini', self.logger)
         # parse dat files
         self.logger.log('\n<--------- Load ' + self.setKey + ' dat --------->')
         if os.path.exists(self.configuration.get('dat', '')):
@@ -41,7 +41,7 @@ class BasicSorter:
             datsDict = dict(zip([self.setKey], [conf.DEFAULT_DAT]))
         self.dats = dat.parseDats(self.scriptDir, utils.dataDir, datsDict, self.usingSystems, self.logger)
         self.logger.log('\n<--------- Load Property File --------->')
-        self.properties = properties.loadProperties(os.path.join(self.scriptDir, utils.dataDir, 'custom.properties'))
+        self.properties = properties.loadProperties(os.path.join(self.scriptDir, utils.dataDir, 'arcade.properties'))
 
     def __isDatOnly(self):
         return self.configuration.get('datOnly') == '1'
